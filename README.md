@@ -87,25 +87,28 @@ Command  | Description | Parameters
 /gdco [Parameter] | sets the chat the command /dkp will report to | guild/group/chat/raid/officer
 
 ### LiveDKP
+
 Command  | Description | Parameter 1 | Parameter 2 | Parameter 3
 ------------ | ------------- | ----------- | ----------- | -----------
 /dkp+ [Parameter 1] [Parameter 2] [Parameter 3] | Add a defined amount of DKP from a player (or all players) of a raid | Charname/Raid | Amount of DKP | Accountname
 /dkp- [Parameter 1] [Parameter 2] [Parameter 3] | Subtract a defined amount of DKP from a player (or all players) of a raid | Charname/Raid | Amount of DKP | Accountname
 
-expamples:
+Examples
+
 Command  | Description
 ------------ | -------------
 /dkp+ Corgan 100 DKP1 | Add 100 DKP to Corgans DKP points in the account DKP1
 /dkp- Corgan 100 DKP1 | Subtract 100 DKP from Corgans DKP points in the account DKP1
 /dkp+ Raid 100 DKP1 | Add 100 DKP to all players in the Raid in the account DKP1
 
-###whisper commands:
+### Whisper commands
 
 Command  | Description | Parameters
 ------------ | ------------- | -------------
 dkp	[Parameter] | DKP points | account
 
-example:
+Examples
+
 Command  | Description
 ------------ | -------------
 /w corgan dkp [kontoname] | The player Corgan has GetDKP installed and you want to receive your DKP from him.

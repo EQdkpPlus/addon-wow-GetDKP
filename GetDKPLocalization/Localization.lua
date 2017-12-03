@@ -5,9 +5,9 @@
 ---- Additional Authors: Sylna, Corgan, WalleniuM               ----
 ---- GetDKP Plus Admin ist unter der Creative Common Licence: 	----
 ---- Namensnennung , Keine kommerzielle Nutzung , Weitergabe    ----
----- unter gleichen Bedingungen 2.0 Deutschland verfügbar       ----
+---- unter gleichen Bedingungen 2.0 Deutschland verfï¿½gbar       ----
 ---- http://www.eqdkp-plus.com/page.php?21                      ---
----- $Id: Localization.lua 19865 2015-05-01 21:32:00Z Yunalescar $	
+---- $Id: Localization.lua 19865 2015-05-01 21:32:00Z Yunalescar $
 --------------------------------------------------------------------
 
 osrHeader = "";
@@ -47,11 +47,11 @@ GDKP_Search_Warlock_es 	= "Brujo" ;
 GDKP_Search_Druid_es 		= "Druida" ;
 GDKP_Search_Mage_es 		= "Mago" ;
 GDKP_Search_Hunter_es 		= "Cazador" ;
-GDKP_Search_Rogue_es 		= "Pícaro" ;
+GDKP_Search_Rogue_es 		= "Pï¿½caro" ;
 GDKP_Search_Priest_es 		= "Sacerdote" ;
 GDKP_Search_Warrior_es 	= "Guerrero" ;
-GDKP_Search_Shaman_es 		= "Chamán" ;
-GDKP_Search_Paladin_es 	= "Paladín" ;
+GDKP_Search_Shaman_es 		= "Chamï¿½n" ;
+GDKP_Search_Paladin_es 	= "Paladï¿½n" ;
 GDKP_Search_DeathKnight_es 	= "Caballero de la Muerte" ;
 GDKP_Search_stoff_es 		= "Tela" ;
 GDKP_Search_leder_es 		= "Cuero" ;
@@ -59,7 +59,7 @@ GDKP_Search_schwer_es 		= "Mallas" ;
 GDKP_Search_platte_es 		= "Placas" ;
 GDKP_Search_alle_es 		= "todo" ;
 
-GDKP_Classes_Icons = {	
+GDKP_Classes_Icons = {
 	Druid = "Interface\\Icons\\Ability_Druid_Maul",
 	Mage = "Interface\\Icons\\INV_Staff_13",
 	Warrior = "Interface\\Icons\\INV_Sword_27",
@@ -73,7 +73,7 @@ GDKP_Classes_Icons = {
 
 if ( GetLocale() == "deDE" ) then
 	GDKP_Classes_Icons = nil;
-	GDKP_Classes_Icons = {	
+	GDKP_Classes_Icons = {
 	Druide = "Interface\\Icons\\Ability_Druid_Maul",
 	Magier = "Interface\\Icons\\INV_Staff_13",
 	Krieger = "Interface\\Icons\\INV_Sword_27",
@@ -88,7 +88,7 @@ end;
 
 if ( GetLocale() == "esES" ) then
 	GDKP_Classes_Icons = nil;
-	GDKP_Classes_Icons = {	
+	GDKP_Classes_Icons = {
 	Druide = "Interface\\Icons\\Ability_Druid_Maul",
 	Magier = "Interface\\Icons\\INV_Staff_13",
 	Krieger = "Interface\\Icons\\INV_Sword_27",
@@ -103,7 +103,7 @@ end;
 
 if ( GetLocale() == "esMX" ) then
 	GDKP_Classes_Icons = nil;
-	GDKP_Classes_Icons = {	
+	GDKP_Classes_Icons = {
 	Druide = "Interface\\Icons\\Ability_Druid_Maul",
 	Magier = "Interface\\Icons\\INV_Staff_13",
 	Krieger = "Interface\\Icons\\INV_Sword_27",
@@ -138,7 +138,7 @@ TEXT_DKP_HELP_DKPO		= "/dkpo [guild,say,group,raid,local,officer] set the Output
 TEXT_DKP_HELP_DKPPlus		= "/dkp+ [Playername/raid] [DKP] [Account] expample /dkp+ Charla 100 BWL - Add 100 DKP to Corgans DKP Point. to add dkp to all player you have to use raid as playername "
 TEXT_DKP_HELP_DKPMinus		= "/dkp- [Playername] [DKP] [Account] expample /dkp- Charla 100 BWL - Subtract 100 DKP from Corgans DKP Point to substract dkp to all player you have to use raid as playername"
 TEXT_DKP_HELP_DKP_Live		= "/gdc livedkp on/off - Activate the LiveGKP Function"
-TEXT_DKP_HELP_Whisper		= "Whisper DKP /send name dkp [Account] example /send Charla dkp Gruuls Lair or /send charla dkp for all Accounts"		
+TEXT_DKP_HELP_Whisper		= "Whisper DKP /send name dkp [Account] example /send Charla dkp Gruuls Lair or /send charla dkp for all Accounts"
 TEXT_DKP_NONSETITEM_FOUND	= "NonsetItem found";
 TEXT_DKPINFO        = "Your Points: ";
 TEXT_DKP_SET		= "Setpoints" ;
@@ -155,7 +155,7 @@ TEXT_DKP_SEARCH		= " Search ";
 TEXT_DKP_PLAYER		= " Player ";
 TEXT_DKP_NOTFOUND	= " not found " ;
 TEXT_DKP_NOHISTORY  = "Could not find a player history for " ;
-TEXT_DKP_ITEMHISTORY= "Displaying Item History for " ; 
+TEXT_DKP_ITEMHISTORY= "Displaying Item History for " ;
 TEXT_DKP_RPSPENT	= " RaidPoints Spent Total! " ;
 TEXT_DKP_RP			= " DKP] ";
 TEXT_DKP_ON			= " ON " ;
@@ -206,7 +206,7 @@ TEXT_DKP_ADDDKP_RAID		= "DKP added to all Players in the Raid";
 TEXT_DKP_ADDDKP_Player		= "DKP added to";
 TEXT_DKP_SUBDKP_RAID		= "DKP subtract from all Players in the Raid";
 TEXT_DKP_SUBDKP_Player		= "DKP subtract from";
-TEXT_DKP_GETS				= "for" 
+TEXT_DKP_GETS				= "for"
 TEXT_DKP_LiveError			= " GETDKP Live DKP: You are not a raid officer. No Getdkp Values changed !";
 GDKP_Text_ClientMode		= "GetDkp is in the Client mode";
 GDKP_Text_multiTable		= "|cff66CCCCmultiTable, ";
@@ -228,7 +228,7 @@ GDKP_Text_HookCTRT			= "Set & Substract"
 if ( GetLocale() == "deDE" ) then
 	TEXT_DKP_SETACCOUNT		= "SetKonto";
 
-	TEXT_DKP_HELP_DKP			= "Du nutzt die falsche Syntax. ein bispiel dkp BWL oder dkp BWL Priester oder nur dkp für alle";
+	TEXT_DKP_HELP_DKP			= "Du nutzt die falsche Syntax. ein bispiel dkp BWL oder dkp BWL Priester oder nur dkp fï¿½r alle";
 	TEXT_DKP_HELP_WORNGSET		= "Du must den befehl dkp nutzen.";
 	TEXT_DKP_HELP_REQ_DKP		= "/gdc whisperdkp on/off - Schaltet die Whisperfunktion der Punkte aus "
 	TEXT_DKP_HELP_REQ_ITEM		= "/gdc whisperitems on/off - Schaltet die Whisperfunktion der Items aus";
@@ -252,22 +252,22 @@ if ( GetLocale() == "deDE" ) then
 	TEXT_DKP_HELP_DKP_Live		= "/gdc livedkp an/aus - aktiviert die Live DKP Funktion"
 	TEXT_DKP_HELP_Whisper		= "Whisper DKP /send name dkp [Konto] Beispiel: /send Charla dkp Gruuls Lair oder /send Charla dkp f\195\188r alle Konten";
 	TEXT_DKP_NONSETITEM_FOUND	= "NonsetItem gefunden";
-	TEXT_DKPINFO        = "Du hast: ";
+	TEXT_DKPINFO               = "Du hast: ";
 	TEXT_DKP_SET		= "Setpunkte" ;
 	TEXT_DKP_DKP		= "DKP" ;
 	TEXT_DKP_NONSET		= "NonSetpunkte" ;
-    TEXT_DKP_MIXED      = "Mixedpunkte" ;
+	TEXT_DKP_MIXED      = "Mixedpunkte" ;
 	TEXT_NOPOINTS       = "Du hast keine Punkte.";
 	TEXT_DKP_SETT		= "Set: ";
 	TEXT_DKP_NONSETT	= ", NonSet: ";
-    TEXT_DKP_MIXEDT     = ", Mixed: ";
+	TEXT_DKP_MIXEDT     = ", Mixed: ";
 	TEXT_DKP_LISTE		= "Liste ";
 	TEXT_DKP_LISTE_ALLE	= " alle Member";
 	TEXT_DKP_SEARCH		= " Suche ";
 	TEXT_DKP_PLAYER		= " Spieler ";
 	TEXT_DKP_NOTFOUND	= " nicht gefunden " ;
 	TEXT_DKP_NOHISTORY  = "Keine Items gefunden von " ;
-	TEXT_DKP_ITEMHISTORY= "Zeige alle Items von " ; 
+	TEXT_DKP_ITEMHISTORY= "Zeige alle Items von " ;
 	TEXT_DKP_RPSPENT	= " ausgegebene Punkte insgesamt! " ;
 	TEXT_DKP_RP			= " DKP] ";
 	TEXT_DKP_ON			= " An " ;
@@ -310,7 +310,7 @@ if ( GetLocale() == "deDE" ) then
 	TEXT_DKP_TT_OFFICER			= "schreibe Tooltip Informationen im Offizierchat" ;
 	TEXT_DKP_TT_NEED_RAID		= " im Raid ohne DKP"
 	TEXT_DKP_TT_LIMIT_SHOW		= "Zeige nur die ersten "
-	TEXT_DKP_TT_LIMIT_WARINIG	= "GETDKP: Zuviele Zeilen f\195\188r den Tooltip. Setzte bitte ein Limit für die anzuzeigenen Spieler. f\195\188r Hilfe /dkp help"
+	TEXT_DKP_TT_LIMIT_WARINIG	= "GETDKP: Zuviele Zeilen f\195\188r den Tooltip. Setzte bitte ein Limit fï¿½r die anzuzeigenen Spieler. f\195\188r Hilfe /dkp help"
 	TEXT_DKP_FIGHT_WHISPER		= "GETDKP: Ich befinde mich gerade im Kampf. Whisper Funktion deaktiv."
 	TEXT_DKP_ShowNonSet			= "Liste NonSet Punkte f\195\188r deine Klasse im Titan Tooltip";
 	TEXT_DKP_ADDDKP_RAID		= "DKP wurden allen Spielern aus dem Raid hinzugef\195\188gt";
@@ -336,30 +336,30 @@ if ( GetLocale() == "deDE" ) then
 
 -- Spanish Localization
 if ( GetLocale() == "esES" ) then
-TEXT_DKP_HELP_DKP		= "Has usado una Sintaxis erróna. Por ejemplo, dkp NAX o dkp NAX Sacerdote o sólo DKP para todo";
-TEXT_DKP_HELP_WORNGSET	= "Sólo puedes usar DKP como conjunto.";
+TEXT_DKP_HELP_DKP		= "Has usado una Sintaxis errï¿½na. Por ejemplo, dkp NAX o dkp NAX Sacerdote o sï¿½lo DKP para todo";
+TEXT_DKP_HELP_WORNGSET	= "Sï¿½lo puedes usar DKP como conjunto.";
 TEXT_DKP_SETACCOUNT		= "Fijar cuenta";
-TEXT_DKP_HELP_REQ_ITEM	= "/gdc whisperitems on/off - activa/desactiva la función de susurro de los objetos"
-TEXT_DKP_HELP_REQ_DKP	= "/gdc whisperdkp on/off - activa/desactiva la función de susurro de los puntos DKP";
-TEXT_DKP_HELP_HIDE_WHISPER = "/gdc whisperhide on/off - Oculta los susurros salientes cuando alguien solicita información de DKP o de Objetos"
-TEXT_DKP_HELP_Raidonly	= "/gdc raidonly on/off - Mostrar sólo los jugadores en Banda";
-TEXT_DKP_HELP_BUYERLIMIT= "/gdc buyerslimit xx - Muestra sólo XX compradores de un objeto. XX puede ser un número entre 1 y 40. 0 = todos"
-TEXT_DKP_HELP_NEEDLIMIT = "/gdc needlimit xx - Muestra sólo XX jugadores con NECESIDAD de ese objeto. XX puede ser un número entre 1 y 40. 0 = todos"
+TEXT_DKP_HELP_REQ_ITEM	= "/gdc whisperitems on/off - activa/desactiva la funciï¿½n de susurro de los objetos"
+TEXT_DKP_HELP_REQ_DKP	= "/gdc whisperdkp on/off - activa/desactiva la funciï¿½n de susurro de los puntos DKP";
+TEXT_DKP_HELP_HIDE_WHISPER = "/gdc whisperhide on/off - Oculta los susurros salientes cuando alguien solicita informaciï¿½n de DKP o de Objetos"
+TEXT_DKP_HELP_Raidonly	= "/gdc raidonly on/off - Mostrar sï¿½lo los jugadores en Banda";
+TEXT_DKP_HELP_BUYERLIMIT= "/gdc buyerslimit xx - Muestra sï¿½lo XX compradores de un objeto. XX puede ser un nï¿½mero entre 1 y 40. 0 = todos"
+TEXT_DKP_HELP_NEEDLIMIT = "/gdc needlimit xx - Muestra sï¿½lo XX jugadores con NECESIDAD de ese objeto. XX puede ser un nï¿½mero entre 1 y 40. 0 = todos"
 TEXT_DKP_HELP_ITEM 		= "/item [Itemname] (link Item)  - Historial del objeto con referencia a un objeto";
 TEXT_DKP_HELP_ITEMS 	= "/items Playname   - Historial personal de jugadores. ";
 TEXT_DKP_HELP_Tooltip	= "/gdc tooltip on/off    - activa/desactiva el Tooltip"
-TEXT_DKP_HELP_TooltipP	= "/gdc tooltip [top,left,top,bottom]    - Posición del Tooltip"
-TEXT_DKP_HELP_TooltipMM	= "/gdc tooltip minmax [on/off]   - Muestra Mín/Máx/Media de DKP en el Tooltip."
+TEXT_DKP_HELP_TooltipP	= "/gdc tooltip [top,left,top,bottom]    - Posiciï¿½n del Tooltip"
+TEXT_DKP_HELP_TooltipMM	= "/gdc tooltip minmax [on/off]   - Muestra Mï¿½n/Mï¿½x/Media de DKP en el Tooltip."
 TEXT_DKP_HELP_TTDKP		= "/gdc tooltip dkp [on/off]     - Muestra tus propios puntos DKP en el Tooltip";
-TEXT_DKP_HELP_TTLO		= "/gdc tooltip listbuyers [on/off]     - Muestra qué jugador tiene un objeto en el Tooltip";
-TEXT_DKP_HELP_TTLO_REP	= "/gdc tooltip reportbuyers [on/off]     - Reporta qué jugadores tienen un objetoReport wich Player owns an Setitem.";
-TEXT_DKP_HELP_Info		= "/gdc info channel [raid, group, gilde, chat] - Muestra las estadísticas de los DKP en el canal"
-TEXT_DKP_HELP_Status	= "/gdc status - Muestra la configuración de GETDKP"
+TEXT_DKP_HELP_TTLO		= "/gdc tooltip listbuyers [on/off]     - Muestra quï¿½ jugador tiene un objeto en el Tooltip";
+TEXT_DKP_HELP_TTLO_REP	= "/gdc tooltip reportbuyers [on/off]     - Reporta quï¿½ jugadores tienen un objetoReport wich Player owns an Setitem.";
+TEXT_DKP_HELP_Info		= "/gdc info channel [raid, group, gilde, chat] - Muestra las estadï¿½sticas de los DKP en el canal"
+TEXT_DKP_HELP_Status	= "/gdc status - Muestra la configuraciï¿½n de GETDKP"
 TEXT_DKP_HELP_DKPO		= "/dkpo [guild,say,group,raid,local,officer] establece el chat de salida"
-TEXT_DKP_HELP_DKPPlus		= "/dkp+ [Playername/raid] [DKP] [Account] ejemplo /dkp+ Belelros 100 DKP1 - Añade 100 puntos DKP a Belelros en la cuenta DKP1. Para añadírselo a todos los jugadores hay que usar el nombre de la banda como nombre de jugador."
-TEXT_DKP_HELP_DKPMinus		= "/dkp- [Playername] [DKP] [Account] ejemplo /dkp- Belelros 100 DKP1 - Resta 100 DKP de los puntos de Belelros en la cuenta DKP1. Para añadírselo a todos los jugadores hay que usar el nombre de la banda como nombre de jugador."
-TEXT_DKP_HELP_DKP_Live		= "/gdc livedkp on/off - Activa la función de LiveGKP"
-TEXT_DKP_HELP_Whisper		= "Susurrar DKP /send name dkp [Account] ejemplo /send Charla dkp Naxxramas o /send charla dkp para todas las cuentas"		
+TEXT_DKP_HELP_DKPPlus		= "/dkp+ [Playername/raid] [DKP] [Account] ejemplo /dkp+ Belelros 100 DKP1 - Aï¿½ade 100 puntos DKP a Belelros en la cuenta DKP1. Para aï¿½adï¿½rselo a todos los jugadores hay que usar el nombre de la banda como nombre de jugador."
+TEXT_DKP_HELP_DKPMinus		= "/dkp- [Playername] [DKP] [Account] ejemplo /dkp- Belelros 100 DKP1 - Resta 100 DKP de los puntos de Belelros en la cuenta DKP1. Para aï¿½adï¿½rselo a todos los jugadores hay que usar el nombre de la banda como nombre de jugador."
+TEXT_DKP_HELP_DKP_Live		= "/gdc livedkp on/off - Activa la funciï¿½n de LiveGKP"
+TEXT_DKP_HELP_Whisper		= "Susurrar DKP /send name dkp [Account] ejemplo /send Charla dkp Naxxramas o /send charla dkp para todas las cuentas"
 TEXT_DKP_NONSETITEM_FOUND	= "Set de Objetos no encontrados";
 TEXT_DKPINFO        = "Tus puntos: ";
 TEXT_DKP_SET		= "Puntos asignados" ;
@@ -376,21 +376,21 @@ TEXT_DKP_SEARCH		= " Buscar ";
 TEXT_DKP_PLAYER		= " Jugador ";
 TEXT_DKP_NOTFOUND	= " no encontrado " ;
 TEXT_DKP_NOHISTORY  = "No se puede encontrar historial para " ;
-TEXT_DKP_ITEMHISTORY= "Mostrando historial de objeto para " ; 
+TEXT_DKP_ITEMHISTORY= "Mostrando historial de objeto para " ;
 TEXT_DKP_RPSPENT	= " Puntos de banda gastados! " ;
 TEXT_DKP_RP			= " DKP] ";
 TEXT_DKP_ON			= " ON " ;
 TEXT_DKP_OFF		= " OFF " ;
-TEXT_DKP_REQ_ITEMS	= " Susurro de petición de objetos " ;
-TEXT_DKP_REQ_DKP	= " Susurro de petición de DKP " ;
+TEXT_DKP_REQ_ITEMS	= " Susurro de peticiï¿½n de objetos " ;
+TEXT_DKP_REQ_DKP	= " Susurro de peticiï¿½n de DKP " ;
 TEXT_DKP_REQ_SHOW	= "Ocultar susurro" ;
 TEXT_DKP_Buyers		= " Compradores encontrados para " ;
 TEXT_DKP_Buyer		= " Compradores encontrados " ;
 TEXT_DKP_boughtfor	= " comprado por " ;
 TEXT_DKP_HASNT_ITEM = " Jugadores no tienen este objeto  ";
 TEXT_DKP_HAS		= " actualmente tiene " ;
-TEXT_DKP_DATE				= "último cambiado: ";
-TEXT_DKP_DKPLIST			= "Versión de DKP; ";
+TEXT_DKP_DATE				= "ï¿½ltimo cambiado: ";
+TEXT_DKP_DKPLIST			= "Versiï¿½n de DKP; ";
 TEXT_DKP_PLAYERS_TOTAL		= "Contador de jugadores: ";
 TEXT_DKP_ITEMS_TOTAL		= "Contador de objetos: ";
 TEXT_DKP_POINTS_TOTAL		= "Puntos DKP : ";
@@ -400,10 +400,10 @@ TEXT_DKP_POINTS_SET			= "DKP Objetos asignados: ";
 TEXT_DKP_POINTS_NONSET		= "DKP Objetos no-asignados: ";
 TEXT_DKP_Guild				= "hermandad";
 TEXT_DKP_Tooltip			= "Mostrar Tooltip " ;
-TEXT_DKP_Tooltip_Raid		= "Mostrar Tooltip sólo en banda ";
+TEXT_DKP_Tooltip_Raid		= "Mostrar Tooltip sï¿½lo en banda ";
 TEXT_DKP_Tooltip_BUTTON_PARTY = "Publicar grupo" ;
 TEXT_DKP_Anounce			= "Reportar: ";
-TEXT_DKP_YOU				= "Tú: " ;
+TEXT_DKP_YOU				= "Tï¿½: " ;
 TEXT_DKP_Player_Raid 		= " - [En Banda]"
 TEXT_DKP_OUTPUT_CHAN 		= " Chat de salida"
 TEXT_DKP_GILDE		 		= "hermandad"
@@ -412,49 +412,49 @@ TEXT_DKP_LOCAL		 		= "local"
 TEXT_DKP_SAY		 		= "decir"
 TEXT_DKP_RAID		 		= "banda"
 TEXT_DKP_ShowOnlyInRaid		= "Mostrar solo miembros de banda" ;
-TEXT_DKP_TT_HEAD      = "Postear información del Tooltip";
-TEXT_DKP_TT_PARTY 			= "Postear información del Tooltip en Chat de Grupo" ;
-TEXT_DKP_TT_RAID 			= "Postear información del Tooltip en Chat de Banda" ;
-TEXT_DKP_TT_CHAT 			= "Postear información del Tooltip en Chat" ;
-TEXT_DKP_TT_GUILD 			= "Postear información del Tooltip en Chat de Hermandad" ;
-TEXT_DKP_TT_OFFICER			= "Postear información del Tooltip en Chat de Oficiales" ;
+TEXT_DKP_TT_HEAD      = "Postear informaciï¿½n del Tooltip";
+TEXT_DKP_TT_PARTY 			= "Postear informaciï¿½n del Tooltip en Chat de Grupo" ;
+TEXT_DKP_TT_RAID 			= "Postear informaciï¿½n del Tooltip en Chat de Banda" ;
+TEXT_DKP_TT_CHAT 			= "Postear informaciï¿½n del Tooltip en Chat" ;
+TEXT_DKP_TT_GUILD 			= "Postear informaciï¿½n del Tooltip en Chat de Hermandad" ;
+TEXT_DKP_TT_OFFICER			= "Postear informaciï¿½n del Tooltip en Chat de Oficiales" ;
 TEXT_DKP_TT_NEED_RAID		= " en la banda sin DKP"
-TEXT_DKP_TT_LIMIT_SHOW		= "Mostrar sólo el primero "
-TEXT_DKP_TT_LIMIT_WARINIG	= "GETDKP: ¡Demasiadas columnas para el Tooltip! Establece un límite. Para ayuda /dkp help"
+TEXT_DKP_TT_LIMIT_SHOW		= "Mostrar sï¿½lo el primero "
+TEXT_DKP_TT_LIMIT_WARINIG	= "GETDKP: ï¿½Demasiadas columnas para el Tooltip! Establece un lï¿½mite. Para ayuda /dkp help"
 TEXT_DKP_FIGHT_WHISPER		= "GETDKP: Lo siento. En combate ahora. Susurros desactivados."
 TEXT_DKP_ShowNonSet			= "Mostrar puntos sin asignar para tu clase en el Tooltip de Titan";
-TEXT_DKP_ADDDKP_RAID		= "DKP añadidos a todos los jugadores en la banda";
-TEXT_DKP_ADDDKP_Player		= "DKP añadidos a";
+TEXT_DKP_ADDDKP_RAID		= "DKP aï¿½adidos a todos los jugadores en la banda";
+TEXT_DKP_ADDDKP_Player		= "DKP aï¿½adidos a";
 TEXT_DKP_SUBDKP_RAID		= "DKP restados de todos los jugadores en la banda";
 TEXT_DKP_SUBDKP_Player		= "DKP restados a";
-TEXT_DKP_GETS				= "para" 
+TEXT_DKP_GETS				= "para"
 TEXT_DKP_LiveError			= " GETDKP Live DKP: No eres un oficial de banda. No se cambiaron valores de GetDKP";
-GDKP_Text_ClientMode		= "GetDKP está en modo cliente";
+GDKP_Text_ClientMode		= "GetDKP estï¿½ en modo cliente";
 GDKP_Text_multiTable		= "|cff66CCCCmultiTabla, ";
 GDKP_Text_DKPInfo			= "|cff66CCCCDKPInfo, ";
 GDKP_Text_GDKP				= "|cff66CCCCGDKP, ";
 GDKP_Text_DKPItems			= "|cff66CCCCDKP-Objetos ";
-GDKP_Text_Vars 				= "No hay variables en tu getdkp.lua. revísalo";
+GDKP_Text_Vars 				= "No hay variables en tu getdkp.lua. revï¿½salo";
 GDKP_Text_NoMembers			= "No hay miembros en tu EQDKP. ";
 GDKP_Text_NoItems			= "No hay objetos en tu EQDKP. ";
-GDKP_Text_ToLow				= "¡Tienes GetDKP con una versión antigua de getdkp.php! Tu administrador tiene que actualizarlo a una versión posterior que viene con EQDKP 0.4.x";
-GDKP_Text_Alias				= "La función de Alias de GetDKP está en la versión de getdkp.php 2.61 Tu administrador tiene que actualizar al que viene con EQDKP 0.5.x";
-GDKP_Text_DataTransfer 		= "La función de transferencia de datos está usando la versión de getdkp.php 2.63. Tu administrador tiene que actualizar al que viene con EQDKP 0.5.x";
-GDKP_Text_RP				= "La función de planificación de bandas está usando la versión de getdkp.php 2.64. Tu administrador tiene que actualizar al que viene con EQDKP 0.5.x";
+GDKP_Text_ToLow				= "ï¿½Tienes GetDKP con una versiï¿½n antigua de getdkp.php! Tu administrador tiene que actualizarlo a una versiï¿½n posterior que viene con EQDKP 0.4.x";
+GDKP_Text_Alias				= "La funciï¿½n de Alias de GetDKP estï¿½ en la versiï¿½n de getdkp.php 2.61 Tu administrador tiene que actualizar al que viene con EQDKP 0.5.x";
+GDKP_Text_DataTransfer 		= "La funciï¿½n de transferencia de datos estï¿½ usando la versiï¿½n de getdkp.php 2.63. Tu administrador tiene que actualizar al que viene con EQDKP 0.5.x";
+GDKP_Text_RP				= "La funciï¿½n de planificaciï¿½n de bandas estï¿½ usando la versiï¿½n de getdkp.php 2.64. Tu administrador tiene que actualizar al que viene con EQDKP 0.5.x";
 GDKP_Text_HookCTRT			= "Establecer y restar"
 	end
 -- Set Names
-GDKP_Search_SETS = 
+GDKP_Search_SETS =
 {
-	{ Class_DE = "Paladin", 	Class_ENG = "Paladin",		Class_ES = "Paladín",		TONENAME_DE="Gerechtigkeit", 	TONENAME_ENG="Lawbringer", 		TONENAME_ES="Justiciero", 		TTWONAME_DE = "Richturteils",		TTWONAME_ENG = "Judgement",			TTWONAME_ES = "Sentencia" },
-	{ Class_DE = "Priester", 	Class_ENG = "Priest", 		Class_ES = "Sacerdote", 		TONENAME_DE="Prophezeiung", 	TONENAME_ENG="Transcendence", 	TONENAME_ES="Trascendencia", 	TTWONAME_DE = "Erhabenheit",  		TTWONAME_ENG = "Prophecy",  		TTWONAME_ES = "Profecía" },
+	{ Class_DE = "Paladin", 	Class_ENG = "Paladin",		Class_ES = "Paladï¿½n",		TONENAME_DE="Gerechtigkeit", 	TONENAME_ENG="Lawbringer", 		TONENAME_ES="Justiciero", 		TTWONAME_DE = "Richturteils",		TTWONAME_ENG = "Judgement",			TTWONAME_ES = "Sentencia" },
+	{ Class_DE = "Priester", 	Class_ENG = "Priest", 		Class_ES = "Sacerdote", 		TONENAME_DE="Prophezeiung", 	TONENAME_ENG="Transcendence", 	TONENAME_ES="Trascendencia", 	TTWONAME_DE = "Erhabenheit",  		TTWONAME_ENG = "Prophecy",  		TTWONAME_ES = "Profecï¿½a" },
 	{ Class_DE = "Schurke", 	Class_ENG = "Rogue", 		Class_ES = "Rogue", 		TONENAME_DE="NachttÃ¶ter", 		TONENAME_ENG="Nightslayer", 	TONENAME_ES="Destripador nocturno", 	TTWONAME_DE = "Blutfang",  			TTWONAME_ENG = "Bloodfang",  		TTWONAME_ES = "Colmillo de Sangre" },
 	{ Class_DE = "Druide", 		Class_ENG = "Druid", 		Class_ES = "Druida", 		TONENAME_DE="Cenarius", 		TONENAME_ENG="Cenarion", 		TONENAME_ES="Cenarion", 		TTWONAME_DE = "Stormrage",  		TTWONAME_ENG = "Stormrage",  		TTWONAME_ES = "Tempestira" },
-	{ Class_DE = "Krieger",		Class_ENG = "Warrior", 		Class_ES = "Guerrero", 		TONENAME_DE="Macht", 			TONENAME_ENG="Might", 			TONENAME_ES="Poderío", 			TTWONAME_DE = "Zorns",  			TTWONAME_ENG = "Wrath",  			TTWONAME_ES = "Cólera" },
-	{ Class_DE = "Schamane",	Class_ENG = "Shaman", 		Class_ES = "Chamán", 		TONENAME_DE="Erdfuror", 		TONENAME_ENG="Earthfury", 		TONENAME_ES="Furia Terrenal", 		TTWONAME_DE = "Stürme",  			TTWONAME_ENG = "Storms",  			TTWONAME_ES = "Tormentas" },
-	{ Class_DE = "J\195\164ger",Class_ENG = "Hunter", 		Class_ES = "Cazador", 		TONENAME_DE="Riesenj\195\164gers", 	TONENAME_ENG="Giantstalker", 	TONENAME_ES="Acechagigantes", 	TTWONAME_DE = "Drachenpirscher",	TTWONAME_ENG = "Dragonstalker",		TTWONAME_ES = "Acechadragón" },
+	{ Class_DE = "Krieger",		Class_ENG = "Warrior", 		Class_ES = "Guerrero", 		TONENAME_DE="Macht", 			TONENAME_ENG="Might", 			TONENAME_ES="Poderï¿½o", 			TTWONAME_DE = "Zorns",  			TTWONAME_ENG = "Wrath",  			TTWONAME_ES = "Cï¿½lera" },
+	{ Class_DE = "Schamane",	Class_ENG = "Shaman", 		Class_ES = "Chamï¿½n", 		TONENAME_DE="Erdfuror", 		TONENAME_ENG="Earthfury", 		TONENAME_ES="Furia Terrenal", 		TTWONAME_DE = "Stï¿½rme",  			TTWONAME_ENG = "Storms",  			TTWONAME_ES = "Tormentas" },
+	{ Class_DE = "J\195\164ger",Class_ENG = "Hunter", 		Class_ES = "Cazador", 		TONENAME_DE="Riesenj\195\164gers", 	TONENAME_ENG="Giantstalker", 	TONENAME_ES="Acechagigantes", 	TTWONAME_DE = "Drachenpirscher",	TTWONAME_ENG = "Dragonstalker",		TTWONAME_ES = "Acechadragï¿½n" },
 	{ Class_DE = "Magier",		Class_ENG = "Mage", 		Class_ES = "Mago", 		TONENAME_DE="Arkanisten", 		TONENAME_ENG="Arcanist", 		TONENAME_ES="Arcanista", 		TTWONAME_DE = "Netherwind",  		TTWONAME_ENG = "Netherwind",  		TTWONAME_ES = "Viento abisal" },
-	{ Class_DE = "Hexenmeister",Class_ENG = "Warlock", 		Class_ES = "Brujo", 		TONENAME_DE="Felheart", 		TONENAME_ENG="Felheart", 		TONENAME_ES="Corazón vil", 		TTWONAME_DE = "Nemesis",  			TTWONAME_ENG = "Nemesis",  			TTWONAME_ES = "Némesis" },
+	{ Class_DE = "Hexenmeister",Class_ENG = "Warlock", 		Class_ES = "Brujo", 		TONENAME_DE="Felheart", 		TONENAME_ENG="Felheart", 		TONENAME_ES="Corazï¿½n vil", 		TTWONAME_DE = "Nemesis",  			TTWONAME_ENG = "Nemesis",  			TTWONAME_ES = "Nï¿½mesis" },
 	{ Class_DE = "Todesritter",	Class_ENG = "Death Knight",	Class_ES = "Caballero de la Muerte",	TONENAME_DE="a", 				TONENAME_ENG="a", 				TONENAME_ES="a", 				TTWONAME_DE = "a",  				TTWONAME_ENG = "a",  				TTWONAME_ES = "a" },
 };
 
@@ -469,14 +469,14 @@ GDKP_Special_Class = {
 						[8] = { "Schamane","J\195\164ger"},
 						[9] = { "Druide","Schurke"},
 						[10] = { "Priester","Magier","Hexenmeister"},
-						
-						
+
+
 	};
--- french localization 
-if ( GetLocale() == "frFR" ) then 
+-- french localization
+if ( GetLocale() == "frFR" ) then
 
 
-end 
+end
 
 
 
@@ -496,14 +496,14 @@ GDL_SHOWPLAYER = "Player Stats";
 GDL_REFRESH = "Refresh";
 GDL_HEADER_SET = "SetItems from";
 GDL_HEADER_NONSET = "NonItems from";
-GDL_NONSETITEMS_HEADER_ITEMS = "Itemname"; 
+GDL_NONSETITEMS_HEADER_ITEMS = "Itemname";
 GDL_NONSETITEMS_HEADER_DKP = "DKP";
 GDL_NO_ATRIBUDES = "|cffffffffSorry no more Informations for this Item.";
 GDL_WapponSide = {wapponmainhand = "1.Hand",shildhand = "2.Hand",diztans = "Diztans"};
 GDL_NOTINRAID = "Show all user";
 GDL_INRAID = "Show Raid user";
 GDC_GDL_Send_Text = "Send List Data";
-GDC_GDL_Resiv_Text = "Ask for Data"; 
+GDC_GDL_Resiv_Text = "Ask for Data";
 if (GetLocale() == "deDE") then
 	GDL_Data = "Daten vom : ";
 	GDL_TPlayers = "Spieleranzahl : ";
@@ -519,7 +519,7 @@ if (GetLocale() == "deDE") then
 	GDL_REFRESH = "Aktualisieren";
 	GDL_HEADER_SET = "SetItems von";
 	GDL_HEADER_NONSET = "NonItems from";
-	GDL_NONSETITEMS_HEADER_ITEMS = "Itemname"; 
+	GDL_NONSETITEMS_HEADER_ITEMS = "Itemname";
 	GDL_NONSETITEMS_HEADER_DKP = "DKP";
 	GDL_NO_ATRIBUDES = "|cffffffffSorry keine weiteren information\nf\195\188r diese item vorhanden.";
 	GDL_WapponSide = {wapponmainhand = "1.Hand",shildhand = "2.Hand",diztans = "Distans"};
@@ -543,14 +543,14 @@ if (GetLocale() == "esES") then
 	GDL_REFRESH = "Refresh";
 	GDL_HEADER_SET = "SetItems from";
 	GDL_HEADER_NONSET = "NonItems from";
-	GDL_NONSETITEMS_HEADER_ITEMS = "Itemname"; 
+	GDL_NONSETITEMS_HEADER_ITEMS = "Itemname";
 	GDL_NONSETITEMS_HEADER_DKP = "DKP";
 	GDL_NO_ATRIBUDES = "|cffffffffSorry no more Informations for this Item.";
 	GDL_WapponSide = {wapponmainhand = "1.Hand",shildhand = "2.Hand",diztans = "Diztans"};
 	GDL_NOTINRAID = "Show all user";
 	GDL_INRAID = "Show Raid user";
 	GDC_GDL_Send_Text = "Send List Data";
-	GDC_GDL_Resiv_Text = "Ask for Data"; 
+	GDC_GDL_Resiv_Text = "Ask for Data";
 end;
 
 ----------------------------- GetDKP Config Lokalization ---------------------------------
@@ -572,7 +572,7 @@ GDC_GDA_TEXT = "You can change the Bet and Win Configuration";
 GDC_GDL_TEXT = "You can change the GetDKP List Configuration";
 GDC_SCALE_TEXT = "You can change the Scale from the Getdkp Windows";
 GDC_Buyerslimit = "Show xx Itemowner";
-GDC_Needlimit = "Show xx who Item need"; 
+GDC_Needlimit = "Show xx who Item need";
 GDC_Chat = "Outputchat";
 GDC_Whisperdkp = "Whisperfunction for Points";
 GDC_Whisperitem = "Whisperfunction for Items";
@@ -619,10 +619,10 @@ GDC_DKPLive_PlayerSetPoints = "SetDKP for the Player";
 GDC_DKPLive_PlayerSetPoints = "NonSetDKP for the Player";
 GDC_GDA_Rule1_ChatLook = "Witch channel is under controle";
 GDC_GDA_Rule1_MinDKP = "Minimum DKP";
-GDC_GDA_Rule1_Titel = "Bet and Win Rule 1 Attribuds"; 
-GDC_GDA_Rule2_Titel = "Bet and Win Rule 2 Attribuds"; 
-GDC_GDA_Rule3_Titel = "Bet and Win Rule 3 Attribuds"; 
-GDC_GDA_Rule4_Titel = "Bet and Win Rule 4 Attribuds"; 
+GDC_GDA_Rule1_Titel = "Bet and Win Rule 1 Attribuds";
+GDC_GDA_Rule2_Titel = "Bet and Win Rule 2 Attribuds";
+GDC_GDA_Rule3_Titel = "Bet and Win Rule 3 Attribuds";
+GDC_GDA_Rule4_Titel = "Bet and Win Rule 4 Attribuds";
 GDC_GDA_Rule1 = "Rules 1";
 GDC_GDA_Rule2 = "Rules 2";
 GDC_GDA_Rule3 = "Rules 3";
@@ -754,7 +754,7 @@ GDC_LOOTLEVEL4 = "Episch";
 GDC_RESIV1 = "GetDKP hat Daten empfangen von ";
 GDC_RESIV2 = "GetDKP empf\195\164ngt Daten von ";
 GDC_SEND = "GetDKP sendet Daten";
-GDC_SEND_LAG = "GetDKP hat die maximale Anzahl an sendbaren Zeichen erreicht. Nun kommen für ein paar Sekunden lags";
+GDC_SEND_LAG = "GetDKP hat die maximale Anzahl an sendbaren Zeichen erreicht. Nun kommen fï¿½r ein paar Sekunden lags";
 GDC_ASK_TEXT = "GetDKPdaten anfrage akzeptieren ";
 GDC_GDL_RESET_Text = "Daten l\195\182schen";
 end;
@@ -778,7 +778,7 @@ GDC_GDA_TEXT = "You can change the Bet and Win Configuration";
 GDC_GDL_TEXT = "You can change the GetDKP List Configuration";
 GDC_SCALE_TEXT = "You can change the Scale from the Getdkp Windows";
 GDC_Buyerslimit = "Show xx Itemowner";
-GDC_Needlimit = "Show xx who Item need"; 
+GDC_Needlimit = "Show xx who Item need";
 GDC_Chat = "Outputchat";
 GDC_Whisperdkp = "Whisperfunction for Points";
 GDC_Whisperitem = "Whisperfunction for Items";
@@ -826,10 +826,10 @@ GDC_DKPLive_PlayerSetPoints = "SetDKP for the Player";
 GDC_DKPLive_PlayerSetPoints = "NonSetDKP for the Player";
 GDC_GDA_Rule1_ChatLook = "Witch channel is under controle";
 GDC_GDA_Rule1_MinDKP = "Minimum DKP";
-GDC_GDA_Rule1_Titel = "Bet and Win Rule 1 Attribuds"; 
-GDC_GDA_Rule2_Titel = "Bet and Win Rule 2 Attribuds"; 
-GDC_GDA_Rule3_Titel = "Bet and Win Rule 3 Attribuds"; 
-GDC_GDA_Rule4_Titel = "Bet and Win Rule 4 Attribuds"; 
+GDC_GDA_Rule1_Titel = "Bet and Win Rule 1 Attribuds";
+GDC_GDA_Rule2_Titel = "Bet and Win Rule 2 Attribuds";
+GDC_GDA_Rule3_Titel = "Bet and Win Rule 3 Attribuds";
+GDC_GDA_Rule4_Titel = "Bet and Win Rule 4 Attribuds";
 GDC_GDA_Rule1 = "Rules 1";
 GDC_GDA_Rule2 = "Rules 2";
 GDC_GDA_Rule3 = "Rules 3";
@@ -885,7 +885,7 @@ GDA_HEADER_PLAYERS_SET = "DKP";
 GDA_HEADER_PLAYERS_NONSET = "NS";
 GDA_HEADER_PLAYERS_MIX = "Mix";
 GDA_HEADER_PLAYERS_ORDER = "Order";
-GDA_STRING_SELECT_CLASS = "Select Class"; 
+GDA_STRING_SELECT_CLASS = "Select Class";
 GDA_HEADER_NONSET = "NonSet Items";
 GDA_HEADER_SET = "Set Items";
 GDA_CLEAR = "Clear";
@@ -995,7 +995,7 @@ if (GetLocale() == "esES") then
 	GDA_HEADER_PLAYERS_NONSET = "NS";
 	GDA_HEADER_PLAYERS_MIX = "Mix";
 	GDA_HEADER_PLAYERS_ORDER = "Order";
-	GDA_STRING_SELECT_CLASS = "Select Class"; 
+	GDA_STRING_SELECT_CLASS = "Select Class";
 	GDA_HEADER_NONSET = "NonSet Items";
 	GDA_HEADER_SET = "Set Items";
 	GDA_CLEAR = "Clear";
@@ -1129,7 +1129,7 @@ if (GetLocale() == "deDE") then
 	GDR_Month[10] = "Oktober";
 	GDR_Month[11] = "November";
 	GDR_Month[12] = "Dezember";
-	
+
 	GDR_All_Invite = "Alle einladen";
 	GDR_MonthOverview = "Monats \195\156bersicht";
 	GDR_DayOverview = "Tages \195\156bersicht";
@@ -1140,10 +1140,10 @@ if (GetLocale() == "deDE") then
 	GDR_raid_date_invite = "Einladezeitpunkt";
 	GDR_raid_date_finish = "Endzeitpunkt";
 	GDR_raid_attendees = "Angemeldet";
-	GDR_close = "Abbrechen";	
+	GDR_close = "Abbrechen";
 	GDR_whisper = "Fl\195\188stern";
 	GDR_invite = "Einladen";
-	
+
 	GDR_invite_text = {};
 	GDR_invite_text[1] = "ist nicht eingeladen";
 	GDR_invite_text[2] = "ist eingeladen";
@@ -1153,7 +1153,7 @@ if (GetLocale() == "deDE") then
 	GDR_invite_text[6] = "hatt einladung abgelehnt";
 	GDR_invite_text[7] = "hatt Gruppe verlassen";
 	GDR_invite_text[8] = "in Raid Offline";
-	
+
 	GDR_subscribed = {};
 	GDR_subscribed[1] = "Best\195\164tigt";
 	GDR_subscribed[2] = "Angemeldet";
@@ -1161,13 +1161,13 @@ if (GetLocale() == "deDE") then
 	GDR_subscribed[4] = "Ersatzbank";
 	GDR_subscribed[5] = "Noch nicht angemeldet";
 	GDR_subscribed[6] = "Nicht verf\195\188gbar";
-	
+
 	GDR_raid_distribution = "verteilung";
 	GDR_raid_distribution_verteilung = {};
 	GDR_raid_distribution_verteilung[0] = "Klassenverteilung";
 	GDR_raid_distribution_verteilung[1] = "Rollenverteilung";
 	GDR_raid_distribution_verteilung[2] = "ohne verteilung";
-	
+
 	GDR_skill = "Skillung :";
 	GDR_noskill= "Keine Skillung vorhanden";
 	GDR_Skill = {};
@@ -1180,7 +1180,7 @@ if (GetLocale() == "deDE") then
 	GDR_Skill["Druide"] = {"Gleichgewicht","Wilder Kampf","Wiederherstellung"};
 	GDR_Skill["Magier"] = {"Arkan","Feuer","Frost"};
 	GDR_Skill["Schamane"] = {"Elementar","Verst\195\164rkung","Wiederherstellung"};
-	
+
 	GDR_Hybride_text = "Hybrid";
 end;
 

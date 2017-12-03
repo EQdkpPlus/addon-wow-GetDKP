@@ -1,89 +1,87 @@
 #####################################################
 # GetDKP Plus
 # Authors: Charla, Corgan, WalleniuM, Sylna
-# $LastChangedDate: 2009-03-09 17:16:25 +0100 (Mo, 09 Mrz 2009) $
-# $LastChangedBy: sylna $
 #####################################################
 
 SUPPORT FORUM: http://www.eqdkp-plus.com/e107_plugins/forum/forum_viewforum.php?11
 
 ---------------------
 
--> German <- 
+-> German <-
 Beschreibung:
 ===============
 
-DKP Informationen ingame verfügbar machen, ist jetzt kein Problem mehr.
-Das Addon zeigt euch die DKP Punkte und alle Items aller Spieler in einem Fenster an, die in eurem EQDKP enthalten sind. Ihr könnt in diesem Fenster nach Klassen, Namen, Dropgruppen, RüstungsGruppen filtern sowie geziehlt nach einem oder mehreren Spielern suchen. Ihr könnt sowohl die DKP´s wie auch die Items der Spieler über die fenster in einem beliebigen chat ausgeben lassen. Es wird bei Items die im chat gelinkt sind ein tooltip angezeigt wo enthalten ist wer das Item schon besitzt und wer es noch braucht, natürlich werden dort auch die dkps mit angezeigt und alle Tooltiplisten können auch wieder in einem chat ausgegeben werden.
+DKP Informationen ingame verfÃ¼gbar machen, ist jetzt kein Problem mehr.
+Das Addon zeigt euch die DKP Punkte und alle Items aller Spieler in einem Fenster an, die in eurem EQDKP enthalten sind. Ihr kÃ¶nnt in diesem Fenster nach Klassen, Namen, Dropgruppen, RÃ¼stungsgruppen filtern sowie geziehlt nach einem oder mehreren Spielern suchen. Ihr kÃ¶nnt sowohl die DKPs wie auch die Items der Spieler Ã¼ber die Fenster in einem beliebigen chat ausgeben lassen. Es wird bei Items die im chat gelinkt sind ein tooltip angezeigt wo enthalten ist wer das Item schon besitzt und wer es noch braucht, natÃ¼rlich werden dort auch die dkps mit angezeigt und alle Tooltiplisten kÃ¶nnen auch wieder in einem chat ausgegeben werden.
 
-Dazu biete euch GetDKP auch ein Versteigerungsmodul "Bet and Win" an, mit dem ihr in verschiedenen vorgegebenen regeln eure Items versteigern könnt und direkt seht wer wieviel geboten hatt und wieviel DKP dieser noch hatt. Man kann dann auch noch direkt den Gewinner per Knopfdruck im Chat ausgeben.
+Dazu biete euch GetDKP auch ein Versteigerungsmodul "Bet and Win" an, mit dem ihr in verschiedenen vorgegebenen regeln eure Items versteigern kÃ¶nnt und direkt seht wer wieviel geboten hatt und wieviel DKP dieser noch hat. Man kann dann auch noch direkt den Gewinner per Knopfdruck im Chat ausgeben.
 
-Mit dem LIVEDKP könnt ihr nun im Raid einzelnen Spielern oder auch dem ganzen Raid DKP´s geben oder auch abziehen. 
+Mit dem LIVEDKP kÃ¶nnt ihr nun im Raid einzelnen Spielern oder auch dem ganzen Raid DKPs geben oder auch abziehen.
 
-Es gibt ein Konfigurationsmenu wo ihr alle einstellung vornehmen könnt.
+Es gibt ein Konfigurationsmenu wo ihr alle einstellung vornehmen kÃ¶nnt.
 
 
 Features:
-- Unterstützt voll MultiDKP
-- Unterstützt Umlaute wie (ÖÄÜ usw)
-- Flüstert jemand mit dem Addon an und bekommt sofort eure Punkte zurück !
+- UnterstÃ¼tzt voll MultiDKP
+- UnterstÃ¼tzt Umlaute wie (Ã¤Ã¶Ã¼ usw)
+- FlÃ¼stert jemand mit dem Addon an und bekommt sofort eure Punkte zurÃ¼ck !
 - Zeigt alle Items an die im EQDKP eingetragen wurden.
-- Bei Klick auf ein im Chat gelinktes Item öffnet sich ein weiterer Tooltip. In diesem wird angezeigt, wer dieses Item schon für wieviele Punkte bekommen hat. 
-  Bei Setitems wird außerdem angezeigt wer dieses Item noch braucht.
-  Diese Informationen können dann in den Raid/Gruppen/Gildenchat gepostet werden.
+- Bei Klick auf ein im Chat gelinktes Item Ã¶ffnet sich ein weiterer Tooltip. In diesem wird angezeigt, wer dieses Item schon fÃ¼r wieviele Punkte bekommen hat.
+  Bei Setitems wird auÃŸerdem angezeigt wer dieses Item noch braucht.
+  Diese Informationen kÃ¶nnen dann in den Raid/Gruppen/Gildenchat gepostet werden.
 - Zeigt alle Items und deren DKP Preise die in eurem EQDKP eingetragen sind.
-- Detailanzeige über Itempreise. Bei DKP System mit unterschiedlichen Itempreisen werden die Min/Max/AVG Preise angezeigt
+- Detailanzeige Ã¼ber Itempreise. Bei DKP System mit unterschiedlichen Itempreisen werden die Min/Max/AVG Preise angezeigt
 - Wenn die Option gesetzt ist, werden nur Spieler im Raid angezeigt.
-- Ausgehende Flüsterer (z.B. Spieler oder Itemsuche) werden nicht mehr angezeigt
+- Ausgehende FlÃ¼sterer (z.B. Spieler oder Itemsuche) werden nicht mehr angezeigt
 - Es werden auch Spieler im Tooltip angezeigt, die keine DKP Punkte haben, sich aber im Raid befinden.
-- Flüsterer nach Spieler oder Items sind jetzt im Kamp abgeschaltet und Lags zu verhindern.
+- FlÃ¼sterer nach Spieler oder Items sind jetzt im Kampf abgeschaltet und Lags zu verhindern.
 - Die Anzahl der auszugebenen Spieler die noch Bedarf auf ein Item haben, oder die ein Item schon bestizen kann begrentzt werden.
-- Ihr könnt während eines Raids DKP Punkte von Spielern ändern.
-- Minimap Icon zum öffnen des Konfigurationsmenu oder des GetDKPList fenster
+- Ihr kÃ¶nnt wÃ¤hrend eines Raids DKP Punkte von Spielern Ã¤ndern.
+- Minimap Icon zum Ã–ffnen des Konfigurationsmenu oder des GetDKPList fenster
 
 LiveDKP
 ===============
-Mit diesen Funktionen bleibt ihr wärend eines Raid immer auf dem aktuellen Stand.
-Als normaler Spieler müsst ihr nichts weiter konfigurieren.
+Mit diesen Funktionen bleibt ihr wÃ¤rend eines Raid immer auf dem aktuellen Stand.
+Als normaler Spieler mÃ¼sst ihr nichts weiter konfigurieren.
 
 Lootmaster bzw CT Raidtracker Lootmaster:
-Wenn ihr wärend eines Raid im Raidtracker auf edit Notes eines Items klickt könnt ihr dort die Punkte eintragen, die dem Spieler abgezogen werden sollen.
-z.B. ein Spieler bekommt ein Item für 100 DKP. Dann tragt ihr in die Notes "100 DKP" ein. Wichtig dabei ist, das "DKP" groß geschrieben wird.
-Wenn ihr multiDKP mit mehreren Konten habt habt, dann muss die Note "100 DKP Kontoname" heißen. kontoname ist der name den ihr im eqdkp dem jeweiligen konto gegeben habt.
-Der Spieler der diese Einträge im Raidtracker macht, MUSS ein A haben oder Raidleiter sein und zusätzlich /dkp livedkp on aktiviert haben. (default = on)
-Wenn die Note im Raidtracker eingetragen wurde, wird im Raidchat darauf hingewiesen. Bei allen Spielern die GetDKP 4.0.1 (oder höher) installiert haben werden 
-die Punkte jetzt automatisch abgezogen. Die Veränderungen an den Punkten werden solange gespeichert (auch beim umloggen und zwischen Sessions) bis die 
-DKP Daten erneut von eurem EQDKP aktualisiert werden. 
+Wenn ihr wÃ¤rend eines Raid im Raidtracker auf edit Notes eines Items klickt kÃ¶nnt ihr dort die Punkte eintragen, die dem Spieler abgezogen werden sollen.
+z.B. ein Spieler bekommt ein Item fÃ¼r 100 DKP. Dann tragt ihr in die Notes "100 DKP" ein. Wichtig dabei ist, das "DKP" groÃŸ geschrieben wird.
+Wenn ihr multiDKP mit mehreren Konten habt habt, dann muss die Note "100 DKP Kontoname" heiÃŸen. kontoname ist der name den ihr im eqdkp dem jeweiligen konto gegeben habt.
+Der Spieler der diese Eintrï¿½ge im Raidtracker macht, MUSS ein A haben oder Raidleiter sein und zusÃ¤tzlich /dkp livedkp on aktiviert haben. (default = on)
+Wenn die Note im Raidtracker eingetragen wurde, wird im Raidchat darauf hingewiesen. Bei allen Spielern die GetDKP 4.0.1 (oder hÃ¶her) installiert haben werden
+die Punkte jetzt automatisch abgezogen. Die VerÃ¤nderungen an den Punkten werden solange gespeichert (auch beim umloggen und zwischen Sessions) bis die
+DKP Daten erneut von eurem EQDKP aktualisiert werden.
 
-Der Lootmaster (oder berechtigter Spieler) kann außerdem gezielt einzelnen Spielern oder dem ganzen Raid Punkte abziehen bzw. hinzufügen.
+Der Lootmaster (oder berechtigter Spieler) kann auÃŸerdem gezielt einzelnen Spielern oder dem ganzen Raid Punkte abziehen bzw. hinzufÃ¼gen.
 Befehle dazu weiter unten.
 
-Für hilfe einfach /gdc help eingeben.
+fÃ¼r hilfe einfach /gdc help eingeben.
 
 Installation
 ===============
 
-Einfach runterladen und den Ordner Getdkp in euren xxx\World of Warcraft\Interface\AddOns\ ordner kopieren. 
+Einfach runterladen und den Ordner Getdkp in euren xxx\World of Warcraft\Interface\AddOns\ ordner kopieren.
 
-Da WoW leider keinen direkten Zugriff auf Dateien im Internet oder Dateien auf der Festplatte erlaubt, muss man vor einem Raid die Punkte einmal abrufen. 
-Dies funktioniert über die Datei DKP.EXE, die mit beiligt. In dieser müsst ihr die Pfade zu WoW und zu eurem EQDKP richtig eintragen.
+Da WoW leider keinen direkten Zugriff auf Dateien im Internet oder Dateien auf der Festplatte erlaubt, muss man vor einem Raid die Punkte einmal abrufen.
+Dies funktioniert Ã¼ber die Datei DKP.EXE, die mit beiligt. In dieser mÃ¼sst ihr die Pfade zu WoW und zu eurem EQDKP richtig eintragen.
 
 1. Entpackt die GetDKP.zip und kopiert den GetDkp Ordner in euren /Interface/Addon Ordner
 2. Benutzt das Programm DKP.EXE (im GetDKPData-Ordner) um die DKP Informationen runterzuladen. Passt dazu den Path zu eurer getdkp.php und eurem WOW Ordner an.
 3. Startet das Spiel
 
-- nach dem ersten einloggen solltet ihr als erstes mal das Konfigurationsmenü öffnen "/gdc" und dort eure einstellungen vornehmen. 
-  Vor jedem Raid ist darauf zu achten das im Konfigurationsmenü immer das richtige Konto eingetragen ist. 
-  Sollte ihr die beschreibung des kontos den Instanznamen gleichgesetzt haben so wird bei betreten der Instanz automatisch das konnto geändert.
-  
-  
-  
-  
-Fensteröffnen :
+- nach dem ersten einloggen solltet ihr als erstes mal das KonfigurationsmenÃ¼ Ã¶ffnen "/gdc" und dort eure einstellungen vornehmen.
+  Vor jedem Raid ist darauf zu achten das im KonfigurationsmenÃ¼ immer das richtige Konto eingetragen ist.
+  Sollte ihr die beschreibung des kontos den Instanznamen gleichgesetzt haben so wird bei betreten der Instanz automatisch das konnto geï¿½ndert.
+
+
+
+
+Fensterï¿½ffnen :
 ===============
-/gdc öffnet das Konfigurationsmenü
-/gdl öffnet das GetDKPList Fenster
-/gdb öffnet das Versteigerungmodul Bet and Win
+/gdc ï¿½ffnet das KonfigurationsmenÃ¼
+/gdl ï¿½ffnet das GetDKPList Fenster
+/gdb ï¿½ffnet das Versteigerungmodul Bet and Win
 
 
 
@@ -93,23 +91,23 @@ Befehle ingame:
 /gdc status									-> Zeigt die Konfiguration
 /gdc info [chat/gilde/raid/gruppe] 			-> Gibt EQDKP Informationens im jeweiligen Channel aus.
 /gdc help									-> Zeigt diese Tabelle
-/gdc whisperdkp [on/off]					-> Schaltet die Flüsterfunktion für DKP Punkte ab
-/gdc whisperhide [on/off] 					-> Wenn aktiv, werden ausgehende Flüsterer nicht mehr angezeigt, wenn z.B. jemand seine Punkte abfragt.
-/gdc buyerslimit xx 						-> Beschränkt die Anzahl der angezeigten Spieler die ein Item schon besitzen. xx muss eine Zahl zwischen 1 und 40 sein. 0 = alle
-/gdc needlimit xx 							-> Beschränkt die Anzahl der angezeigten Spieler die ein Item noch nicht besitzen. xx muss eine Zahl zwischen 1 und 40 sein. 0 = alle
+/gdc whisperdkp [on/off]					-> Schaltet die FlÃ¼sterfunktion fÃ¼r DKP Punkte ab
+/gdc whisperhide [on/off] 					-> Wenn aktiv, werden ausgehende Flï¿½sterer nicht mehr angezeigt, wenn z.B. jemand seine Punkte abfragt.
+/gdc buyerslimit xx 						-> Beschrï¿½nkt die Anzahl der angezeigten Spieler die ein Item schon besitzen. xx muss eine Zahl zwischen 1 und 40 sein. 0 = alle
+/gdc needlimit xx 							-> Beschrï¿½nkt die Anzahl der angezeigten Spieler die ein Item noch nicht besitzen. xx muss eine Zahl zwischen 1 und 40 sein. 0 = alle
 /gdc reset  								-> Setzt alle GETDKP Variablen auf einen Defaultwert
-/gdco [gilde/gruppe/chat/raid/offizer] 		-> setzt den Ausgabechat für den Befehl /dkp
+/gdco [gilde/gruppe/chat/raid/offizer] 		-> setzt den Ausgabechat fÃ¼r den Befehl /dkp
 
 LiveDKP
 ===============
-/dkp+ [Spielername / Raid ] [DKP] [Kontoname]		-> Fügt dem Spieler (oder allen Spielern im Raid) xx Punkte hinzu
+/dkp+ [Spielername / Raid ] [DKP] [Kontoname]		-> FÃ¼gt dem Spieler (oder allen Spielern im Raid) xx Punkte hinzu
 /dkp- [Spielername / Raid ] [DKP] [Kontoname]		-> Zieht dem Spieler (oder allen Spielern im Raid) xx Punkte ab
 
 
-Beispiele: 
+Beispiele:
 /dkp+ Corgan 100 DKP1 - Addiere 100 Punkte zu Corgans DKP Punkten auf dem Konto DKP1
 /dkp- Corgan 100 DKP1 - Zieht 100 Punkte von Corgans DKP Punkten auf dem Konto DKP1 ab
-/dkp+ Raid 100 DKP1 - Addiere 100 Punkte auf die Punkte aller Spieler im Raid für das Konto DKP1
+/dkp+ Raid 100 DKP1 - Addiere 100 Punkte auf die Punkte aller Spieler im Raid fÃ¼r das Konto DKP1
 
 
 Whisperbefehle:

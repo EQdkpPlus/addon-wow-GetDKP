@@ -1,0 +1,2377 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\..\FrameXML\UI.xsd">
+
+<Script file="GetDKPRaidPlaner.lua"/>
+
+
+	
+	<GameTooltip name="GDRGameTooltip" inherits="GameTooltipTemplate"/>
+	<Font name="GDRFontSmallBlack" inherits="MasterFont" font="Fonts\FRIZQT__.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="10"/>
+		</FontHeight>
+		<Color r="0.0" g="0.0" b="0.0"/>
+	</Font>
+	<Font name="GDRFontHighBlack" inherits="MasterFont" font="Fonts\FRIZQT__.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="12"/>
+		</FontHeight>
+		<Color r="0.0" g="0.0" b="0.0"/>
+	</Font>
+	
+	<Button name="GDR_InviteButtonTemplate" virtual="true" hidden="false" >
+		<NormalFont inherits="GameFontHighlightSmall"/>
+		<Size>
+			<AbsDimension x="170" y="20"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGOUND">
+				<Texture name="$parent_Background" file="Interface\AddOns\GetDKP\Images\GDR_Row1" hidden="true">
+					<Size>
+						<AbsDimension x="75" y="20"/>
+					</Size>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<FontString name="$parent_name" inherits="GameFontHighlightSmall">
+					<Size>
+						<AbsDimension x="75" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="LEFT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_status" inherits="GameFontHighlightSmall">
+					<Size>
+						<AbsDimension x="95" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT" relativePoint="RIGHT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+			</OnLoad>
+			<OnClick>
+				PlaySound("igMainMenuOptionCheckBoxOn");
+				GetDKPRaidPlaner_Invitewindow_singel();
+			</OnClick>
+		</Scripts>
+	</Button>
+	<Button name="GDR_DayButtonTemplate" virtual="true" hidden="false">
+		<Size>
+			<AbsDimension x="46" y="56"/>
+		</Size>
+		<NormalTexture name="$parent_Days" file="Interface\ChatFrame\ChatFrameBackground" setAllPoints="true">
+			<Size>
+				<AbsDimension x="46" y="56"/>
+			</Size>
+		</NormalTexture>
+		<Layers>
+			<Layer level="ARTWORK">
+				
+				<Texture name="$parent_raid_icon">
+					<Size>
+						<AbsDimension x="20" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<FontString name="$parent_Dayname" inherits="GDRFontHighBlack">
+					<Anchors>
+						<Anchor point="TOPRIGHT" >
+							<Offset x="0" y="1"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_raid_name" inherits="GDRFontSmallBlack">
+					<Size>
+						<AbsDimension x="42" y="35"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" >
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+			</OnLoad>
+			<OnClick>
+				if (getglobal(self:GetText().."_raid_name"):GetText() ~= nil) then
+					PlaySound("igMainMenuOptionCheckBoxOn");
+					RaidPlanerCalendar:Hide();
+					GetDKPRaidPlanerRaidFrame:Show();
+					
+					prefix = self:GetText();
+					timestamp = tostring(getglobal(prefix.."_raid_name").timestamp);
+					GDR_Scroll_DB(timestamp);
+				end;
+			</OnClick>
+			<OnEnter>
+				if (getglobal(self:GetText().."_raid_name"):GetText() ~= nil) then
+					GDR_ToolTip();
+				end;
+			</OnEnter>
+			<OnLeave>
+				GDRGameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+	<Frame name="GDR_RaidButtonTemplate" virtual="true" hidden="false">
+		<Size>
+			<AbsDimension x="730" y="20"/>
+		</Size>
+		<Frames>
+			<Button name="$parent_Button1">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="0" y="0"/>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="77" y="20"/>
+				</Size>
+				
+				<Layers>
+					<Layer level="BACKGOUND">
+						<Texture name="$parent_Class_Background" file="Interface\AddOns\GetDKP\Images\GDR_Row1" hidden="true">
+							<Size>
+								<AbsDimension x="125" y="30"/>
+							</Size>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<Texture name="$parent_Button_icon">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<FontString name="$parent_Button_text" inherits="GameFontHighlightSmall">
+							<Anchors>
+								<Anchor point="LEFT" >
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+					</OnLoad>
+					<OnClick>
+						
+						GDR_OnClick(self, button);
+					</OnClick>
+					<OnEnter>
+						GDR_ToolTip2();
+					</OnEnter>
+					<OnLeave>
+						GDRGameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Button2">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="77" y="0"/>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="77" y="20"/>
+				</Size>
+				<Layers>
+					<Layer level="BACKGOUND">
+						<Texture name="$parent_Class_Background" file="Interface\AddOns\GetDKP\Images\rowpic62i.blp" hidden="true">
+							<Size>
+								<AbsDimension x="125" y="30"/>
+							</Size>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<Texture name="$parent_Button_icon">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<FontString name="$parent_Button_text" inherits="GameFontHighlightSmall">
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+					</OnLoad>
+					<OnClick>
+						
+						GDR_OnClick(self, button);
+					</OnClick>
+					<OnEnter>
+						GDR_ToolTip2();
+					</OnEnter>
+					<OnLeave>
+						GDRGameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Button3">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="154" y="0"/>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="77" y="20"/>
+				</Size>
+				<Layers>
+					<Layer level="BACKGOUND">
+						<Texture name="$parent_Class_Background" file="Interface\AddOns\GetDKP\Images\rowpic62i.blp" hidden="true">
+							<Size>
+								<AbsDimension x="125" y="30"/>
+							</Size>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<Texture name="$parent_Button_icon">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<FontString name="$parent_Button_text" inherits="GameFontHighlightSmall">
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+					</OnLoad>
+					<OnClick>
+					
+						GDR_OnClick(self, button);
+					</OnClick>
+					<OnEnter>
+						GDR_ToolTip2();
+					</OnEnter>
+					<OnLeave>
+						GDRGameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Button4">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="231" y="0"/>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="77" y="20"/>
+				</Size>
+				<Layers>
+					<Layer level="BACKGOUND">
+						<Texture name="$parent_Class_Background" file="Interface\AddOns\GetDKP\Images\rowpic62i.blp" hidden="true">
+							<Size>
+								<AbsDimension x="125" y="30"/>
+							</Size>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<Texture name="$parent_Button_icon">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<FontString name="$parent_Button_text" inherits="GameFontHighlightSmall">
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+					</OnLoad>
+					<OnClick>
+						
+						GDR_OnClick(self, button);
+					</OnClick>
+					<OnEnter>
+						GDR_ToolTip2();
+					</OnEnter>
+					<OnLeave>
+						GDRGameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Button5">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="308" y="0"/>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="77" y="20"/>
+				</Size>
+				<Layers>
+					<Layer level="BACKGOUND">
+						<Texture name="$parent_Class_Background" file="Interface\AddOns\GetDKP\Images\rowpic62i.blp" hidden="true">
+							<Size>
+								<AbsDimension x="125" y="30"/>
+							</Size>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<Texture name="$parent_Button_icon">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<FontString name="$parent_Button_text" inherits="GameFontHighlightSmall">
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+					</OnLoad>
+					<OnClick>
+						
+						GDR_OnClick(self, button);
+					</OnClick>
+					<OnEnter>
+						GDR_ToolTip2();
+					</OnEnter>
+					<OnLeave>
+						GDRGameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Button6">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="385" y="0"/>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="77" y="20"/>
+				</Size>
+				<Layers>
+					<Layer level="BACKGOUND">
+						<Texture name="$parent_Class_Background" file="Interface\AddOns\GetDKP\Images\rowpic62i.blp" hidden="true">
+							<Size>
+								<AbsDimension x="125" y="30"/>
+							</Size>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<Texture name="$parent_Button_icon">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<FontString name="$parent_Button_text" inherits="GameFontHighlightSmall">
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+					</OnLoad>
+					<OnClick>
+						
+						GDR_OnClick(self, button);
+					</OnClick>
+					<OnEnter>
+						GDR_ToolTip2();
+					</OnEnter>
+					<OnLeave>
+						GDRGameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Button7">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="462" y="0"/>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="77" y="20"/>
+				</Size>
+				<Layers>
+					<Layer level="BACKGOUND">
+						<Texture name="$parent_Class_Background" file="Interface\AddOns\GetDKP\Images\rowpic62i.blp" hidden="true">
+							<Size>
+								<AbsDimension x="125" y="30"/>
+							</Size>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<Texture name="$parent_Button_icon">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<FontString name="$parent_Button_text" inherits="GameFontHighlightSmall">
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+					</OnLoad>
+					<OnClick>
+						
+						GDR_OnClick(self, button);
+					</OnClick>
+					<OnEnter>
+						GDR_ToolTip2();
+					</OnEnter>
+					<OnLeave>
+						GDRGameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Button8">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="539" y="0"/>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="77" y="20"/>
+				</Size>
+				<Layers>
+					<Layer level="BACKGOUND">
+						<Texture name="$parent_Class_Background" file="Interface\AddOns\GetDKP\Images\rowpic62i.blp" hidden="true">
+							<Size>
+								<AbsDimension x="125" y="30"/>
+							</Size>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<Texture name="$parent_Button_icon">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<FontString name="$parent_Button_text" inherits="GameFontHighlightSmall">
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+					</OnLoad>
+					<OnClick>
+						
+						GDR_OnClick(self, button);
+					</OnClick>
+					<OnEnter>
+						GDR_ToolTip2();
+					</OnEnter>
+					<OnLeave>
+						GDRGameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Button9">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="616" y="0"/>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="77" y="20"/>
+				</Size>
+				<Layers>
+					<Layer level="BACKGOUND">
+						<Texture name="$parent_Class_Background" file="Interface\AddOns\GetDKP\Images\rowpic62i.blp" hidden="true">
+							<Size>
+								<AbsDimension x="125" y="30"/>
+							</Size>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<Texture name="$parent_Button_icon">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<FontString name="$parent_Button_text" inherits="GameFontHighlightSmall">
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+					</OnLoad>
+					<OnClick>
+						
+						GDR_OnClick(self, button);
+					</OnClick>
+					<OnEnter>
+						GDR_ToolTip2();
+					</OnEnter>
+					<OnLeave>
+						GDRGameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+		</Frames>
+		
+		
+	</Frame>
+	<Frame name="GetDKPRaidPlanerFrame" frameLevel="DIALOG" parent="UIParent" enableMouse="true" hidden="true" movable="true" >
+		<Size>
+			<AbsDimension x="769" y="444"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="0" y="-104"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="OVERLAY">
+				<Texture name="GetDKPRaidPlanerTabTitleBackground" file="Interface\GuildBankFrame\UI-TabNameBorder">
+					<Size>
+						<AbsDimension x="10" y="18"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="GetDKPRaidPlanerFrame" relativePoint="TOP">
+							<Offset x="6" y="-43"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.0625" right="0.546875" top="0" bottom="0.5625"/>
+				</Texture>
+				
+				<Texture name="GetDKPRaidPlanerTabTitleBackgroundLeft" file="Interface\GuildBankFrame\UI-TabNameBorder">
+					<Size>
+						<AbsDimension x="8" y="18"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT" relativeTo="GetDKPRaidPlanerTabTitleBackground" relativePoint="LEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.0625" top="0" bottom="0.5625"/>
+				</Texture>
+				<Texture name="GetDKPRaidPlanerTabTitleBackgroundRight" file="Interface\GuildBankFrame\UI-TabNameBorder">
+					<Size>
+						<AbsDimension x="8" y="18"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="GetDKPRaidPlanerTabTitleBackground" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.546875" right="0.609375" top="0" bottom="0.5625"/>
+				</Texture>
+				<FontString name="GetDKPRaidPlanerTabTitle" inherits="GameFontNormal" text = "GetDKPRaidPlaner">
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="GetDKPRaidPlanerTabTitleBackground">
+							<Offset x="0" y="1"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				
+				
+				<Texture name="GetDKPRaidPlanerTabLimitBackground" file="Interface\GuildBankFrame\UI-TabNameBorder">
+					<Size>
+						<AbsDimension x="10" y="18"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="GetDKPRaidPlanerFrame" relativePoint="TOP">
+							<Offset x="6" y="-388"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.0625" right="0.546875" top="0" bottom="0.5625"/>
+				</Texture>
+				
+				<Texture name="GetDKPRaidPlanerTabLimitBackgroundLeft" file="Interface\GuildBankFrame\UI-TabNameBorder">
+					<Size>
+						<AbsDimension x="8" y="18"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT" relativeTo="GetDKPRaidPlanerTabLimitBackground" relativePoint="LEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.0625" top="0" bottom="0.5625"/>
+				</Texture>
+				<Texture name="GetDKPRaidPlanerTabLimitBackgroundRight" file="Interface\GuildBankFrame\UI-TabNameBorder">
+					<Size>
+						<AbsDimension x="8" y="18"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="GetDKPRaidPlanerTabLimitBackground" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.546875" right="0.609375" top="0" bottom="0.5625"/>
+				</Texture>
+				<FontString name="GetDKPRaidPlanerLimitLabel" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="GetDKPRaidPlanerTabLimitBackground">
+							<Offset x="0" y="1"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<!--
+				<FontString name="GetDKPRaidPlanerMoneyLimitLabel" inherits="GameFontNormalSmall" text="GetDKPRaidPlaner_AVAILABLE_MONEY">
+					<Size x="0" y="13"/>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="GetDKPRaidPlanerFrame" relativePoint="BOTTOMLEFT">
+							<Offset x="26" y="16"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				-->
+			</Layer>
+			<Layer level="ARTWORK">
+				
+				<Texture name="GetDKPRaidPlanerFrameLeft" file="Interface\GuildBankFrame\UI-GuildBankFrame-Left">
+					<Size>
+						<AbsDimension x="512" y="512"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="GetDKPRaidPlanerFrameRight" file="Interface\GuildBankFrame\UI-GuildBankFrame-Right">
+					<Size>
+						<AbsDimension x="512" y="512"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="GetDKPRaidPlanerFrameLeft" relativePoint="TOPRIGHT">
+							<Offset x="0" y="-11"/>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			
+		</Layers>
+		<Frames>
+			<Frame name="GDR_RaidPlaner_Invite" parent="GetDKPRaidPlanerFrame" hidden="true">
+				<Size>
+					<AbsDimension x="200" y="429"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="GetDKPRaidPlanerFrame" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="195" y="-10"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Backdrop name="$parentBackdrop" bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="16"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="GDR_RaidPlanerInivte" inherits="GameFontNormal" text="Invite Window">
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset x="0" y="-10"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="GDR_RaidPlanerInvite_button0" inherits="GDR_InviteButtonTemplate" id="1">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-30"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button1" inherits="GDR_InviteButtonTemplate" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-50"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button2" inherits="GDR_InviteButtonTemplate" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-70"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button3" inherits="GDR_InviteButtonTemplate" id="4">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-90"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button4" inherits="GDR_InviteButtonTemplate" id="5">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-110"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button5" inherits="GDR_InviteButtonTemplate" id="6">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-130"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button6" inherits="GDR_InviteButtonTemplate" id="7">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-150"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button7" inherits="GDR_InviteButtonTemplate" id="8">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-170"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button8" inherits="GDR_InviteButtonTemplate" id="9">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-190"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button9" inherits="GDR_InviteButtonTemplate" id="10">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-210"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button10" inherits="GDR_InviteButtonTemplate" id="11">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-230"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button11" inherits="GDR_InviteButtonTemplate" id="12">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-250"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button12" inherits="GDR_InviteButtonTemplate" id="13">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-270"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button13" inherits="GDR_InviteButtonTemplate" id="14">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-290"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button14" inherits="GDR_InviteButtonTemplate" id="15">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-310"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button15" inherits="GDR_InviteButtonTemplate" id="16">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-330"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button16" inherits="GDR_InviteButtonTemplate" id="17">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-350"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button17" inherits="GDR_InviteButtonTemplate" id="18">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-370"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDR_RaidPlanerInvite_button18" inherits="GDR_InviteButtonTemplate" id="19">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDR_RaidPlaner_Invite" relativePoint="TOPLEFT">
+								<Offset x="5" y="-390"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					
+					<ScrollFrame name="GDR_RaidPlanerInvite_ScrollFrame" inherits="FauxScrollFrameTemplate">
+						<Size>
+							<AbsDimension x="180" y="383"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT">
+								<Offset>
+									<AbsDimension x="-26" y="-6"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnVerticalScroll>
+								FauxScrollFrame_OnVerticalScroll(self, 8, GetDKPRaidPlaner_Invitewindow); 
+							</OnVerticalScroll>
+							<OnShow>
+							
+							</OnShow>
+						</Scripts>
+					</ScrollFrame>
+				</Frames>
+			</Frame>
+			<Frame name="GDR_RaidPlanerPopup" toplevel="true" parent="GetDKPRaidPlanerFrame" hidden="true">
+				<Size>
+					<AbsDimension x="110" y="90"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="GDR_RaidButtonTemplate" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="100" y="-10"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Backdrop name="$parentBackdrop" bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="16"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="GDR_RaidPlanerPopup_Name_text" inherits="GameFontNormal" >
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset x="0" y="-10"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="GDR_RaidPlanerPopup_Popup_button1" virtual="true" text="GDR_invite">
+						<NormalFont inherits="GameFontHighlightSmall"/>
+						<Size x="95" y="10" />
+						<Anchors>
+							<Anchor point="TOP" relativeTo="GDR_RaidPlanerPopup" relativePoint="TOP">
+								<Offset x="0" y="-30"/>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								GDR_RaidPlanerPopup:Show();
+								self:SetHighlightTextColor(0.5019608, 0.5019608, 0.5019608)
+							</OnEnter>
+							<OnLoad>
+								self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+							</OnLoad>
+							<OnClick>
+								PlaySound("igMainMenuOptionCheckBoxOn");
+								GDR_OnClick2(self, "Invite");
+							</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="GDR_RaidPlanerPopup_Popup_button2" virtual="true" text="GDR_whisper">
+						<NormalFont inherits="GameFontHighlightSmall"/>
+						<Size x="95" y="10" />
+						<Anchors>
+							<Anchor point="TOP" relativeTo="GDR_RaidPlanerPopup" relativePoint="TOP">
+								<Offset x="0" y="-45"/>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								GDR_RaidPlanerPopup:Show();
+								self:SetHighlightTextColor(0.5019608, 0.5019608, 0.5019608)
+							</OnEnter>
+							<OnLoad>
+								self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+							</OnLoad>
+							<OnClick>
+								PlaySound("igMainMenuOptionCheckBoxOn");
+								GDR_OnClick2(self, "Whisper");
+							</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="GDR_RaidPlanerPopup_Popup_button3" virtual="true" text="GDR_close">
+						<NormalFont inherits="GameFontHighlightSmall"/>
+						<Size x="95" y="10" />
+						<Anchors>
+							<Anchor point="TOP" relativeTo="GDR_RaidPlanerPopup" relativePoint="TOP">
+								<Offset x="0" y="-60"/>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								GDR_RaidPlanerPopup:Show();
+								self:SetHighlightTextColor(0.5019608, 0.5019608, 0.5019608)
+							</OnEnter>
+							<OnLoad>
+								self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+							</OnLoad>
+							<OnClick>
+								PlaySound("igMainMenuOptionCheckBoxOn");
+								GDR_RaidPlanerPopup:Hide();
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="GDR_RaidPlanerPopup_Popup_button4" virtual="true" hidden="true" text="">
+						<NormalFont inherits="GameFontHighlightSmall"/>
+						<Size x="95" y="10" />
+						<Anchors>
+							<Anchor point="TOP" relativeTo="GDR_RaidPlanerPopup" relativePoint="TOP">
+								<Offset x="0" y="-75"/>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								GDR_RaidPlanerPopup:Show();
+								self:SetHighlightTextColor(0.5019608, 0.5019608, 0.5019608)
+							</OnEnter>
+							<OnLoad>
+								self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+							</OnLoad>
+							<OnClick>
+								PlaySound("igMainMenuOptionCheckBoxOn");
+								GDR_OnClick3(self, button);
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="GDR_RaidPlanerPopup_Popup_button5" virtual="true"  hidden="true" text="">
+						<NormalFont inherits="GameFontHighlightSmall"/>
+						<Size x="95" y="10" />
+						<Anchors>
+							<Anchor point="TOP" relativeTo="GDR_RaidPlanerPopup" relativePoint="TOP">
+								<Offset x="0" y="-90"/>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								GDR_RaidPlanerPopup:Show();
+								self:SetHighlightTextColor(0.5019608, 0.5019608, 0.5019608)
+							</OnEnter>
+							<OnLoad>
+								self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+							</OnLoad>
+							<OnClick>
+								PlaySound("igMainMenuOptionCheckBoxOn");
+								GDR_OnClick3(self, button);
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="GDR_RaidPlanerPopup_Popup_button6" virtual="true" hidden="true" text="">
+						<NormalFont inherits="GameFontHighlightSmall"/>
+						<Size x="95" y="10" />
+						<Anchors>
+							<Anchor point="TOP" relativeTo="GDR_RaidPlanerPopup" relativePoint="TOP">
+								<Offset x="0" y="-105"/>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								GDR_RaidPlanerPopup:Show();
+								self:SetHighlightTextColor(0.5019608, 0.5019608, 0.5019608)
+							</OnEnter>
+							<OnLoad>
+								self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+							</OnLoad>
+							<OnClick>
+								PlaySound("igMainMenuOptionCheckBoxOn");
+								GDR_OnClick3(self, button);
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="GDR_RaidPlanerPopup_Popup_button7" virtual="true" hidden="true" text="">
+						<NormalFont inherits="GameFontHighlightSmall"/>
+						<Size x="95" y="10" />
+						<Anchors>
+							<Anchor point="TOP" relativeTo="GDR_RaidPlanerPopup" relativePoint="TOP">
+								<Offset x="0" y="-120"/>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								GDR_RaidPlanerPopup:Show();
+								self:SetHighlightTextColor(0.5019608, 0.5019608, 0.5019608)
+							</OnEnter>
+							<OnLoad>
+								self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+							</OnLoad>
+							<OnClick>
+								PlaySound("igMainMenuOptionCheckBoxOn");
+								GDR_OnClick3(self, button);
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>	
+				<Scripts>
+					<OnLeave>
+						self:Hide();
+					</OnLeave>
+					<OnLoad>
+						self:Hide();
+					</OnLoad>
+				</Scripts>
+			</Frame>
+			
+			<Frame name="RaidPlanerCalendar">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="30" y="-70"/>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="730" y="310"/>
+				</Size>
+				<Layers>
+					<Layer level="OVERLAY">
+						<Texture name="GetDKPRaidPlaner_Month" file="Interface\Buttons\YELLOWORANGE64.png" setAllPoints="true">
+							<Size>
+								<AbsDimension x="4" y="306"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="356" y="-4"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlanerTabTitleMonth1" file="Interface\GuildBankFrame\UI-TabNameBorder">
+							<Size>
+								<AbsDimension x="10" y="18"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="GetDKPRaidPlanerFrame" relativePoint="TOPLEFT">
+									<Offset x="150" y="-43"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.0625" right="0.546875" top="0" bottom="0.5625"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlanerTabTitleMonth2" file="Interface\GuildBankFrame\UI-TabNameBorder">
+							<Size>
+								<AbsDimension x="10" y="18"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPRIGHT" relativeTo="GetDKPRaidPlanerFrame" relativePoint="TOPRIGHT">
+									<Offset x="-150" y="-43"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.0625" right="0.546875" top="0" bottom="0.5625"/>
+						</Texture>
+						<FontString name="GetDKPRaidPlanerTabTitleMo1" inherits="GameFontNormal">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlanerTabTitleMonth1">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GetDKPRaidPlanerTabTitleMo2" inherits="GameFontNormal">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlanerTabTitleMonth2">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+					<Layer level="BACKGROUND">
+						<Texture name="GetDKPRaidPlaner_Day1" file="Interface\Glues\CharacterSelect\Glue-CharacterSelect-Highlight" setAllPoints="true">
+							<Size>
+								<AbsDimension x="50" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlaner_Day2" file="Interface\Glues\CharacterSelect\Glue-CharacterSelect-Highlight" setAllPoints="true">
+							<Size>
+								<AbsDimension x="50" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="51" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlaner_Day3" file="Interface\Glues\CharacterSelect\Glue-CharacterSelect-Highlight" setAllPoints="true">
+							<Size>
+								<AbsDimension x="50" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="102" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlaner_Day4" file="Interface\Glues\CharacterSelect\Glue-CharacterSelect-Highlight" setAllPoints="true">
+							<Size>
+								<AbsDimension x="50" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="153" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlaner_Day5" file="Interface\Glues\CharacterSelect\Glue-CharacterSelect-Highlight" setAllPoints="true">
+							<Size>
+								<AbsDimension x="50" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="204" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlaner_Day6" file="Interface\Glues\CharacterSelect\Glue-CharacterSelect-Highlight" setAllPoints="true">
+							<Size>
+								<AbsDimension x="50" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="255" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlaner_Day7" file="Interface\Glues\CharacterSelect\Glue-CharacterSelect-Highlight" setAllPoints="true">
+							<Size>
+								<AbsDimension x="50" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="306" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
+						</Texture>
+						
+						<Texture name="GetDKPRaidPlaner_Day8" file="Interface\Glues\CharacterSelect\Glue-CharacterSelect-Highlight" setAllPoints="true">
+							<Size>
+								<AbsDimension x="50" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="357" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlaner_Day9" file="Interface\Glues\CharacterSelect\Glue-CharacterSelect-Highlight" setAllPoints="true">
+							<Size>
+								<AbsDimension x="50" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="408" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlaner_Day10" file="Interface\Glues\CharacterSelect\Glue-CharacterSelect-Highlight" setAllPoints="true">
+							<Size>
+								<AbsDimension x="50" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="459" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlaner_Day11" file="Interface\Glues\CharacterSelect\Glue-CharacterSelect-Highlight" setAllPoints="true">
+							<Size>
+								<AbsDimension x="50" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="510" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlaner_Day12" file="Interface\Glues\CharacterSelect\Glue-CharacterSelect-Highlight" setAllPoints="true">
+							<Size>
+								<AbsDimension x="50" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="561" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlaner_Day13" file="Interface\Glues\CharacterSelect\Glue-CharacterSelect-Highlight" setAllPoints="true">
+							<Size>
+								<AbsDimension x="50" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="612" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlaner_Day14" file="Interface\Glues\CharacterSelect\Glue-CharacterSelect-Highlight" setAllPoints="true">
+							<Size>
+								<AbsDimension x="50" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="663" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
+						</Texture>
+						
+						
+						<FontString name="GetDKPRaidPlanerDayname1" inherits="GDRFontSmallBlack" text = "GDR_mon">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlaner_Day1">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GetDKPRaidPlanerDayname2" inherits="GDRFontSmallBlack" text = "GDR_die">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlaner_Day2">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GetDKPRaidPlanerDayname3" inherits="GDRFontSmallBlack" text = "GDR_mit">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlaner_Day3">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GetDKPRaidPlanerDayname4" inherits="GDRFontSmallBlack" text = "GDR_don">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlaner_Day4">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GetDKPRaidPlanerDayname5" inherits="GDRFontSmallBlack" text = "GDR_fre">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlaner_Day5">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GetDKPRaidPlanerDayname6" inherits="GDRFontSmallBlack" text = "GDR_sam">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlaner_Day6">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GetDKPRaidPlanerDayname7" inherits="GDRFontSmallBlack" text = "GDR_son">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlaner_Day7">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GetDKPRaidPlanerDayname1" inherits="GDRFontSmallBlack" text = "GDR_mon">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlaner_Day8">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GetDKPRaidPlanerDayname2" inherits="GDRFontSmallBlack" text = "GDR_die">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlaner_Day9">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GetDKPRaidPlanerDayname3" inherits="GDRFontSmallBlack" text = "GDR_mit">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlaner_Day10">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GetDKPRaidPlanerDayname4" inherits="GDRFontSmallBlack" text = "GDR_don">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlaner_Day11">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GetDKPRaidPlanerDayname5" inherits="GDRFontSmallBlack" text = "GDR_fre">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlaner_Day12">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GetDKPRaidPlanerDayname6" inherits="GDRFontSmallBlack" text = "GDR_sam">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlaner_Day13">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GetDKPRaidPlanerDayname7" inherits="GDRFontSmallBlack" text = "GDR_son">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GetDKPRaidPlaner_Day14">
+									<Offset x="0" y="1"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+						<!-- 1 reihe monat 1-->
+						<Button name="GetDKPRaidPlaner_Month1_Days1" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="4" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days2" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="55" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days3" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="106" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days4" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="157" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days5" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="208" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days6" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="259" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days7" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="310" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<!-- 1 reihe monat 2-->
+						<Button name="GetDKPRaidPlaner_Month2_Days1" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="361" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days2" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="412" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days3" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="463" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days4" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="514" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days5" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="565" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days6" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="616" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days7" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="667" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<!-- 2 reihe monat 1-->
+						<Button name="GetDKPRaidPlaner_Month1_Days8" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="4" y="-80"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days9" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="55" y="-80"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days10" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="106" y="-80"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days11" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="157" y="-80"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days12" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="208" y="-80"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days13" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="259" y="-80"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days14" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="310" y="-80"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<!-- 2 reihe monat 2-->
+						<Button name="GetDKPRaidPlaner_Month2_Days8" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="361" y="-80"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days9" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="412" y="-80"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days10" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="463" y="-80"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days11" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="514" y="-80"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days12" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="565" y="-80"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days13" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="616" y="-80"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days14" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="667" y="-80"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<!-- 3 reihe monat 1-->
+						<Button name="GetDKPRaidPlaner_Month1_Days15" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="4" y="-138"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days16" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="55" y="-138"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days17" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="106" y="-138"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days18" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="157" y="-138"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days19" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="208" y="-138"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days20" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="259" y="-138"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days21" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="310" y="-138"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<!-- 3 reihe monat 2-->
+						<Button name="GetDKPRaidPlaner_Month2_Days15" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="361" y="-138"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days16" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="412" y="-138"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days17" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="463" y="-138"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days18" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="514" y="-138"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days19" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="565" y="-138"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days20" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="616" y="-138"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days21" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="667" y="-138"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<!-- 4 reihe monat 1-->
+						<Button name="GetDKPRaidPlaner_Month1_Days22" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="4" y="-196"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days23" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="55" y="-196"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days24" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="106" y="-196"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days25" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="157" y="-196"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days26" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="208" y="-196"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days27" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="259" y="-196"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days28" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="310" y="-196"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<!-- 4 reihe monat 2-->
+						<Button name="GetDKPRaidPlaner_Month2_Days22" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="361" y="-196"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days23" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="412" y="-196"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days24" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="463" y="-196"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days25" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="514" y="-196"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days26" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="565" y="-196"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days27" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="616" y="-196"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days28" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="667" y="-196"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<!-- 5 reihe monat 1-->
+						<Button name="GetDKPRaidPlaner_Month1_Days29" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="4" y="-254"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days30" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="55" y="-254"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days31" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="106" y="-254"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days32" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="157" y="-254"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days33" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="208" y="-254"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days34" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="259" y="-254"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days35" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="310" y="-254"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days36" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="4" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month1_Days37" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="55" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<!-- 5 reihe monat 2-->
+						<Button name="GetDKPRaidPlaner_Month2_Days29" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="361" y="-254"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days30" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="412" y="-254"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days31" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="463" y="-254"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days32" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="514" y="-254"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days33" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="565" y="-254"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days34" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="616" y="-254"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days35" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="667" y="-254"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days36" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="361" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Button name="GetDKPRaidPlaner_Month2_Days37" inherits="GDR_DayButtonTemplate" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidPlanerCalendar">
+									<Offset x="412" y="-22"/>
+								</Anchor>
+							</Anchors>
+						</Button>
+				</Frames>
+			</Frame>
+			<Frame name="GetDKPRaidPlanerEmblemFrame">
+				<Size>
+					<AbsDimension x="700" y="80"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="GetDKPRaidPlanerFrame" relativePoint="TOP">
+						<Offset x="-70" y="46"/>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture name="GetDKPRaidPlanerEmblemFrameLeft" file="Interface\GuildBankFrame\UI-GuildBankFrame-EmblemBorder">
+							<Size>
+								<AbsDimension x="512" y="80"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="1" top="0" bottom="0.3125"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlanerEmblemFrameRight" file="Interface\GuildBankFrame\UI-GuildBankFrame-EmblemBorder">
+							<Size>
+								<AbsDimension x="512" y="79"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="GetDKPRaidPlanerEmblemFrameLeft" relativePoint="TOPRIGHT">
+									<Offset x="0" y="-1"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="1" top="0.31640625" bottom="0.625"/>
+						</Texture>
+					</Layer>
+					<Layer level="BACKGROUND">
+						<Texture name="GetDKPRaidPlanerEmblemBackgroundUL" file="Interface\Icons\INV_Misc_Head_Dragon_Black">
+							<Size>
+								<AbsDimension x="80" y="60"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP" relativeTo="GetDKPRaidPlanerEmblemFrame" relativePoint="TOP">
+									<Offset x="80" y="-19"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.5" right="1" top="0" bottom="1"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlanerEmblemBackgroundUR">
+							<Size>
+								<AbsDimension x="40" y="40"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="GetDKPRaidPlanerEmblemBackgroundUL" relativePoint="RIGHT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="1" right="0.5" top="0" bottom="1"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlanerEmblemBackgroundBL">
+							<Size>
+								<AbsDimension x="40" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP" relativeTo="GetDKPRaidPlanerEmblemBackgroundUL" relativePoint="BOTTOM">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.5" right="1" top="0" bottom="1"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlanerEmblemBackgroundBR">
+							<Size>
+								<AbsDimension x="40" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="GetDKPRaidPlanerEmblemBackgroundBL" relativePoint="RIGHT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="1" right="0.5" top="0" bottom="1"/>
+						</Texture>
+					</Layer>
+					<Layer level="BORDER">
+						<Texture name="GetDKPRaidPlanerEmblemBorderUL">
+							<Size>
+								<AbsDimension x="40" y="40"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="GetDKPRaidPlanerEmblemBackgroundUL">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.5" right="1" top="0" bottom="1"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlanerEmblemBorderUR">
+							<Size>
+								<AbsDimension x="40" y="40"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="GetDKPRaidPlanerEmblemBorderUL" relativePoint="RIGHT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="1" right="0.5" top="0" bottom="1"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlanerEmblemBorderBL">
+							<Size>
+								<AbsDimension x="40" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP" relativeTo="GetDKPRaidPlanerEmblemBorderUL" relativePoint="BOTTOM">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.5" right="1" top="0" bottom="1"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlanerEmblemBorderBR">
+							<Size>
+								<AbsDimension x="40" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="GetDKPRaidPlanerEmblemBorderBL" relativePoint="RIGHT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="1" right="0.5" top="0" bottom="1"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlanerEmblemUL">
+							<Size>
+								<AbsDimension x="40" y="40"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="GetDKPRaidPlanerEmblemBackgroundUL">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.5" right="1" top="0" bottom="1"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlanerEmblemUR">
+							<Size>
+								<AbsDimension x="40" y="40"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="GetDKPRaidPlanerEmblemBorderUL" relativePoint="RIGHT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="1" right="0.5" top="0" bottom="1"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlanerEmblemBL">
+							<Size>
+								<AbsDimension x="40" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP" relativeTo="GetDKPRaidPlanerEmblemUL" relativePoint="BOTTOM">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.5" right="1" top="0" bottom="1"/>
+						</Texture>
+						<Texture name="GetDKPRaidPlanerEmblemBR">
+							<Size>
+								<AbsDimension x="40" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="GetDKPRaidPlanerEmblemBL" relativePoint="RIGHT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="1" right="0.5" top="0" bottom="1"/>
+						</Texture>
+						
+					</Layer>
+				</Layers>
+				
+			</Frame>
+			<Frame name="GetDKPRaidPlanerRaidFrame" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="30" y="-70"/>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="730" y="310"/>
+				</Size>
+				<Frames>
+					<Button name="GDR_MonthOverview" inherits="UIPanelButtonTemplate" text="GDR_MonthOverview" >
+						<Size x="140" y="20" />
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeto = "GetDKPRaidPlanerFrame">
+								<Offset x="56" y="36"/>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GDR_OnClick_MonthOverview();
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="GDR_All_Invite" inherits="UIPanelButtonTemplate" text="GDR_All_Invite">
+						<Size x="140" y="20" />
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT" relativeto = "GetDKPRaidPlanerFrame">
+								<Offset x="-56" y="36"/>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GDR_OnClick_AllInvite();
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class0" inherits="GDR_RaidButtonTemplate" id="1">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="0"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class1" inherits="GDR_RaidButtonTemplate" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-18"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class2" inherits="GDR_RaidButtonTemplate" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-36"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class3" inherits="GDR_RaidButtonTemplate" id="4">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-54"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class4" inherits="GDR_RaidButtonTemplate" id="5">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-72"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class5" inherits="GDR_RaidButtonTemplate" id="6">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-90"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class6" inherits="GDR_RaidButtonTemplate" id="7">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-108"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class7" inherits="GDR_RaidButtonTemplate" id="8">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-126"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class8" inherits="GDR_RaidButtonTemplate" id="9">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-144"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class9" inherits="GDR_RaidButtonTemplate" id="10">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-162"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class10" inherits="GDR_RaidButtonTemplate" id="11">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-180"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class11" inherits="GDR_RaidButtonTemplate" id="12">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-198"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class12" inherits="GDR_RaidButtonTemplate" id="13">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-216"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class13" inherits="GDR_RaidButtonTemplate" id="14">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-234"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class14" inherits="GDR_RaidButtonTemplate" id="15">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-252"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class15" inherits="GDR_RaidButtonTemplate" id="16">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-270"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GetDKPRaidPlanerRaidFrame_Class16" inherits="GDR_RaidButtonTemplate" id="17">
+						<Anchors>
+							<Anchor point="TOPLEFT" >
+								<Offset x="0" y="-288"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					
+					<ScrollFrame name="GetDKPRaidPlaner_ScrollFrame" inherits="FauxScrollFrameTemplate">
+						<Size>
+							<AbsDimension x="694" y="310"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnVerticalScroll>
+								FauxScrollFrame_OnVerticalScroll(8, GDR_Scroll_Update); 
+							</OnVerticalScroll>
+							<OnShow>
+							
+							</OnShow>
+						</Scripts>
+					</ScrollFrame>
+				</Frames>
+			</Frame>
+			
+			<Button inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset x="3" y="-8"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+			
+			
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				self.TimeSinceLastUpdate = 0;
+				GetDKPRaidPlaner_OnLoad(self);
+				self:RegisterForDrag("LeftButton");
+			</OnLoad>
+			<OnEvent>
+					GetDKPRaidPlaner_OnEvent(event);
+			</OnEvent>
+			<OnUpdate>
+				GetDKPRaidPlaner_OnUpdate(self, elapsed);
+			</OnUpdate>
+			<OnShow>
+				
+			</OnShow>
+			<OnHide>
+				
+			</OnHide>
+			<OnDragStart>
+				self:StartMoving();
+				self.isMoving = true;
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing();
+				self.isMoving = false;
+			</OnDragStop>
+		</Scripts>
+	</Frame>
+	
+</Ui>

@@ -1,0 +1,733 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	
+	<Script file="GetDKPAdmin.lua"/>
+	
+	<Font name="GDAFontNormal" inherits="MasterFont" font="Fonts\FRIZQT__.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="8"/>
+		</FontHeight>
+		<Color r="0.9" g="0.9" b="1"/>
+	</Font>
+	<Font name="GDAFontHigh" inherits="MasterFont" font="Fonts\FRIZQT__.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="8"/>
+		</FontHeight>
+		<Color r="1.0" g="0" b="0"/>
+	</Font>
+<Button name="GDA_LootList_ButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="35" y="35"/>
+		</Size>
+		<NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-Quickslot2">
+			<Size>
+				<AbsDimension x="64" y="64"/>
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="-1"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</NormalTexture>
+			<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
+			<PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"/>
+		<Layers>
+			<Layer level = "ARTWORK">
+				<Texture name="$parent_Icon">
+					<Size>
+						<AbsDimension x="36" y="35"/>
+					</Size>
+				
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+			</OnLoad>
+			<OnClick>
+				GDA_LootList_StartCD(self:GetID());
+				PlaySound("igMainMenuOptionCheckBoxOn");
+			</OnClick>
+			<OnEnter>
+				GDA_ToolTip(self, self:GetID());
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+<Button name="GDAFrameColumnHeaderTemplate1" virtual="true">
+  	<Size>
+		<AbsDimension x="50" y="12"/>
+	</Size>
+	<PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"/>
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="$parentLeft" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+				<Size>
+					<AbsDimension x="2" y="12"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT"/>
+				</Anchors>
+				<TexCoords left="0" right="0.078125" top="0" bottom="0.75"/>
+			</Texture>
+			<Texture name="$parentMiddle" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+				<Size>
+					<AbsDimension x="46" y="12"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+				</Anchors>
+				<TexCoords left="0.078125" right="0.90625" top="0" bottom="0.75"/>
+			</Texture>
+			<Texture name="$parentRight" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+				<Size>
+					<AbsDimension x="2" y="12"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+				</Anchors>
+				<TexCoords left="0.90625" right="0.96875" top="0" bottom="0.75"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Scripts>
+		<OnClick>
+			PlaySound("igMainMenuOptionCheckBoxOn");
+			GDA_Sort_Rule2 = self:GetID();
+			if (GDA_Rule == 2) then
+				GetDKPAdmin_Rule2();
+			end;
+		</OnClick>
+	</Scripts>
+	<ButtonText>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="8" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+	<NormalFont style="GameFontNormalSmall"/>
+	<HighlightFont style="GameFontHighlight"/>
+	<DisabledFont style="GameFontDisable"/>
+  </Button>
+<Button name="GDAFrameColumnHeaderTemplate2" virtual="true">
+  	<Size>
+		<AbsDimension x="50" y="12"/>
+	</Size>
+	<PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"/>
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="$parentLeft" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+				<Size>
+					<AbsDimension x="2" y="12"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT"/>
+				</Anchors>
+				<TexCoords left="0" right="0.078125" top="0" bottom="0.75"/>
+			</Texture>
+			<Texture name="$parentMiddle" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+				<Size>
+					<AbsDimension x="46" y="12"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+				</Anchors>
+				<TexCoords left="0.078125" right="0.90625" top="0" bottom="0.75"/>
+			</Texture>
+			<Texture name="$parentRight" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+				<Size>
+					<AbsDimension x="2" y="12"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+				</Anchors>
+				<TexCoords left="0.90625" right="0.96875" top="0" bottom="0.75"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Scripts>
+	</Scripts>
+	<ButtonText name="$parentText">
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset>
+					<AbsDimension x="0" y="1"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</ButtonText>
+	<NormalFont style="GameFontNormalSmall"/>
+	<HighlightFont style="GameFontHighlight"/>
+	<DisabledFont style="GameFontDisable"/>
+  </Button>
+  <Button name="GDAFrameColumnHeaderTemplate3" virtual="true">
+  	<Size>
+		<AbsDimension x="80" y="12"/>
+	</Size>
+	<PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"/>
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="$parentLeft" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+				<Size>
+					<AbsDimension x="2" y="12"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT"/>
+				</Anchors>
+				<TexCoords left="0" right="0.078125" top="0" bottom="0.75"/>
+			</Texture>
+			<Texture name="$parentMiddle" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+				<Size>
+					<AbsDimension x="76" y="12"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+				</Anchors>
+				<TexCoords left="0.078125" right="0.90625" top="0" bottom="0.75"/>
+			</Texture>
+			<Texture name="$parentRight" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+				<Size>
+					<AbsDimension x="2" y="12"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+				</Anchors>
+				<TexCoords left="0.90625" right="0.96875" top="0" bottom="0.75"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Scripts>
+	</Scripts>
+	<ButtonText name="$parentText">
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset>
+					<AbsDimension x="0" y="1"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</ButtonText>
+	<NormalFont style="GameFontNormalSmall"/>
+	<HighlightFont style="GameFontHighlight"/>
+	<DisabledFont style="GameFontDisable"/>
+  </Button>
+  -----------------------------------------------------------------------------------------------
+<Button name="GDAPlayerTemplate" virtual="true">
+ 	<Size>
+		<AbsDimension x="250" y="11"/>
+	</Size>
+	<Layers>
+		<Layer level="BORDER">
+			<FontString name="$parentName" inherits="GDAFontNormal" justifyH="LEFT">
+				<Size>
+					<AbsDimension x="80" y="8"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="GDAFrameColumnHeaderTemplate1">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="$parentOrder" inherits="GDAFontNormal" justifyH="RIGHT">
+				<Size>
+					<AbsDimension x="50" y="8"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentName" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="$parentSet" inherits="GDAFontNormal" justifyH="RIGHT">
+				<Size>
+					<AbsDimension x="50" y="8"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentOrder" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="$parentNonSet" inherits="GDAFontNormal" justifyH="RIGHT">
+				<Size>
+					<AbsDimension x="50" y="8"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentSet" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="$parentMix" inherits="GDAFontNormal" justifyH="RIGHT">
+				<Size>
+					<AbsDimension x="50" y="8"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentNonSet" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+		</Layer>
+	</Layers>
+	<HighlightTexture file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD">
+		<Size>
+			<AbsDimension x="180" y="12"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLeft" relativeTo="$parentName">
+				<Offset>
+					<AbsDimension x="0" y="2"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</HighlightTexture>
+	<Scripts>
+		<OnLoad>
+			self:RegisterForClicks('LeftButtonUp', 'RightButtonUp');
+		</OnLoad>
+		<OnClick>
+			PlaySound("igMainMenuOptionCheckBoxOn");
+			PlayersOrder(self:GetID(), button);
+		</OnClick>
+		<OnEnter>
+			
+		</OnEnter>
+		<OnLeave>
+			
+		</OnLeave>
+		
+	</Scripts>
+	</Button>
+  --------------------------------------------------------------------------------------------------------
+<Frame name="GetDKPAdmin_Frame" toplevel="true" parent="UIParent" frameStrata="DIALOG" hidden="true" movable="true" enableMouse="true">
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,self:GetName());
+				self.TimeSinceLastUpdate = 0;
+				GetDKPAdmin_OnLoad(self);
+			</OnLoad>
+			<OnUpdate>
+				GetDKPAdmin_OnUpdate(self, elapsed);
+			</OnUpdate>
+			<OnEvent>
+				GetDKPAdmin_OnEvent(self, event, ...);
+				self:RegisterForDrag("LeftButton");
+			</OnEvent>
+			<OnDragStart>
+				self:StartMoving();
+				self.isMoving = true;
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing();
+				self.isMoving = false;
+			</OnDragStop>
+		</Scripts>
+		<Size>
+			<!--<AbsDimension x="293" y="300"/>-->
+			<AbsDimension x="350" y="300"/>
+		</Size>
+		<Anchors>
+			<Anchor point="Left"/>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32"/>
+			</EdgeSize>
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="GDAKonto" inherits="GameFontNormal">
+					<Anchors>
+						<Anchor point="BOTTOM">
+							<Offset>
+								<AbsDimension x="0" y="20"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+	<Frames>
+	----------------------------------------------ColumnHeaderButtons-------------------------------------------
+		<Button name="GDAFrameColumnHeader1" inherits="GDAFrameColumnHeaderTemplate3" text="GDA_HEADER_PLAYERS_NAME" id="1">
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset>
+						<AbsDimension x="12" y="-12"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<OnLoad>
+				<!--GDASetColumnWidth(50);-->
+			</OnLoad>
+		</Button>
+		
+		<Button name="GDAFrameColumnHeader2" inherits="GDAFrameColumnHeaderTemplate2" text="GDA_HEADER_PLAYERS_ORDER" id="2">
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="GDAFrameColumnHeader1" relativePoint="RIGHT">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<OnLoad>
+				<!--GDASetColumnWidth(50);-->
+			</OnLoad>
+		</Button>
+		<Button name="GDAFrameColumnHeader3" inherits="GDAFrameColumnHeaderTemplate1" text="GDA_HEADER_PLAYERS_SET" id="3">
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="GDAFrameColumnHeader2" relativePoint="RIGHT">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<OnLoad>
+				<!--GDASetColumnWidth(50);-->
+			</OnLoad>
+		</Button>
+		<!--<Button name="GDAFrameColumnHeader4" inherits="GDAFrameColumnHeaderTemplate1" text="GDA_HEADER_PLAYERS_NONSET" id="4">
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="GDAFrameColumnHeader3" relativePoint="RIGHT">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<OnLoad>
+				GDASetColumnWidth(50);
+			</OnLoad>
+		</Button>-->
+		
+		
+		------------------------------------------------------------------------------------------------
+		---------------------------------------ListPlayerButtons-------------------------------------
+		<Button name="GDAPlayer1" inherits="GDAPlayerTemplate"  hidden="true" id="1">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAFrameColumnHeader1" relativePoint="BOTTOMLEFT" />
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer2" inherits="GDAPlayerTemplate"  hidden="true" id="2">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer1" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer3" inherits="GDAPlayerTemplate"  hidden="true"  id="3">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer2" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer4" inherits="GDAPlayerTemplate"  hidden="true" id="4">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer3" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer5" inherits="GDAPlayerTemplate"  hidden="true" id="5">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer4" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer6" inherits="GDAPlayerTemplate"  hidden="true" id="6">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer5" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer7" inherits="GDAPlayerTemplate"  hidden="true" id="7">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer6" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer8" inherits="GDAPlayerTemplate"  hidden="true" id="8">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer7" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer9" inherits="GDAPlayerTemplate"  hidden="true" id="9">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer8" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer10" inherits="GDAPlayerTemplate"  hidden="true" id="10">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer9" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer11" inherits="GDAPlayerTemplate"  hidden="true" id="11">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer10" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer12" inherits="GDAPlayerTemplate"  hidden="true" id="12">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer11" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer13" inherits="GDAPlayerTemplate"  hidden="true" id="13">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer12" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer14" inherits="GDAPlayerTemplate"  hidden="true" id="14">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer13" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer15" inherits="GDAPlayerTemplate"  hidden="true" id="15">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer14" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer16" inherits="GDAPlayerTemplate"  hidden="true" id="16">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer15" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="GDAPlayer17" inherits="GDAPlayerTemplate"  hidden="true" id="17">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GDAPlayer16" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		
+		
+		------------------------------------------------ScrollFrame----------------------------------
+		<ScrollFrame name="GDA_ListScrollFrame" inherits="FauxScrollFrameTemplate">
+			<Size>
+				<AbsDimension x="250" y="200"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="GetDKPAdmin_Frame">
+					<Offset>
+						<AbsDimension x="8" y="-12"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Layers>
+				<Layer level="ARTWORK">
+					<Texture name="$parentScrollBarTop">
+						<Size>
+							<AbsDimension x="0" y="0"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOP" relativeTo="$parentScrollBarScrollUpButton">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<TexCoords left="0" right="0.484375" top="0" bottom="1.0"/>
+					</Texture>
+					
+					<Texture>
+						<Size>
+							<AbsDimension x="0" y="0"/>
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOM" relativeTo="$parentScrollBarScrollDownButton">
+								<Offset>
+									<AbsDimension x="0" y="100"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<TexCoords left="0.515625" right="1.0" top="0" bottom="0.4140625"/>
+					</Texture>
+				</Layer>
+			</Layers>
+			<Scripts>
+				<OnVerticalScroll>
+					FauxScrollFrame_OnVerticalScroll(self, offset, 8, GetDKPAdmin_BuildList);
+				</OnVerticalScroll>
+				<OnShow>
+					GetDKPAdmin_BuildList();
+				</OnShow>
+			</Scripts>
+		</ScrollFrame>
+		-------------------------------------Close Button--------------------------
+	<Button name="GetDKPAdmin_Close_Button" inherits="UIPanelButtonTemplate" text="GDA_Close">
+				<Size>
+					<AbsDimension x="80" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-10" y="-15"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GetDKPAdmin_Close();
+					</OnClick>
+				</Scripts>
+	</Button>
+	--------------------------------------Clear Button-----------------------------
+	<Button name="GetDKPAdmin_Clear_Button" inherits="UIPanelButtonTemplate" text="GDA_CLEAR">
+		<Size>
+			<AbsDimension x="80" y="22"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="-10" y="-40"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnClick>
+				GetDKPAdmin_Clear();
+			</OnClick>
+		</Scripts>
+	</Button>
+	--------------------------------------On/Off Button-----------------------------
+	<Button name="GetDKPAdmin_OnOff_Button" inherits="UIPanelButtonTemplate" >
+		<Size>
+			<AbsDimension x="80" y="22"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="-10" y="-65"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnClick>
+				GetDKPAdmin_OnOff();
+				
+			</OnClick>
+		</Scripts>
+	</Button>
+	--------------------------------------CD Button-----------------------------
+	<Button name="GetDKPAdmin_CD_Button" inherits="UIPanelButtonTemplate" >
+		<Size>
+			<AbsDimension x="80" y="22"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="-10" y="-90"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnClick>
+				GetDKPAdmin_CD_OnOff();
+			</OnClick>
+		</Scripts>
+	</Button>
+</Frames>
+</Frame>
+
+
+<Frame name="GetDKPAdminLoot_Frame" toplevel="true" parent="UIParent" frameStrata="DIALOG" hidden="true" movable="true" enableMouse="true">
+	<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,self:GetName());
+			</OnLoad>
+	</Scripts>
+	<Size>
+		<AbsDimension x="80" y="300"/>
+	</Size>
+	<Anchors>
+		<Anchor point="RIGHT" relativeTo="GetDKPAdmin_Frame">
+			<Offset>
+				<AbsDimension x="65" y="0"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
+		<TileSize>
+			<AbsValue val="32"/>
+		</TileSize>
+		<EdgeSize>
+			<AbsValue val="32"/>
+		</EdgeSize>
+		<BackgroundInsets>
+			<AbsInset left="11" right="12" top="12" bottom="11"/>
+		</BackgroundInsets>
+	</Backdrop>
+	<Frames>
+		<Button name="GDA_LootList_FrameButton1" inherits="GDA_LootList_ButtonTemplate" id="1">
+			<Anchors>
+				<Anchor point="TOP" relativeTo="GetDKPAdminLoot_Frame">
+					<Offset>
+						<AbsDimension x="0" y="-15"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="GDA_LootList_FrameButton2" inherits="GDA_LootList_ButtonTemplate" id="2">
+			<Anchors>
+				<Anchor point="TOP" relativeTo="GDA_LootList_FrameButton1">
+					<Offset>
+						<AbsDimension x="0" y="-45"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="GDA_LootList_FrameButton3" inherits="GDA_LootList_ButtonTemplate" id="3">
+			<Anchors>
+				<Anchor point="TOP" relativeTo="GDA_LootList_FrameButton2">
+					<Offset>
+						<AbsDimension x="0" y="-45"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="GDA_LootList_FrameButton4" inherits="GDA_LootList_ButtonTemplate" id="4">
+			<Anchors>
+				<Anchor point="TOP" relativeTo="GDA_LootList_FrameButton3">
+					<Offset>
+						<AbsDimension x="0" y="-45"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="GDA_LootList_FrameButton5" inherits="GDA_LootList_ButtonTemplate" id="5">
+			<Anchors>
+				<Anchor point="TOP" relativeTo="GDA_LootList_FrameButton4">
+					<Offset>
+						<AbsDimension x="0" y="-45"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="GDA_LootList_FrameButton6" inherits="GDA_LootList_ButtonTemplate" id="6">
+			<Anchors>
+				<Anchor point="TOP" relativeTo="GDA_LootList_FrameButton5">
+					<Offset>
+						<AbsDimension x="0" y="-45"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+	</Frames>
+</Frame>
+</Ui>	

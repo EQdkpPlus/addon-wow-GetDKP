@@ -1,0 +1,3741 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="GetDKPConfig.lua"/>
+	
+	<Font name="GDCFontHighlightSmallOutline" inherits="GameFontHighlightSmall"  virtual="true">
+		<Shadow>
+			<Offset>
+				<AbsDimension x="1" y="-1"/>
+			</Offset>
+			<Color r="0" g="0" b="1"/>
+		</Shadow>
+	</Font>
+	
+	<Button name="GDCButtonTemplate" virtual="true">
+		<ButtonText name="$parentText" inherits="GameFontNormalSmall">
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="1"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<NormalFont inherits="GDCFontHighlightSmallOutline"/>
+		<HighlightFont inherits="GameFontHighlightSmall"/>
+		<DisabledFont inherits="GameFontDisable"/>
+		<NormalTexture inherits="UIPanelButtonUpTexture"/>
+		<PushedTexture inherits="UIPanelButtonDownTexture"/>
+		<DisabledTexture inherits="UIPanelButtonDisabledTexture"/>
+		<HighlightTexture inherits="UIPanelButtonHighlightTexture"/>
+	</Button>
+	
+	<Button name="GDCFrameTabTemplate" inherits="CharacterFrameTabButtonTemplate" virtual="true">
+		<Scripts>
+			<OnClick>
+				PanelTemplates_Tab_OnClick(self, GetDKP_Config_Frame);
+				GetDKP_Config_OnShow();
+			</OnClick>
+		</Scripts>
+	</Button>
+	<Button name="GDC_FrameColumnHeaderTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="10" y="24"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="5" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.078125" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentMiddle" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="53" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.078125" right="0.90625" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="4" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.90625" right="0.96875" top="0" bottom="0.75"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnClick>
+				PlaySound("igMainMenuOptionCheckBoxOn");
+			</OnClick>
+		</Scripts>
+		<ButtonText>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="8" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<NormalFont inherits="GameFontHighlightSmall"/>
+		<HighlightTexture name="$parentHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="$parentLeft">
+					<Offset>
+						<AbsDimension x="-2" y="5"/>
+					</Offset>
+				</Anchor>
+				<Anchor point="BOTTOMRIGHT" relativeTo="$parentRight">
+					<Offset>
+						<AbsDimension x="2" y="-7"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+	
+	<Frame name="GetDKP_Config_Frame" toplevel="true" parent="UIParent" movable="true" enableMouse="true" hidden="true">
+		<Scripts>
+			<OnEvent>
+				GetDKP_Config_OnEvent(event);
+			</OnEvent>
+			<OnUpdate>
+				GetDKP_Config_OnUpdate(self, elapsed);
+			</OnUpdate>
+			<OnLoad>
+				tinsert(UISpecialFrames,self:GetName());
+				self.TimeSinceLastUpdate = 0;
+				
+				GetDKPConfig_OnLoad(self);
+				self:RegisterForDrag("LeftButton");
+			</OnLoad>
+			<OnDragStart>
+				self:StartMoving();
+				self.isMoving = true;
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing();
+				self.isMoving = false;
+			</OnDragStop>
+		</Scripts>
+		<Size>
+			<AbsDimension x="400" y="456"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOP">
+				<Offset>
+					<AbsDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<HitRectInsets>
+			<AbsInset left="10" right="10" top="10" bottom="10"/>
+		</HitRectInsets>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture file="Interface\Icons\INV_Misc_Head_Dragon_Black">
+					<Size>
+						<AbsDimension x="60" y="60"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="7" y="-6"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<Texture file="Interface\Minimap\MiniMap-TrackingBorder">
+					<Size>
+						<AbsDimension x="150" y="150"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="-8" y="8"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="GDCFrameTopLeft" file="Interface\PaperDollInfoFrame\UI-Character-General-TopLeft">
+					<Size>
+						<AbsDimension x="256" y="228"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="GDCFrameTopRight" file="Interface\PaperDollInfoFrame\UI-Character-General-TopRight">
+					<Size>
+						<AbsDimension x="144" y="228"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="GDCFrameBottomLeft" file="Interface\PaperDollInfoFrame\UI-Character-General-BottomLeft">
+					<Size>
+						<AbsDimension x="256" y="228"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="GDCFrameBottomRight" file="Interface\PaperDollInfoFrame\UI-Character-General-BottomRight">
+					<Size>
+						<AbsDimension x="144" y="228"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="GDCFrameTitleText" inherits="GameFontNormal">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-15"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="GDCFrameCloseButton" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-36" y="-7"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			
+			</Button>
+			<Frame name="GDAConfigFrameHelp" setAllPoints="true" hidden="true">
+				<Size>
+					<AbsDimension x="400" y="348"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-54"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="GDAConfigHelpTitleText" inherits="GameFontNormal" text="GDC_GDA_HELP">
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset>
+										<AbsDimension x="0" y="10"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GDAConfigHelpText" inherits="GameFontNormal" text=" " justifyH="LEFT">
+							<Size>
+								<AbsDimension x="300" y="0"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="29" y="-15"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="GDAConfigFrameHelpToggleButtonNext">
+						<Size>
+							<AbsDimension x="25" y="25"/>
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT">
+								<Offset>
+									<AbsDimension x="-50" y="20"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GDAConfigFrameHelpToggleButtonPlus();
+								PlaySound("igMainMenuOptionCheckBoxOn");
+							</OnClick>
+						</Scripts>
+						<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up"/>
+						<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Down"/>
+						<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled"/>
+						<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+						<ButtonText>
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</ButtonText>
+						<NormalFont inherits="GameFontNormalSmall"/>
+						<PushedTextOffset>
+							<AbsDimension x="0" y="0"/>
+						</PushedTextOffset>
+					</Button>
+					<Button name="GDAConfigFrameHelpToggleButtonPrev">
+						<Size>
+							<AbsDimension x="25" y="25"/>
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="20" y="20"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GDAConfigFrameHelpToggleButtonMinus();
+								PlaySound("igMainMenuOptionCheckBoxOn");
+							</OnClick>
+						</Scripts>
+						<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Up"/>
+						<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Down"/>
+						<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Disabled"/>
+						<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+						<ButtonText>
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</ButtonText>
+						<NormalFont inherits="GameFontNormalSmall"/>
+						<PushedTextOffset>
+							<AbsDimension x="0" y="0"/>
+						</PushedTextOffset>
+					</Button>
+					<Button name="GetDKP_Config_Frame_RuleHelp2">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDAConfigFrameHelp">
+								<Offset>
+									<AbsDimension x="100" y="13"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<NormalTexture file="Interface\HelpFrame\OpenTicketIcon">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="-1" y="1"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</NormalTexture>
+						<PushedTexture file="Interface\HelpFrame\OpenTicketIcon">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</PushedTexture>
+						<Scripts>
+							<OnEnter>
+								GameTooltip_AddNewbieTip(self,GDC_GDA_HELP2, 1.0, 0.0, 0.0, GDC_GDA_HELPTEXT2, 1)
+							</OnEnter>
+							<OnLeave>
+								GameTooltip:Hide();
+							</OnLeave>
+							<OnClick>
+								GDAConfigFrameHelp:Hide();
+								GDAConfigFrame:Show();
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+			<Frame name="GDPConfigFrame" setAllPoints="true" hidden="true">
+				<Size>
+					<AbsDimension x="400" y="456"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-54"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="GDPConfigTitleText" inherits="GameFontNormal" text="GDC_GDP">
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset>
+										<AbsDimension x="0" y="10"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Whisperdkp" inherits="GameFontNormal" text="GDC_Whisperdkp">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-22"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<!-- <FontString name="$parent_Whisperitem" inherits="GameFontNormal" text="GDC_Whisperitem">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-37"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString> -->
+						<FontString name="$parent_Whisperhide" inherits="GameFontNormal" text="GDC_Whisperhide">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-37"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Tooltip" inherits="GameFontNormal" text="GDC_Tooltip">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-52"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Tooltip_RAID" inherits="GameFontNormal" text="GDC_Tooltip_Raid">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-67"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Tooltipminmax" inherits="GameFontNormal" text="GDC_Tooltipminmax">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-82"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Tooltipdkp" inherits="GameFontNormal" text="GDC_Tooltipdkp">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-97"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Tooltipbuyers" inherits="GameFontNormal" text="GDC_Tooltipbuyers">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-112"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Tooltipreport" inherits="GameFontNormal" text="GDC_Tooltipreport">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-127"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_DKPLive" inherits="GameFontNormal" text="GDC_DKPLive">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-142"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Chat" inherits="GameFontNormal" text="GDC_Chat">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="20" y="-157"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Guild" inherits="GameFontNormal" text="GDC_Guild">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-172"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Say" inherits="GameFontNormal" text="GDC_Say">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-187"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Group" inherits="GameFontNormal" text="GDC_Group">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-202"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Raid" inherits="GameFontNormal" text="GDC_Raid">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-217"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Local" inherits="GameFontNormal" text="GDC_Local">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-232"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Offz" inherits="GameFontNormal" text="GDC_Offz">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-247"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Tooltipposition" inherits="GameFontNormal" text="GDC_Tooltipposition">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="190" y="-157"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Obove" inherits="GameFontNormal" text="GDC_Obove">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="230" y="-172"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Down" inherits="GameFontNormal" text="GDC_Down">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="230" y="-187"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Left" inherits="GameFontNormal" text="GDC_Left">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="230" y="-202"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Right" inherits="GameFontNormal" text="GDC_Right">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="230" y="-217"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_MRT" inherits="GameFontNormal" text="MRT AutoCost">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="210" y="-248"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Buyerslimit" inherits="GameFontNormal" text="GDC_Buyerslimit">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="20" y="-275"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Needlimit" inherits="GameFontNormal" text="GDC_Needlimit">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="188" y="-275"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>	
+				<Frames>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton2" inherits="UICheckButtonTemplate" id="2">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-20"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Whisperdkp();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<!-- <CheckButton name="GetDKP_Config_Frame_CheckButton3" inherits="UICheckButtonTemplate" id="3">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-35"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Whisperitem();
+							</OnClick>
+						</Scripts>
+					</CheckButton> -->
+					<CheckButton name="GetDKP_Config_Frame_CheckButton4" inherits="UICheckButtonTemplate" id="4">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-35"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Whisperhide();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton11" inherits="UICheckButtonTemplate" id="11">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-50"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Tooltip();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton61" inherits="UICheckButtonTemplate" id="61">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-65"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Tooltip_Raid();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton12" inherits="UICheckButtonTemplate" id="12">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-80"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Tooltipminmax();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton13" inherits="UICheckButtonTemplate" id="13">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-95"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Tooltipdkp();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton14" inherits="UICheckButtonTemplate" id="14">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-110"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Tooltipbuyers();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton15" inherits="UICheckButtonTemplate" id="15">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-125"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Tooltipreport();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton20" inherits="UICheckButtonTemplate" id="20">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-140"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_DKPLive();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton5" inherits="UICheckButtonTemplate" id="5">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-170"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Frame_CheckButton6:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton7:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton8:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton9:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton10:SetChecked(nil)	
+								GetDKP_Config_Chat();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton6" inherits="UICheckButtonTemplate" id="6">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-185"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Frame_CheckButton5:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton7:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton8:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton9:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton10:SetChecked(nil)	
+								GetDKP_Config_Chat();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton7" inherits="UICheckButtonTemplate" id="7">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-200"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Frame_CheckButton5:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton6:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton8:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton9:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton10:SetChecked(nil)	
+								GetDKP_Config_Chat();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton8" inherits="UICheckButtonTemplate" id="8">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-215"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Frame_CheckButton5:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton6:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton7:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton9:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton10:SetChecked(nil)	
+								GetDKP_Config_Chat();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton9" inherits="UICheckButtonTemplate" id="9">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-230"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Frame_CheckButton5:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton6:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton7:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton8:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton10:SetChecked(nil)	
+								GetDKP_Config_Chat();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton10" inherits="UICheckButtonTemplate" id="10">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-245"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Frame_CheckButton5:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton6:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton7:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton8:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton9:SetChecked(nil)	
+								GetDKP_Config_Chat();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton16" inherits="UICheckButtonTemplate" id="16">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="190" y="-170"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Frame_CheckButton17:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton18:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton19:SetChecked(nil)	
+								GetDKP_Config_Tooltipposition();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton17" inherits="UICheckButtonTemplate" id="17">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="190" y="-185"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Frame_CheckButton16:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton18:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton19:SetChecked(nil)	
+								GetDKP_Config_Tooltipposition();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton18" inherits="UICheckButtonTemplate" id="18">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="190" y="-200"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Frame_CheckButton16:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton17:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton19:SetChecked(nil)	
+								GetDKP_Config_Tooltipposition();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton19" inherits="UICheckButtonTemplate" id="19">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="190" y="-215"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Frame_CheckButton16:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton17:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton18:SetChecked(nil)	
+								GetDKP_Config_Tooltipposition();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButtonMRT" inherits="UICheckButtonTemplate" id="20">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension  x="190" y="-245"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_MRT();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<Slider name="GetDKP_Config_Frame_Slider1" inherits="OptionsSliderTemplate" minValue="0" maxValue="40" valueStep="1">
+						<Size>
+							<AbsDimension x="155" y="15"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension x="20" y="-300"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnValueChanged>
+								getglobal(self:GetName().."Text"):SetText(getglobal(self:GetName()):GetValue());
+								GetDKP_Config_Buyerslimit(getglobal(self:GetName()):GetValue());
+							</OnValueChanged>
+						</Scripts>
+					</Slider>
+					<Slider name="GetDKP_Config_Frame_Slider2" inherits="OptionsSliderTemplate" minValue="0" maxValue="40" valueStep="1">
+						<Size>
+							<AbsDimension x="155" y="15"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPRIGHT"  relativeTo="GDPConfigFrame">
+								<Offset>
+									<AbsDimension x="-50" y="-300"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnValueChanged>
+								getglobal(self:GetName().."Text"):SetText(getglobal(self:GetName()):GetValue());
+								GetDKP_Config_Needlimit(getglobal(self:GetName()):GetValue());
+							</OnValueChanged>
+						</Scripts>
+					</Slider>
+				</Frames>
+			</Frame>
+			
+			<Frame name="GDAConfigFrame" setAllPoints="true" hidden="true" relativeTo="GetDKP_Config_Frame">
+				<Size>
+					<AbsDimension x="400" y="456"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-54"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="GDAConfigTitleText" inherits="GameFontNormal" text="GDC_GDA">
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset>
+										<AbsDimension x="0" y="10"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GDAConfigOnOff" inherits="GameFontNormal" text="GDC_GDA_OnOff">
+							<Anchors>
+								<Anchor point="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="-48" y="10"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GDAConfigRule1Text" inherits="GameFontNormal" text="GDC_GDA_Rule1">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-22"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GDAConfigRule2Text" inherits="GameFontNormal" text="GDC_GDA_Rule2">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="190" y="-22"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GDAConfigRule3Text" inherits="GameFontNormal" text="GDC_GDA_Rule3">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="40" y="-35"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						
+					<!--	<FontString name="GDAConfigRule4Text" inherits="GameFontNormal" text="GDC_GDA_Rule4">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="190" y="-34"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString> -->
+					</Layer>
+				</Layers>	
+				<Frames>
+					<Button name="GetDKP_Config_Frame_Countdown" inherits = "GDCButtonTemplate" text="GDC_GDA_CD_Text">
+						<Size>
+							<AbsDimension x="120" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="170" y="-35"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Countdown();
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="GetDKP_Config_Frame_RuleHelp">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDAConfigFrame">
+								<Offset>
+									<AbsDimension x="100" y="13"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<NormalTexture file="Interface\HelpFrame\OpenTicketIcon">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="-1" y="1"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</NormalTexture>
+						<PushedTexture file="Interface\HelpFrame\OpenTicketIcon">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</PushedTexture>
+						<Scripts>
+							<OnEnter>
+								GameTooltip_AddNewbieTip(self,GDC_GDA_HELP, 1.0, 0.0, 0.0, GDC_GDA_HELPTEXT, 1)
+							</OnEnter>
+							<OnLeave>
+								GameTooltip:Hide();
+							</OnLeave>
+							<OnClick>
+								GDAConfigHelpText:SetText(GDC_GDA_HELP_TEXT[1]);
+								GDAConfigFrameHelpToggleButtonPrev:Disable();
+								GDAConfigFrameHelp:Show();
+								GDAConfigFrame:Hide();
+							</OnClick>
+						</Scripts>
+					</Button>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton51" inherits="UICheckButtonTemplate" id="51">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="GDAConfigFrame">
+								<Offset>
+									<AbsDimension  x="-95" y="13"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_GDA_OnOff();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton71" inherits="UICheckButtonTemplate" id="71">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-20"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_GDA_Rule(1);
+							</OnClick>
+							<OnEnter>
+								GameTooltip_AddNewbieTip(self,GDC_GDA_HELP2, 1.0, 0.0, 0.0, GDC_GDA_HELP_TEXT[1], 1)
+							</OnEnter>
+							<OnLeave>
+								GameTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton72" inherits="UICheckButtonTemplate" id="72">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrame">
+								<Offset>
+									<AbsDimension  x="170" y="-20"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_GDA_Rule(2);
+							</OnClick>
+							<OnEnter>
+								GameTooltip_AddNewbieTip(self,GDC_GDA_HELP2, 1.0, 0.0, 0.0, GDC_GDA_HELP_TEXT[2], 1)
+							</OnEnter>
+							<OnLeave>
+								GameTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton73" inherits="UICheckButtonTemplate" id="73">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-33"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_GDA_Rule(3);
+							</OnClick>
+							<OnEnter>
+								GameTooltip_AddNewbieTip(self,GDC_GDA_HELP2, 1.0, 0.0, 0.0, GDC_GDA_HELP_TEXT[3], 1)
+							</OnEnter>
+							<OnLeave>
+								GameTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</CheckButton>
+					<!--  <CheckButton name="GetDKP_Config_Frame_CheckButton74" inherits="UICheckButtonTemplate" id="74">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrame">
+								<Offset>
+									<AbsDimension  x="170" y="-32"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_GDA_Rule(4);
+							</OnClick>
+							<OnEnter>
+								GameTooltip_AddNewbieTip(self,GDC_GDA_HELP2, 1.0, 0.0, 0.0, GDC_GDA_HELP_TEXT[4], 1)
+							</OnEnter>
+							<OnLeave>
+								GameTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</CheckButton>  -->
+						<Frame name="GDAConfigFrameRule1" setAllPoints="true" hidden="true" relativeTo="GDAConfigFrame">
+							<Size>
+								<AbsDimension x="400" y="456"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-50"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Layers>
+								<Layer level="ARTWORK">
+									<FontString name="GDAConfigRule1TitleText" inherits="GameFontNormal" text="GDC_GDA_Rule1_Titel">
+										<Anchors>
+											<Anchor point="TOP">
+												<Offset>
+													<AbsDimension x="0" y="-5"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatLook" inherits="GameFontNormal" text="GDC_GDA_Rule1_ChatLook">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="22" y="-40"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatLook1" inherits="GameFontNormal" text="GDC_Whisper">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-58"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatLook2" inherits="GameFontNormal" text="GDC_Raid">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-73"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatLook3" inherits="GameFontNormal" text="GDC_Guild">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-88"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult" inherits="GameFontNormal" text="GDC_Chat">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="22" y="-115"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult1" inherits="GameFontNormal" text="GDC_Guild">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-133"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult2" inherits="GameFontNormal" text="GDC_Say">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-148"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult3" inherits="GameFontNormal" text="GDC_Group">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-163"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult4" inherits="GameFontNormal" text="GDC_Raid">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-178"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult5" inherits="GameFontNormal" text="GDC_Offz">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-193"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDA_Announce_highest_bid1" inherits="GameFontNormal" text="GDC_Announce_highest_bid">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="150" y="-148"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									
+									<FontString name="GDAConfigRule1MinDKP" inherits="GameFontNormal" text="GDC_GDA_Rule1_MinDKP">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="22" y="-240"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+								</Layer>
+							</Layers>
+							<Frames>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton32" inherits="UICheckButtonTemplate" id="32">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-55"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_Frame_CheckButton33:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton34:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton32:SetChecked("true")
+											GetDKP_Config_GDA_Rule1_ChatLook(1);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton33" inherits="UICheckButtonTemplate" id="33">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-70"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_Frame_CheckButton32:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton34:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton33:SetChecked("true")
+											GetDKP_Config_GDA_Rule1_ChatLook(2);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton34" inherits="UICheckButtonTemplate" id="34">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-85"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_Frame_CheckButton32:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton33:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton34:SetChecked("true")
+											GetDKP_Config_GDA_Rule1_ChatLook(3);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton35" inherits="UICheckButtonTemplate" id="35">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-130"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_Frame_CheckButton36:SetChecked(nil)	
+											GetDKP_Config_Frame_CheckButton37:SetChecked(nil)	
+											GetDKP_Config_Frame_CheckButton38:SetChecked(nil)	
+											GetDKP_Config_Frame_CheckButton39:SetChecked(nil)	
+											
+											GetDKP_Config_Frame_CheckButton35:SetChecked("true")	
+											GetDKP_Config_GDA_Rule1_ChatOutput(1);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton36" inherits="UICheckButtonTemplate" id="36">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-145"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_Frame_CheckButton35:SetChecked(nil)	
+											GetDKP_Config_Frame_CheckButton37:SetChecked(nil)	
+											GetDKP_Config_Frame_CheckButton38:SetChecked(nil)	
+											GetDKP_Config_Frame_CheckButton39:SetChecked(nil)	
+											
+											GetDKP_Config_Frame_CheckButton36:SetChecked("true")
+											GetDKP_Config_GDA_Rule1_ChatOutput(2);
+
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton37" inherits="UICheckButtonTemplate" id="37">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-160"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_Frame_CheckButton35:SetChecked(nil)	
+											GetDKP_Config_Frame_CheckButton36:SetChecked(nil)	
+											GetDKP_Config_Frame_CheckButton38:SetChecked(nil)	
+											GetDKP_Config_Frame_CheckButton39:SetChecked(nil)	
+												
+											GetDKP_Config_Frame_CheckButton37:SetChecked("true")
+											GetDKP_Config_GDA_Rule1_ChatOutput(3);
+
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton38" inherits="UICheckButtonTemplate" id="38">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-175"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_Frame_CheckButton35:SetChecked(nil)	
+											GetDKP_Config_Frame_CheckButton36:SetChecked(nil)	
+											GetDKP_Config_Frame_CheckButton37:SetChecked(nil)	
+											GetDKP_Config_Frame_CheckButton39:SetChecked(nil)	
+											
+											GetDKP_Config_Frame_CheckButton38:SetChecked("true")
+											GetDKP_Config_GDA_Rule1_ChatOutput(4);
+
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton39" inherits="UICheckButtonTemplate" id="39">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-190"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_Frame_CheckButton35:SetChecked(nil)	
+											GetDKP_Config_Frame_CheckButton36:SetChecked(nil)	
+											GetDKP_Config_Frame_CheckButton37:SetChecked(nil)	
+											GetDKP_Config_Frame_CheckButton38:SetChecked(nil)	
+											
+											GetDKP_Config_Frame_CheckButton39:SetChecked("true") 
+											GetDKP_Config_GDA_Rule1_ChatOutput(5);
+
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton1001" inherits="UICheckButtonTemplate" id="1001">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="130" y="-145"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_announce_highest_bid1();
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<EditBox name="GDC_GDA_EditBox1" autoFocus="false" frameStrata="HIGH" historyLines="32">
+									<Size>
+										<AbsDimension x="150" y="32"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension x="23" y="-253"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Layers>
+										<Layer level="BACKGROUND">
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="LEFT">
+														<Offset>
+															<AbsDimension x="-10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0" right="0.29296875" top="0" bottom="1.0"/>
+											</Texture>
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="RIGHT">
+														<Offset>
+															<AbsDimension x="10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0.70703125" right="1.0" top="0" bottom="1.0"/>
+											</Texture>
+										</Layer>
+									</Layers>
+									<Scripts>
+										<OnShow>
+											self:ClearFocus();
+										</OnShow>
+										<OnEnterPressed>
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(1); 
+										</OnEnterPressed>
+										<OnEscapePressed>
+											self:ClearFocus();
+										</OnEscapePressed>
+									</Scripts>
+									<FontString inherits="ChatFontNormal" bytes="24"/>
+								</EditBox>
+							</Frames>
+						</Frame>
+						<Frame name="GDAConfigFrameRule2" setAllPoints="true" hidden="true" relativeTo="GDAConfigFrame">
+							<Size>
+								<AbsDimension x="400" y="456"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-50"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Layers>
+								<Layer level="ARTWORK">
+									<FontString name="GDAConfigRule2TitleText" inherits="GameFontNormal" text="GDC_GDA_Rule2_Titel">
+										<Anchors>
+											<Anchor point="TOP">
+												<Offset>
+													<AbsDimension x="0" y="-5"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatLook" inherits="GameFontNormal" text="GDC_GDA_Rule1_ChatLook">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="22" y="-40"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatLook1" inherits="GameFontNormal" text="GDC_Whisper">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-58"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatLook2" inherits="GameFontNormal" text="GDC_Raid">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-73"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatLook3" inherits="GameFontNormal" text="GDC_Guild">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-88"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult" inherits="GameFontNormal" text="GDC_Chat">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="22" y="-115"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult1" inherits="GameFontNormal" text="GDC_Guild">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-133"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult2" inherits="GameFontNormal" text="GDC_Say">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-148"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult3" inherits="GameFontNormal" text="GDC_Group">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-163"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult4" inherits="GameFontNormal" text="GDC_Raid">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-178"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult5" inherits="GameFontNormal" text="GDC_Offz">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-193"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule4GreedWord" inherits="GameFontNormal" text="GDC_GDA_Rule4_GreedWord">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="200" y="-99"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1GreedDKP" inherits="GameFontNormal" text="GDC_GDA_Rule1_GreedDKP">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="200" y="-146"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule4BetWord" inherits="GameFontNormal" text="GDC_GDA_Rule4_BetWord">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="200" y="-193"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1MinDKP" inherits="GameFontNormal" text="GDC_GDA_Rule1_FestDKP">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="200" y="-240"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+								</Layer>
+							</Layers>
+							<Frames>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton40" inherits="UICheckButtonTemplate" id="40">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule2">
+											<Offset>
+												<AbsDimension  x="20" y="-55"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule2_ChatLook(1);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton41" inherits="UICheckButtonTemplate" id="41">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule2">
+											<Offset>
+												<AbsDimension  x="20" y="-70"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule2_ChatLook(2);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton42" inherits="UICheckButtonTemplate" id="42">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule2">
+											<Offset>
+												<AbsDimension  x="20" y="-85"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule2_ChatLook(3);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton43" inherits="UICheckButtonTemplate" id="43">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule2">
+											<Offset>
+												<AbsDimension  x="20" y="-130"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule2_ChatOutput(1);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton44" inherits="UICheckButtonTemplate" id="44">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule2">
+											<Offset>
+												<AbsDimension  x="20" y="-145"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule2_ChatOutput(2);
+											</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton45" inherits="UICheckButtonTemplate" id="45">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule2">
+											<Offset>
+												<AbsDimension  x="20" y="-160"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule2_ChatOutput(3);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton46" inherits="UICheckButtonTemplate" id="46">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule2">
+											<Offset>
+												<AbsDimension  x="20" y="-175"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule2_ChatOutput(4);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton47" inherits="UICheckButtonTemplate" id="47">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule2">
+											<Offset>
+												<AbsDimension  x="20" y="-190"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule2_ChatOutput(5);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<EditBox name="GDC_GDA_EditBoxGWord" autoFocus="false" frameStrata="HIGH" historyLines="32">
+									<Size>
+										<AbsDimension x="150" y="32"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPRIGHT"  relativeTo="GDAConfigFrameRule2">
+											<Offset>
+												<AbsDimension x="-50" y="-112"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Layers>
+										<Layer level="BACKGROUND">
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="LEFT">
+														<Offset>
+															<AbsDimension x="-10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0" right="0.29296875" top="0" bottom="1.0"/>
+											</Texture>
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="RIGHT">
+														<Offset>
+															<AbsDimension x="10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0.70703125" right="1.0" top="0" bottom="1.0"/>
+											</Texture>
+										</Layer>
+									</Layers>
+									<Scripts>
+										<OnShow>
+											self:ClearFocus();
+										</OnShow>
+										<OnEnterPressed>
+											GetDKP_Config_GDA_EditBox_OnEnterPressed("GWord"); 
+										</OnEnterPressed>
+										<OnEscapePressed>
+											self:ClearFocus();
+										</OnEscapePressed>
+										<OnTabPressed>
+											self:ClearFocus();
+											GDC_GDA_EditBoxGDKP:SetFocus();
+											GetDKP_Config_GDA_EditBox_OnEnterPressed("GWord"); 
+										</OnTabPressed>
+									</Scripts>
+									<FontString inherits="ChatFontNormal" bytes="24"/>
+								</EditBox>
+								<EditBox name="GDC_GDA_EditBoxGDKP" autoFocus="false" frameStrata="HIGH" historyLines="32">
+									<Size>
+										<AbsDimension x="150" y="32"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPRIGHT" relativeTo="GDAConfigFrameRule2">
+											<Offset>
+												<AbsDimension x="-50" y="-159"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Layers>
+										<Layer level="BACKGROUND">
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="LEFT">
+														<Offset>
+															<AbsDimension x="-10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0" right="0.29296875" top="0" bottom="1.0"/>
+											</Texture>
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="RIGHT">
+														<Offset>
+															<AbsDimension x="10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0.70703125" right="1.0" top="0" bottom="1.0"/>
+											</Texture>
+										</Layer>
+									</Layers>
+									<Scripts>
+										<OnShow>
+											self:ClearFocus();
+										</OnShow>
+										<OnEnterPressed>
+											GetDKP_Config_GDA_EditBox_OnEnterPressed("GDKP"); 
+										</OnEnterPressed>
+										<OnEscapePressed>
+											self:ClearFocus();
+										</OnEscapePressed>
+										<OnTabPressed>
+											self:ClearFocus();
+											GDC_GDA_EditBox2:SetFocus();
+											GetDKP_Config_GDA_EditBox_OnEnterPressed("GDKP"); 
+										</OnTabPressed>
+									</Scripts>
+									<FontString inherits="ChatFontNormal" bytes="24"/>
+								</EditBox>
+								<EditBox name="GDC_GDA_EditBox2" autoFocus="false" frameStrata="HIGH" historyLines="32">
+									<Size>
+										<AbsDimension x="150" y="32"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPRIGHT"  relativeTo="GDAConfigFrameRule2">
+											<Offset>
+												<AbsDimension x="-50" y="-206"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Layers>
+										<Layer level="BACKGROUND">
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="LEFT">
+														<Offset>
+															<AbsDimension x="-10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0" right="0.29296875" top="0" bottom="1.0"/>
+											</Texture>
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="RIGHT">
+														<Offset>
+															<AbsDimension x="10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0.70703125" right="1.0" top="0" bottom="1.0"/>
+											</Texture>
+										</Layer>
+									</Layers>
+									<Scripts>
+										<OnShow>
+											self:ClearFocus();
+										</OnShow>
+										<OnEnterPressed>
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(2); 
+										</OnEnterPressed>
+										<OnEscapePressed>
+											self:ClearFocus();
+										</OnEscapePressed>
+										<OnTabPressed>
+											self:ClearFocus();
+											GDC_GDA_EditBox3:SetFocus();
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(2); 
+										</OnTabPressed>
+									</Scripts>
+									<FontString inherits="ChatFontNormal" bytes="24"/>
+								</EditBox>
+								
+								<EditBox name="GDC_GDA_EditBox3" autoFocus="false" frameStrata="HIGH" historyLines="32">
+									<Size>
+										<AbsDimension x="150" y="32"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPRIGHT" relativeTo="GDAConfigFrameRule2">
+											<Offset>
+												<AbsDimension x="-50" y="-253"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Layers>
+										<Layer level="BACKGROUND">
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="LEFT">
+														<Offset>
+															<AbsDimension x="-10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0" right="0.29296875" top="0" bottom="1.0"/>
+											</Texture>
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="RIGHT">
+														<Offset>
+															<AbsDimension x="10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0.70703125" right="1.0" top="0" bottom="1.0"/>
+											</Texture>
+										</Layer>
+									</Layers>
+									<Scripts>
+										<OnShow>
+											self:ClearFocus();
+										</OnShow>
+										<OnEnterPressed>
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(3); 
+										</OnEnterPressed>
+										<OnEscapePressed>
+											self:ClearFocus();
+										</OnEscapePressed>
+										<OnTabPressed>
+											self:ClearFocus();
+											GDC_GDA_EditBoxGWord:SetFocus();
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(3); 
+										</OnTabPressed>
+									</Scripts>
+									<FontString inherits="ChatFontNormal" bytes="24"/>
+								</EditBox>
+							</Frames>
+						</Frame>
+						<Frame name="GDAConfigFrameRule3" setAllPoints="true" hidden="true">
+							<Size>
+								<AbsDimension x="400" y="456"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-50"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Layers>
+								<Layer level="ARTWORK">
+									<FontString name="GDAConfigRule3TitleText" inherits="GameFontNormal" text="GDC_GDA_Rule3_Titel">
+										<Anchors>
+											<Anchor point="TOP">
+												<Offset>
+													<AbsDimension x="0" y="-5"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatLook" inherits="GameFontNormal" text="GDC_GDA_Rule1_ChatLook">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="22" y="-40"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatLook1" inherits="GameFontNormal" text="GDC_Whisper">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-58"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatLook2" inherits="GameFontNormal" text="GDC_Raid">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-73"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatLook3" inherits="GameFontNormal" text="GDC_Guild">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-88"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult" inherits="GameFontNormal" text="GDC_Chat">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="22" y="-115"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult1" inherits="GameFontNormal" text="GDC_Guild">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-133"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult2" inherits="GameFontNormal" text="GDC_Say">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-148"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult3" inherits="GameFontNormal" text="GDC_Group">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-163"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult4" inherits="GameFontNormal" text="GDC_Raid">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-178"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1ChatResult5" inherits="GameFontNormal" text="GDC_Offz">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="40" y="-193"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDA_Announce_highest_bid2" inherits="GameFontNormal" text="GDC_Announce_highest_bid">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="150" y="-148"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigRule1MinDKP" inherits="GameFontNormal" text="GDC_GDA_Rule1_MinDKP">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="22" y="-240"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+								</Layer>
+							</Layers>
+							<Frames>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton81" inherits="UICheckButtonTemplate" id="81">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-55"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule3_ChatLook(1);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton82" inherits="UICheckButtonTemplate" id="82">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-70"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule3_ChatLook(2);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton83" inherits="UICheckButtonTemplate" id="83">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-85"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule3_ChatLook(3);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton84" inherits="UICheckButtonTemplate" id="84">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-130"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule3_ChatOutput(1);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton85" inherits="UICheckButtonTemplate" id="85">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-145"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule3_ChatOutput(2);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton86" inherits="UICheckButtonTemplate" id="86">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-160"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule3_ChatOutput(3);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton87" inherits="UICheckButtonTemplate" id="87">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-175"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule3_ChatOutput(4);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton88" inherits="UICheckButtonTemplate" id="88">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-190"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_GDA_Rule3_ChatOutput(5);
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton1002" inherits="UICheckButtonTemplate" id="1002">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="130" y="-145"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_announce_highest_bid2();
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<EditBox name="GDC_GDA_EditBox4" autoFocus="false" frameStrata="HIGH" historyLines="32">
+									<Size>
+										<AbsDimension x="150" y="32"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension x="23" y="-253"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Layers>
+										<Layer level="BACKGROUND">
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="LEFT">
+														<Offset>
+															<AbsDimension x="-10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0" right="0.29296875" top="0" bottom="1.0"/>
+											</Texture>
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="RIGHT">
+														<Offset>
+															<AbsDimension x="10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0.70703125" right="1.0" top="0" bottom="1.0"/>
+											</Texture>
+										</Layer>
+									</Layers>
+									<Scripts>
+										<OnShow>
+											self:ClearFocus();
+										</OnShow>
+										<OnEnterPressed>
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(4); 
+										</OnEnterPressed>
+										<OnEscapePressed>
+											self:ClearFocus();
+										</OnEscapePressed>
+									</Scripts>
+									<FontString inherits="ChatFontNormal" bytes="24"/>
+								</EditBox>
+							</Frames>
+						</Frame>
+						<Frame name="GDAConfigCountdownFrame" setAllPoints="true" hidden="true">
+							<Size>
+								<AbsDimension x="400" y="456"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-50"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Layers>
+								<Layer level="ARTWORK">
+									<FontString name="GDAConfigRule4TitleText" inherits="GameFontNormal" text="GDC_GDA_CD_Text">
+										<Anchors>
+											<Anchor point="TOP">
+												<Offset>
+													<AbsDimension x="0" y="-5"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigContdownOnOff" inherits="GameFontNormal" text="GDC_GDA_CD_OnOff">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="42" y="-40"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigTimeset" inherits="GameFontNormal" text="GDC_GDA_CD_Timeset">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="22" y="-60"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigAlertset" inherits="GameFontNormal" text="GDC_GDA_CD_Alertset">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="22" y="-120"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigLOOTOnOff" inherits="GameFontNormal" text="GDC_GDA_CD_LOOTGDAOnOff">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="42" y="-180"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigLOOTGDAOnOff" inherits="GameFontNormal" text="GDC_GDA_CD_LOOTOnOff">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="42" y="-200"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigLOOTGDAOnOff" inherits="GameFontNormal" text="GDC_GDA_CD_LOOTLEVEL">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="110" y="-227"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+									<FontString name="GDAConfigLOOTGDARW" inherits="GameFontNormal" text="GDC_GDA_CD_LOOTGDA_RW">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="42" y="-250"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</FontString>
+								</Layer>
+							</Layers>
+							<Frames>
+								<EditBox name="GDC_GDA_EditBox5" autoFocus="false" frameStrata="HIGH" historyLines="32">
+									<Size>
+										<AbsDimension x="150" y="32"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension x="23" y="-80"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Layers>
+										<Layer level="BACKGROUND">
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="LEFT">
+														<Offset>
+															<AbsDimension x="-10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0" right="0.29296875" top="0" bottom="1.0"/>
+											</Texture>
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="RIGHT">
+														<Offset>
+															<AbsDimension x="10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0.70703125" right="1.0" top="0" bottom="1.0"/>
+											</Texture>
+										</Layer>
+									</Layers>
+									<Scripts>
+										<OnShow>
+											self:ClearFocus();
+										</OnShow>
+										<OnEnterPressed>
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(5); 
+										</OnEnterPressed>
+										<OnEscapePressed>
+											self:ClearFocus();
+										</OnEscapePressed>
+									</Scripts>
+									<FontString inherits="ChatFontNormal" bytes="24"/>
+								</EditBox>
+								<EditBox name="GDC_GDA_EditBox6" autoFocus="false" frameStrata="HIGH" historyLines="32">
+									<Size>
+										<AbsDimension x="150" y="32"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension x="23" y="-140"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Layers>
+										<Layer level="BACKGROUND">
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="LEFT">
+														<Offset>
+															<AbsDimension x="-10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0" right="0.29296875" top="0" bottom="1.0"/>
+											</Texture>
+											<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+												<Size>
+													<AbsDimension x="100" y="32"/>
+												</Size>
+												<Anchors>
+													<Anchor point="RIGHT">
+														<Offset>
+															<AbsDimension x="10" y="0"/>
+														</Offset>
+													</Anchor>
+												</Anchors>
+												<TexCoords left="0.70703125" right="1.0" top="0" bottom="1.0"/>
+											</Texture>
+										</Layer>
+									</Layers>
+									<Scripts>
+										<OnShow>
+											self:ClearFocus();
+										</OnShow>
+										<OnEnterPressed>
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(6); 
+										</OnEnterPressed>
+										<OnEscapePressed>
+											self:ClearFocus();
+										</OnEscapePressed>
+									</Scripts>
+									<FontString inherits="ChatFontNormal" bytes="24"/>
+								</EditBox>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton89" inherits="UICheckButtonTemplate" id="89">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-38"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_Countdown_OnOff();
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton90" inherits="UICheckButtonTemplate" id="90">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-198"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_Loot_OnOff();
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton91" inherits="UICheckButtonTemplate" id="91">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-178"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_Loot_GDA_OnOff();
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+								<Button name="GDC_FrameColumnHeader2" inherits="GDC_FrameColumnHeaderTemplate">
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="GetDKP_Config_Frame_CheckButton91" relativePoint="RIGHT">
+											<Offset>
+												<AbsDimension x="-20" y="-45"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Frames>
+										<Frame name="GDC_FrameLOOTLEVELDropDown" inherits="UIDropDownMenuTemplate" id="1">
+											<Anchors>
+												<Anchor point="TOPLEFT">
+													<Offset>
+														<AbsDimension x="-15" y="0"/>
+													</Offset>
+												</Anchor>
+											</Anchors>
+											<Layers>
+												<Layer level="OVERLAY">
+													<Texture name="GDC_FrameLOOTLEVELDropDownHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD" hidden="true">
+														<Anchors>
+															<Anchor point="TOPLEFT">
+																<Offset>
+																	<AbsDimension x="15" y="3"/>
+																</Offset>
+															</Anchor>
+															<Anchor point="BOTTOMRIGHT">
+																<Offset>
+																	<AbsDimension x="-30" y="-2"/>
+																</Offset>
+															</Anchor>
+														</Anchors>
+													</Texture>
+												</Layer>
+											</Layers>
+											<Scripts>
+												<OnLoad>
+													GDC_FrameLOOTLEVELDropDown_OnLoad(self); 
+												</OnLoad>
+												<OnShow>
+													UIDropDownMenu_Initialize(GDC_FrameLOOTLEVELDropDown, GDC_FrameLOOTLEVELDropDown_Initialize); 
+													GDC_FrameLOOTLEVELDropDown_OnLoad(self);
+												</OnShow>
+												<OnEvent>
+													GDC_FrameLOOTLEVELDropDown_OnEvent()
+												</OnEvent>
+												<OnEnter>
+													GDC_FrameLOOTLEVELDropDownHighlightTexture:Show();
+												</OnEnter>
+												<OnLeave>
+													GDC_FrameLOOTLEVELDropDownHighlightTexture:Hide();
+												</OnLeave>
+												
+											</Scripts>
+										</Frame>
+									</Frames>
+								</Button>
+								<CheckButton name="GetDKP_Config_Frame_CheckButton92" inherits="UICheckButtonTemplate" id="92">
+									<Size>
+										<AbsDimension x="20" y="20"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDAConfigFrameRule1">
+											<Offset>
+												<AbsDimension  x="20" y="-248"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Scripts>
+										<OnClick>
+											GetDKP_Config_Loot_GDA_RW();
+										</OnClick>
+									</Scripts>
+								</CheckButton>
+							</Frames>
+						</Frame>
+				</Frames>
+			</Frame>
+			<Frame name="GDLConfigFrame" setAllPoints="true" hidden="true">
+				<Size>
+					<AbsDimension x="400" y="456"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-54"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="GDLConfigTitleText" inherits="GameFontNormal" text="GDC_GDL">
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset>
+										<AbsDimension x="0" y="10"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Raidonly" inherits="GameFontNormal" text="GDC_Raidonly">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDLConfigFrame">
+									<Offset>
+										<AbsDimension x="40" y="-27"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_ASK" inherits="GameFontNormal" text="GDC_ASK_TEXT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDLConfigFrame">
+									<Offset>
+										<AbsDimension x="40" y="-247"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					<!-- 	<FontString name="$parent_ShowItems" inherits="GameFontNormal" text="GDC_ShowItems">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent_Raidonly">
+									<Offset>
+										<AbsDimension x="0" y="-27"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_TokenItems" inherits="GameFontNormal" text="GDC_TokenItems">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent_ShowItems">
+									<Offset>
+										<AbsDimension x="0" y="-27"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString> -->
+						<FontString name="$parent_epgp" inherits="GameFontNormal" text="GDC_epgp">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent_Raidonly">
+									<Offset>
+										<AbsDimension x="0" y="-27"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Konto" inherits="GameFontNormal" text="GDC_Konto">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="LEFT" relativeTo="$parent_Raidonly">
+									<Offset>
+										<AbsDimension x="-18" y="-50"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>	
+				<Frames>
+					<StatusBar name="GetDKP_Config_Frame_Send_StatusBar" drawLayer="BACKGROUND" >
+						<Size>
+							<AbsDimension x="330" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDLConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-205"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<Texture name="$parentLeft" file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+									<Size>
+										<AbsDimension x="172" y="32"/>
+									</Size>
+									<Anchors>
+										<Anchor point="LEFT">
+											<Offset>
+												<AbsDimension  x="-7" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</Texture>
+								<Texture name="$parentRight" file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+									<Size>
+										<AbsDimension x="172" y="32"/>
+									</Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset>
+												<AbsDimension  x="7" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</Texture>
+								<FontString name="GDL_send_Show" inherits="GameFontNormal" text="GDC_SEND" hidden = "true">
+									<Anchors>
+										<Anchor point="CENTER" relativePoint="MIDDLE" relativeTo="GDLConfigFrame">
+											<Offset>
+												<AbsDimension x="0" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+						<BarTexture name="$parentBar" file="Interface\PaperDollInfoFrame\UI-Character-Skills-Bar"/>
+						<BarColor r="1.0" g ="0.0" b="0.0" a="1"/>
+						<Scripts>
+							<OnLoad>
+							
+							</OnLoad>
+						</Scripts>
+					</StatusBar>
+					<Button name="GetDKP_Config_Frame_Send" inherits = "GDCButtonTemplate" text="GDC_GDL_Send_Text" hidden="true">
+						<Size>
+							<AbsDimension x="120" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDLConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-175"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>	
+							<OnClick>
+								GetDKP_List_Load_Send();
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="GetDKP_Config_Frame_Resiv" inherits = "GDCButtonTemplate" text="GDC_GDL_Resiv_Text" >
+						<Size>
+							<AbsDimension x="120" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="GDLConfigFrame">
+								<Offset>
+									<AbsDimension  x="-50" y="-175"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_List_Load_Ask();
+							</OnClick>
+						</Scripts>
+					</Button>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton1" inherits="UICheckButtonTemplate" id="1">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDLConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-25"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_Raidonly();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+<!-- 					<CheckButton name="GetDKP_Config_Frame_CheckButton21" inherits="UICheckButtonTemplate" id="21">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GetDKP_Config_Frame_CheckButton1">
+								<Offset>
+									<AbsDimension  x="0" y="-25"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_ShowItems();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton22" inherits="UICheckButtonTemplate" id="22">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GetDKP_Config_Frame_CheckButton21">
+								<Offset>
+									<AbsDimension  x="0" y="-25"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_TokenItems();
+							</OnClick>
+						</Scripts>
+					</CheckButton> -->
+					<CheckButton name="GetDKP_Config_Frame_CheckButtonepgp" inherits="UICheckButtonTemplate" id="22">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GetDKP_Config_Frame_CheckButton1">
+								<Offset>
+									<AbsDimension  x="0" y="-25"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_epgp();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton100" inherits="UICheckButtonTemplate" >
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDLConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-245"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_GetDKPASK();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<Button name="GDC_FrameColumnHeader1" inherits="GDC_FrameColumnHeaderTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="GetDKP_Config_Frame_CheckButton1" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="-20" y="-80"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Frames>
+							<Frame name="GDC_FrameKontoDropDown" inherits="UIDropDownMenuTemplate" id="1">
+								<Anchors>
+									<Anchor point="TOPLEFT">
+										<Offset>
+											<AbsDimension x="-15" y="0"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<Texture name="GDC_FrameKontoDropDownHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD" hidden="true">
+											<Anchors>
+												<Anchor point="TOPLEFT">
+													<Offset>
+														<AbsDimension x="15" y="3"/>
+													</Offset>
+												</Anchor>
+												<Anchor point="BOTTOMRIGHT">
+													<Offset>
+														<AbsDimension x="-30" y="-2"/>
+													</Offset>
+												</Anchor>
+											</Anchors>
+										</Texture>
+									</Layer>
+								</Layers>
+								<Scripts>
+									<OnLoad>
+										GDC_FrameKontoDropDown_OnLoad(self); 
+									</OnLoad>
+									<OnShow>
+										UIDropDownMenu_Initialize(GDC_FrameKontoDropDown, GDC_FrameKontoDropDown_Initialize); 
+										GDC_FrameKontoDropDown_OnLoad(self); 
+									</OnShow>
+									<OnEvent>
+										GDC_FrameKontoDropDown_OnEvent()
+									</OnEvent>
+									<OnEnter>
+										GDC_FrameKontoDropDownHighlightTexture:Show();
+									</OnEnter>
+									<OnLeave>
+										GDC_FrameKontoDropDownHighlightTexture:Hide();
+									</OnLeave>
+									<OnMouseUp>
+										<!-- GDL_Sort(3); -->
+									</OnMouseUp>
+								</Scripts>
+							</Frame>
+						</Frames>
+						
+					</Button>
+					<Button name="GetDKP_Config_Reset_Data" inherits = "GDCButtonTemplate" text="GDC_GDL_RESET_Text" >
+						<Size>
+							<AbsDimension x="120" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="GDLConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-275"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Reset_Data();
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+			<Frame name="SCALEConfigFrame" setAllPoints="true" hidden="true">
+				<Size>
+					<AbsDimension x="400" y="456"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-54"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="SCALEConfigTitleText" inherits="GameFontNormal" text="GDC_SCALE">
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset>
+										<AbsDimension x="0" y="10"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_MiniMap_Show_Text" inherits="GameFontNormal" text="MiniMap_Button_Show">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="SCALEConfigFrame">
+									<Offset>
+										<AbsDimension x="40" y="-28"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					<!--<FontString name="$parent_MiniMap_Text_x" inherits="GameFontNormal" text="MiniMap_Button_Positionx">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="SCALEConfigFrame">
+									<Offset>
+										<AbsDimension x="20" y="-50"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_MiniMap_Text_y" inherits="GameFontNormal" text="MiniMap_Button_Positiony">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="SCALEConfigFrame">
+									<Offset>
+										<AbsDimension x="20" y="-100"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Skalierung_GDC_Text" inherits="GameFontNormal" text="Skalierung_GDC_Show">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="SCALEConfigFrame">
+									<Offset>
+										<AbsDimension x="20" y="-150"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString> -->
+						<FontString name="$parent_Skalierung_GDL_Text" inherits="GameFontNormal" text="Skalierung_GDL_Show">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="SCALEConfigFrame">
+									<Offset>
+										<AbsDimension x="20" y="-48"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Skalierung_GDA_Text" inherits="GameFontNormal" text="Skalierung_GDA_Show">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="20" y="-100"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>	
+				<Frames>
+					<CheckButton name="GetDKP_Config_Frame_CheckButton50" inherits="UICheckButtonTemplate" id="50">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="SCALEConfigFrame">
+								<Offset>
+									<AbsDimension  x="20" y="-25"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_Config_All_Set_MiniMap_Button();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+			<!--	<Slider name="GetDKP_Config_Frame_Slider3" inherits="OptionsSliderTemplate" minValue="0" maxValue="360" valueStep="1">
+						<Size>
+							<AbsDimension x="250" y="15"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="SCALEConfigFrame">
+								<Offset>
+									<AbsDimension x="20" y="-70"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnValueChanged>
+								getglobal(self:GetName().."Text"):SetText(getglobal(self:GetName()):GetValue());
+								GetDKP_Config_All_Set_MiniMap_Positionx(getglobal(self:GetName()):GetValue());
+							</OnValueChanged>
+						</Scripts>
+					</Slider>
+					<Slider name="GetDKP_Config_Frame_Slider4" inherits="OptionsSliderTemplate" minValue="0" maxValue="360" valueStep="1">
+						<Size>
+							<AbsDimension x="250" y="15"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="SCALEConfigFrame">
+								<Offset>
+									<AbsDimension x="20" y="-120"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnValueChanged>
+								getglobal(self:GetName().."Text"):SetText(getglobal(self:GetName()):GetValue());
+								GetDKP_Config_All_Set_MiniMap_Positiony(getglobal(self:GetName()):GetValue());
+							</OnValueChanged>
+						</Scripts> 
+					</Slider> -->
+			<!--		<Slider name="GetDKP_Config_Frame_Slider5" inherits="OptionsSliderTemplate" minValue="50" maxValue="100" valueStep="1">
+						<Size>
+							<AbsDimension x="250" y="15"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="SCALEConfigFrame">
+								<Offset>
+									<AbsDimension x="20" y="-170"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnValueChanged>
+								getglobal(self:GetName().."Text"):SetText(getglobal(self:GetName()):GetValue());
+								GetDKP_Config_Skalierung_GDC(getglobal(self:GetName()):GetValue());
+							</OnValueChanged>
+						</Scripts>
+					</Slider> -->
+					<Slider name="GetDKP_Config_Frame_Slider6" inherits="OptionsSliderTemplate" minValue="50" maxValue="100" valueStep="1">
+						<Size>
+							<AbsDimension x="250" y="15"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="SCALEConfigFrame">
+								<Offset>
+									<AbsDimension x="20" y="-70"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnValueChanged>
+								getglobal(self:GetName().."Text"):SetText(getglobal(self:GetName()):GetValue());
+								GetDKP_Config_Skalierung_GDL(getglobal(self:GetName()):GetValue());
+							</OnValueChanged>
+						</Scripts>
+					</Slider>
+					<Slider name="GetDKP_Config_Frame_Slider7" inherits="OptionsSliderTemplate" minValue="40" maxValue="100" valueStep="1">
+						<Size>
+							<AbsDimension x="250" y="15"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="SCALEConfigFrame">
+								<Offset>
+									<AbsDimension x="20" y="-120"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnValueChanged>
+								getglobal(self:GetName().."Text"):SetText(getglobal(self:GetName()):GetValue());
+								GetDKP_Config_Skalierung_GDA(getglobal(self:GetName()):GetValue());
+							</OnValueChanged>
+						</Scripts>
+					</Slider>
+				</Frames>
+			</Frame>
+			
+			<Button name="GetDKP_Config_FrameTab1" inherits="GDCFrameTabTemplate" id="1" text="GDC_GDP">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="10" y="37"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnter>
+						GameTooltip_AddNewbieTip(self,GDC_GDP, 1.0, 0.0, 0.0, GDC_GDP_TEXT, 1)
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="GetDKP_Config_FrameTab2" inherits="GDCFrameTabTemplate" id="2" text="GDC_GDA">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="GetDKP_Config_FrameTab1" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="-14" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnter>
+						GameTooltip_AddNewbieTip(self,GDC_GDA, 1.0, 0.0, 0.0, GDC_GDA_TEXT, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="GetDKP_Config_FrameTab3" inherits="GDCFrameTabTemplate" id="3" text="GDC_GDL">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="GetDKP_Config_FrameTab2" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="-14" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnter>
+						GameTooltip_AddNewbieTip(self,GDC_GDL, 1.0, 0.0, 0.0, GDC_GDL_TEXT, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="GetDKP_Config_FrameTab4" inherits="GDCFrameTabTemplate" id="4" text="GDC_SCALE">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="GetDKP_Config_FrameTab3" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="-14" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnter>
+						GameTooltip_AddNewbieTip(self,GDC_SCALE, 1.0, 0.0, 0.0, GDC_SCALE_TEXT, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+	<Frame name="GDC_GDL_ASK_SEND" parent="UIParent" toplevel="true" movable="true" enableMouse="true" hidden = "true">
+		<Size>
+			<AbsDimension x="200" y="124" />
+		</Size>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,self:GetName());
+				self.TimeSinceLastUpdate3 = 0;
+				self:RegisterForDrag("LeftButton");
+			</OnLoad>
+			<OnUpdate>
+				GetDKP_Config_OnUpdate3(self, elapsed);
+			</OnUpdate>
+			<OnDragStart>
+				self:StartMoving();
+				self.isMoving = true;
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing();
+				self.isMoving = false;
+			</OnDragStop>
+		</Scripts>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="236" y="-54" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer>
+				<FontString name="GDC_GDL_ASK_SEND_TEXT" inherits="GameFontNormalSmall" text="GDC_GDL_ASK_SEND_DATA_TEXT">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="47" y="-20" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Frames>
+			<StatusBar name="GetDKP_Config_Frame_Send_StatusBar2" drawLayer="BACKGROUND" >
+						<Size>
+							<AbsDimension x="176" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT"  relativeTo="GDC_GDL_ASK_SEND">
+								<Offset>
+									<AbsDimension  x="12" y="-85"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<Texture name="$parentLeft" file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+									<Size>
+										<AbsDimension x="95" y="32"/>
+									</Size>
+									<Anchors>
+										<Anchor point="LEFT">
+											<Offset>
+												<AbsDimension  x="-7" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</Texture>
+								<Texture name="$parentRight" file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+									<Size>
+										<AbsDimension x="95" y="32"/>
+									</Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset>
+												<AbsDimension  x="7" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</Texture>
+								<FontString name="GDL_send_Show2" inherits="GameFontNormal" text="GDC_SEND" hidden = "true">
+									<Anchors>
+										<Anchor point="CENTER" relativePoint="MIDDLE" relativeTo="GetDKP_Config_Frame_Send_StatusBar2">
+											<Offset>
+												<AbsDimension x="0" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+						<BarTexture name="$parentBar" file="Interface\PaperDollInfoFrame\UI-Character-Skills-Bar"/>
+						<BarColor r="1.0" g ="0.0" b="0.0" a="1"/>
+						<Scripts>
+							<OnLoad>
+							
+							</OnLoad>
+						</Scripts>
+					</StatusBar>
+			<Button name="GDC_GDL_ASK_SEND_BUTTON2" inherits="UIPanelButtonTemplate" text="GDC_GDL_ASK_SEND_NO_TEXT">
+				<Size x="44" y="20" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="116" y="-55" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GDC_GDL_ASK_SEND:Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="GDC_GDL_ASK_SEND_BUTTON1" inherits="UIPanelButtonTemplate" text="GDC_GDL_ASK_SEND_YES_TEXT">
+				<Size x="44" y="20" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="34" y="-55" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GetDKP_List_Load_Send();
+						GDC_GDL_ASK_SEND_BUTTON2:Hide();
+						GDC_GDL_ASK_SEND_BUTTON1:Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+
+	
+	<Button name="GetDKP_Config_ButtonFrame" parent="Minimap" movable="true" enableMouse="true" hidden="true" frameStrata="low">
+		<Size>
+			<AbsDimension x="32" y="32"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="Minimap" relativePoint="LEFT">
+				<Offset>
+					<AbsDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<NormalTexture file="Interface\Icons\INV_Misc_Head_Dragon_Black" relativeTo="GetDKP_Config_ButtonFrame">
+			<Size>
+				<AbsDimension x="20" y="20"/>
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="-1" y="1"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</NormalTexture>
+		<PushedTexture file="Interface\Icons\INV_Misc_Head_Dragon_Black" relativeTo="GetDKP_Config_ButtonFrame">
+			<Size>
+				<AbsDimension x="20" y="20"/>
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</PushedTexture>
+		<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+		<Layers>
+			<Layer level="OVERLAY">
+				<Texture name="$parentFrame" file="Interface\Minimap\MiniMap-TrackingBorder">
+					<Size>
+						<AbsDimension x="52" y="52"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+				
+				<Scripts>
+					<OnLoad>
+						self:RegisterForClicks('LeftButtonUp', 'RightButtonUp');
+						self.TimeSinceLastUpdate2 = 0;
+						self:RegisterForDrag("LeftButton");
+					</OnLoad>
+					<OnClick>
+						GetDKP_Config_Button_OnClick(self, button);
+					</OnClick>
+					<OnEnter>
+						GetDKP_Config_Button_Tooltip(self, motion);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+					<OnUpdate>
+						GetDKP_Config_OnUpdate2(self, elapsed);
+					</OnUpdate>
+					<OnDragStart>
+					self:StartMoving();
+						self.isMoving = true;
+					</OnDragStart>
+					<OnDragStop>
+						self:StopMovingOrSizing();
+						self.isMoving = false;
+					</OnDragStop>
+					<!-- <OnMouseDown>
+						GetDKP_Config_Button_Move();
+					</OnMouseDown>
+					<OnMouseUP>
+						self:StopMovingOrSizing();
+						self.isMoving = false;
+					</OnMouseUP> -->
+				</Scripts>
+	</Button>
+	
+	
+
+</Ui>

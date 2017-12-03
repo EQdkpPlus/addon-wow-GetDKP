@@ -1,0 +1,35 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="GetDKPTitan.lua"/>
+	<Script file="GetDKPTitan_Localization.lua"/>
+	<Frame parent="UIParent">
+		<Frames>
+			<Button name="TitanPanelGETDKPButton" inherits="TitanPanelComboTemplate" frameStrata="FULLSCREEN" toplevel="true">
+				<Scripts>
+					<OnLoad>
+						if (TitanSettings) then
+							TitanPanelGETDKPButton_OnLoad(self);
+							TitanPanelButton_OnLoad(self);
+						end;
+					</OnLoad>
+					<OnEvent>
+						if (TitanSettings) then
+							TitanPanelGETDKPButton_OnEvent();
+						end;
+					</OnEvent>
+					<OnClick>
+						if (TitanSettings) then
+							TitanPanelGETDKPButton_OnClick(self, button);
+							TitanPanelButton_OnClick(self, button);
+						end;
+					</OnClick>
+					<OnUpdate>
+						if (TitanSettings) then
+							TitanPanelGETDKP_Update()
+						end;
+					</OnUpdate>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+</Ui>

@@ -1,0 +1,2935 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+	<!-- Get DKP List Script loading -->
+	
+	<Script file="GetDKPList.lua"/>
+	
+	
+	<Font name="GDAFontNormal" inherits="MasterFont" font="Fonts\FRIZQT__.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="8"/>
+		</FontHeight>
+		<Color r="0.9" g="0.9" b="1"/>
+	</Font>
+	<Font name="GDLFontLink" inherits="MasterFont" font="Fonts\FRIZQT__.TTF" virtual="true">
+		<FontHeight>
+			<AbsValue val="10"/>
+		</FontHeight>
+		<Color r="1.0" g="1.0" b="1.0"/>
+	</Font>
+	<!-- button templets -->
+	<Button name="GDL_Text_Link" virtual="true">
+		<Size>
+			<AbsDimension x="10" y="24"/>
+		</Size>
+		<ButtonText>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="8" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<Scripts>
+			<OnClick>
+				PlaySound("igMainMenuOptionCheckBoxOn");
+			</OnClick>
+		</Scripts>
+	</Button>
+	<Button name="GDL_Playerlist_FrameColumnHeaderTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="10" y="24"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="5" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.078125" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentMiddle" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="53" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.078125" right="0.90625" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="4" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.90625" right="0.96875" top="0" bottom="0.75"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnClick>
+				<!-- if ( self.sortType ) then
+					SortWho(self.sortType);
+				end -->
+				PlaySound("igMainMenuOptionCheckBoxOn");
+			</OnClick>
+		</Scripts>
+		<ButtonText inherits="GameFontNormalSmall">
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="8" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<NormalFont inherits="GameFontHighlightSmall"/>
+		<HighlightTexture name="$parentHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="$parentLeft">
+					<Offset>
+						<AbsDimension x="-2" y="5"/>
+					</Offset>
+				</Anchor>
+				<Anchor point="BOTTOMRIGHT" relativeTo="$parentRight">
+					<Offset>
+						<AbsDimension x="2" y="-7"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+	<Button name="GDL_NonsetItemlist_FrameColumnHeaderTemplate1" virtual="true">
+		<Size>
+			<AbsDimension x="10" y="24"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="5" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.078125" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentMiddle" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="53" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.078125" right="0.90625" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="4" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.90625" right="0.96875" top="0" bottom="0.75"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnClick>
+				<!-- if ( self.sortType ) then
+					SortWho(self.sortType);
+				end -->
+				PlaySound("igMainMenuOptionCheckBoxOn");
+			</OnClick>
+		</Scripts>
+		<ButtonText inherits="GameFontNormalSmall">
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="8" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<NormalFont inherits="GameFontHighlightSmall"/>
+		<HighlightTexture name="$parentHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="$parentLeft">
+					<Offset>
+						<AbsDimension x="-2" y="5"/>
+					</Offset>
+				</Anchor>
+				<Anchor point="BOTTOMRIGHT" relativeTo="$parentRight">
+					<Offset>
+						<AbsDimension x="2" y="-7"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+	<Button name="GDL_NonsetItemlist_FrameColumnHeaderTemplate2" virtual="true">
+		<Size>
+			<AbsDimension x="10" y="24"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="5" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.078125" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentMiddle" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="53" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.078125" right="0.90625" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="4" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.90625" right="0.96875" top="0" bottom="0.75"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnClick>
+				<!-- if ( self.sortType ) then
+					SortWho(self.sortType);
+				end -->
+				PlaySound("igMainMenuOptionCheckBoxOn");
+			</OnClick>
+		</Scripts>
+		<ButtonText inherits="GameFontNormalSmall">
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="8" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<NormalFont inherits="GameFontHighlightSmall"/>
+		<HighlightTexture name="$parentHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="$parentLeft">
+					<Offset>
+						<AbsDimension x="-2" y="5"/>
+					</Offset>
+				</Anchor>
+				<Anchor point="BOTTOMRIGHT" relativeTo="$parentRight">
+					<Offset>
+						<AbsDimension x="2" y="-7"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+	<Button name="GDL_Playerlist_ButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="363" y="16"/>
+		</Size>
+		<Layers>
+			<Layer level="BORDER">
+				<FontString name="$parentName" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="190" y="14"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="12" y="-3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentClass" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="80" y="14"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentName" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentDKP" inherits="GameFontHighlightSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="70" y="14"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentClass" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentDKP_Atrib" inherits="GameFontHighlightSmall" justifyH="CENTER">
+					<Size>
+						<AbsDimension x="90" y="14"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentDKP" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+			</OnLoad>
+<!-- 			<OnClick>
+				if (GDKPvar_save["ShowItems"] == "true") then
+					if (not GDL_Itemlist_Frame:IsVisible() and not GDL_NonsetItemlist_Frame:IsVisible()) then
+						GDL_Itemlist_Toggle(button,self:GetID());
+						GDL_Itemlist_Frame_Show = true;
+					elseif (GDL_Itemlist_FrameTitleText.name == GDL_Players[self:GetID()+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name and GDL_Itemlist_Frame:IsVisible()) then
+						if (GDL_Itemlist_Frame_Show) then
+							GDL_Itemlist_Frame_Show = hide;
+						else
+							GDL_Itemlist_Frame_Show = true;
+						end;
+						GDL_Itemlist_Toggle(button,self:GetID());
+					elseif (GDL_NonsetItemlist_FrameTitleText.name == GDL_Players[self:GetID()+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name and GDL_NonsetItemlist_Frame:IsVisible()) then
+						if (GDL_Itemlist_Frame_Show) then
+							GDL_Itemlist_Frame_Show = hide;
+						else
+							GDL_Itemlist_Frame_Show = true;
+						end;
+						GDL_Itemlist_Toggle(button,self:GetID());
+					elseif (GDL_Itemlist_FrameTitleText.name ~= GDL_Players[self:GetID()+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name and GDL_Itemlist_Frame:IsVisible()) then
+						GDL_Itemlist_Frame_Show = true;
+						GDL_Itemlist_Toggle(button,self:GetID());
+					elseif (GDL_NonsetItemlist_FrameTitleText.name ~= GDL_Players[self:GetID()+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name and GDL_NonsetItemlist_Frame:IsVisible()) then
+						GDL_Itemlist_Frame_Show = true;
+						GDL_Itemlist_Toggle(button,self:GetID());
+					else	
+						GDL_Itemlist_Frame_Show = hide;
+					end;
+					
+				else
+					GDL_Itemlist_Toggle(button,self:GetID());
+				end;
+				PlaySound("igMainMenuOptionCheckBoxOn");
+			</OnClick> -->
+<!-- 			<OnEnter>
+				if (GDKPvar_save["ShowItems"] == "true") then
+					if (GDL_Itemlist_Frame:IsVisible() or GDL_NonsetItemlist_Frame:IsVisible()) then
+						if (not GDL_Itemlist_Frame_Show) then
+							GDL_Itemlist_Toggle(motion,self:GetID());
+						end;
+					else
+						GDL_Itemlist_Toggle(motion,self:GetID());
+						GDL_Itemlist_Frame_Show = hide;
+					end;
+				end;
+			</OnEnter> -->
+<!-- 			<OnLeave>
+				if (GDKPvar_save["ShowItems"] == "true") then
+					if (not GDL_Itemlist_Frame_Show) then
+						GDL_Itemlist_Frame:Hide();
+						GDL_NonsetItemlist_Frame:Hide();
+					end;
+				end;
+			</OnLeave> -->
+		</Scripts>
+		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD">
+			<Size>
+				<AbsDimension x="363" y="16"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOP">
+					<Offset>
+						<AbsDimension x="5" y="-2"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+	<Button name="GDL_NonsetItemlist_ButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="288" y="32"/>
+		</Size>
+		<NormalTexture name="$parentNormalItemTexture" file="Interface\Buttons\UI-Quickslot2">
+			<Size>
+				<AbsDimension x="40" y="40"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-1"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</NormalTexture>
+		<Layers>
+			<Layer level = "ARTWORK">
+				<Texture name="$parent_Icon">
+					<Size>
+						<AbsDimension x="20" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-10"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BORDER">
+				<FontString name="$parentItemName" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="190" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="32" y="-3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentItemDKP" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="98" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentItemName" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+			</OnLoad>
+			<OnClick>
+				GDL_NonSetItem_Link(button);
+				PlaySound("igMainMenuOptionCheckBoxOn");
+			</OnClick>
+			<OnEnter>
+				GDL_ToolTip(self,"set",self:GetID(),0,"GDL_NonsetItemlist_FrameButton");
+			</OnEnter>
+			<OnLeave>
+				ItemRefTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD">
+			<Size>
+				<AbsDimension x="288" y="34"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOP">
+					<Offset>
+						<AbsDimension x="5" y="-2"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+	<Button name="GDL_Itemlist_ButtonTemplate" virtual="true" hidden="false">
+        <Size>
+			<AbsDimension x="35" y="35"/>
+		</Size>
+		<NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-Quickslot2">
+			<Size>
+				<AbsDimension x="64" y="64"/>
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="-1"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</NormalTexture>
+			<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
+			<PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"/>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parent_Icon">
+					<Size>
+						<AbsDimension x="36" y="35"/>
+					</Size>
+				
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parent_Tex1" file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+					<Size>
+						<AbsDimension x="40" y="45"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="-73" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.29296875" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture name="$parent_Tex2" file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+					<Size>
+						<AbsDimension x="40" y="45"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="-43" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.70703125" right="1.0" top="0" bottom="1.0"/>
+				</Texture>
+				<!--
+				<FontString name="$parent_Name" inherits="GDLFontLink" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="205" y="12"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Icon" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="-212" y="-8"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString> -->
+				<FontString name="$parent_Extra" inherits="GDLFontLink" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="80" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Icon" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="-90" y="-14"/>
+							</Offset>
+						</Anchor>
+
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+			</OnLoad>
+			<OnClick>
+				PlaySound("igMainMenuOptionCheckBoxOn");
+				GDL_Itemlist_ItemLink(button,self:GetID());
+			</OnClick>
+			<OnEnter>
+				GDL_ToolTip(self,"set",self:GetID());
+			</OnEnter>
+			<OnLeave>
+				ItemRefTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+	<Button name="GDL_Itemlist_ButtonTemplate2" virtual="true" hidden="false">
+        <Size>
+			<AbsDimension x="35" y="35"/>
+		</Size>
+			<NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-Quickslot2">
+			<Size>
+				<AbsDimension x="64" y="64"/>
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="-1"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</NormalTexture>
+			<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
+			<PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"/>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parent_Icon">
+					<Size>
+						<AbsDimension x="36" y="35"/>
+					</Size>
+				
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parent_Tex1" file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+					<Size>
+						<AbsDimension x="40" y="45"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="47" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.29296875" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture name="$parent_Tex2" file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+					<Size>
+						<AbsDimension x="40" y="45"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="80" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.70703125" right="1.0" top="0" bottom="1.0"/>
+				</Texture>
+				<!-- <FontString name="$parent_Name" inherits="GDLFontLink" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="205" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="$parent_Icon" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="212" y="-8"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString> -->
+				<FontString name="$parent_Extra" inherits="GDLFontLink" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="80" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="$parent_Icon" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="92" y="-12"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+			</OnLoad>
+			<OnClick>
+				PlaySound("igMainMenuOptionCheckBoxOn");
+				GDL_Itemlist_ItemLink(button,self:GetID());
+			</OnClick>
+			<OnEnter>
+				GDL_ToolTip(self, "set",self:GetID());
+			</OnEnter>
+			<OnLeave>
+				ItemRefTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+	<Button name="GDL_Itemlist_ButtonTemplate3" virtual="true" hidden="false">
+        <Size>
+			<AbsDimension x="35" y="35"/>
+		</Size>
+			<NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-Quickslot2">
+			<Size>
+				<AbsDimension x="64" y="64"/>
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="-1"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</NormalTexture>
+			<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
+			<PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"/>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parent_Icon">
+					<Size>
+						<AbsDimension x="36" y="35"/>
+					</Size>
+				
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+				
+				
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+			</OnLoad>
+			<OnClick>
+				PlaySound("igMainMenuOptionCheckBoxOn");
+				GDL_Itemlist_ItemLink(button,self:GetID());
+			</OnClick>
+			<OnEnter>
+				GDL_ToolTip(self, "set",self:GetID());
+			</OnEnter>
+			<OnLeave>
+				ItemRefTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+	<Button name="GDL_Itemlist_ButtonTemplate4"  virtual="true" hidden="false">
+		<Size>
+			<AbsDimension x="240" y="20"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset>
+					<AbsDimension x="0" y="-1"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<ButtonText inherits="GameFontNormalSmall">
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="10" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<NormalFont inherits="GameFontNormalSmall"/>
+		<HighlightTexture file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD">
+			<Size>
+				<AbsDimension x="250" y="30"/>
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+			</OnLoad>
+			<OnClick>
+				PlaySound("igMainMenuOptionCheckBoxOn");
+				GDL_Itemlist_SetFrame_SetShow(self:GetID());
+			</OnClick>
+			<OnEnter>
+				GDL_ToolTip(self, "sets",self:GetID(),self.name);
+			</OnEnter>
+			<OnLeave>
+				ItemRefTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+	<Button name="GDL_Itemlist_Tooken_ButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="288" y="32"/>
+		</Size>
+		<NormalTexture name="$parentNormalItemTexture" file="Interface\Buttons\UI-Quickslot2">
+			<Size>
+				<AbsDimension x="40" y="40"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-1"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</NormalTexture>
+		<Layers>
+			<Layer level = "ARTWORK">
+				<Texture name="$parent_Icon">
+					<Size>
+						<AbsDimension x="20" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-10"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BORDER">
+				<FontString name="$parentItemName" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="190" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="32" y="-3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentItemDKP" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="98" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentItemName" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+			</OnLoad>
+			<OnClick>
+				GDL_Itemlist_Tooken_Link(button);
+				PlaySound("igMainMenuOptionCheckBoxOn");
+			</OnClick>
+			<OnEnter>
+				GDL_ToolTip(self, "set",self:GetID(),0,"GDL_Itemlist_Tooken_FrameButton");
+			</OnEnter>
+			<OnLeave>
+				ItemRefTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD">
+			<Size>
+				<AbsDimension x="288" y="34"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOP">
+					<Offset>
+						<AbsDimension x="5" y="-2"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+	<!-- Main Frame -->
+	<Frame name="GetDKP_List_Frame" toplevel="true" parent="UIParent" movable="true" enableMouse="true" hidden="true">
+		<Scripts>
+			<OnEvent>
+				GetDKP_List_OnEvent(event);
+			</OnEvent>
+			<OnUpdate>
+				GetDKP_List_OnUpdate(self, elapsed);
+			</OnUpdate>
+			<OnLoad>
+				tinsert(UISpecialFrames,self:GetName());
+				self.TimeSinceLastUpdate = 0;
+				GetDKP_List_OnLoad(self);
+				self:RegisterForDrag("LeftButton");
+			</OnLoad>
+			<OnDragStart>
+				self:StartMoving();
+				self.isMoving = true;
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing();
+				self.isMoving = false;
+			</OnDragStop>
+			
+		</Scripts>
+		<Size>
+			<AbsDimension x="520" y="564"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="0" y="-104"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<HitRectInsets>
+			<AbsInset left="0" right="30" top="0" bottom="45"/>
+		</HitRectInsets>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture file="Interface\AddOns\GetDKP\Images\GetDKP">
+					<Size>
+						<AbsDimension x="75" y="75"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="13" y="-10"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="GDLFrameTopLeft" file="Interface\ClassTrainerFrame\UI-ClassTrainer-TopLeft">
+					<Size>
+						<AbsDimension x="330" y="332"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="GDLFrameTopRight" file="Interface\ClassTrainerFrame\UI-ClassTrainer-TopRight">
+					<Size>
+						<AbsDimension x="190" y="332"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="GDLFrameBottomLeft" file="Interface\FriendsFrame\WhoFrame-BotLeft">
+					<Size>
+						<AbsDimension x="330" y="232"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="GDLFrameBottomRight" file="Interface\FriendsFrame\WhoFrame-BotRight">
+					<Size>
+						<AbsDimension x="190" y="232"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="GDLFrameTitleText" inherits="GameFontNormal">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-22"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="GDLFrameKontoText" inherits="GameFontNormal">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-55"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="GDLFrameKontoEvent" inherits="GameFontNormal">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-70"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="GDLFrameTotalPlayerText" inherits="GameFontHighlightSmall">
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-100" y="125"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="GDLFrameTotalItemText" inherits="GameFontHighlightSmall">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="30" y="125"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="GDLFrameTotalPointsText" inherits="GameFontHighlightSmall">
+					<Anchors>
+						<Anchor point="BOTTOM">
+							<Offset>
+								<AbsDimension x="-25" y="125"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="GDLFrameCloseButton" inherits="UIPanelCloseButton">
+			<Size>
+							<AbsDimension x="46" y="40"/>
+						</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-45" y="-12"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Frame name="GDL_Playerlist_Frame" setAllPoints="true" hidden="true">
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="GDLFrameDateText" inherits="GameFontHighlightSmall">
+							<Size>
+								<AbsDimension x="298" y="16"/>
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOM">
+									<Offset>
+										<AbsDimension x="-10" y="137"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="GDL_Playerlist_FrameColumnHeader1" inherits="GDL_Playerlist_FrameColumnHeaderTemplate" text="GDL_NAME">
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="20" y="-98"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								GDL_Playerlist_FrameColumn_SetWidth(160,self);
+								
+							</OnLoad>
+							<OnEvent>
+								
+							</OnEvent>
+							<OnEnter>
+								
+							</OnEnter>
+							<OnMouseUp>
+								GDL_Sort(1,button);
+							</OnMouseUp>
+						</Scripts>
+					</Button>
+					<Button name="GDL_Playerlist_FrameColumnHeader2" inherits="GDL_Playerlist_FrameColumnHeaderTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="GDL_Playerlist_FrameColumnHeader1" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="-2" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Frames>
+							<Frame name="GDL_Playerlist_FrameClassDropDown" inherits="UIDropDownMenuTemplate" id="1">
+								<Anchors>
+									<Anchor point="TOPLEFT">
+										<Offset>
+											<AbsDimension x="-15" y="0"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<Texture name="GDL_Playerlist_FrameClassDropDownHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD" hidden="true">
+											<Anchors>
+												<Anchor point="TOPLEFT">
+													<Offset>
+														<AbsDimension x="15" y="3"/>
+													</Offset>
+												</Anchor>
+												<Anchor point="BOTTOMRIGHT">
+													<Offset>
+														<AbsDimension x="-30" y="-2"/>
+													</Offset>
+												</Anchor>
+											</Anchors>
+										</Texture>
+									</Layer>
+								</Layers>
+								<Scripts>
+									<OnLoad>
+										 GDL_Playerlist_FrameClassDropDown_OnLoad(self); 
+									</OnLoad>
+									<OnShow>
+										UIDropDownMenu_Initialize(GDL_Playerlist_FrameClassDropDown, GDL_Playerlist_FrameClassDropDown_Initialize); 
+										
+									</OnShow>
+									<OnEvent>
+										GDL_Playerlist_FrameClassDropDown_OnEvent()
+									</OnEvent>
+									<OnEnter>
+										GDL_Playerlist_FrameClassDropDownHighlightTexture:Show();
+									</OnEnter>
+									<OnLeave>
+										GDL_Playerlist_FrameClassDropDownHighlightTexture:Hide();
+									</OnLeave>
+									<OnMouseUp>
+										GDL_Sort(2,button);
+									</OnMouseUp>
+								</Scripts>
+							</Frame>
+						</Frames>
+						<Scripts>
+							<OnLoad>
+								GDL_Playerlist_FrameColumn_SetWidth(120,self);
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="GDL_Playerlist_FrameColumnHeader3" inherits="GDL_Playerlist_FrameColumnHeaderTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="GDL_Playerlist_FrameColumnHeader2" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="-2" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Frames>
+							<Frame name="GDL_Playerlist_FrameKontoDropDown" inherits="UIDropDownMenuTemplate" id="1">
+								<Anchors>
+									<Anchor point="TOPLEFT">
+										<Offset>
+											<AbsDimension x="-15" y="0"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<Texture name="GDL_Playerlist_FrameKontoDropDownHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD" hidden="true">
+											<Anchors>
+												<Anchor point="TOPLEFT">
+													<Offset>
+														<AbsDimension x="15" y="3"/>
+													</Offset>
+												</Anchor>
+												<Anchor point="BOTTOMRIGHT">
+													<Offset>
+														<AbsDimension x="-30" y="-2"/>
+													</Offset>
+												</Anchor>
+											</Anchors>
+										</Texture>
+									</Layer>
+								</Layers>
+								<Scripts>
+									<OnLoad>
+										 GDL_Playerlist_FrameKontoDropDown_OnLoad(self); 
+									</OnLoad>
+									<OnShow>
+										UIDropDownMenu_Initialize(GDL_Playerlist_FrameKontoDropDown, GDL_Playerlist_FrameKontoDropDown_Initialize); 
+									</OnShow>
+									<OnEvent>
+										GDL_Playerlist_FrameKontoDropDown_OnEvent()
+									</OnEvent>
+									<OnEnter>
+										GDL_Playerlist_FrameKontoDropDownHighlightTexture:Show();
+									</OnEnter>
+									<OnLeave>
+										GDL_Playerlist_FrameKontoDropDownHighlightTexture:Hide();
+									</OnLeave>
+									<OnMouseUp>
+										GDL_Sort(3,button);
+									</OnMouseUp>
+								</Scripts>
+							</Frame>
+						</Frames>
+						<Scripts>
+							<OnLoad>
+								GDL_Playerlist_FrameColumn_SetWidth(60,self);
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="GDL_Playerlist_FrameColumnHeader4" inherits="GDL_Playerlist_FrameColumnHeaderTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="GDL_Playerlist_FrameColumnHeader3" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="15" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Frames>
+							<Frame name="GDL_Playerlist_FrameKontoAtribDropDown" inherits="UIDropDownMenuTemplate" id="1">
+								<Anchors>
+									<Anchor point="TOPLEFT">
+										<Offset>
+											<AbsDimension x="-15" y="0"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<Texture name="GDL_Playerlist_FrameKontoAtribDropDownHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD" hidden="true">
+											<Anchors>
+												<Anchor point="TOPLEFT">
+													<Offset>
+														<AbsDimension x="15" y="3"/>
+													</Offset>
+												</Anchor>
+												<Anchor point="BOTTOMRIGHT">
+													<Offset>
+														<AbsDimension x="-30" y="-2"/>
+													</Offset>
+												</Anchor>
+											</Anchors>
+										</Texture>
+									</Layer>
+								</Layers>
+								<Scripts>
+									<OnLoad>
+										 GDL_Playerlist_FrameKontoAtribDropDown_OnLoad(self); 
+									</OnLoad>
+									<OnShow>
+										UIDropDownMenu_Initialize(GDL_Playerlist_FrameKontoAtribDropDown, GDL_Playerlist_FrameKontoAtribDropDown_Initialize); 
+									</OnShow>
+									<OnEvent>
+										GDL_Playerlist_FrameKontoAtribDropDown_OnEvent()
+									</OnEvent>
+									<OnEnter>
+										GDL_Playerlist_FrameKontoAtribDropDownHighlightTexture:Show();
+									</OnEnter>
+									<OnLeave>
+										GDL_Playerlist_FrameKontoAtribDropDownHighlightTexture:Hide();
+									</OnLeave>
+									<OnMouseUp>
+										GDL_Sort(4,button);
+									</OnMouseUp>
+								</Scripts>
+							</Frame>
+						</Frames>
+						<Scripts>
+							<OnLoad>
+								GDL_Playerlist_FrameColumn_SetWidth(110,self);
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="GDL_Playerlist_FrameColumnHeader5" inherits="GDL_Playerlist_FrameColumnHeaderTemplate" hidden="true">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="GDL_Playerlist_FrameColumnHeader2" relativePoint="TOP">
+								<Offset>
+									<AbsDimension x="92" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								GDL_Playerlist_FrameColumn_SetWidth(70,self);
+								
+							</OnLoad>
+							<OnMouseUp>
+								GDL_Sort(3,button);
+							</OnMouseUp>
+						</Scripts>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton1" inherits="GDL_Playerlist_ButtonTemplate" id="1">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_Frame">
+								<Offset>
+									<AbsDimension x="15" y="-123"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton2" inherits="GDL_Playerlist_ButtonTemplate" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton3" inherits="GDL_Playerlist_ButtonTemplate" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton4" inherits="GDL_Playerlist_ButtonTemplate" id="4">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton5" inherits="GDL_Playerlist_ButtonTemplate" id="5">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton6" inherits="GDL_Playerlist_ButtonTemplate" id="6">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton7" inherits="GDL_Playerlist_ButtonTemplate" id="7">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton6" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton8" inherits="GDL_Playerlist_ButtonTemplate" id="8">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton9" inherits="GDL_Playerlist_ButtonTemplate" id="9">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton8" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton10" inherits="GDL_Playerlist_ButtonTemplate" id="10">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton9" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton11" inherits="GDL_Playerlist_ButtonTemplate" id="11">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton10" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton12" inherits="GDL_Playerlist_ButtonTemplate" id="12">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton11" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton13" inherits="GDL_Playerlist_ButtonTemplate" id="13">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton12" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton14" inherits="GDL_Playerlist_ButtonTemplate" id="14">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton13" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton15" inherits="GDL_Playerlist_ButtonTemplate" id="15">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton14" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton16" inherits="GDL_Playerlist_ButtonTemplate" id="16">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton15" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton17" inherits="GDL_Playerlist_ButtonTemplate" id="17">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton16" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Playerlist_FrameButton18" inherits="GDL_Playerlist_ButtonTemplate" id="18">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Playerlist_FrameButton17" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<ScrollFrame name="GDL_Playerlist_ScrollFrame" inherits="FauxScrollFrameTemplate">
+						<Size>
+							<AbsDimension x="296" y="322"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPRIGHT" relativeTo="GetDKP_List_Frame" relativePoint="TOPRIGHT">
+								<Offset>
+									<AbsDimension x="-87" y="-124"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnVerticalScroll>
+								FauxScrollFrame_OnVerticalScroll(self, offset, 8, GDL_Playerlist_Update); 
+							</OnVerticalScroll>
+							<OnShow>
+								GDL_Playerlist_Update();
+							</OnShow>
+						</Scripts>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+									<Size>
+										<AbsDimension x="31" y="256"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+											<Offset>
+												<AbsDimension x="-2" y="5"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.484375" top="0" bottom="1.0"/>
+								</Texture>
+								<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+									<Size>
+										<AbsDimension x="31" y="106"/>
+									</Size>
+									<Anchors>
+										<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+											<Offset>
+												<AbsDimension x="-2" y="-2"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.515625" right="1.0" top="0" bottom="0.4140625"/>
+								</Texture>
+							</Layer>
+						</Layers>
+					</ScrollFrame>
+					<EditBox name="GDL_Playerlist_EditBox" autoFocus="false" frameStrata="HIGH" historyLines="32">
+						<Size>
+							<AbsDimension x="296" y="32"/>
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOM">
+								<Offset>
+									<AbsDimension x="-50" y="89"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnShow>
+								self:ClearFocus();
+							</OnShow>
+							<OnEnterPressed>
+								GDL_Playerlist_EditBox_OnEnterPressed();
+								self:ClearFocus();
+							</OnEnterPressed>
+							<OnEscapePressed>
+								self:ClearFocus();
+								GDL_Playerlist_EditBox:SetText("");
+								GDL_Playerlist_EditBox_OnEnterPressed();
+							</OnEscapePressed>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" bytes="256"/>
+					</EditBox>
+					<Button name="GDL_Playerlist_RefreshButton" inherits="UIPanelButtonTemplate" text="GDL_REFRESH">
+						<Size>
+							<AbsDimension x="167" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT">
+								<Offset>
+									<AbsDimension x="-60" y="73"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GDL_Playerlist_Refresh();
+							</OnClick>
+						</Scripts>
+					</Button>
+<!-- 					<Button name="GDL_Playerlist_ShowItemButton" inherits="UIPanelButtonTemplate" text="GDL_NONSETITEM">
+						<Size>
+							<AbsDimension x="150" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="GDL_Playerlist_RefreshButton" relativePoint="LEFT">
+								<Offset>
+									<AbsDimension x="-1" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_List_ButtonToggle();
+							</OnClick>
+						</Scripts>
+					</Button> -->
+					<Button name="GDL_Playerlist_InRaidButton" inherits="UIPanelButtonTemplate">
+						<Size>
+							<AbsDimension x="122" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="22" y="73"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GetDKP_List_InRaidButtonToggle();
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+			<Frame name="GDL_Itemlist_Frame" toplevel="true" enableMouse="true"  hidden="true" movable="true">
+				<Size>
+					<AbsDimension x="384" y="512"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="GDL_Playerlist_Frame" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="30" top="0" bottom="45"/>
+				</HitRectInsets>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="GDL_Itemlist_FramePortrait">
+							<Size>
+								<AbsDimension x="60" y="60"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="7" y="-6"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<Texture file="Interface\AddOns\GetDKP\Images\SetItemWindowLo">
+							<Size>
+								<AbsDimension x="256" y="256"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT"/>
+							</Anchors>
+						</Texture>
+						<Texture file="Interface\AddOns\GetDKP\Images\SetItemWindowRo">
+							<Size>
+								<AbsDimension x="128" y="256"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="256" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<Texture file="Interface\AddOns\GetDKP\Images\SetItemWindowLu">
+							<Size>
+								<AbsDimension x="256" y="256"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-256"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<Texture file="Interface\AddOns\GetDKP\Images\SetItemWindowRu">
+							<Size>
+								<AbsDimension x="128" y="256"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="256" y="-256"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<FontString name="GDL_Itemlist_FrameTitleText" inherits="GameFontHighlight" text="GDA_HEADER_SET">
+							<Size>
+								<AbsDimension x="300" y="14"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP" relativePoint="TOP">
+									<Offset>
+										<AbsDimension x="0" y="-17"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<!-- <FontString name="GDL_Itemlist_Setname" inherits="GameFontNormalSmall" >
+							<Size>
+								<AbsDimension x="300" y="14"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GDL_Itemlist_FrameTitleText" relativePoint="BOTTOM">
+									<Offset>
+										<AbsDimension x="15" y="-18"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString> -->
+						<FontString name="GDL_Itemlist_Setname2" inherits="GameFontNormalSmall" >
+							<Size>
+								<AbsDimension x="300" y="14"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="GDL_Itemlist_FrameTitleText" relativePoint="BOTTOM">
+									<Offset>
+										<AbsDimension x="15" y="-33"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+					<Layer level="BACKGROUND">
+						<Texture name="GDL_Itemlist_BackgroundTopLeft">
+							<Size>
+								<AbsDimension x="256" y="255"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="22" y="-76"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<Texture name="GDL_Itemlist_BackgroundTopRight">
+							<Size>
+								<AbsDimension x="62" y="255"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_BackgroundTopLeft" relativePoint="TOPRIGHT"/>
+							</Anchors>
+						</Texture>
+						<Texture name="GDL_Itemlist_BackgroundBotLeft">
+							<Size>
+								<AbsDimension x="256" y="128"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_BackgroundTopLeft" relativePoint="BOTTOMLEFT"/>
+							</Anchors>
+						</Texture>
+						<Texture name="GDL_Itemlist_BackgroundBotRight">
+							<Size>
+								<AbsDimension x="62" y="128"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_BackgroundTopLeft" relativePoint="BOTTOMRIGHT"/>
+							</Anchors>
+						</Texture>
+					</Layer>
+					<Layer level="OVERLAY">
+						<FontString name="GDL_Itemlist_FrameItem17_Extra" inherits="GDLFontLink" >
+							<Size>
+								<AbsDimension x="205" y="10"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset>
+										<AbsDimension x="56" y="-194"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="GDL_Itemlist_FrameItem18_Extra" inherits="GDLFontLink" justifyH="RIGHT">
+							<Size>
+								<AbsDimension x="205" y="10"/>
+							</Size>
+							<Anchor point="LEFT">
+								<Offset>
+									<AbsDimension x="56" y="-225"/>
+								</Offset>
+							</Anchor>
+						</FontString>
+						<FontString name="GDL_Itemlist_FrameItem19_Extra" inherits="GDLFontLink" justifyH="RIGHT">
+							<Size>
+								<AbsDimension x="205" y="10"/>
+							</Size>
+							<Anchor point="LEFT">
+								<Offset>
+									<AbsDimension x="56" y="-256"/>
+								</Offset>
+							</Anchor>
+						</FontString>
+						<!-- ******************************************************************************* -->
+						<Texture name="GDL_Itemlist_FrameItem17_Tex1" file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+							<Size>
+								<AbsDimension x="75" y="45"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="-43" y="-194"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.29296875" top="0" bottom="1.0"/>
+						</Texture>
+						<Texture name="GDL_Itemlist_FrameItem17_Tex2" file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+							<Size>
+								<AbsDimension x="75" y="45"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="21" y="-194"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.70703125" right="1.0" top="0" bottom="1.0"/>
+						</Texture>
+						<!-- ******************************************************************************* -->
+						<Texture name="GDL_Itemlist_FrameItem18_Tex1" file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+							<Size>
+								<AbsDimension x="75" y="45"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="-43" y="-225"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.29296875" top="0" bottom="1.0"/>
+						</Texture>
+						<Texture name="GDL_Itemlist_FrameItem18_Tex2" file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+							<Size>
+								<AbsDimension x="75" y="45"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="21" y="-225"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.70703125" right="1.0" top="0" bottom="1.0"/>
+						</Texture>
+						<!-- ******************************************************************************* -->
+						<Texture name="GDL_Itemlist_FrameItem19_Tex1" file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+							<Size>
+								<AbsDimension x="75" y="45"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="-43" y="-256"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.29296875" top="0" bottom="1.0"/>
+						</Texture>
+						<Texture name="GDL_Itemlist_FrameItem19_Tex2" file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+							<Size>
+								<AbsDimension x="75" y="45"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="21" y="-256"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.70703125" right="1.0" top="0" bottom="1.0"/>
+						</Texture>
+						<!-- ******************************************************************************* -->
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="GDL_Itemlist_FrameHelpToggleButtonNext">
+						<Size>
+							<AbsDimension x="25" y="25"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset>
+									<AbsDimension x="-35" y="-43"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GDL_Itemlist_NextSet();
+								PlaySound("igMainMenuOptionCheckBoxOn");
+							</OnClick>
+						</Scripts>
+						<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up"/>
+						<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Down"/>
+						<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled"/>
+						<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+						<ButtonText>
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</ButtonText>
+						<NormalFont inherits="GameFontNormalSmall"/>
+						<PushedTextOffset>
+							<AbsDimension x="0" y="0"/>
+						</PushedTextOffset>
+					</Button>
+					<Button name="GDL_Itemlist_FrameHelpToggleButtonPrev">
+						<Size>
+							<AbsDimension x="25" y="25"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="70" y="-43"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GDL_Itemlist_PrevSet();
+								PlaySound("igMainMenuOptionCheckBoxOn");
+							</OnClick>
+						</Scripts>
+						<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Up"/>
+						<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Down"/>
+						<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Disabled"/>
+						<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+						<ButtonText>
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</ButtonText>
+						<NormalFont inherits="GameFontNormalSmall"/>
+						<PushedTextOffset>
+							<AbsDimension x="0" y="0"/>
+						</PushedTextOffset>
+					</Button>
+					<Button name="GDL_Itemlist_FrameCloseButton" inherits="UIPanelCloseButton">
+						<Anchors>
+							<Anchor point="CENTER" relativePoint="TOPRIGHT">
+								<Offset>
+									<AbsDimension x="-46" y="-25"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameCancelButton" inherits="UIPanelButtonTemplate" text="CLOSE">
+						<Size>
+							<AbsDimension x="80" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="CENTER" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="301" y="-418"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								HideUIPanel(self:GetParent());
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="GDL_Itemlist_FrameResetButton" inherits="UIPanelButtonTemplate" text="RESET">
+						<Size>
+							<AbsDimension x="95" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="CENTER"  relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="69" y="-418"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								GDL_Itemlist_Model:Undress();
+								PlaySound("gsTitleOptionOK");
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="GDL_Itemlist_Setname">
+						<Size>
+							<AbsDimension x="220" y="17"/>
+						</Size>
+						<Anchors>
+							<Anchor point="CENTER" relativeTo="GDL_Itemlist_FrameTitleText" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="15" y="-20"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<ButtonText inherits="GameFontNormalSmall">
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="8" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</ButtonText>
+						<NormalFont inherits="GameFontNormalSmall"/>
+						<HighlightTexture name="$parentHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD">
+							<Size>
+								<AbsDimension x="220" y="25"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</HighlightTexture>
+						<Scripts>
+							<OnClick>
+								PlaySound("gsTitleOptionOK");
+							</OnClick>
+							<OnEnter>
+							
+							if (GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T4" or GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T5" or GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T6") then
+								GDL_Itemlist_SetFrame:Show();
+								PlaySound("gsTitleOptionOK");
+							end;
+							</OnEnter>
+							<OnLeave>
+								GameTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</Button>
+					<Button name="GDL_Itemlist_SetFrame" frameStrata="DIALOG" enableMouse="true"  hidden="true">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="GDL_Itemlist_Setname">
+								<Offset>
+									<AbsDimension x="0" y="-25"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Size>
+							<AbsDimension x="240" y="100"/>
+						</Size>
+						<Frames>
+							<Frame name="$parentBackdrop" setAllPoints="true">
+								<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+									<BackgroundInsets>
+										<AbsInset left="11" right="12" top="12" bottom="11"/>
+									</BackgroundInsets>
+									<TileSize>
+										<AbsValue val="32"/>
+									</TileSize>
+									<EdgeSize>
+										<AbsValue val="32"/>
+									</EdgeSize>
+								</Backdrop>
+								<Size>
+									<AbsDimension x="220" y="100"/>
+								</Size>
+								<Anchors>
+									<Anchor point="TOP" relativeTo="GDL_Itemlist_Setname" >
+										<Offset>
+											<AbsDimension x="0" y="-25"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</Frame>
+						
+							<Button name="GDL_Itemlist_SetFrameButton1" inherits="GDL_Itemlist_ButtonTemplate4" id="1" hidden="true">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="GDL_Itemlist_SetFrame">
+										<Offset>
+											<AbsDimension x="0" y="-10"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</Button>
+							<Button name="GDL_Itemlist_SetFrameButton2" inherits="GDL_Itemlist_ButtonTemplate4" id="2" hidden="true">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="GDL_Itemlist_SetFrameButton1">
+										<Offset>
+											<AbsDimension x="0" y="-20"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</Button>
+							<Button name="GDL_Itemlist_SetFrameButton3" inherits="GDL_Itemlist_ButtonTemplate4" id="3" hidden="true">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="GDL_Itemlist_SetFrameButton2">
+										<Offset>
+											<AbsDimension x="0" y="-20"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</Button>
+							<Button name="GDL_Itemlist_SetFrameButton4" inherits="GDL_Itemlist_ButtonTemplate4" id="4" hidden="true">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="GDL_Itemlist_SetFrameButton3">
+										<Offset>
+											<AbsDimension x="0" y="-20"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</Button>
+						</Frames>
+						<Scripts>
+							<OnLoad>
+								self.TimeSinceLastUpdate = 0;
+							</OnLoad>
+							<OnShow>
+								GDL_Itemlist_SetFrameSetHeight();
+								GDL_ItemList_SetFrameSetLink();
+							</OnShow>
+							<OnUpdate>
+								GDL_ItemList_OnUpdate(self, elapsed, GDL_ItemList_Stop);
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<Button name="GDL_Itemlist_TookenButton" frameStrata="DIALOG" enableMouse="true"  hidden="true">
+						<Frames>
+							<Frame name="GDL_Itemlist_Tooken_Frame" toplevel="true" enableMouse="true" movable="true">
+								<Size>
+									<AbsDimension x="384" y="512"/>
+								</Size>
+								<Anchors>
+									<Anchor point="LEFT" relativeTo="GDL_Itemlist_Frame" relativePoint="RIGHT">
+										<Offset>
+											<AbsDimension x="0" y="0"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<HitRectInsets>
+									<AbsInset left="0" right="30" top="0" bottom="45"/>
+								</HitRectInsets>
+								<Layers>
+									<Layer level="BACKGROUND">
+										<Texture file="Interface\AddOns\GetDKP\Images\GetDKP">
+											<Size>
+												<AbsDimension x="60" y="60"/>
+											</Size>
+											<Anchors>
+												<Anchor point="TOPLEFT">
+													<Offset>
+														<AbsDimension x="7" y="-6"/>
+													</Offset>
+												</Anchor>
+											</Anchors>
+										</Texture>
+									</Layer>
+									<Layer level="ARTWORK">
+										<Texture name="GDL_Itemlist_Tooken_FrameTopLeft" file="Interface\PaperDollInfoFrame\UI-Character-General-TopLeft">
+											<Size>
+												<AbsDimension x="256" y="256"/>
+											</Size>
+											<Anchors>
+												<Anchor point="TOPLEFT">
+													<Offset>
+														<AbsDimension x="0" y="0"/>
+													</Offset>
+												</Anchor>
+											</Anchors>
+										</Texture>
+										<Texture name="GDL_Itemlist_Tooken_FrameTopRight" file="Interface\PaperDollInfoFrame\UI-Character-General-TopRight">
+											<Size>
+												<AbsDimension x="144" y="256"/>
+											</Size>
+											<Anchors>
+												<Anchor point="TOPRIGHT">
+													<Offset>
+														<AbsDimension x="0" y="0"/>
+													</Offset>
+												</Anchor>
+											</Anchors>
+										</Texture>
+										<Texture name="GDL_Itemlist_Tooken_FrameBottomLeft" file="Interface\PaperDollInfoFrame\UI-Character-General-BottomLeft">
+											<Size>
+												<AbsDimension x="256" y="256"/>
+											</Size>
+											<Anchors>
+												<Anchor point="BOTTOMLEFT">
+													<Offset>
+														<AbsDimension x="0" y="0"/>
+													</Offset>
+												</Anchor>
+											</Anchors>
+										</Texture>
+										<Texture name="GDL_Itemlist_Tooken_FrameBottomRight" file="Interface\PaperDollInfoFrame\UI-Character-General-BottomRight">
+											<Size>
+												<AbsDimension x="144" y="256"/>
+											</Size>
+											<Anchors>
+												<Anchor point="BOTTOMRIGHT">
+													<Offset>
+														<AbsDimension x="0" y="0"/>
+													</Offset>
+												</Anchor>
+											</Anchors>
+										</Texture>
+									</Layer>
+									<Layer level="OVERLAY">
+										<FontString name="GDL_Itemlist_Tooken_FrameTitleText" inherits="GameFontNormal" text = "Tooken Items">
+											<Anchors>
+												<Anchor point="TOP">
+													<Offset>
+														<AbsDimension x="0" y="-17"/>
+													</Offset>
+												</Anchor>
+											</Anchors>
+										</FontString>
+									</Layer>
+								</Layers>
+								<Frames>
+									<Button name="GDL_Itemlist_Tooken_FrameCloseButton" inherits="UIPanelCloseButton">
+										<Anchors>
+											<Anchor point="TOPRIGHT">
+												<Offset>
+													<AbsDimension x="-36" y="-7"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Script>
+											
+										</Script>
+									</Button>
+									<ScrollFrame name="GDL_Itemlist_Tooken_Frame_ScrollFrame" inherits="FauxScrollFrameTemplate">
+										<Size>
+											<AbsDimension x="296" y="352"/>
+										</Size>
+										<Anchors>
+											<Anchor point="TOPRIGHT" relativeTo="GDL_Itemlist_Tooken_Frame" relativePoint="TOPRIGHT">
+												<Offset>
+													<AbsDimension x="-78" y="-77"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnVerticalScroll>
+												FauxScrollFrame_OnVerticalScroll(self, offset, 8, GDL_Itemlist_Tooken_Upate); 
+											</OnVerticalScroll>
+											<OnShow>
+												GDL_Itemlist_Tooken_Upate();
+											</OnShow>
+										</Scripts>
+										<Layers>
+											<Layer level="BACKGROUND">
+												<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+													<Size>
+														<AbsDimension x="31" y="256"/>
+													</Size>
+													<Anchors>
+														<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+															<Offset>
+																<AbsDimension x="-2" y="5"/>
+															</Offset>
+														</Anchor>
+													</Anchors>
+													<TexCoords left="0" right="0.484375" top="0" bottom="1.0"/>
+												</Texture>
+												<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+													<Size>
+														<AbsDimension x="31" y="106"/>
+													</Size>
+													<Anchors>
+														<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+															<Offset>
+																<AbsDimension x="-2" y="-2"/>
+															</Offset>
+														</Anchor>
+													</Anchors>
+													<TexCoords left="0.515625" right="1.0" top="0" bottom="0.4140625"/>
+												</Texture>
+											</Layer>
+										</Layers>
+									</ScrollFrame>
+ 									<Button name="GDL_Itemlist_Tooken_FrameColumnHeader1" inherits="GDL_NonsetItemlist_FrameColumnHeaderTemplate1" text="GDL_NONSETITEMS_HEADER_ITEMS">
+										<Anchors>
+											<Anchor point="TOPLEFT">
+												<Offset>
+													<AbsDimension x="20" y="-72"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												GDL_Playerlist_FrameColumn_SetWidth(190,self);
+												
+											</OnLoad>
+											<OnMouseUp>
+												GDL_Itemlist_Tooken_Sort(1);
+											</OnMouseUp>
+										</Scripts>
+									</Button>
+									<Button name="GDL_Itemlist_Tooken_FrameColumnHeader2" inherits="GDL_NonsetItemlist_FrameColumnHeaderTemplate2" text="GDL_NONSETITEMS_HEADER_DKP">
+										<Anchors>
+											<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_Tooken_FrameColumnHeader1" relativepoint="TOPRIGHT">
+												<Offset>
+													<AbsDimension x="0" y="0"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												GDL_Playerlist_FrameColumn_SetWidth(98,self);
+												
+											</OnLoad>
+											<OnMouseUp>
+												GDL_Itemlist_Tooken_Sort(2);
+											</OnMouseUp>
+										</Scripts>
+									</Button>
+									<Button name="GDL_Itemlist_Tooken_FrameButton1" inherits="GDL_Itemlist_Tooken_ButtonTemplate" id="1">
+										<Anchors>
+											<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_Tooken_Frame">
+												<Offset>
+													<AbsDimension x="15" y="-100"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</Button>
+									<Button name="GDL_Itemlist_Tooken_FrameButton2" inherits="GDL_Itemlist_Tooken_ButtonTemplate" id="2">
+										<Anchors>
+											<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_Tooken_FrameButton1" relativePoint="BOTTOMLEFT">
+												<Offset>
+													<AbsDimension x="0" y="0"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</Button>
+									<Button name="GDL_Itemlist_Tooken_FrameButton3" inherits="GDL_Itemlist_Tooken_ButtonTemplate" id="3">
+										<Anchors>
+											<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_Tooken_FrameButton2" relativePoint="BOTTOMLEFT">
+												<Offset>
+													<AbsDimension x="0" y="0"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</Button>
+									<Button name="GDL_Itemlist_Tooken_FrameButton4" inherits="GDL_Itemlist_Tooken_ButtonTemplate" id="4">
+										<Anchors>
+											<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_Tooken_FrameButton3" relativePoint="BOTTOMLEFT">
+												<Offset>
+													<AbsDimension x="0" y="0"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</Button>
+									<Button name="GDL_Itemlist_Tooken_FrameButton5" inherits="GDL_Itemlist_Tooken_ButtonTemplate" id="5">
+										<Anchors>
+											<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_Tooken_FrameButton4" relativePoint="BOTTOMLEFT">
+												<Offset>
+													<AbsDimension x="0" y="0"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</Button>
+									<Button name="GDL_Itemlist_Tooken_FrameButton6" inherits="GDL_Itemlist_Tooken_ButtonTemplate" id="6">
+										<Anchors>
+											<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_Tooken_FrameButton5" relativePoint="BOTTOMLEFT">
+												<Offset>
+													<AbsDimension x="0" y="0"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</Button>
+									<Button name="GDL_Itemlist_Tooken_FrameButton7" inherits="GDL_Itemlist_Tooken_ButtonTemplate" id="7">
+										<Anchors>
+											<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_Tooken_FrameButton6" relativePoint="BOTTOMLEFT">
+												<Offset>
+													<AbsDimension x="0" y="0"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</Button>
+									<Button name="GDL_Itemlist_Tooken_FrameButton8" inherits="GDL_Itemlist_Tooken_ButtonTemplate" id="8">
+										<Anchors>
+											<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_Tooken_FrameButton7" relativePoint="BOTTOMLEFT">
+												<Offset>
+													<AbsDimension x="0" y="0"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</Button>
+									<Button name="GDL_Itemlist_Tooken_FrameButton9" inherits="GDL_Itemlist_Tooken_ButtonTemplate" id="9">
+										<Anchors>
+											<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_Tooken_FrameButton8" relativePoint="BOTTOMLEFT">
+												<Offset>
+													<AbsDimension x="0" y="0"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</Button>
+									<Button name="GDL_Itemlist_Tooken_FrameButton10" inherits="GDL_Itemlist_Tooken_ButtonTemplate" id="10">
+										<Anchors>
+											<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_Tooken_FrameButton9" relativePoint="BOTTOMLEFT">
+												<Offset>
+													<AbsDimension x="0" y="0"/>
+												</Offset>
+											</Anchor>
+										</Anchors>
+									</Button>
+								</Frames>
+								<Scripts>
+									<OnEvent>
+										
+									</OnEvent>
+									<OnLoad>
+										self:RegisterForDrag("LeftButton");
+									</OnLoad>
+									<OnDragStart>
+										self:StartMoving();
+										self.isMoving = true;
+									</OnDragStart>
+									<OnDragStop>
+										self:StopMovingOrSizing();
+										self.isMoving = false;
+									</OnDragStop>
+								</Scripts>													
+							</Frame>
+						</Frames>
+					</Button>
+					
+					<DressUpModel name="GDL_Itemlist_Model">
+						<Size>
+							<AbsDimension x="316" y="351"/>
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOM">
+								<Offset>
+									<AbsDimension x="-11" y="90"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								GDL_Itemlist_Model_OnLoad(self);
+							</OnLoad>
+							<OnUpdate>
+								GDL_Itemlist_Model_OnUpdate(self, elapsed, self); 
+							</OnUpdate>
+						</Scripts>
+						<Frames>
+							<Button name="GDL_Itemlist_ModelRotateLeftButton">
+								<Size>
+									<AbsDimension x="35" y="35"/>
+								</Size>
+								<Anchors>
+									<Anchor point="TOP" relativeTo="GDL_Itemlist_Frame">
+										<Offset>
+											<AbsDimension x="-35" y="-75"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										self:RegisterForClicks("LeftButtonDown", "LeftButtonUp");
+									</OnLoad>
+									<OnClick>
+										GDL_Itemlist_Model_RotateLeft(self:GetParent());
+									</OnClick>
+								</Scripts>
+								<NormalTexture file="Interface\Buttons\UI-RotationLeft-Button-Up"/>
+								<PushedTexture file="Interface\Buttons\UI-RotationLeft-Button-Down"/>
+								<HighlightTexture file="Interface\Buttons\ButtonHilight-Round" alphaMode="ADD"/>
+							</Button>
+							<Button name="GDL_Itemlist_ModelRotateRightButton">
+								<Size>
+									<AbsDimension x="35" y="35"/>
+								</Size>
+								<Anchors>
+									<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_ModelRotateLeftButton" relativePoint="TOPRIGHT"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										self:RegisterForClicks("LeftButtonDown", "LeftButtonUp");
+									</OnLoad>
+									<OnClick>
+										GDL_Itemlist_Model_RotateRight(self:GetParent());
+									</OnClick>
+								</Scripts>
+								<NormalTexture file="Interface\Buttons\UI-RotationRight-Button-Up"/>
+								<PushedTexture file="Interface\Buttons\UI-RotationRight-Button-Down"/>
+								<HighlightTexture file="Interface\Buttons\ButtonHilight-Round" alphaMode="ADD"/>
+							</Button>
+						</Frames>
+					</DressUpModel>
+				<!-- ************************************ LeftSide Buttons********************************* -->
+					<Button name="GDL_Itemlist_FrameItem1" inherits="GDL_Itemlist_ButtonTemplate" id="1">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_Frame" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="21" y="-76"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem2" inherits="GDL_Itemlist_ButtonTemplate" id="2">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="GDL_Itemlist_FrameItem1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-41"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem3" inherits="GDL_Itemlist_ButtonTemplate" id="3">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="GDL_Itemlist_FrameItem2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-41"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem4" inherits="GDL_Itemlist_ButtonTemplate" id="4">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="GDL_Itemlist_FrameItem3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-41"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem5" inherits="GDL_Itemlist_ButtonTemplate" id="5">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="GDL_Itemlist_FrameItem4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-41"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem6" inherits="GDL_Itemlist_ButtonTemplate" id="6">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="GDL_Itemlist_FrameItem5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-41"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem7" inherits="GDL_Itemlist_ButtonTemplate" id="7">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="GDL_Itemlist_FrameItem6" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-41"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem8" inherits="GDL_Itemlist_ButtonTemplate" id="8">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="GDL_Itemlist_FrameItem7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-41"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+				<!-- ************************************ RightSide Buttons ******************************* -->
+					<Button name="GDL_Itemlist_FrameItem9" inherits="GDL_Itemlist_ButtonTemplate2" id="9">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_Itemlist_Frame" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="305" y="-76"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem10" inherits="GDL_Itemlist_ButtonTemplate2" id="10">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="GDL_Itemlist_FrameItem9" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-41"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem11" inherits="GDL_Itemlist_ButtonTemplate2" id="11">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="GDL_Itemlist_FrameItem10" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-41"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem12" inherits="GDL_Itemlist_ButtonTemplate2" id="12">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="GDL_Itemlist_FrameItem11" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-41"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem13" inherits="GDL_Itemlist_ButtonTemplate2" id="13">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="GDL_Itemlist_FrameItem12" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-41"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem14" inherits="GDL_Itemlist_ButtonTemplate2" id="14">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="GDL_Itemlist_FrameItem13" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-41"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem15" inherits="GDL_Itemlist_ButtonTemplate2" id="15">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="GDL_Itemlist_FrameItem14" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-41"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem16" inherits="GDL_Itemlist_ButtonTemplate2" id="16">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="GDL_Itemlist_FrameItem15" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="" y="-41"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+				<!-- ************************************ WapponSide Buttons ****************************** -->
+					<Button name="GDL_Itemlist_FrameItem17" inherits="GDL_Itemlist_ButtonTemplate3" id="17">
+						<Anchors>
+							<Anchor point="CENTER" relativeTo="GDL_Itemlist_Frame" relativePoint="CENTER">
+								<Offset>
+									<AbsDimension x="-53" y="-148"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem18" inherits="GDL_Itemlist_ButtonTemplate3" id="18">
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT" relativeTo="GDL_Itemlist_FrameItem17" relativePoint="BOTTOMRIGHT">
+								<Offset>
+									<AbsDimension x="43" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_Itemlist_FrameItem19" inherits="GDL_Itemlist_ButtonTemplate3" id="19">
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT" relativeTo="GDL_Itemlist_FrameItem18" relativePoint="BOTTOMRIGHT">
+								<Offset>
+									<AbsDimension x="42" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+				</Frames>
+				<Scripts>
+					<OnLoad>
+						self:RegisterForDrag("LeftButton");
+						SetGDL_Itemlist_Background();
+					</OnLoad>
+					<OnShow>
+						SetPortraitTexture(GDL_Itemlist_FramePortrait, "player");
+						GDL_Itemlist_Toggle();
+					</OnShow>
+					<OnHide>
+					
+					</OnHide>
+					<OnDragStart>
+						self:StartMoving();
+						self.isMoving = true;
+					</OnDragStart>
+					<OnDragStop>
+						self:StopMovingOrSizing();
+						self.isMoving = false;
+					</OnDragStop>
+				</Scripts>
+			</Frame>
+			<Frame name="GDL_NonsetItemlist_Frame" toplevel="true" enableMouse="true"  hidden="true" movable="true">
+				<Size>
+					<AbsDimension x="384" y="512"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="GDL_Playerlist_Frame" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="30" top="0" bottom="45"/>
+				</HitRectInsets>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture file="Interface\AddOns\GetDKP\Images\GetDKP">
+							<Size>
+								<AbsDimension x="60" y="60"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="7" y="-6"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<Texture name="GDL_NonsetItemlist_FrameTopLeft" file="Interface\PaperDollInfoFrame\UI-Character-General-TopLeft">
+							<Size>
+								<AbsDimension x="256" y="256"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<Texture name="GDL_NonsetItemlist_FrameTopRight" file="Interface\PaperDollInfoFrame\UI-Character-General-TopRight">
+							<Size>
+								<AbsDimension x="144" y="256"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<Texture name="GDL_NonsetItemlist_FrameBottomLeft" file="Interface\PaperDollInfoFrame\UI-Character-General-BottomLeft">
+							<Size>
+								<AbsDimension x="256" y="256"/>
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<Texture name="GDL_NonsetItemlist_FrameBottomRight" file="Interface\PaperDollInfoFrame\UI-Character-General-BottomRight">
+							<Size>
+								<AbsDimension x="144" y="256"/>
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMRIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+					<Layer level="OVERLAY">
+						<FontString name="GDL_NonsetItemlist_FrameTitleText" inherits="GameFontNormal">
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset>
+										<AbsDimension x="0" y="-17"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="GDL_NonsetItemlist_FrameCloseButton" inherits="UIPanelCloseButton">
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset>
+									<AbsDimension x="-36" y="-7"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Script>
+							
+						</Script>
+					</Button>
+					<ScrollFrame name="GDL_NonsetItemlist_Frame_ScrollFrame" inherits="FauxScrollFrameTemplate">
+						<Size>
+							<AbsDimension x="296" y="352"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPRIGHT" relativeTo="GDL_NonsetItemlist_Frame" relativePoint="TOPRIGHT">
+								<Offset>
+									<AbsDimension x="-78" y="-77"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnVerticalScroll>
+								FauxScrollFrame_OnVerticalScroll(self, offset, 8, GDL_NonsetItemlist_Upate); 
+							</OnVerticalScroll>
+							<OnShow>
+								GDL_NonsetItemlist_Upate();
+							</OnShow>
+						</Scripts>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+									<Size>
+										<AbsDimension x="31" y="256"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+											<Offset>
+												<AbsDimension x="-2" y="5"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.484375" top="0" bottom="1.0"/>
+								</Texture>
+								<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+									<Size>
+										<AbsDimension x="31" y="106"/>
+									</Size>
+									<Anchors>
+										<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+											<Offset>
+												<AbsDimension x="-2" y="-2"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.515625" right="1.0" top="0" bottom="0.4140625"/>
+								</Texture>
+							</Layer>
+						</Layers>
+					</ScrollFrame>
+					<Button name="GDL_NonsetItemlist_FrameColumnHeader1" inherits="GDL_NonsetItemlist_FrameColumnHeaderTemplate1" text="GDL_NONSETITEMS_HEADER_ITEMS">
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="20" y="-72"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								GDL_Playerlist_FrameColumn_SetWidth(190,self);
+								
+							</OnLoad>
+							<OnMouseUp>
+								GDL_NonSet_Sort(1);
+							</OnMouseUp>
+						</Scripts>
+					</Button>
+					<Button name="GDL_NonsetItemlist_FrameColumnHeader2" inherits="GDL_NonsetItemlist_FrameColumnHeaderTemplate2" text="GDL_NONSETITEMS_HEADER_DKP">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_NonsetItemlist_FrameColumnHeader1" relativepoint="TOPRIGHT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								GDL_Playerlist_FrameColumn_SetWidth(98,self);
+								
+							</OnLoad>
+							<OnMouseUp>
+								GDL_NonSet_Sort(2);
+							</OnMouseUp>
+						</Scripts>
+					</Button>
+					<Button name="GDL_NonsetItemlist_FrameButton1" inherits="GDL_NonsetItemlist_ButtonTemplate" id="1">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_NonsetItemlist_Frame">
+								<Offset>
+									<AbsDimension x="15" y="-100"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_NonsetItemlist_FrameButton2" inherits="GDL_NonsetItemlist_ButtonTemplate" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_NonsetItemlist_FrameButton1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_NonsetItemlist_FrameButton3" inherits="GDL_NonsetItemlist_ButtonTemplate" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_NonsetItemlist_FrameButton2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_NonsetItemlist_FrameButton4" inherits="GDL_NonsetItemlist_ButtonTemplate" id="4">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_NonsetItemlist_FrameButton3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_NonsetItemlist_FrameButton5" inherits="GDL_NonsetItemlist_ButtonTemplate" id="5">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_NonsetItemlist_FrameButton4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_NonsetItemlist_FrameButton6" inherits="GDL_NonsetItemlist_ButtonTemplate" id="6">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_NonsetItemlist_FrameButton5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_NonsetItemlist_FrameButton7" inherits="GDL_NonsetItemlist_ButtonTemplate" id="7">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_NonsetItemlist_FrameButton6" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_NonsetItemlist_FrameButton8" inherits="GDL_NonsetItemlist_ButtonTemplate" id="8">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_NonsetItemlist_FrameButton7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_NonsetItemlist_FrameButton9" inherits="GDL_NonsetItemlist_ButtonTemplate" id="9">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_NonsetItemlist_FrameButton8" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="GDL_NonsetItemlist_FrameButton10" inherits="GDL_NonsetItemlist_ButtonTemplate" id="10">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="GDL_NonsetItemlist_FrameButton9" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+				</Frames>
+				<Scripts>
+					<OnEvent>
+						
+					</OnEvent>
+					<OnLoad>
+						self:RegisterForDrag("LeftButton");
+					</OnLoad>
+					<OnDragStart>
+						self:StartMoving();
+						self.isMoving = true;
+					</OnDragStart>
+					<OnDragStop>
+						self:StopMovingOrSizing();
+						self.isMoving = false;
+					</OnDragStop>
+				</Scripts>													
+			</Frame>
+		</Frames>
+	</Frame>
+	
+</Ui>

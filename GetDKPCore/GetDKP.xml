@@ -1,0 +1,120 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="GetDKP.lua"/> 
+	<Script file="dkp_sets.lua"/>    
+	<Frame name="GetDKP"> 
+		<Scripts> 
+			<OnLoad> 
+				GDKP_Load(self); 
+				self.TimeSinceLastUpdate = 0;
+			</OnLoad> 
+			<OnEvent>
+				GDKP_Event(event, ...);
+			</OnEvent>
+			<OnUpdate>
+				GetDKP_Status_Frame_OnUpdate(self, elapsed);
+			</OnUpdate>
+
+		</Scripts> 
+	</Frame> 
+	<Frame name="GDKP_Status_Frame" parent="UIParent" toplevel="true" movable="true" enableMouse="true" hidden="true">
+		<Size>
+			<AbsDimension x="313" y="240" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOP">
+				<Offset>
+					<AbsDimension x="0" y="0" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,self:GetName());
+				self:RegisterForDrag("LeftButton");
+			</OnLoad>
+			
+			<OnDragStart>
+				self:StartMoving();
+				self.isMoving = true;
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing();
+				self.isMoving = false;
+			</OnDragStop>
+		</Scripts>
+		<Layers>
+			<Layer>
+				<FontString name="GDKP_Text1" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size x="261" y="30" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="25" y="-14" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="GDKP_Text2" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size x="261" y="30" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="25" y="-48" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="GDKP_Text3" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size x="261" y="30" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="25" y="-82" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="GDKP_Text4" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size x="261" y="30" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="25" y="-116" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="GDKP_Text5" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size x="261" y="30" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="25" y="-170" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="GDKP_Text6" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size x="261" y="30" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="25" y="-204" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Frames>
+			<Button name="GDKP_Close_Button" inherits="UIPanelCloseButton" text="X">
+				<Size x="26" y="26" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="283" y="-10" />
+					</Anchor>
+				</Anchors>
+			</Button>
+		</Frames>
+	</Frame>
+</Ui>

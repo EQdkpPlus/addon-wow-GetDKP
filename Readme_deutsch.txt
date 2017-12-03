@@ -3,7 +3,7 @@
 # Authors: Charla, Corgan, WalleniuM, Sylna
 #####################################################
 
-SUPPORT FORUM: http://www.eqdkp-plus.com/e107_plugins/forum/forum_viewforum.php?11
+SUPPORT FORUM: https://eqdkp-plus.eu/forum/board/38-wow-getdkp/
 
 ---------------------
 
@@ -37,7 +37,7 @@ Features:
 - Flüsterer nach Spieler oder Items sind jetzt im Kampf abgeschaltet und Lags zu verhindern.
 - Die Anzahl der auszugebenen Spieler die noch Bedarf auf ein Item haben, oder die ein Item schon bestizen kann begrentzt werden.
 - Ihr könnt während eines Raids DKP Punkte von Spielern ändern.
-- Minimap Icon zum Öffnen des Konfigurationsmenu oder des GetDKPList fenster
+- Minimap Icon zum Öffnen des Konfigurationsmenu oder des GetDKPList Fenster
 
 LiveDKP
 ===============
@@ -72,19 +72,13 @@ Dies funktioniert über die Datei DKP.EXE, die mit beiligt. In dieser müsst ihr
 
 - nach dem ersten einloggen solltet ihr als erstes mal das Konfigurationsmenü öffnen "/gdc" und dort eure einstellungen vornehmen.
   Vor jedem Raid ist darauf zu achten das im Konfigurationsmenü immer das richtige Konto eingetragen ist.
-  Sollte ihr die beschreibung des kontos den Instanznamen gleichgesetzt haben so wird bei betreten der Instanz automatisch das konnto ge�ndert.
+  Sollte ihr die beschreibung des kontos den Instanznamen gleichgesetzt haben so wird bei betreten der Instanz automatisch das konnto geändert.
 
-
-
-
-Fenster�ffnen :
+Fenster öffnen :
 ===============
-/gdc �ffnet das Konfigurationsmenü
-/gdl �ffnet das GetDKPList Fenster
-/gdb �ffnet das Versteigerungmodul Bet and Win
-
-
-
+/gdc Öffnet das Konfigurationsmenü
+/gdl Öffnet das GetDKPList Fenster
+/gdb Öffnet das Versteigerungmodul Bet and Win
 
 Befehle ingame:
 ===============

@@ -2,9 +2,9 @@
 ..\FrameXML\UI.xsd">
 
 	<!-- Get DKP Tracker Script loading -->
-	
+
 	<Script file="GetDKPTracker.lua"/>
-    
+
 	<Button name="GetDKPTrackerFrameTabButtonTemplate" virtual="true">
         <Size>
             <AbsDimension x="115" y="32"/>
@@ -105,16 +105,16 @@
         </Layers>
 		<Scripts>
 			<OnLoad>
-				
+
 			</OnLoad>
 			<OnEnter>
-				
+
 			</OnEnter>
 			<OnLeave>
-			
+
 			</OnLeave>
 			<OnShow>
-				
+
 			</OnShow>
 		</Scripts>
 		<ButtonText name="$parentText">
@@ -130,8 +130,8 @@
 		<HighlightFont style="GameFontHighlightSmall"/>
 		<DisabledFont style="GameFontHighlightSmall"/>
     </Button>
-	
-	
+
+
     <Frame name="GetDKPTracker_Frame" toplevel="true" parent="UIParent" frameStrata="MEDIUM" hidden="true" enableMouse="true" movable="true">
 		<Scripts>
 			<OnLoad>
@@ -155,7 +155,7 @@
 		<Size>
 			<AbsDimension x="768" y="500"/>
 		</Size>
-		<Anchors>	
+		<Anchors>
 			<Anchor point="TOPLEFT">
 				<Offset>
 					<AbsDimension x="0" y="-104"/>
@@ -172,7 +172,7 @@
 			<BackgroundInsets>
 				<AbsInset left="5" right="5" top="5" bottom="5"/>
 			</BackgroundInsets>
-		</Backdrop>		
+		</Backdrop>
 		<Layers>
 			<Layer level="BACKGROUND">
 				<Texture name="$parentBackground" file="Interface\TutorialFrame\TutorialFrameBackground">
@@ -329,7 +329,7 @@
 							</Offset>
 						</Anchor>
 					</Anchors>
-					<TexCoords left="1" right="0" top="0" bottom="1"/>				
+					<TexCoords left="1" right="0" top="0" bottom="1"/>
 				</Texture>
 				<Texture name="$parentMetalBorderBottomRight" file="Interface\AchievementFrame\UI-Achievement-MetalBorder-Joint">
 					<Size>
@@ -342,7 +342,7 @@
 							</Offset>
 						</Anchor>
 					</Anchors>
-					<TexCoords left="0" right="1" top="0" bottom="1"/>				
+					<TexCoords left="0" right="1" top="0" bottom="1"/>
 				</Texture>
 				<Texture name="$parentWoodBorderTopLeft" file="Interface\AchievementFrame\UI-Achievement-WoodBorder-Corner">
 					<Size>
@@ -369,7 +369,7 @@
 						</Anchor>
 					</Anchors>
 					<TexCoords left="1" right="0" top="0" bottom="1"/>
-				</Texture>		
+				</Texture>
 				<Texture name="$parentWoodBorderBottomLeft" file="Interface\AchievementFrame\UI-Achievement-WoodBorder-Corner">
 					<Size>
 						<AbsDimension x="64" y="64"/>
@@ -382,7 +382,7 @@
 						</Anchor>
 					</Anchors>
 					<TexCoords left="0" right="1" top="1" bottom="0"/>
-				</Texture>		
+				</Texture>
 				<Texture name="$parentWoodBorderBottomRight" file="Interface\AchievementFrame\UI-Achievement-WoodBorder-Corner">
 					<Size>
 						<AbsDimension x="64" y="64"/>
@@ -395,11 +395,11 @@
 						</Anchor>
 					</Anchors>
 					<TexCoords left="1" right="0" top="1" bottom="0"/>
-				</Texture>						
+				</Texture>
 			</Layer>
 		</Layers>
-		
-		<Frames>	
+
+		<Frames>
 			<Frame name="$parentHeader" enableMouse="true" movable="true">
 				<Size>
 					<AbsDimension x="726" y="106"/>
@@ -431,9 +431,9 @@
 							</Anchors>
 							<TexCoords left="0" right="0.419921875" top="0.4140625" bottom="0.8046875"/>
 						</Texture>
-					</Layer>				
+					</Layer>
 					<Layer level="BORDER">
-						
+
 						<FontString name="$parentTitle" inherits="GameFontNormal" text="  GetDKP Tracker">
 							<Size x="200" y="12"/>
 							<Anchors>
@@ -451,7 +451,7 @@
 							</Anchors>
 						</FontString>
 					</Layer>
-					
+
 				</Layers>
 			</Frame>
 			<Frame name="$parentRaids" enableMouse="true" movable="true">
@@ -561,7 +561,7 @@
 				<Scripts>
 					<OnClick>
 						getglobal("GetDKPTracker_FrameHeaderTitleSide"):SetText("Player");
-						PlaySound("igCharacterInfoTab");
+						PlaySound(PlaySoundKitID and "igCharacterInfoTab" or 841);
 						GetDKP_Tracker_Tab_Onclick(self:GetID());
 					</OnClick>
 				</Scripts>
@@ -577,10 +577,10 @@
 				<Scripts>
 					<OnClick>
 						getglobal("GetDKPTracker_FrameHeaderTitleSide"):SetText("Items");
-						PlaySound("igCharacterInfoTab");
+						PlaySound(PlaySoundKitID and "igCharacterInfoTab" or 841);
 						GetDKP_Tracker_Tab_Onclick(self:GetID());
 					</OnClick>
-				</Scripts>				
+				</Scripts>
 			</Button>
 			<Button name="$parentTab3" inherits="GetDKPTrackerFrameTabButtonTemplate" id="3" text="Boss">
 				<Anchors>
@@ -593,10 +593,10 @@
 				<Scripts>
 					<OnClick>
 						getglobal("GetDKPTracker_FrameHeaderTitleSide"):SetText("Boss");
-						PlaySound("igCharacterInfoTab");
+						PlaySound(PlaySoundKitID and "igCharacterInfoTab" or 841);
 						GetDKP_Tracker_Tab_Onclick(self:GetID());
 					</OnClick>
-				</Scripts>				
+				</Scripts>
 			</Button>
 			<Button name="$parentTab4" inherits="GetDKPTrackerFrameTabButtonTemplate" id="4" text="Options">
 				<Anchors>
@@ -609,10 +609,10 @@
 				<Scripts>
 					<OnClick>
 						getglobal("GetDKPTracker_FrameHeaderTitleSide"):SetText("Options");
-						PlaySound("igCharacterInfoTab");
+						PlaySound(PlaySoundKitID and "igCharacterInfoTab" or 841);
 						GetDKP_Tracker_Tab_Onclick(self:GetID());
 					</OnClick>
-				</Scripts>				
+				</Scripts>
 			</Button>
 			<Button name="$parentCloseButton" inherits="UIPanelCloseButton">
 				<Anchors>
@@ -629,8 +629,8 @@
 				</Scripts>
 			</Button>
 		</Frames>
-		
-				
+
+
     </Frame>
 	<Frame name="GetDKP_Tracker_NewRaid_Frame" parent="UIParent" toplevel="true" hidden="true" enableMouse="true" movable="true">
 		<Scripts>

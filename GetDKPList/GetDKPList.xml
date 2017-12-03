@@ -2,10 +2,10 @@
 ..\FrameXML\UI.xsd">
 
 	<!-- Get DKP List Script loading -->
-	
+
 	<Script file="GetDKPList.lua"/>
-	
-	
+
+
 	<Font name="GDAFontNormal" inherits="MasterFont" font="Fonts\FRIZQT__.TTF" virtual="true">
 		<FontHeight>
 			<AbsValue val="8"/>
@@ -34,7 +34,7 @@
 		</ButtonText>
 		<Scripts>
 			<OnClick>
-				PlaySound("igMainMenuOptionCheckBoxOn");
+				PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 			</OnClick>
 		</Scripts>
 	</Button>
@@ -78,7 +78,7 @@
 				<!-- if ( self.sortType ) then
 					SortWho(self.sortType);
 				end -->
-				PlaySound("igMainMenuOptionCheckBoxOn");
+				PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 			</OnClick>
 		</Scripts>
 		<ButtonText inherits="GameFontNormalSmall">
@@ -146,7 +146,7 @@
 				<!-- if ( self.sortType ) then
 					SortWho(self.sortType);
 				end -->
-				PlaySound("igMainMenuOptionCheckBoxOn");
+				PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 			</OnClick>
 		</Scripts>
 		<ButtonText inherits="GameFontNormalSmall">
@@ -214,7 +214,7 @@
 				<!-- if ( self.sortType ) then
 					SortWho(self.sortType);
 				end -->
-				PlaySound("igMainMenuOptionCheckBoxOn");
+				PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 			</OnClick>
 		</Scripts>
 		<ButtonText inherits="GameFontNormalSmall">
@@ -327,14 +327,14 @@
 					elseif (GDL_NonsetItemlist_FrameTitleText.name ~= GDL_Players[self:GetID()+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name and GDL_NonsetItemlist_Frame:IsVisible()) then
 						GDL_Itemlist_Frame_Show = true;
 						GDL_Itemlist_Toggle(button,self:GetID());
-					else	
+					else
 						GDL_Itemlist_Frame_Show = hide;
 					end;
-					
+
 				else
 					GDL_Itemlist_Toggle(button,self:GetID());
 				end;
-				PlaySound("igMainMenuOptionCheckBoxOn");
+				PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 			</OnClick> -->
 <!-- 			<OnEnter>
 				if (GDKPvar_save["ShowItems"] == "true") then
@@ -434,7 +434,7 @@
 			</OnLoad>
 			<OnClick>
 				GDL_NonSetItem_Link(button);
-				PlaySound("igMainMenuOptionCheckBoxOn");
+				PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 			</OnClick>
 			<OnEnter>
 				GDL_ToolTip(self,"set",self:GetID(),0,"GDL_NonsetItemlist_FrameButton");
@@ -480,7 +480,7 @@
 					<Size>
 						<AbsDimension x="36" y="35"/>
 					</Size>
-				
+
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
 					</Anchors>
@@ -544,7 +544,7 @@
 				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 			</OnLoad>
 			<OnClick>
-				PlaySound("igMainMenuOptionCheckBoxOn");
+				PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 				GDL_Itemlist_ItemLink(button,self:GetID());
 			</OnClick>
 			<OnEnter>
@@ -579,7 +579,7 @@
 					<Size>
 						<AbsDimension x="36" y="35"/>
 					</Size>
-				
+
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
 					</Anchors>
@@ -641,7 +641,7 @@
 				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 			</OnLoad>
 			<OnClick>
-				PlaySound("igMainMenuOptionCheckBoxOn");
+				PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 				GDL_Itemlist_ItemLink(button,self:GetID());
 			</OnClick>
 			<OnEnter>
@@ -676,13 +676,13 @@
 					<Size>
 						<AbsDimension x="36" y="35"/>
 					</Size>
-				
+
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
 					</Anchors>
 				</Texture>
-				
-				
+
+
 			</Layer>
 		</Layers>
 		<Scripts>
@@ -690,7 +690,7 @@
 				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 			</OnLoad>
 			<OnClick>
-				PlaySound("igMainMenuOptionCheckBoxOn");
+				PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 				GDL_Itemlist_ItemLink(button,self:GetID());
 			</OnClick>
 			<OnEnter>
@@ -739,7 +739,7 @@
 				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 			</OnLoad>
 			<OnClick>
-				PlaySound("igMainMenuOptionCheckBoxOn");
+				PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 				GDL_Itemlist_SetFrame_SetShow(self:GetID());
 			</OnClick>
 			<OnEnter>
@@ -814,7 +814,7 @@
 			</OnLoad>
 			<OnClick>
 				GDL_Itemlist_Tooken_Link(button);
-				PlaySound("igMainMenuOptionCheckBoxOn");
+				PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 			</OnClick>
 			<OnEnter>
 				GDL_ToolTip(self, "set",self:GetID(),0,"GDL_Itemlist_Tooken_FrameButton");
@@ -859,7 +859,7 @@
 				self:StopMovingOrSizing();
 				self.isMoving = false;
 			</OnDragStop>
-			
+
 		</Scripts>
 		<Size>
 			<AbsDimension x="520" y="564"/>
@@ -1038,13 +1038,13 @@
 						<Scripts>
 							<OnLoad>
 								GDL_Playerlist_FrameColumn_SetWidth(160,self);
-								
+
 							</OnLoad>
 							<OnEvent>
-								
+
 							</OnEvent>
 							<OnEnter>
-								
+
 							</OnEnter>
 							<OnMouseUp>
 								GDL_Sort(1,button);
@@ -1088,11 +1088,11 @@
 								</Layers>
 								<Scripts>
 									<OnLoad>
-										 GDL_Playerlist_FrameClassDropDown_OnLoad(self); 
+										 GDL_Playerlist_FrameClassDropDown_OnLoad(self);
 									</OnLoad>
 									<OnShow>
-										UIDropDownMenu_Initialize(GDL_Playerlist_FrameClassDropDown, GDL_Playerlist_FrameClassDropDown_Initialize); 
-										
+										UIDropDownMenu_Initialize(GDL_Playerlist_FrameClassDropDown, GDL_Playerlist_FrameClassDropDown_Initialize);
+
 									</OnShow>
 									<OnEvent>
 										GDL_Playerlist_FrameClassDropDown_OnEvent()
@@ -1152,10 +1152,10 @@
 								</Layers>
 								<Scripts>
 									<OnLoad>
-										 GDL_Playerlist_FrameKontoDropDown_OnLoad(self); 
+										 GDL_Playerlist_FrameKontoDropDown_OnLoad(self);
 									</OnLoad>
 									<OnShow>
-										UIDropDownMenu_Initialize(GDL_Playerlist_FrameKontoDropDown, GDL_Playerlist_FrameKontoDropDown_Initialize); 
+										UIDropDownMenu_Initialize(GDL_Playerlist_FrameKontoDropDown, GDL_Playerlist_FrameKontoDropDown_Initialize);
 									</OnShow>
 									<OnEvent>
 										GDL_Playerlist_FrameKontoDropDown_OnEvent()
@@ -1215,10 +1215,10 @@
 								</Layers>
 								<Scripts>
 									<OnLoad>
-										 GDL_Playerlist_FrameKontoAtribDropDown_OnLoad(self); 
+										 GDL_Playerlist_FrameKontoAtribDropDown_OnLoad(self);
 									</OnLoad>
 									<OnShow>
-										UIDropDownMenu_Initialize(GDL_Playerlist_FrameKontoAtribDropDown, GDL_Playerlist_FrameKontoAtribDropDown_Initialize); 
+										UIDropDownMenu_Initialize(GDL_Playerlist_FrameKontoAtribDropDown, GDL_Playerlist_FrameKontoAtribDropDown_Initialize);
 									</OnShow>
 									<OnEvent>
 										GDL_Playerlist_FrameKontoAtribDropDown_OnEvent()
@@ -1252,7 +1252,7 @@
 						<Scripts>
 							<OnLoad>
 								GDL_Playerlist_FrameColumn_SetWidth(70,self);
-								
+
 							</OnLoad>
 							<OnMouseUp>
 								GDL_Sort(3,button);
@@ -1434,7 +1434,7 @@
 						</Anchors>
 						<Scripts>
 							<OnVerticalScroll>
-								FauxScrollFrame_OnVerticalScroll(self, offset, 8, GDL_Playerlist_Update); 
+								FauxScrollFrame_OnVerticalScroll(self, offset, 8, GDL_Playerlist_Update);
 							</OnVerticalScroll>
 							<OnShow>
 								GDL_Playerlist_Update();
@@ -1832,7 +1832,7 @@
 						<Scripts>
 							<OnClick>
 								GDL_Itemlist_NextSet();
-								PlaySound("igMainMenuOptionCheckBoxOn");
+								PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 							</OnClick>
 						</Scripts>
 						<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up"/>
@@ -1867,7 +1867,7 @@
 						<Scripts>
 							<OnClick>
 								GDL_Itemlist_PrevSet();
-								PlaySound("igMainMenuOptionCheckBoxOn");
+								PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 							</OnClick>
 						</Scripts>
 						<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Up"/>
@@ -1928,7 +1928,7 @@
 						<Scripts>
 							<OnClick>
 								GDL_Itemlist_Model:Undress();
-								PlaySound("gsTitleOptionOK");
+								PlaySound(PlaySoundKitID and "gsTitleOptionOK" or 798);
 							</OnClick>
 						</Scripts>
 					</Button>
@@ -1967,13 +1967,13 @@
 						</HighlightTexture>
 						<Scripts>
 							<OnClick>
-								PlaySound("gsTitleOptionOK");
+								PlaySound(PlaySoundKitID and "gsTitleOptionOK" or 798);
 							</OnClick>
 							<OnEnter>
-							
+
 							if (GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T4" or GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T5" or GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T6") then
 								GDL_Itemlist_SetFrame:Show();
-								PlaySound("gsTitleOptionOK");
+								PlaySound(PlaySoundKitID and "gsTitleOptionOK" or 798);
 							end;
 							</OnEnter>
 							<OnLeave>
@@ -2016,7 +2016,7 @@
 									</Anchor>
 								</Anchors>
 							</Frame>
-						
+
 							<Button name="GDL_Itemlist_SetFrameButton1" inherits="GDL_Itemlist_ButtonTemplate4" id="1" hidden="true">
 								<Anchors>
 									<Anchor point="TOP" relativeTo="GDL_Itemlist_SetFrame">
@@ -2170,7 +2170,7 @@
 											</Anchor>
 										</Anchors>
 										<Script>
-											
+
 										</Script>
 									</Button>
 									<ScrollFrame name="GDL_Itemlist_Tooken_Frame_ScrollFrame" inherits="FauxScrollFrameTemplate">
@@ -2186,7 +2186,7 @@
 										</Anchors>
 										<Scripts>
 											<OnVerticalScroll>
-												FauxScrollFrame_OnVerticalScroll(self, offset, 8, GDL_Itemlist_Tooken_Upate); 
+												FauxScrollFrame_OnVerticalScroll(self, offset, 8, GDL_Itemlist_Tooken_Upate);
 											</OnVerticalScroll>
 											<OnShow>
 												GDL_Itemlist_Tooken_Upate();
@@ -2234,7 +2234,7 @@
 										<Scripts>
 											<OnLoad>
 												GDL_Playerlist_FrameColumn_SetWidth(190,self);
-												
+
 											</OnLoad>
 											<OnMouseUp>
 												GDL_Itemlist_Tooken_Sort(1);
@@ -2252,7 +2252,7 @@
 										<Scripts>
 											<OnLoad>
 												GDL_Playerlist_FrameColumn_SetWidth(98,self);
-												
+
 											</OnLoad>
 											<OnMouseUp>
 												GDL_Itemlist_Tooken_Sort(2);
@@ -2352,7 +2352,7 @@
 								</Frames>
 								<Scripts>
 									<OnEvent>
-										
+
 									</OnEvent>
 									<OnLoad>
 										self:RegisterForDrag("LeftButton");
@@ -2365,11 +2365,11 @@
 										self:StopMovingOrSizing();
 										self.isMoving = false;
 									</OnDragStop>
-								</Scripts>													
+								</Scripts>
 							</Frame>
 						</Frames>
 					</Button>
-					
+
 					<DressUpModel name="GDL_Itemlist_Model">
 						<Size>
 							<AbsDimension x="316" y="351"/>
@@ -2386,7 +2386,7 @@
 								GDL_Itemlist_Model_OnLoad(self);
 							</OnLoad>
 							<OnUpdate>
-								GDL_Itemlist_Model_OnUpdate(self, elapsed, self); 
+								GDL_Itemlist_Model_OnUpdate(self, elapsed, self);
 							</OnUpdate>
 						</Scripts>
 						<Frames>
@@ -2619,7 +2619,7 @@
 						GDL_Itemlist_Toggle();
 					</OnShow>
 					<OnHide>
-					
+
 					</OnHide>
 					<OnDragStart>
 						self:StartMoving();
@@ -2732,7 +2732,7 @@
 							</Anchor>
 						</Anchors>
 						<Script>
-							
+
 						</Script>
 					</Button>
 					<ScrollFrame name="GDL_NonsetItemlist_Frame_ScrollFrame" inherits="FauxScrollFrameTemplate">
@@ -2748,7 +2748,7 @@
 						</Anchors>
 						<Scripts>
 							<OnVerticalScroll>
-								FauxScrollFrame_OnVerticalScroll(self, offset, 8, GDL_NonsetItemlist_Upate); 
+								FauxScrollFrame_OnVerticalScroll(self, offset, 8, GDL_NonsetItemlist_Upate);
 							</OnVerticalScroll>
 							<OnShow>
 								GDL_NonsetItemlist_Upate();
@@ -2796,7 +2796,7 @@
 						<Scripts>
 							<OnLoad>
 								GDL_Playerlist_FrameColumn_SetWidth(190,self);
-								
+
 							</OnLoad>
 							<OnMouseUp>
 								GDL_NonSet_Sort(1);
@@ -2814,7 +2814,7 @@
 						<Scripts>
 							<OnLoad>
 								GDL_Playerlist_FrameColumn_SetWidth(98,self);
-								
+
 							</OnLoad>
 							<OnMouseUp>
 								GDL_NonSet_Sort(2);
@@ -2914,7 +2914,7 @@
 				</Frames>
 				<Scripts>
 					<OnEvent>
-						
+
 					</OnEvent>
 					<OnLoad>
 						self:RegisterForDrag("LeftButton");
@@ -2927,9 +2927,9 @@
 						self:StopMovingOrSizing();
 						self.isMoving = false;
 					</OnDragStop>
-				</Scripts>													
+				</Scripts>
 			</Frame>
 		</Frames>
 	</Frame>
-	
+
 </Ui>

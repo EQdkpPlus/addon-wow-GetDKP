@@ -1,7 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
 	<Script file="GetDKPConfig.lua"/>
-	
+
 	<Font name="GDCFontHighlightSmallOutline" inherits="GameFontHighlightSmall"  virtual="true">
 		<Shadow>
 			<Offset>
@@ -10,7 +10,7 @@
 			<Color r="0" g="0" b="1"/>
 		</Shadow>
 	</Font>
-	
+
 	<Button name="GDCButtonTemplate" virtual="true">
 		<ButtonText name="$parentText" inherits="GameFontNormalSmall">
 			<Anchors>
@@ -29,7 +29,7 @@
 		<DisabledTexture inherits="UIPanelButtonDisabledTexture"/>
 		<HighlightTexture inherits="UIPanelButtonHighlightTexture"/>
 	</Button>
-	
+
 	<Button name="GDCFrameTabTemplate" inherits="CharacterFrameTabButtonTemplate" virtual="true">
 		<Scripts>
 			<OnClick>
@@ -75,7 +75,7 @@
 		</Layers>
 		<Scripts>
 			<OnClick>
-				PlaySound("igMainMenuOptionCheckBoxOn");
+				PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 			</OnClick>
 		</Scripts>
 		<ButtonText>
@@ -103,7 +103,7 @@
 			</Anchors>
 		</HighlightTexture>
 	</Button>
-	
+
 	<Frame name="GetDKP_Config_Frame" toplevel="true" parent="UIParent" movable="true" enableMouse="true" hidden="true">
 		<Scripts>
 			<OnEvent>
@@ -115,7 +115,7 @@
 			<OnLoad>
 				tinsert(UISpecialFrames,self:GetName());
 				self.TimeSinceLastUpdate = 0;
-				
+
 				GetDKPConfig_OnLoad(self);
 				self:RegisterForDrag("LeftButton");
 			</OnLoad>
@@ -241,7 +241,7 @@
 						</Offset>
 					</Anchor>
 				</Anchors>
-			
+
 			</Button>
 			<Frame name="GDAConfigFrameHelp" setAllPoints="true" hidden="true">
 				<Size>
@@ -294,7 +294,7 @@
 						<Scripts>
 							<OnClick>
 								GDAConfigFrameHelpToggleButtonPlus();
-								PlaySound("igMainMenuOptionCheckBoxOn");
+								PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 							</OnClick>
 						</Scripts>
 						<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up"/>
@@ -329,7 +329,7 @@
 						<Scripts>
 							<OnClick>
 								GDAConfigFrameHelpToggleButtonMinus();
-								PlaySound("igMainMenuOptionCheckBoxOn");
+								PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 							</OnClick>
 						</Scripts>
 						<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Up"/>
@@ -648,7 +648,7 @@
 							</Anchors>
 						</FontString>
 					</Layer>
-				</Layers>	
+				</Layers>
 				<Frames>
 					<CheckButton name="GetDKP_Config_Frame_CheckButton2" inherits="UICheckButtonTemplate" id="2">
 						<Size>
@@ -833,11 +833,11 @@
 						</Anchors>
 						<Scripts>
 							<OnClick>
-								GetDKP_Config_Frame_CheckButton6:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton7:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton8:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton9:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton10:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton6:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton7:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton8:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton9:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton10:SetChecked(nil)
 								GetDKP_Config_Chat();
 							</OnClick>
 						</Scripts>
@@ -855,11 +855,11 @@
 						</Anchors>
 						<Scripts>
 							<OnClick>
-								GetDKP_Config_Frame_CheckButton5:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton7:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton8:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton9:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton10:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton5:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton7:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton8:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton9:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton10:SetChecked(nil)
 								GetDKP_Config_Chat();
 							</OnClick>
 						</Scripts>
@@ -877,11 +877,11 @@
 						</Anchors>
 						<Scripts>
 							<OnClick>
-								GetDKP_Config_Frame_CheckButton5:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton6:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton8:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton9:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton10:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton5:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton6:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton8:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton9:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton10:SetChecked(nil)
 								GetDKP_Config_Chat();
 							</OnClick>
 						</Scripts>
@@ -899,11 +899,11 @@
 						</Anchors>
 						<Scripts>
 							<OnClick>
-								GetDKP_Config_Frame_CheckButton5:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton6:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton7:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton9:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton10:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton5:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton6:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton7:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton9:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton10:SetChecked(nil)
 								GetDKP_Config_Chat();
 							</OnClick>
 						</Scripts>
@@ -921,11 +921,11 @@
 						</Anchors>
 						<Scripts>
 							<OnClick>
-								GetDKP_Config_Frame_CheckButton5:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton6:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton7:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton8:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton10:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton5:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton6:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton7:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton8:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton10:SetChecked(nil)
 								GetDKP_Config_Chat();
 							</OnClick>
 						</Scripts>
@@ -943,11 +943,11 @@
 						</Anchors>
 						<Scripts>
 							<OnClick>
-								GetDKP_Config_Frame_CheckButton5:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton6:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton7:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton8:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton9:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton5:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton6:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton7:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton8:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton9:SetChecked(nil)
 								GetDKP_Config_Chat();
 							</OnClick>
 						</Scripts>
@@ -965,9 +965,9 @@
 						</Anchors>
 						<Scripts>
 							<OnClick>
-								GetDKP_Config_Frame_CheckButton17:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton18:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton19:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton17:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton18:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton19:SetChecked(nil)
 								GetDKP_Config_Tooltipposition();
 							</OnClick>
 						</Scripts>
@@ -985,9 +985,9 @@
 						</Anchors>
 						<Scripts>
 							<OnClick>
-								GetDKP_Config_Frame_CheckButton16:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton18:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton19:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton16:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton18:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton19:SetChecked(nil)
 								GetDKP_Config_Tooltipposition();
 							</OnClick>
 						</Scripts>
@@ -1006,8 +1006,8 @@
 						<Scripts>
 							<OnClick>
 								GetDKP_Config_Frame_CheckButton16:SetChecked(nil)
-								GetDKP_Config_Frame_CheckButton17:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton19:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton17:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton19:SetChecked(nil)
 								GetDKP_Config_Tooltipposition();
 							</OnClick>
 						</Scripts>
@@ -1025,9 +1025,9 @@
 						</Anchors>
 						<Scripts>
 							<OnClick>
-								GetDKP_Config_Frame_CheckButton16:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton17:SetChecked(nil)	
-								GetDKP_Config_Frame_CheckButton18:SetChecked(nil)	
+								GetDKP_Config_Frame_CheckButton16:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton17:SetChecked(nil)
+								GetDKP_Config_Frame_CheckButton18:SetChecked(nil)
 								GetDKP_Config_Tooltipposition();
 							</OnClick>
 						</Scripts>
@@ -1087,7 +1087,7 @@
 					</Slider>
 				</Frames>
 			</Frame>
-			
+
 			<Frame name="GDAConfigFrame" setAllPoints="true" hidden="true" relativeTo="GetDKP_Config_Frame">
 				<Size>
 					<AbsDimension x="400" y="456"/>
@@ -1146,7 +1146,7 @@
 								</Anchor>
 							</Anchors>
 						</FontString>
-						
+
 					<!--	<FontString name="GDAConfigRule4Text" inherits="GameFontNormal" text="GDC_GDA_Rule4">
 							<Anchors>
 								<Anchor point="TOPLEFT">
@@ -1157,7 +1157,7 @@
 							</Anchors>
 						</FontString> -->
 					</Layer>
-				</Layers>	
+				</Layers>
 				<Frames>
 					<Button name="GetDKP_Config_Frame_Countdown" inherits = "GDCButtonTemplate" text="GDC_GDA_CD_Text">
 						<Size>
@@ -1456,7 +1456,7 @@
 											</Anchor>
 										</Anchors>
 									</FontString>
-									
+
 									<FontString name="GDAConfigRule1MinDKP" inherits="GameFontNormal" text="GDC_GDA_Rule1_MinDKP">
 										<Anchors>
 											<Anchor point="TOPLEFT">
@@ -1542,12 +1542,12 @@
 									</Anchors>
 									<Scripts>
 										<OnClick>
-											GetDKP_Config_Frame_CheckButton36:SetChecked(nil)	
-											GetDKP_Config_Frame_CheckButton37:SetChecked(nil)	
-											GetDKP_Config_Frame_CheckButton38:SetChecked(nil)	
-											GetDKP_Config_Frame_CheckButton39:SetChecked(nil)	
-											
-											GetDKP_Config_Frame_CheckButton35:SetChecked("true")	
+											GetDKP_Config_Frame_CheckButton36:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton37:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton38:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton39:SetChecked(nil)
+
+											GetDKP_Config_Frame_CheckButton35:SetChecked("true")
 											GetDKP_Config_GDA_Rule1_ChatOutput(1);
 										</OnClick>
 									</Scripts>
@@ -1565,11 +1565,11 @@
 									</Anchors>
 									<Scripts>
 										<OnClick>
-											GetDKP_Config_Frame_CheckButton35:SetChecked(nil)	
-											GetDKP_Config_Frame_CheckButton37:SetChecked(nil)	
-											GetDKP_Config_Frame_CheckButton38:SetChecked(nil)	
-											GetDKP_Config_Frame_CheckButton39:SetChecked(nil)	
-											
+											GetDKP_Config_Frame_CheckButton35:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton37:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton38:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton39:SetChecked(nil)
+
 											GetDKP_Config_Frame_CheckButton36:SetChecked("true")
 											GetDKP_Config_GDA_Rule1_ChatOutput(2);
 
@@ -1589,11 +1589,11 @@
 									</Anchors>
 									<Scripts>
 										<OnClick>
-											GetDKP_Config_Frame_CheckButton35:SetChecked(nil)	
-											GetDKP_Config_Frame_CheckButton36:SetChecked(nil)	
-											GetDKP_Config_Frame_CheckButton38:SetChecked(nil)	
-											GetDKP_Config_Frame_CheckButton39:SetChecked(nil)	
-												
+											GetDKP_Config_Frame_CheckButton35:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton36:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton38:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton39:SetChecked(nil)
+
 											GetDKP_Config_Frame_CheckButton37:SetChecked("true")
 											GetDKP_Config_GDA_Rule1_ChatOutput(3);
 
@@ -1613,11 +1613,11 @@
 									</Anchors>
 									<Scripts>
 										<OnClick>
-											GetDKP_Config_Frame_CheckButton35:SetChecked(nil)	
-											GetDKP_Config_Frame_CheckButton36:SetChecked(nil)	
-											GetDKP_Config_Frame_CheckButton37:SetChecked(nil)	
-											GetDKP_Config_Frame_CheckButton39:SetChecked(nil)	
-											
+											GetDKP_Config_Frame_CheckButton35:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton36:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton37:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton39:SetChecked(nil)
+
 											GetDKP_Config_Frame_CheckButton38:SetChecked("true")
 											GetDKP_Config_GDA_Rule1_ChatOutput(4);
 
@@ -1637,12 +1637,12 @@
 									</Anchors>
 									<Scripts>
 										<OnClick>
-											GetDKP_Config_Frame_CheckButton35:SetChecked(nil)	
-											GetDKP_Config_Frame_CheckButton36:SetChecked(nil)	
-											GetDKP_Config_Frame_CheckButton37:SetChecked(nil)	
-											GetDKP_Config_Frame_CheckButton38:SetChecked(nil)	
-											
-											GetDKP_Config_Frame_CheckButton39:SetChecked("true") 
+											GetDKP_Config_Frame_CheckButton35:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton36:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton37:SetChecked(nil)
+											GetDKP_Config_Frame_CheckButton38:SetChecked(nil)
+
+											GetDKP_Config_Frame_CheckButton39:SetChecked("true")
 											GetDKP_Config_GDA_Rule1_ChatOutput(5);
 
 										</OnClick>
@@ -1711,7 +1711,7 @@
 											self:ClearFocus();
 										</OnShow>
 										<OnEnterPressed>
-											GetDKP_Config_GDA_EditBox_OnEnterPressed(1); 
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(1);
 										</OnEnterPressed>
 										<OnEscapePressed>
 											self:ClearFocus();
@@ -2054,7 +2054,7 @@
 											self:ClearFocus();
 										</OnShow>
 										<OnEnterPressed>
-											GetDKP_Config_GDA_EditBox_OnEnterPressed("GWord"); 
+											GetDKP_Config_GDA_EditBox_OnEnterPressed("GWord");
 										</OnEnterPressed>
 										<OnEscapePressed>
 											self:ClearFocus();
@@ -2062,7 +2062,7 @@
 										<OnTabPressed>
 											self:ClearFocus();
 											GDC_GDA_EditBoxGDKP:SetFocus();
-											GetDKP_Config_GDA_EditBox_OnEnterPressed("GWord"); 
+											GetDKP_Config_GDA_EditBox_OnEnterPressed("GWord");
 										</OnTabPressed>
 									</Scripts>
 									<FontString inherits="ChatFontNormal" bytes="24"/>
@@ -2113,7 +2113,7 @@
 											self:ClearFocus();
 										</OnShow>
 										<OnEnterPressed>
-											GetDKP_Config_GDA_EditBox_OnEnterPressed("GDKP"); 
+											GetDKP_Config_GDA_EditBox_OnEnterPressed("GDKP");
 										</OnEnterPressed>
 										<OnEscapePressed>
 											self:ClearFocus();
@@ -2121,7 +2121,7 @@
 										<OnTabPressed>
 											self:ClearFocus();
 											GDC_GDA_EditBox2:SetFocus();
-											GetDKP_Config_GDA_EditBox_OnEnterPressed("GDKP"); 
+											GetDKP_Config_GDA_EditBox_OnEnterPressed("GDKP");
 										</OnTabPressed>
 									</Scripts>
 									<FontString inherits="ChatFontNormal" bytes="24"/>
@@ -2172,7 +2172,7 @@
 											self:ClearFocus();
 										</OnShow>
 										<OnEnterPressed>
-											GetDKP_Config_GDA_EditBox_OnEnterPressed(2); 
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(2);
 										</OnEnterPressed>
 										<OnEscapePressed>
 											self:ClearFocus();
@@ -2180,12 +2180,12 @@
 										<OnTabPressed>
 											self:ClearFocus();
 											GDC_GDA_EditBox3:SetFocus();
-											GetDKP_Config_GDA_EditBox_OnEnterPressed(2); 
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(2);
 										</OnTabPressed>
 									</Scripts>
 									<FontString inherits="ChatFontNormal" bytes="24"/>
 								</EditBox>
-								
+
 								<EditBox name="GDC_GDA_EditBox3" autoFocus="false" frameStrata="HIGH" historyLines="32">
 									<Size>
 										<AbsDimension x="150" y="32"/>
@@ -2232,7 +2232,7 @@
 											self:ClearFocus();
 										</OnShow>
 										<OnEnterPressed>
-											GetDKP_Config_GDA_EditBox_OnEnterPressed(3); 
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(3);
 										</OnEnterPressed>
 										<OnEscapePressed>
 											self:ClearFocus();
@@ -2240,7 +2240,7 @@
 										<OnTabPressed>
 											self:ClearFocus();
 											GDC_GDA_EditBoxGWord:SetFocus();
-											GetDKP_Config_GDA_EditBox_OnEnterPressed(3); 
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(3);
 										</OnTabPressed>
 									</Scripts>
 									<FontString inherits="ChatFontNormal" bytes="24"/>
@@ -2579,7 +2579,7 @@
 											self:ClearFocus();
 										</OnShow>
 										<OnEnterPressed>
-											GetDKP_Config_GDA_EditBox_OnEnterPressed(4); 
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(4);
 										</OnEnterPressed>
 										<OnEscapePressed>
 											self:ClearFocus();
@@ -2723,7 +2723,7 @@
 											self:ClearFocus();
 										</OnShow>
 										<OnEnterPressed>
-											GetDKP_Config_GDA_EditBox_OnEnterPressed(5); 
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(5);
 										</OnEnterPressed>
 										<OnEscapePressed>
 											self:ClearFocus();
@@ -2777,7 +2777,7 @@
 											self:ClearFocus();
 										</OnShow>
 										<OnEnterPressed>
-											GetDKP_Config_GDA_EditBox_OnEnterPressed(6); 
+											GetDKP_Config_GDA_EditBox_OnEnterPressed(6);
 										</OnEnterPressed>
 										<OnEscapePressed>
 											self:ClearFocus();
@@ -2873,10 +2873,10 @@
 											</Layers>
 											<Scripts>
 												<OnLoad>
-													GDC_FrameLOOTLEVELDropDown_OnLoad(self); 
+													GDC_FrameLOOTLEVELDropDown_OnLoad(self);
 												</OnLoad>
 												<OnShow>
-													UIDropDownMenu_Initialize(GDC_FrameLOOTLEVELDropDown, GDC_FrameLOOTLEVELDropDown_Initialize); 
+													UIDropDownMenu_Initialize(GDC_FrameLOOTLEVELDropDown, GDC_FrameLOOTLEVELDropDown_Initialize);
 													GDC_FrameLOOTLEVELDropDown_OnLoad(self);
 												</OnShow>
 												<OnEvent>
@@ -2888,7 +2888,7 @@
 												<OnLeave>
 													GDC_FrameLOOTLEVELDropDownHighlightTexture:Hide();
 												</OnLeave>
-												
+
 											</Scripts>
 										</Frame>
 									</Frames>
@@ -2991,7 +2991,7 @@
 							</Anchors>
 						</FontString>
 					</Layer>
-				</Layers>	
+				</Layers>
 				<Frames>
 					<StatusBar name="GetDKP_Config_Frame_Send_StatusBar" drawLayer="BACKGROUND" >
 						<Size>
@@ -3045,7 +3045,7 @@
 						<BarColor r="1.0" g ="0.0" b="0.0" a="1"/>
 						<Scripts>
 							<OnLoad>
-							
+
 							</OnLoad>
 						</Scripts>
 					</StatusBar>
@@ -3060,7 +3060,7 @@
 								</Offset>
 							</Anchor>
 						</Anchors>
-						<Scripts>	
+						<Scripts>
 							<OnClick>
 								GetDKP_List_Load_Send();
 							</OnClick>
@@ -3205,11 +3205,11 @@
 								</Layers>
 								<Scripts>
 									<OnLoad>
-										GDC_FrameKontoDropDown_OnLoad(self); 
+										GDC_FrameKontoDropDown_OnLoad(self);
 									</OnLoad>
 									<OnShow>
-										UIDropDownMenu_Initialize(GDC_FrameKontoDropDown, GDC_FrameKontoDropDown_Initialize); 
-										GDC_FrameKontoDropDown_OnLoad(self); 
+										UIDropDownMenu_Initialize(GDC_FrameKontoDropDown, GDC_FrameKontoDropDown_Initialize);
+										GDC_FrameKontoDropDown_OnLoad(self);
 									</OnShow>
 									<OnEvent>
 										GDC_FrameKontoDropDown_OnEvent()
@@ -3226,7 +3226,7 @@
 								</Scripts>
 							</Frame>
 						</Frames>
-						
+
 					</Button>
 					<Button name="GetDKP_Config_Reset_Data" inherits = "GDCButtonTemplate" text="GDC_GDL_RESET_Text" >
 						<Size>
@@ -3324,7 +3324,7 @@
 							</Anchors>
 						</FontString>
 					</Layer>
-				</Layers>	
+				</Layers>
 				<Frames>
 					<CheckButton name="GetDKP_Config_Frame_CheckButton50" inherits="UICheckButtonTemplate" id="50">
 						<Size>
@@ -3377,7 +3377,7 @@
 								getglobal(self:GetName().."Text"):SetText(getglobal(self:GetName()):GetValue());
 								GetDKP_Config_All_Set_MiniMap_Positiony(getglobal(self:GetName()):GetValue());
 							</OnValueChanged>
-						</Scripts> 
+						</Scripts>
 					</Slider> -->
 			<!--		<Slider name="GetDKP_Config_Frame_Slider5" inherits="OptionsSliderTemplate" minValue="50" maxValue="100" valueStep="1">
 						<Size>
@@ -3435,7 +3435,7 @@
 					</Slider>
 				</Frames>
 			</Frame>
-			
+
 			<Button name="GetDKP_Config_FrameTab1" inherits="GDCFrameTabTemplate" id="1" text="GDC_GDP">
 				<Anchors>
 					<Anchor point="BOTTOMLEFT">
@@ -3611,7 +3611,7 @@
 						<BarColor r="1.0" g ="0.0" b="0.0" a="1"/>
 						<Scripts>
 							<OnLoad>
-							
+
 							</OnLoad>
 						</Scripts>
 					</StatusBar>
@@ -3646,7 +3646,7 @@
 		</Frames>
 	</Frame>
 
-	
+
 	<Button name="GetDKP_Config_ButtonFrame" parent="Minimap" movable="true" enableMouse="true" hidden="true" frameStrata="low">
 		<Size>
 			<AbsDimension x="32" y="32"/>
@@ -3699,7 +3699,7 @@
 				</Texture>
 			</Layer>
 		</Layers>
-				
+
 				<Scripts>
 					<OnLoad>
 						self:RegisterForClicks('LeftButtonUp', 'RightButtonUp');
@@ -3735,7 +3735,7 @@
 					</OnMouseUP> -->
 				</Scripts>
 	</Button>
-	
-	
+
+
 
 </Ui>

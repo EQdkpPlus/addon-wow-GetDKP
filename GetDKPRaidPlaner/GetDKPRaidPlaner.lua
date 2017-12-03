@@ -4,9 +4,9 @@
 ---- Additional Authors: Sylna, Corgan, WalleniuM               ----
 ---- GetDKP Plus Admin ist unter der Creative Common Licence: 	----
 ---- Namensnennung , Keine kommerzielle Nutzung , Weitergabe    ----
----- unter gleichen Bedingungen 2.0 Deutschland verfügbar       ----
+---- unter gleichen Bedingungen 2.0 Deutschland verfï¿½gbar       ----
 ---- http://www.eqdkp-plus.com/page.php?21                      ---
----- $Id: GetDKPRaidPlaner.lua 14162 2014-04-23 17:48:27Z cnypher $	
+---- $Id: GetDKPRaidPlaner.lua 14162 2014-04-23 17:48:27Z cnypher $
 --------------------------------------------------------------------
 
 function GetDKPRaidPlaner_OnLoad(this)
@@ -17,49 +17,49 @@ function GetDKPRaidPlaner_OnLoad(this)
 		this:RegisterEvent("GROUP_ROSTER_UPDATE");
 		GDR_Hybride = 40;
 		GDR_Start_All_Invite = 0;
-		
+
 		GDR_Start_All_Invite_Counter = 1;
 		GDR_All_Invite_TMP_Player = {};
 		GDR_Singel_Invite = 0;
 end;
 
 function GetDKPRaidPlaner_OnEvent(event, arg1, arg2, arg3, arg4)
-	
+
 	if (event == "CHAT_MSG_SYSTEM" and GDR_Start_All_Invite == 1) then
-		
+
 		for i = 1,GDR_Start_All_Invite_Counter_max,1 do
 			if (string.format(ERR_BAD_PLAYER_NAME_S ,GDR_All_Invite_TMP_Player[i].name) == arg1) then
 				GDR_All_Invite_TMP_Player[i].invite = 3;
-				
+
 			elseif (string.format(ERR_ALREADY_IN_GROUP_S ,GDR_All_Invite_TMP_Player[i].name) == arg1) then
 				if(GetDKP_CheckifPlayerIsInRaid(GDR_All_Invite_TMP_Player[i].name)) then
 					GDR_All_Invite_TMP_Player[i].invite = 5;
 				else
 					GDR_All_Invite_TMP_Player[i].invite = 4;
 				end;
-				
+
 			elseif (string.format(ERR_JOINED_GROUP_S ,GDR_All_Invite_TMP_Player[i].name) == arg1 or string.format(ERR_RAID_MEMBER_ADDED_S ,GDR_All_Invite_TMP_Player[i].name) == arg1) then
 				GDR_All_Invite_TMP_Player[i].invite = 5;
-				
+
 			elseif (string.format(ERR_DECLINE_GROUP_S ,GDR_All_Invite_TMP_Player[i].name) == arg1) then
 				GDR_All_Invite_TMP_Player[i].invite = 6;
-			
-			elseif (string.format(ERR_RAID_MEMBER_REMOVED_S,GDR_All_Invite_TMP_Player[i].name) == arg1) then	
+
+			elseif (string.format(ERR_RAID_MEMBER_REMOVED_S,GDR_All_Invite_TMP_Player[i].name) == arg1) then
 				GDR_All_Invite_TMP_Player[i].invite = 7;
 			end;
 		end;
-		
+
 	end;
 	if (event == "GROUP_ROSTER_UPDATE" and GDR_Start_All_Invite_Counter_max ) then
 		if  GetNumGroupMembers()  > 0 then
-			for j = 1,GetNumGroupMembers() do 
-				name, rank, subgroup, level, class, fileName, zone, online, isDead, role, isML = GetRaidRosterInfo(j);	
+			for j = 1,GetNumGroupMembers() do
+				name, rank, subgroup, level, class, fileName, zone, online, isDead, role, isML = GetRaidRosterInfo(j);
 				if (not online) then
 					for i = 1,GDR_Start_All_Invite_Counter_max,1 do
 						if (GDR_All_Invite_TMP_Player[i].name == name) then
 							GDR_All_Invite_TMP_Player[i].invite = 8;
 						end;
-					end;				
+					end;
 				else
 					for i = 1,GDR_Start_All_Invite_Counter_max,1 do
 						if (GDR_All_Invite_TMP_Player[i].name == name) then
@@ -79,7 +79,7 @@ function GetDKPRaidPlaner_OnUpdate(this, elapsed)
 			GDR_All_Invite_TMP_Player[GDR_Start_All_Invite_Counter].invite = 5;
 			GDR_Start_All_Invite_Counter = GDR_Start_All_Invite_Counter + 1;
 		else
-			if (GDR_All_Invite_TMP_Player[GDR_Start_All_Invite_Counter].invite ~= 8) then 
+			if (GDR_All_Invite_TMP_Player[GDR_Start_All_Invite_Counter].invite ~= 8) then
 				InviteUnit(GDR_All_Invite_TMP_Player[GDR_Start_All_Invite_Counter].name);
 				GDR_All_Invite_TMP_Player[GDR_Start_All_Invite_Counter].invite = 2;
 				GDR_Start_All_Invite_Counter = GDR_Start_All_Invite_Counter + 1;
@@ -130,7 +130,7 @@ function GetDKPRaidPlaner_Toggle()
 			prefix = "GetDKPRaidPlaner_Month1_Days"..GDR_Day_Start+i-1;
 			getglobal(prefix.."_Dayname"):SetText(i);
 			for key,val in pairs(GetDKPRaidPlaner.raid) do
-				
+
 				if (i == GetDRaidPlaner_TakeDay(GetDKPRaidPlaner.raid[key].raid_date) and GDR_DATE[1] == tonumber(date("%m",GetDKPRaidPlaner.raid[key].raid_date))) then
 					getglobal(prefix.."_raid_name"):SetText(GetDKPRaidPlaner.raid[key].raid_name);
 					getglobal(prefix.."_raid_icon"):SetTexture(GetDKPRaidPlaner.raid[key].raid_icon);
@@ -149,13 +149,13 @@ function GetDKPRaidPlaner_Toggle()
 			GDR_Day_Start = GDR_FirstDayMonth2;
 		end;
 		GDR_DATE = GetDKPRaidPlaner_TakeCurrentFormatDate(true);
-		
+
 		for i = 1,GetDRaidPlaner_TakeDayOfMonth(GDR_DATE[1]),1 do
-		
+
 			prefix = "GetDKPRaidPlaner_Month2_Days"..GDR_Day_Start+i-1;
 			getglobal(prefix.."_Dayname"):SetText(i);
 			for key,val in pairs(GetDKPRaidPlaner.raid) do
-				
+
 				if (i == GetDRaidPlaner_TakeDay(GetDKPRaidPlaner.raid[key].raid_date) and GDR_DATE[1] == tonumber(date("%m",GetDKPRaidPlaner.raid[key].raid_date))) then
 					getglobal(prefix.."_raid_name"):SetText(GetDKPRaidPlaner.raid[key].raid_name);
 					getglobal(prefix.."_raid_icon"):SetTexture(GetDKPRaidPlaner.raid[key].raid_icon);
@@ -168,7 +168,7 @@ function GetDKPRaidPlaner_Toggle()
 			button:SetText(prefix);
 			button:Show();
 		end;
-		
+
 		GetDKPRaidPlanerFrame:Show()
 	end;
 end;
@@ -177,7 +177,7 @@ function GetDKPRaidPlaner_TakeCurrentFormatDate(ne)
 	local monthname,year
 	monthname = tonumber(date("%m",time()));
 	year = tonumber(date("%Y",time()))
-	
+
 	if (ne) then
 		if (monthname == 12) then
 			monthname = 1;
@@ -221,7 +221,7 @@ function GetDRaidPlaner_TakeDayOfMonth(str)
 	else
 		monthname = tonumber(date("%m",time()));
 	end;
-	
+
 	return GDR_DaysOfMonth[monthname]
 end;
 
@@ -263,7 +263,7 @@ function GDR_ToolTip2()
 	prefix = getglobal(this:GetName());
 	GDRGameTooltipName = prefix.name;
 	timestamp = prefix.timestamp
-	
+
 	if (GDRGameTooltipName ~= nil and timestamp ~= nil) then
 		for k = 1,getn(GetDKPRaidPlaner.raid[timestamp].raid_members),1 do
 			if ( GetDKPRaidPlaner.raid[timestamp].raid_members[k].player == GDRGameTooltipName) then
@@ -272,8 +272,8 @@ function GDR_ToolTip2()
 				if (GetDKPRaidPlaner.raid[timestamp].raid_members[k].skill_1) then
 					GDRGameTooltip:AddLine(" ");
 					GDRGameTooltip:AddLine(GDR_skill);
-					
-					if (GetDKPRaidPlaner.raid[timestamp].raid_members[k].skill_1 > 39 ) then 
+
+					if (GetDKPRaidPlaner.raid[timestamp].raid_members[k].skill_1 > 39 ) then
 					GDRGameTooltip:AddLine(GDR_Skill[GetDKPRaidPlaner.raid[timestamp].raid_members[k].class][1],1.0,0.0,0.0,1);
 					elseif (GetDKPRaidPlaner.raid[timestamp].raid_members[k].skill_2 > 39 ) then
 					GDRGameTooltip:AddLine(GDR_Skill[GetDKPRaidPlaner.raid[timestamp].raid_members[k].class][2],1.0,0.0,0.0,1);
@@ -307,7 +307,7 @@ function GDR_OnClick(this, arg1)
 	if (GDRGameTooltipName ~= nil and timestamp ~= nil) then
 		for k = 1,getn(GetDKPRaidPlaner.raid[timestamp].raid_members),1 do
 			if ( GetDKPRaidPlaner.raid[timestamp].raid_members[k].player == GDRGameTooltipName) then
-				PlaySound("igMainMenuOptionCheckBoxOn");
+				PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 				if (arg1 == "LeftButton") then
 					InviteUnit(GDRGameTooltipName);
 				end;
@@ -315,9 +315,9 @@ function GDR_OnClick(this, arg1)
 					getglobal("GDR_RaidPlanerPopup"):SetHeight(90);
 					if (UnitName("player") == GDRGameTooltipName or UnitName("player") == GetDKPRaidPlaner.raid[timestamp].raid_raidleader) then
 						j = 4;
-						for i = 1,4,1 do 
+						for i = 1,4,1 do
 							if (GetDKPRaidPlaner.raid[timestamp].raid_members[k].subscribed ~= i ) then
-								
+
 								getglobal ("GDR_RaidPlanerPopup_Popup_button"..j):SetText(GDR_subscribed[i]);
 								getglobal ("GDR_RaidPlanerPopup_Popup_button"..j).subscribed = i;
 								getglobal ("GDR_RaidPlanerPopup_Popup_button"..j).name = GDRGameTooltipName;
@@ -325,7 +325,7 @@ function GDR_OnClick(this, arg1)
 								if (prefix.class_group) then
 									getglobal ("GDR_RaidPlanerPopup_Popup_button"..j).class_group = prefix.class_group;
 								end;
-								
+
 								getglobal ("GDR_RaidPlanerPopup_Popup_button"..j):Show();
 								j = j + 1;
 							end;
@@ -336,7 +336,7 @@ function GDR_OnClick(this, arg1)
 					getglobal("GDR_RaidPlanerPopup"):ClearAllPoints();
 					getglobal("GDR_RaidPlanerPopup"):SetPoint("TOPRIGHT",prefix,"TOPRIGHT",80,0);
 					getglobal("GDR_RaidPlanerPopup"):Show();
-				end;	
+				end;
 			end;
 		end;
 	end;
@@ -390,14 +390,14 @@ function GDR_OnClick_AllInvite()
 	end;
 	GDR_Start_All_Invite_Counter_max = getn(GDR_All_Invite_TMP_Player);
 	if  GetNumGroupMembers()  > 0 then
-		for j = 1,GetNumGroupMembers() do 
-			name, rank, subgroup, level, class, fileName, zone, online, isDead, role, isML = GetRaidRosterInfo(j);	
+		for j = 1,GetNumGroupMembers() do
+			name, rank, subgroup, level, class, fileName, zone, online, isDead, role, isML = GetRaidRosterInfo(j);
 			if (not online) then
 				for i = 1,GDR_Start_All_Invite_Counter_max,1 do
 					if (GDR_All_Invite_TMP_Player[i].name == name) then
 						GDR_All_Invite_TMP_Player[i].invite = 8;
 					end;
-				end;				
+				end;
 			else
 				for i = 1,GDR_Start_All_Invite_Counter_max,1 do
 					if (GDR_All_Invite_TMP_Player[i].name == name) then
@@ -408,7 +408,7 @@ function GDR_OnClick_AllInvite()
 		end;
 	end;
 	GDR_Start_All_Invite_Counter = 1;
-	
+
 	GDR_Start_All_Invite = 1;
 end;
 function GDR_OnClick_MonthOverview()
@@ -441,7 +441,7 @@ function GDR_Scroll_DB(timestamp)
 			getglobal(prefix.."_Button"..j).rubric = nil;
 		end;
 	end;
-	
+
 	if ( GetLocale() == "deDE" ) then
 		GDR_Scroll_TMP_CLASS={	["Druide"] = 1,
 								["Hexenmeister"] = 1,
@@ -465,7 +465,7 @@ function GDR_Scroll_DB(timestamp)
 								["Rogue"] = 1
 							};
 	end;
-	
+
 	prefix1 = "GetDKPRaidPlanerRaidFrame_Class";
 	prefix2 = "_Button";
 	GDR_Scroll_TMP_Rubric = {};
@@ -479,13 +479,13 @@ function GDR_Scroll_DB(timestamp)
 		for i = 1,9,1 do
 			if ( GetLocale() == "deDE" ) then
 				GetDKPRaidPlaner.raid[timestamp].raid_classes[i].class_name = GDL_SetClass(GetDKPRaidPlaner.raid[timestamp].raid_classes[i].class_name,"de");
-			
-			else	
+
+			else
 				GetDKPRaidPlaner.raid[timestamp].raid_classes[i].class_name = GDL_SetClass(GetDKPRaidPlaner.raid[timestamp].raid_classes[i].class_name);
 			end;
 		end;
 		for j = 1,5,1 do
-			
+
 			if( not GDR_Scroll_TMP_DB[zeile]) then
 				GDR_Scroll_TMP_DB[zeile] = {};
 			end;
@@ -509,14 +509,14 @@ function GDR_Scroll_DB(timestamp)
 					end;
 				end;
 			end;
-			
+
 			for k = 1,getn(GetDKPRaidPlaner.raid[timestamp].raid_members),1 do
 				if ( GetDKPRaidPlaner.raid[timestamp].raid_members[k].subscribed == j) then
 					GDR_Scroll_TMP_CLASS[GetDKPRaidPlaner.raid[timestamp].raid_members[k].class] = GDR_Scroll_TMP_CLASS[GetDKPRaidPlaner.raid[timestamp].raid_members[k].class] + 1;
 					if( not GDR_Scroll_TMP_DB[GDR_Scroll_TMP_CLASS[GetDKPRaidPlaner.raid[timestamp].raid_members[k].class]]) then
 						GDR_Scroll_TMP_DB[GDR_Scroll_TMP_CLASS[GetDKPRaidPlaner.raid[timestamp].raid_members[k].class]] = {};
 					end;
-					
+
 					GDR_Scroll_TMP_DB[GDR_Scroll_TMP_CLASS[GetDKPRaidPlaner.raid[timestamp].raid_members[k].class]][GDR_Scroll_TMP_CLASS_NUMBER[GetDKPRaidPlaner.raid[timestamp].raid_members[k].class]] = GetDKPRaidPlaner.raid[timestamp].raid_members[k].player;
 				end;
 			end;
@@ -527,11 +527,11 @@ function GDR_Scroll_DB(timestamp)
 				end;
 			end;
 			zeile = GDR_Test_Class+1;
-			
+
 		end;
 	 	GDR_Scroll_Update(timestamp)
-		
-	--------------------------------------------------- Rollen Verteilung --------------------------------------------------------	
+
+	--------------------------------------------------- Rollen Verteilung --------------------------------------------------------
 	elseif (GetDKPRaidPlaner.raid[timestamp].raid_distribution == 1) then
 		for i= 1,4,1 do
 			if( not GDR_Scroll_TMP_DB[zeile]) then
@@ -654,7 +654,7 @@ function GDR_Scroll_Update(timestamp)
 					if (GDR_Scroll_TMP_Rubric[i]) then
 						getglobal(prefix.."_Button"..j.."_Class_Background"):SetTexture(0.44 ,0.37,0.31);
 						getglobal(prefix.."_Button"..j.."_Class_Background"):Show();
-						
+
 					end;
 					if (GDR_Scroll_TMP_Rubric2[i]) then
 						getglobal(prefix.."_Button"..j.."_Class_Background"):SetTexture(0.56 ,0.54,0.48);
@@ -671,7 +671,7 @@ function GDR_Scroll_Update(timestamp)
 						end;
 						getglobal(prefix.."_Button"..j).name = GDR_Scroll_TMP_DB[i][j];
 						getglobal(prefix.."_Button"..j).timestamp = timestamp;
-						
+
 					end;
 				end;
 				k=k+1;
@@ -687,7 +687,7 @@ function GDR_Scroll_Update(timestamp)
 						for m = 1,7,1 do
 							getglobal(prefix.."_Button"..m.."_Class_Background"):SetTexture(0.44 ,0.37,0.31);
 							getglobal(prefix.."_Button"..m.."_Class_Background"):Show();
-							
+
 						end;
 					end;
 					if (GDR_Scroll_TMP_Rubric2[i]) then
@@ -703,7 +703,7 @@ function GDR_Scroll_Update(timestamp)
 						getglobal(prefix.."_Button"..j+l).class_group = j;
 					end;
 					if (not GDR_Scroll_TMP_Rubric[i] and not GDR_Scroll_TMP_Rubric2[i]) then
-						getglobal(prefix.."_Button"..j+l.."_Button_text"):SetTextColor(GDR_Scroll_TMP_CLASS_COLOR1[i][j],GDR_Scroll_TMP_CLASS_COLOR2[i][j],GDR_Scroll_TMP_CLASS_COLOR3[i][j]);	
+						getglobal(prefix.."_Button"..j+l.."_Button_text"):SetTextColor(GDR_Scroll_TMP_CLASS_COLOR1[i][j],GDR_Scroll_TMP_CLASS_COLOR2[i][j],GDR_Scroll_TMP_CLASS_COLOR3[i][j]);
 					end;
 					l=l+1;
 				end;
@@ -716,7 +716,7 @@ end;
 function GetDKPRaidPlaner_Invitewindow()
 	local GetDKPRaidPlaner_Offset = FauxScrollFrame_GetOffset(GDR_RaidPlanerInvite_ScrollFrame) ;
 	FauxScrollFrame_Update(GDR_RaidPlanerInvite_ScrollFrame,getn(GDR_All_Invite_TMP_Player),19,8);
-	
+
 	getglobal("GDR_RaidPlaner_Invite"):Show();
 	prefix = "GDR_RaidPlanerInvite_button";
 	for i = 1,5,1 do
@@ -729,7 +729,7 @@ function GetDKPRaidPlaner_Invitewindow()
 	local scrollcountet = 0
 	GDR_Invite_background = 1;
 	for i = 1,8,1 do
-		
+
 		for j = 1,getn(GDR_All_Invite_TMP_Player),1 do
 			if (GDR_All_Invite_TMP_Player[j].invite == i) then
 				if (scrollcountet >= GetDKPRaidPlaner_Offset and scrollcountet <= GetDKPRaidPlaner_Offset+19) then
@@ -756,7 +756,7 @@ function GetDKPRaidPlaner_Invitewindow()
 				scrollcountet = scrollcountet + 1;
 			end;
 		end;
-		
+
 	end;
 end;
 function GetDKPRaidPlaner_Invitewindow_singel()

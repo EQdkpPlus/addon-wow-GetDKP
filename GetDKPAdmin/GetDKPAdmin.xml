@@ -1,8 +1,8 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
-	
+
 	<Script file="GetDKPAdmin.lua"/>
-	
+
 	<Font name="GDAFontNormal" inherits="MasterFont" font="Fonts\FRIZQT__.TTF" virtual="true">
 		<FontHeight>
 			<AbsValue val="8"/>
@@ -39,7 +39,7 @@
 					<Size>
 						<AbsDimension x="36" y="35"/>
 					</Size>
-				
+
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
 					</Anchors>
@@ -52,7 +52,7 @@
 			</OnLoad>
 			<OnClick>
 				GDA_LootList_StartCD(self:GetID());
-				PlaySound("igMainMenuOptionCheckBoxOn");
+				PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 			</OnClick>
 			<OnEnter>
 				GDA_ToolTip(self, self:GetID());
@@ -100,7 +100,7 @@
 	</Layers>
 	<Scripts>
 		<OnClick>
-			PlaySound("igMainMenuOptionCheckBoxOn");
+			PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 			GDA_Sort_Rule2 = self:GetID();
 			if (GDA_Rule == 2) then
 				GetDKPAdmin_Rule2();
@@ -308,16 +308,16 @@
 			self:RegisterForClicks('LeftButtonUp', 'RightButtonUp');
 		</OnLoad>
 		<OnClick>
-			PlaySound("igMainMenuOptionCheckBoxOn");
+			PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 			PlayersOrder(self:GetID(), button);
 		</OnClick>
 		<OnEnter>
-			
+
 		</OnEnter>
 		<OnLeave>
-			
+
 		</OnLeave>
-		
+
 	</Scripts>
 	</Button>
   --------------------------------------------------------------------------------------------------------
@@ -389,7 +389,7 @@
 				<!--GDASetColumnWidth(50);-->
 			</OnLoad>
 		</Button>
-		
+
 		<Button name="GDAFrameColumnHeader2" inherits="GDAFrameColumnHeaderTemplate2" text="GDA_HEADER_PLAYERS_ORDER" id="2">
 			<Anchors>
 				<Anchor point="LEFT" relativeTo="GDAFrameColumnHeader1" relativePoint="RIGHT">
@@ -426,8 +426,8 @@
 				GDASetColumnWidth(50);
 			</OnLoad>
 		</Button>-->
-		
-		
+
+
 		------------------------------------------------------------------------------------------------
 		---------------------------------------ListPlayerButtons-------------------------------------
 		<Button name="GDAPlayer1" inherits="GDAPlayerTemplate"  hidden="true" id="1">
@@ -515,8 +515,8 @@
 				<Anchor point="TOPLEFT" relativeTo="GDAPlayer16" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
 		</Button>
-		
-		
+
+
 		------------------------------------------------ScrollFrame----------------------------------
 		<ScrollFrame name="GDA_ListScrollFrame" inherits="FauxScrollFrameTemplate">
 			<Size>
@@ -544,7 +544,7 @@
 						</Anchors>
 						<TexCoords left="0" right="0.484375" top="0" bottom="1.0"/>
 					</Texture>
-					
+
 					<Texture>
 						<Size>
 							<AbsDimension x="0" y="0"/>
@@ -620,7 +620,7 @@
 		<Scripts>
 			<OnClick>
 				GetDKPAdmin_OnOff();
-				
+
 			</OnClick>
 		</Scripts>
 	</Button>
@@ -730,4 +730,4 @@
 		</Button>
 	</Frames>
 </Frame>
-</Ui>	
+</Ui>

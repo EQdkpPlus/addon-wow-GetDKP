@@ -4,7 +4,7 @@
 <Script file="GetDKPRaidPlaner.lua"/>
 
 
-	
+
 	<GameTooltip name="GDRGameTooltip" inherits="GameTooltipTemplate"/>
 	<Font name="GDRFontSmallBlack" inherits="MasterFont" font="Fonts\FRIZQT__.TTF" virtual="true">
 		<FontHeight>
@@ -18,7 +18,7 @@
 		</FontHeight>
 		<Color r="0.0" g="0.0" b="0.0"/>
 	</Font>
-	
+
 	<Button name="GDR_InviteButtonTemplate" virtual="true" hidden="false" >
 		<NormalFont inherits="GameFontHighlightSmall"/>
 		<Size>
@@ -60,7 +60,7 @@
 				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 			</OnLoad>
 			<OnClick>
-				PlaySound("igMainMenuOptionCheckBoxOn");
+				PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 				GetDKPRaidPlaner_Invitewindow_singel();
 			</OnClick>
 		</Scripts>
@@ -76,7 +76,7 @@
 		</NormalTexture>
 		<Layers>
 			<Layer level="ARTWORK">
-				
+
 				<Texture name="$parent_raid_icon">
 					<Size>
 						<AbsDimension x="20" y="20"/>
@@ -106,17 +106,17 @@
 				</FontString>
 			</Layer>
 		</Layers>
-		
+
 		<Scripts>
 			<OnLoad>
 				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 			</OnLoad>
 			<OnClick>
 				if (getglobal(self:GetText().."_raid_name"):GetText() ~= nil) then
-					PlaySound("igMainMenuOptionCheckBoxOn");
+					PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 					RaidPlanerCalendar:Hide();
 					GetDKPRaidPlanerRaidFrame:Show();
-					
+
 					prefix = self:GetText();
 					timestamp = tostring(getglobal(prefix.."_raid_name").timestamp);
 					GDR_Scroll_DB(timestamp);
@@ -146,7 +146,7 @@
 				<Size>
 					<AbsDimension x="77" y="20"/>
 				</Size>
-				
+
 				<Layers>
 					<Layer level="BACKGOUND">
 						<Texture name="$parent_Class_Background" file="Interface\AddOns\GetDKP\Images\GDR_Row1" hidden="true">
@@ -180,7 +180,7 @@
 						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 					</OnLoad>
 					<OnClick>
-						
+
 						GDR_OnClick(self, button);
 					</OnClick>
 					<OnEnter>
@@ -233,7 +233,7 @@
 						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 					</OnLoad>
 					<OnClick>
-						
+
 						GDR_OnClick(self, button);
 					</OnClick>
 					<OnEnter>
@@ -286,7 +286,7 @@
 						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 					</OnLoad>
 					<OnClick>
-					
+
 						GDR_OnClick(self, button);
 					</OnClick>
 					<OnEnter>
@@ -339,7 +339,7 @@
 						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 					</OnLoad>
 					<OnClick>
-						
+
 						GDR_OnClick(self, button);
 					</OnClick>
 					<OnEnter>
@@ -392,7 +392,7 @@
 						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 					</OnLoad>
 					<OnClick>
-						
+
 						GDR_OnClick(self, button);
 					</OnClick>
 					<OnEnter>
@@ -445,7 +445,7 @@
 						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 					</OnLoad>
 					<OnClick>
-						
+
 						GDR_OnClick(self, button);
 					</OnClick>
 					<OnEnter>
@@ -498,7 +498,7 @@
 						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 					</OnLoad>
 					<OnClick>
-						
+
 						GDR_OnClick(self, button);
 					</OnClick>
 					<OnEnter>
@@ -551,7 +551,7 @@
 						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 					</OnLoad>
 					<OnClick>
-						
+
 						GDR_OnClick(self, button);
 					</OnClick>
 					<OnEnter>
@@ -604,7 +604,7 @@
 						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 					</OnLoad>
 					<OnClick>
-						
+
 						GDR_OnClick(self, button);
 					</OnClick>
 					<OnEnter>
@@ -616,8 +616,8 @@
 				</Scripts>
 			</Button>
 		</Frames>
-		
-		
+
+
 	</Frame>
 	<Frame name="GetDKPRaidPlanerFrame" frameLevel="DIALOG" parent="UIParent" enableMouse="true" hidden="true" movable="true" >
 		<Size>
@@ -643,7 +643,7 @@
 					</Anchors>
 					<TexCoords left="0.0625" right="0.546875" top="0" bottom="0.5625"/>
 				</Texture>
-				
+
 				<Texture name="GetDKPRaidPlanerTabTitleBackgroundLeft" file="Interface\GuildBankFrame\UI-TabNameBorder">
 					<Size>
 						<AbsDimension x="8" y="18"/>
@@ -669,8 +669,8 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				
-				
+
+
 				<Texture name="GetDKPRaidPlanerTabLimitBackground" file="Interface\GuildBankFrame\UI-TabNameBorder">
 					<Size>
 						<AbsDimension x="10" y="18"/>
@@ -682,7 +682,7 @@
 					</Anchors>
 					<TexCoords left="0.0625" right="0.546875" top="0" bottom="0.5625"/>
 				</Texture>
-				
+
 				<Texture name="GetDKPRaidPlanerTabLimitBackgroundLeft" file="Interface\GuildBankFrame\UI-TabNameBorder">
 					<Size>
 						<AbsDimension x="8" y="18"/>
@@ -720,7 +720,7 @@
 				-->
 			</Layer>
 			<Layer level="ARTWORK">
-				
+
 				<Texture name="GetDKPRaidPlanerFrameLeft" file="Interface\GuildBankFrame\UI-GuildBankFrame-Left">
 					<Size>
 						<AbsDimension x="512" y="512"/>
@@ -740,7 +740,7 @@
 					</Anchors>
 				</Texture>
 			</Layer>
-			
+
 		</Layers>
 		<Frames>
 			<Frame name="GDR_RaidPlaner_Invite" parent="GetDKPRaidPlanerFrame" hidden="true">
@@ -910,7 +910,7 @@
 							</Anchor>
 						</Anchors>
 					</Button>
-					
+
 					<ScrollFrame name="GDR_RaidPlanerInvite_ScrollFrame" inherits="FauxScrollFrameTemplate">
 						<Size>
 							<AbsDimension x="180" y="383"/>
@@ -924,10 +924,10 @@
 						</Anchors>
 						<Scripts>
 							<OnVerticalScroll>
-								FauxScrollFrame_OnVerticalScroll(self, 8, GetDKPRaidPlaner_Invitewindow); 
+								FauxScrollFrame_OnVerticalScroll(self, 8, GetDKPRaidPlaner_Invitewindow);
 							</OnVerticalScroll>
 							<OnShow>
-							
+
 							</OnShow>
 						</Scripts>
 					</ScrollFrame>
@@ -984,12 +984,12 @@
 								self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 							</OnLoad>
 							<OnClick>
-								PlaySound("igMainMenuOptionCheckBoxOn");
+								PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 								GDR_OnClick2(self, "Invite");
 							</OnClick>
 						</Scripts>
 					</Button>
-					
+
 					<Button name="GDR_RaidPlanerPopup_Popup_button2" virtual="true" text="GDR_whisper">
 						<NormalFont inherits="GameFontHighlightSmall"/>
 						<Size x="95" y="10" />
@@ -1007,12 +1007,12 @@
 								self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 							</OnLoad>
 							<OnClick>
-								PlaySound("igMainMenuOptionCheckBoxOn");
+								PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 								GDR_OnClick2(self, "Whisper");
 							</OnClick>
 						</Scripts>
 					</Button>
-					
+
 					<Button name="GDR_RaidPlanerPopup_Popup_button3" virtual="true" text="GDR_close">
 						<NormalFont inherits="GameFontHighlightSmall"/>
 						<Size x="95" y="10" />
@@ -1030,7 +1030,7 @@
 								self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 							</OnLoad>
 							<OnClick>
-								PlaySound("igMainMenuOptionCheckBoxOn");
+								PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 								GDR_RaidPlanerPopup:Hide();
 							</OnClick>
 						</Scripts>
@@ -1052,7 +1052,7 @@
 								self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 							</OnLoad>
 							<OnClick>
-								PlaySound("igMainMenuOptionCheckBoxOn");
+								PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 								GDR_OnClick3(self, button);
 							</OnClick>
 						</Scripts>
@@ -1074,7 +1074,7 @@
 								self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 							</OnLoad>
 							<OnClick>
-								PlaySound("igMainMenuOptionCheckBoxOn");
+								PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 								GDR_OnClick3(self, button);
 							</OnClick>
 						</Scripts>
@@ -1096,7 +1096,7 @@
 								self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 							</OnLoad>
 							<OnClick>
-								PlaySound("igMainMenuOptionCheckBoxOn");
+								PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 								GDR_OnClick3(self, button);
 							</OnClick>
 						</Scripts>
@@ -1118,12 +1118,12 @@
 								self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 							</OnLoad>
 							<OnClick>
-								PlaySound("igMainMenuOptionCheckBoxOn");
+								PlaySound(PlaySoundKitID and "igMainMenuOptionCheckBoxOn" or 856);
 								GDR_OnClick3(self, button);
 							</OnClick>
 						</Scripts>
 					</Button>
-				</Frames>	
+				</Frames>
 				<Scripts>
 					<OnLeave>
 						self:Hide();
@@ -1133,7 +1133,7 @@
 					</OnLoad>
 				</Scripts>
 			</Frame>
-			
+
 			<Frame name="RaidPlanerCalendar">
 				<Anchors>
 					<Anchor point="TOPLEFT">
@@ -1271,7 +1271,7 @@
 							</Anchors>
 							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
 						</Texture>
-						
+
 						<Texture name="GetDKPRaidPlaner_Day8" file="Interface\Glues\CharacterSelect\Glue-CharacterSelect-Highlight" setAllPoints="true">
 							<Size>
 								<AbsDimension x="50" y="20"/>
@@ -1349,8 +1349,8 @@
 							</Anchors>
 							<TexCoords left="0" right="0.78125" top="0" bottom="0.607421875"/>
 						</Texture>
-						
-						
+
+
 						<FontString name="GetDKPRaidPlanerDayname1" inherits="GDRFontSmallBlack" text = "GDR_mon">
 							<Anchors>
 								<Anchor point="CENTER" relativeTo="GetDKPRaidPlaner_Day1">
@@ -2151,10 +2151,10 @@
 							</Anchors>
 							<TexCoords left="1" right="0.5" top="0" bottom="1"/>
 						</Texture>
-						
+
 					</Layer>
 				</Layers>
-				
+
 			</Frame>
 			<Frame name="GetDKPRaidPlanerRaidFrame" hidden="true">
 				<Anchors>
@@ -2311,7 +2311,7 @@
 							</Anchor>
 						</Anchors>
 					</Button>
-					
+
 					<ScrollFrame name="GetDKPRaidPlaner_ScrollFrame" inherits="FauxScrollFrameTemplate">
 						<Size>
 							<AbsDimension x="694" y="310"/>
@@ -2325,16 +2325,16 @@
 						</Anchors>
 						<Scripts>
 							<OnVerticalScroll>
-								FauxScrollFrame_OnVerticalScroll(8, GDR_Scroll_Update); 
+								FauxScrollFrame_OnVerticalScroll(8, GDR_Scroll_Update);
 							</OnVerticalScroll>
 							<OnShow>
-							
+
 							</OnShow>
 						</Scripts>
 					</ScrollFrame>
 				</Frames>
 			</Frame>
-			
+
 			<Button inherits="UIPanelCloseButton">
 				<Anchors>
 					<Anchor point="TOPRIGHT">
@@ -2342,8 +2342,8 @@
 					</Anchor>
 				</Anchors>
 			</Button>
-			
-			
+
+
 		</Frames>
 		<Scripts>
 			<OnLoad>
@@ -2358,10 +2358,10 @@
 				GetDKPRaidPlaner_OnUpdate(self, elapsed);
 			</OnUpdate>
 			<OnShow>
-				
+
 			</OnShow>
 			<OnHide>
-				
+
 			</OnHide>
 			<OnDragStart>
 				self:StartMoving();
@@ -2373,5 +2373,5 @@
 			</OnDragStop>
 		</Scripts>
 	</Frame>
-	
+
 </Ui>

@@ -4,9 +4,9 @@
 ---- Additional Authors: Sylna, Corgan, WalleniuM               ----
 ---- GetDKP Plus Admin ist unter der Creative Common Licence: 	----
 ---- Namensnennung , Keine kommerzielle Nutzung , Weitergabe    ----
----- unter gleichen Bedingungen 2.0 Deutschland verfügbar       ----
+---- unter gleichen Bedingungen 2.0 Deutschland verfï¿½gbar       ----
 ---- http://www.eqdkp-plus.com/page.php?21                      ---
----- $Id: GetDKPList.lua 22566 2016-09-02 22:17:00Z Yunalescar $	
+---- $Id: GetDKPList.lua 22566 2016-09-02 22:17:00Z Yunalescar $
 --------------------------------------------------------------------
 
 	GDL_UpdateInterval = 0.01;
@@ -16,13 +16,13 @@
 			if (multiTable[1].DKP.disc == "Raid DKP") then
 				multiTable = {};
 				multiTable = {
-							[1]= { 
-								["dkp"] = { 
-										["name"] = "dkp",  
-										["disc"] = "Raid DKP",  
+							[1]= {
+								["dkp"] = {
+										["name"] = "dkp",
+										["disc"] = "Raid DKP",
 										["events"] = " "
 											}
-								}  
+								}
 							} ;
 			end;
 		end;
@@ -36,11 +36,11 @@
 	GDL_Class[2][i] = "All";
 	i = i + 1;
 	for key, val in pairs(GDKP_Search_SETS) do
-		
+
 			GDL_Class[1][i] = val["Class_DE"];
-			
+
 			GDL_Class[2][i] = val["Class_ENG"];
-		
+
 		i = i + 1;
 	end;
 	GDL_Class[1][i] = "Unbekannt";
@@ -77,7 +77,7 @@
 	GDL_DKP_LIST_Atrib = "current";
 	GDL_Konto_Atrib = {"current","earned","spend","adjust","current"};
 	GDL_Setitem_tabelname ={"T6","T5","T4","T3","T2","T1","ZG","AQ20","AQ40"};
-	
+
 	GDL_Itemlist_SetID = 1;
 	if ( GetLocale() == "deDE" ) then
 		GDL_Itemlist_Locale = 4;
@@ -99,10 +99,10 @@
 						{"D\195\164monenj\195\164ger", 	"Demonhunter",	0.56,	0.22,	1.00},
 						{"Unbekannt", 		"Unknown", 		0.00,	1.00,	0.00}
 						};
-	
-	
-	
-	
+
+
+
+
 -----------------------------
 -- GetDKP Plus List OnLoad --
 -----------------------------
@@ -112,9 +112,9 @@ function GetDKP_List_OnLoad(this)
 		-- Slash Commands
 		SlashCmdList["GETDKPLIST"] = GetDKP_List_SlashHandler;
 		SLASH_GETDKPLIST1 = "/gdl";
-		-- ALLREADY LOAD 
+		-- ALLREADY LOAD
 		GETDKP_LISTLOAD = true;
-	
+
 end;
 ------------------------------------
 -- GetDKP Plus List Slash Handler --
@@ -175,7 +175,7 @@ function GetDKP_List_VarLoad()
 		end;
 		if ( strlen(multiTable[kontofound][GDL_DKP_LIST].events) >= 40) then
 			text = string.sub(multiTable[kontofound][GDL_DKP_LIST].events ,0,40).." ...";
-		else 
+		else
 			text = multiTable[kontofound][GDL_DKP_LIST].events;
 		end;
 		GDLFrameKontoEvent:SetText(text);
@@ -187,29 +187,29 @@ function GetDKP_List_VarLoad()
 		else
 			getglobal("GDL_Playerlist_InRaidButton").status = "notinraid";
 			GDL_Playerlist_InRaidButton:SetText(GDL_NOTINRAID);
-			
+
 		end;
 		GDL_NonSetItems = {};
 		GDL_SetNonSetItems = {};
 		GDL_SetQuestItems = {};
 		if (DKP_ITEMS ~= nil) then
 			for key, val in pairs(DKP_ITEMS) do
-				for gdkpkey,gdkpval in pairs (gdkp.players) do 
+				for gdkpkey,gdkpval in pairs (gdkp.players) do
 					if (string.lower(key) == string.lower(gdkpkey)) then
 						class = GDL_SetClass (gdkpval.class);
 					end;
 				end;
-				
+
 				-- for item, itemval in pairs(DKP_ITEMS[key]["Items"]) do
 				for k = 1, getn(DKP_ITEMS[key]["Items"]),1 do
 				getnonset = 0;
 				id = 0;
-					for j=2,table.getn(GDL_Class[2])-1,1 do 
-					for i=1,table.getn(GDL_Setitem_tabelname),1 do 
+					for j=2,table.getn(GDL_Class[2])-1,1 do
+					for i=1,table.getn(GDL_Setitem_tabelname),1 do
 						if (GDL_Setitem_tabelname[i] ~= "T4" and GDL_Setitem_tabelname[i] ~= "T5" and GDL_Setitem_tabelname[i] ~= "T6") then
 							for itempos,setitemval in pairs(GDL_Sets[GDL_Class[2][j]][GDL_Setitem_tabelname[i]]) do
 								if (itempos ~= "setname") then
-									
+
 									if (GDL_Setitem_tabelname[i] == "T1" or GDL_Setitem_tabelname[i] == "T2") then
 										if (DKP_ITEMS[key]["Items"][k].name == setitemval[3] or DKP_ITEMS[key]["Items"][k].name == setitemval[4]) then
 											if (class == GDL_Class[2][j]) then
@@ -222,14 +222,14 @@ function GetDKP_List_VarLoad()
 										if (itempos ~= "finger1") then
 											if (DKP_ITEMS[key]["Items"][k].name == setitemval[6] or DKP_ITEMS[key]["Items"][k].name == setitemval[7]) then
 												if (class == GDL_Class[2][j]) then
-													getnonset = 1;	
-												end;	
+													getnonset = 1;
+												end;
 											end;
-											
+
 										else
 											if (DKP_ITEMS[key]["Items"][k].name == setitemval[3] or DKP_ITEMS[key]["Items"][k].name == setitemval[4]) then
 												if (class == GDL_Class[2][j]) then
-													getnonset = 3;	
+													getnonset = 3;
 												else
 													getnonset = 2;
 												end;
@@ -238,7 +238,7 @@ function GetDKP_List_VarLoad()
 									elseif (GDL_Setitem_tabelname[i] == "ZG" or GDL_Setitem_tabelname[i] == "AQ20" or GDL_Setitem_tabelname[i] == "AQ40") then
 										if (DKP_ITEMS[key]["Items"][k].name == setitemval[6] or DKP_ITEMS[key]["Items"][k].name == setitemval[7]) then
 											if (class == GDL_Class[2][j]) then
-												getnonset = 1;	
+												getnonset = 1;
 											end;
 										end;
 									end;
@@ -249,7 +249,7 @@ function GetDKP_List_VarLoad()
 								if (DKP_ITEMS[key]["Items"][k].name == GDL_T4[l][3] or DKP_ITEMS[key]["Items"][k].name == GDL_T4[l][2]) then
 									getnonset = 2;
 									id = l;
-									
+
 								end;
 							end;
 						elseif (GDL_Setitem_tabelname[i] == "T5" ) then
@@ -265,7 +265,7 @@ function GetDKP_List_VarLoad()
 									getnonset = 2;
 									id = l;
 								end;
-							end;	
+							end;
 						end;
 					end;
 					end;
@@ -273,13 +273,13 @@ function GetDKP_List_VarLoad()
 						if (getdkp_itemids) then
 							if (getdkp_itemids[DKP_ITEMS[key]["Items"][k].name] ~= nil) then
 								id = getdkp_itemids[DKP_ITEMS[key]["Items"][k].name];
-							
+
 							end;
 						end;
 						if (ItemLinks and id == 0) then
 							if	(ItemLinks[DKP_ITEMS[key]["Items"][k].name] ~= nil) then
 								id = strsplit(":",ItemLinks[DKP_ITEMS[key]["Items"][k].name].i);
-								
+
 							end;
 						end;
 						if (id == 0) then
@@ -291,18 +291,18 @@ function GetDKP_List_VarLoad()
 							end;
 						end;
 					end;
-					
+
 					if (id ~= nil) then
 						if(GetItemInfo(id))then
 							itemName, itemLink, itemQuality, itemLevel, itemMinLevel, itemType, itemSubType, itemCount, itemEquipLoc, itemTexture = GetItemInfo(id);
 							texture = itemTexture;
-							
+
 							quality = itemQuality;
 							_, _, _, itemColor = GetItemQualityColor(itemQuality);
-							color = itemColor;		
+							color = itemColor;
 						else
 							texture = "Interface\\Icons\\INV_Misc_QuestionMark";
-							color= "|cffffffff"; 
+							color= "|cffffffff";
 							qualitiy= 0;
 						end;
 					end;
@@ -311,7 +311,7 @@ function GetDKP_List_VarLoad()
 					elseif(getnonset == 1) then
 						tinsert(GDL_SetQuestItems, {name = key; class = class; questitem = DKP_ITEMS[key]["Items"][k].name; questitemdkp = DKP_ITEMS[key]["Items"][k].dkp; questitemid = id; questitemquality = quality; questitemcolor= color; questitemtexture = texture;});
 					elseif(getnonset == 2) then
-					
+
 						tinsert(GDL_SetNonSetItems, {name = key; class = class; questitem = DKP_ITEMS[key]["Items"][k].name; setnonsetitemdkp = DKP_ITEMS[key]["Items"][k].dkp; setnonsetitenid = id; setnonsetitemquality = quality; setnonsetitemcolor= color; setnonsetitemtexture = texture;});
 					end;
 				end;
@@ -323,7 +323,7 @@ end;
 -----------------------------
 -- GetDKP Plus List Update --
 -----------------------------
-function GetDKP_List_VarUpdate()	
+function GetDKP_List_VarUpdate()
 	if (GDKP_VERSION >= "2.4" and gdkp ~= nil) then
 		if (table.getn (multiTable) == 1) then
 			getglobal("GDL_Playerlist_FrameColumnHeader4"):Hide();
@@ -346,12 +346,12 @@ function GetDKP_List_VarUpdate()
 						else
 							i = GDL_CLASS_ID_NUM - 11;
 							for j = 1,table.getn(GDKP_Special_Class[i]),1 do
-								
+
 								if ( GDL_SetClass(GDKP_Special_Class[i][j]) ==  GDL_SetClass(val.class)) then
 									tinsert (GDL_Players, {name = key; class = val.class; dkp = val.DKP; current = val[GDL_DKP_LIST.."_current"]; current2 = val[GDL_DKP_LIST.."_"..GDL_DKP_LIST_Atrib]; adjust = val[GDL_DKP_LIST.."_adjust"]; spend = val[GDL_DKP_LIST.."_spend"]; earned = val[GDL_DKP_LIST.."_earned"];});
 								end;
 							end;
-						end;	
+						end;
 					elseif (GDKPvar_save.ShowOnlyInRaid == "false") then
 						if (GDL_CLASS_ID_NUM < 12) then
 							if (GDL_CLASS_ID == "Alle" or GDL_CLASS_ID == "All" or GDL_SetClass(GDL_CLASS_ID) == GDL_SetClass(val.class)) then
@@ -360,12 +360,12 @@ function GetDKP_List_VarUpdate()
 						else
 							i = GDL_CLASS_ID_NUM - 11;
 							for j = 1,table.getn(GDKP_Special_Class[i]),1 do
-							
+
 								if ( GDL_SetClass(GDKP_Special_Class[i][j]) ==  GDL_SetClass(val.class)) then
 									tinsert (GDL_Players, {name = key; class = val.class; dkp = val.DKP; current = val[GDL_DKP_LIST.."_current"]; current2 = val[GDL_DKP_LIST.."_"..GDL_DKP_LIST_Atrib]; adjust = val[GDL_DKP_LIST.."_adjust"]; spend = val[GDL_DKP_LIST.."_spend"]; earned = val[GDL_DKP_LIST.."_earned"];});
 								end;
 							end;
-						end;	
+						end;
 					end;
 				else
 					local _args = GDKP_GetArgs(GDL_Playerlist_EditBox:GetText(),",");
@@ -373,9 +373,9 @@ function GetDKP_List_VarUpdate()
 						if ( string.lower(_args[j]) == string.lower(key)) then
 							tinsert (GDL_Players, {name = key; class = val.class; dkp = val.DKP; current = val[GDL_DKP_LIST.."_current"]; current2 = val[GDL_DKP_LIST.."_"..GDL_DKP_LIST_Atrib]; adjust = val[GDL_DKP_LIST.."_adjust"]; spend = val[GDL_DKP_LIST.."_spend"]; earned = val[GDL_DKP_LIST.."_earned"];});
 						end;
-					end;	
+					end;
 				end;
-			else 
+			else
 				GDL_DKP_LIST = table.foreach(multiTable[1], VarReturn) ;
 				if (GDL_Playerlist_EditBox:GetText() == "") then
 					if (GDKPvar_save.ShowOnlyInRaid == "true" and GetDKP_List_CheckifPlayerIsInRaid(key) == true) then
@@ -390,7 +390,7 @@ function GetDKP_List_VarUpdate()
 									tinsert (GDL_Players, {name = key; class = val.class; dkp = val.DKP; current = val[GDL_DKP_LIST.."_current"]; current2 = val[GDL_DKP_LIST.."_"..GDL_DKP_LIST_Atrib]; adjust = val[GDL_DKP_LIST.."_adjust"]; spend = val[GDL_DKP_LIST.."_spend"]; earned = val[GDL_DKP_LIST.."_earned"];});
 								end;
 							end;
-						end;	
+						end;
 					elseif (GDKPvar_save.ShowOnlyInRaid == "false") then
 						if (GDL_CLASS_ID_NUM < 12) then
 							if (GDL_CLASS_ID == "Alle" or GDL_CLASS_ID == "All" or GDL_SetClass(GDL_CLASS_ID) == GDL_SetClass(val.class)) then
@@ -403,7 +403,7 @@ function GetDKP_List_VarUpdate()
 									tinsert (GDL_Players, {name = key; class = val.class; dkp = val.DKP; current = val[GDL_DKP_LIST.."_current"]; current2 = val[GDL_DKP_LIST.."_"..GDL_DKP_LIST_Atrib]; adjust = val[GDL_DKP_LIST.."_adjust"]; spend = val[GDL_DKP_LIST.."_spend"]; earned = val[GDL_DKP_LIST.."_earned"];});
 								end;
 							end;
-						end;	
+						end;
 					end;
 				else
 					local _args = GDKP_GetArgs(GDL_Playerlist_EditBox:GetText(),",");
@@ -414,10 +414,10 @@ function GetDKP_List_VarUpdate()
 					end;
 				end;
 			end;
-				
+
 		end;
 	end;
-	
+
 end;
 
 -----------------------------
@@ -427,7 +427,7 @@ function GetDKP_List_Toggle()
 	if (type(GDKPvar_save) == "table") then
 		GDL_Scale = (GDKPvar_save.Scaling_GDL / 100);
 	end;
-	
+
 		if (GetDKP_List_Frame:IsVisible()) then
 			GetDKP_List_Frame:Hide();
 		else
@@ -436,15 +436,15 @@ function GetDKP_List_Toggle()
 			GetDKP_List_Frame:Show();
 			GDL_Playerlist_Frame:Show();
 			GetDKP_List_Frame_Show = 1;
-			unsavedscale = 1 - UIParent:GetEffectiveScale() + GDL_Scale;	
+			unsavedscale = 1 - UIParent:GetEffectiveScale() + GDL_Scale;
 			GetDKP_List_Frame:SetScale(unsavedscale);
 			GDL_Playerlist_Refresh();
 			GDLFrameTitleText:SetFont("Interface\\AddOns\\GetDKP\\Font\\MORPHEUS.TTF", 18,"OUTLINE, MONOCHROME");
 		end;
-	
+
 end;
 function GetDKP_List_OnUpdate(this, elapsed)
-	this.TimeSinceLastUpdate = this.TimeSinceLastUpdate + elapsed; 	
+	this.TimeSinceLastUpdate = this.TimeSinceLastUpdate + elapsed;
 
   if (this.TimeSinceLastUpdate > GDL_UpdateInterval and GetDKP_List_Frame:GetAlpha() < 1 ) then
 	a = GetDKP_List_Frame:GetAlpha();
@@ -462,14 +462,14 @@ function GetDKP_List_ButtonToggle()
 		GDL_Itemlist_Frame:Hide();
 		GDL_NonsetItemlist_Frame:Hide();
 		GDL_Itemlist_Frame_Show = hide;
-		
+
 	else
 		getglobal("GDL_Playerlist_ShowItemButton").status = "set";
 		GDL_Playerlist_ShowItemButton:SetText(GDL_NONSETITEM);
 		GDL_Itemlist_Frame:Hide();
 		GDL_NonsetItemlist_Frame:Hide();
 		GDL_Itemlist_Frame_Show = hide;
-		
+
 	end;
 end;
 function GetDKP_List_InRaidButtonToggle()
@@ -504,7 +504,7 @@ function GDL_Playerlist_Refresh()
 	--GDL_Playerlist_FrameKontoAtribDropDown_OnLoad();
 	GetDKP_List_VarLoad();
 	GDL_Playerlist_Update();
-	
+
 end;
 -----------------------------
 -- GetDKP Plus List Column --
@@ -527,26 +527,26 @@ local areturn = false ;
 		return areturn
 	else
 		if  GetNumGroupMembers()  > 0 then		--Raid exists
-			for i = 1,GetNumGroupMembers() do 
-				
+			for i = 1,GetNumGroupMembers() do
+
 								local LocalUsername, LocalUserrealm = strsplit("-", msg, 2);
-				
+
 				if GetRaidRosterInfo(i) ~= nil then
-					if string.lower(msg) == string.lower(GetRaidRosterInfo(i)) then 
+					if string.lower(msg) == string.lower(GetRaidRosterInfo(i)) then
 						areturn = true ;
 					end;
-					if string.lower(LocalUsername) == string.lower(GetRaidRosterInfo(i)) then 
+					if string.lower(LocalUsername) == string.lower(GetRaidRosterInfo(i)) then
 						areturn = true ;
 					end;
-				end;	
-			end; 
+				end;
+			end;
 		else
 			areturn = true ;					--display everything when not in a raid
-		end;	
-	end;	
-	
-return areturn	
-end;	
+		end;
+	end;
+
+return areturn
+end;
 
 ------------------------------------------------
 -- GetDKP Plus List Playerlist Dropdown Class --
@@ -557,13 +557,13 @@ function GDL_Playerlist_FrameClassDropDown_Initialize()
 	if ( GetLocale() == "deDE" ) then
 		info = {
 			text = "Alle";
-			
+
 			func = GDL_Playerlist_FrameClassDropDown_OnClick;
 		};
 	else
 		info = {
 			text = "All";
-			
+
 			func = GDL_Playerlist_FrameClassDropDown_OnClick;
 		};
 	end;
@@ -573,14 +573,14 @@ function GDL_Playerlist_FrameClassDropDown_Initialize()
 		if ( GetLocale() == "deDE" ) then
 			info = {
 			text = val["Class_DE"];
-			
+
 			func = GDL_Playerlist_FrameClassDropDown_OnClick;
 			};
 			UIDropDownMenu_AddButton(info);
-		else 
+		else
 			info = {
 			text = val["Class_ENG"];
-			
+
 			func = GDL_Playerlist_FrameClassDropDown_OnClick;
 			};
 			UIDropDownMenu_AddButton(info);
@@ -588,7 +588,7 @@ function GDL_Playerlist_FrameClassDropDown_Initialize()
 	end;
 	--------Special Class Grp --------------
 	spclass = "";
-	for i = 1,table.getn(GDKP_Special_Class),1 do 
+	for i = 1,table.getn(GDKP_Special_Class),1 do
 		for j = 1,table.getn(GDKP_Special_Class[i]),1 do
 			if ( GetLocale() == "deDE" ) then
 				class = GDKP_Special_Class[i][j];
@@ -597,13 +597,13 @@ function GDL_Playerlist_FrameClassDropDown_Initialize()
 			end;
 			spclass = spclass..class..",";
 		end;
-		
+
 		info = {
 			text = spclass;
-			
+
 			func = GDL_Playerlist_FrameClassDropDown_OnClick;
 			};
-			UIDropDownMenu_AddButton(info); 
+			UIDropDownMenu_AddButton(info);
 		spclass = "";
 	end;
 end;
@@ -623,7 +623,7 @@ end;
 
 function GDL_Playerlist_FrameClassDropDown_OnClick(this, button)
 	GDL_Playerlist_FrameClassDropDown_DDID = this:GetID();
-	
+
 	if ( GetLocale() == "deDE" ) then
 		if (GDL_Playerlist_FrameClassDropDown_DDID < 12) then
 			GDL_Playerlist_FrameClassDropDown_SetSelectedID(GDL_Playerlist_FrameClassDropDown, GDL_Playerlist_FrameClassDropDown_DDID, GDL_Class [1][GDL_Playerlist_FrameClassDropDown_DDID]);
@@ -710,7 +710,7 @@ function GDL_Playerlist_FrameKontoDropDown_OnLoad(this)
 		GDLFrameKontoText:SetText(GDL_DKP_LIST..GDL_Events);
 		if ( strlen(multiTable[GDL_Playerlist_FrameKontoDropDown_DDID][GDL_DKP_LIST].events) >= 40) then
 			text = string.sub(multiTable[GDL_Playerlist_FrameKontoDropDown_DDID][GDL_DKP_LIST].events ,0,40).." ...";
-		else 
+		else
 			text = multiTable[GDL_Playerlist_FrameKontoDropDown_DDID][GDL_DKP_LIST].events;
 		end;
 		GDLFrameKontoEvent:SetText(text);
@@ -718,7 +718,7 @@ function GDL_Playerlist_FrameKontoDropDown_OnLoad(this)
 		--GetDKP_List_VarUpdate();
 		--GDL_Playerlist_Update();
 	end;
-	
+
 		UIDropDownMenu_SetWidth(GDL_Playerlist_FrameKontoDropDown,60);
 		UIDropDownMenu_SetButtonWidth(GDL_Playerlist_FrameKontoDropDown,24);
 		UIDropDownMenu_JustifyText(GDL_Playerlist_FrameKontoDropDown,"LEFT")
@@ -731,7 +731,7 @@ function GDL_Playerlist_FrameKontoDropDown_OnClick(this, button)
 	GDLFrameKontoText:SetText(GDL_DKP_LIST..GDL_Events);
 	if ( strlen(multiTable[GDL_Playerlist_FrameKontoDropDown_DDID][GDL_DKP_LIST].events) >= 40) then
 		text = string.sub(multiTable[GDL_Playerlist_FrameKontoDropDown_DDID][GDL_DKP_LIST].events ,0,40).." ...";
-	else 
+	else
 		text = multiTable[GDL_Playerlist_FrameKontoDropDown_DDID][GDL_DKP_LIST].events;
 	end;
 	GDLFrameKontoEvent:SetText(text);
@@ -752,7 +752,7 @@ end;
 -----------------------------------------------------
 function GDL_Playerlist_FrameKontoAtribDropDown_Initialize()
 	local info;
-	
+
 	for i=1,4,1 do
 		info = {
 			text = GDL_Konto_Atrib[i];
@@ -801,13 +801,13 @@ end;
 -- GetDKP Plus List Playerlist Scrollframe --
 ----------------------------------------------
 function GDL_Playerlist_Update(spclassid)
-	
+
 	local GDL_Playerlist_Offset = FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame);
 	local GDL_Playerlist_Index;
 	GDL_Count = table.getn (GDL_Players);
-	
+
 	for i=1, GDL_TO_DISPLAY, 1 do
-		
+
 		GDL_Playerlist_Index = GDL_Playerlist_Offset + i;
 		prefix = "GDL_Playerlist_FrameButton"..i;
 		button = getglobal(prefix);
@@ -865,10 +865,10 @@ function GDL_Sort (value,button)
 							GDL_Players[j] = GDL_Players[i];
 							GDL_Players[i] = test;
 						end;
-				
+
 					end;
 				end;
-			elseif (GDL_S1 == "up") then	
+			elseif (GDL_S1 == "up") then
 				GDL_S1 = "down";
 				for i = 1, table.getn (GDL_Players) ,1 do
 					for j = 1, table.getn (GDL_Players) ,1 do
@@ -877,10 +877,10 @@ function GDL_Sort (value,button)
 							GDL_Players[j] = GDL_Players[i];
 							GDL_Players[i] = test;
 						end;
-				
+
 					end;
 				end;
-			end;	
+			end;
 		end;
 		if (value == 2) then
 			if (GDL_S2 == "down") then
@@ -892,10 +892,10 @@ function GDL_Sort (value,button)
 							GDL_Players[j] = GDL_Players[i];
 							GDL_Players[i] = test;
 						end;
-				
+
 					end;
 				end;
-			elseif (GDL_S2 == "up") then	
+			elseif (GDL_S2 == "up") then
 				GDL_S2 = "down";
 				for i = 1, table.getn (GDL_Players) ,1 do
 					for j = 1, table.getn (GDL_Players) ,1 do
@@ -904,10 +904,10 @@ function GDL_Sort (value,button)
 							GDL_Players[j] = GDL_Players[i];
 							GDL_Players[i] = test;
 						end;
-				
+
 					end;
 				end;
-			end;	
+			end;
 		end;
 		if (value == 3) then
 			if (GDL_S3 == "down") then
@@ -919,10 +919,10 @@ function GDL_Sort (value,button)
 							GDL_Players[j] = GDL_Players[i];
 							GDL_Players[i] = test;
 						end;
-				
+
 					end;
 				end;
-			elseif (GDL_S3 == "up") then	
+			elseif (GDL_S3 == "up") then
 				GDL_S3 = "down";
 				for i = 1, table.getn (GDL_Players) ,1 do
 					for j = 1, table.getn (GDL_Players) ,1 do
@@ -931,10 +931,10 @@ function GDL_Sort (value,button)
 							GDL_Players[j] = GDL_Players[i];
 							GDL_Players[i] = test;
 						end;
-				
+
 					end;
 				end;
-			end;	
+			end;
 		end;
 		if (value == 4) then
 			if (GDL_S4 == "down") then
@@ -946,10 +946,10 @@ function GDL_Sort (value,button)
 							GDL_Players[j] = GDL_Players[i];
 							GDL_Players[i] = test;
 						end;
-				
+
 					end;
 				end;
-			elseif (GDL_S4 == "up") then	
+			elseif (GDL_S4 == "up") then
 				GDL_S4 = "down";
 				for i = 1, table.getn (GDL_Players) ,1 do
 					for j = 1, table.getn (GDL_Players) ,1 do
@@ -958,12 +958,12 @@ function GDL_Sort (value,button)
 							GDL_Players[j] = GDL_Players[i];
 							GDL_Players[i] = test;
 						end;
-				
+
 					end;
 				end;
-			end;	
+			end;
 		end;
-		
+
 	end;
 	GDL_Playerlist_Update();
 end;
@@ -1028,7 +1028,7 @@ end;
 				-- end;
 				-- class = GDL_SetClass (GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].class);
 				-- GDL_POS = 16;
-				
+
 				-- if (GDL_Setitem_tabelname[GDL_Itemlist_SetID] ~= "T4" and GDL_Setitem_tabelname[GDL_Itemlist_SetID] ~= "T5" and GDL_Setitem_tabelname[GDL_Itemlist_SetID] ~= "T6") then
 					-- GDL_Itemlist_Tooken_Frame:Hide();
 					-- GDL_Itemlist_TookenButton:Hide();
@@ -1050,7 +1050,7 @@ end;
 					-- end;
 					-- for itempos, itemval in pairs(GDL_Sets[class][GDL_Setitem_tabelname[GDL_Itemlist_SetID]]) do
 					-- GDL_Itemset = nil;
-						-- if (itempos ~= "setname" and itempos ~= "wapponmainhand" and itempos ~= "shildhand" and itempos ~= "diztans") then 
+						-- if (itempos ~= "setname" and itempos ~= "wapponmainhand" and itempos ~= "shildhand" and itempos ~= "diztans") then
 							-- getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Icon"):SetTexture("Interface\\Icons\\"..itemval[2]);
 							-- --getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Name"):SetText(itemval[GDL_Itemlist_Locale]);
 							-- getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Icon").itemid = itemval[1];
@@ -1063,7 +1063,7 @@ end;
 										-- if (DKP_ITEMS[GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name]["Items"][j].name == itemval[GDL_Itemlist_Locale] ) then
 											-- GDL_Itemset = j;
 										-- end;
-									-- end;		
+									-- end;
 									-- if (GDL_Itemset ~= nil) then
 										-- getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Icon").itemdkp = DKP_ITEMS[GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name]["Items"][GDL_Itemset].dkp;
 										-- getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Icon"):SetAlpha(1.0);
@@ -1114,7 +1114,7 @@ end;
 											-- getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Icon"):SetAlpha(0.5);
 										-- end;
 									-- end;
-								-- ------------------------------------------------ Zul Gurub ---------------------------------------------------	
+								-- ------------------------------------------------ Zul Gurub ---------------------------------------------------
 								-- elseif (GDL_Sets[class][GDL_Setitem_tabelname[GDL_Itemlist_SetID]].setname[5] == "Zul Gurub") then
 									-- if (itempos ~= "trinket1") then
 										-- for j = 1,getn(DKP_ITEMS[GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name]["Items"]),1 do
@@ -1172,7 +1172,7 @@ end;
 											-- getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Icon"):SetAlpha(0.5);
 											-- getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Icon").questitemid = itemval[5];
 										-- end;
-								-- ------------------------------------------------------- AQ 40 ----------------------------------------------		
+								-- ------------------------------------------------------- AQ 40 ----------------------------------------------
 								-- elseif (GDL_Sets[class][GDL_Setitem_tabelname[GDL_Itemlist_SetID]].setname[5] == "AQ40") then
 										-- if (itempos == "robe" or itempos == "head" or itempos == "legs") then
 											-- for j = 1,getn(DKP_ITEMS[GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name]["Items"]),1 do
@@ -1194,12 +1194,12 @@ end;
 											-- end;
 										-- elseif (itempos == "shoulder") then
 											-- i = 0;
-											
+
 											-- --for questval,questitem in pairs (DKP_ITEMS[string.lower(GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name)]["Items"]) do
-											-- for j = 1,getn(DKP_ITEMS[GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name]["Items"]),1 do	
-												-- if (DKP_ITEMS[GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name]["Items"][j].name == itemval[GDL_Itemlist_Locale+3] ) then 
+											-- for j = 1,getn(DKP_ITEMS[GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name]["Items"]),1 do
+												-- if (DKP_ITEMS[GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name]["Items"][j].name == itemval[GDL_Itemlist_Locale+3] ) then
 													-- i=i+1;
-													-- if (i == 1) then 
+													-- if (i == 1) then
 														-- getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Icon").itemdkp = DKP_ITEMS[GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name]["Items"][j].dkp;
 														-- getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Icon"):SetAlpha(1.0);
 														-- GDL_Itemlist_Model:TryOn(itemval[1]);
@@ -1217,10 +1217,10 @@ end;
 										-- elseif (itempos == "feet") then
 											-- i=0;
 											-- --for questval,questitem in pairs (DKP_ITEMS[string.lower(GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name)]["Items"]) do
-											-- for j = 1,getn(DKP_ITEMS[GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name]["Items"]),1 do	
-												-- if (DKP_ITEMS[GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name]["Items"][j].name == itemval[GDL_Itemlist_Locale+3]) then 
+											-- for j = 1,getn(DKP_ITEMS[GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name]["Items"]),1 do
+												-- if (DKP_ITEMS[GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name]["Items"][j].name == itemval[GDL_Itemlist_Locale+3]) then
 													-- i=i+1;
-													-- if (i == 2) then 
+													-- if (i == 2) then
 														-- getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Icon").itemdkp = DKP_ITEMS[GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].name]["Items"][j].dkp;
 														-- getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Icon"):SetAlpha(1.0);
 														-- GDL_Itemlist_Model:TryOn(itemval[1]);
@@ -1230,7 +1230,7 @@ end;
 													-- end;
 												-- end;
 											-- end;
-											
+
 											-- if (i ~= 2) then
 												-- getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Extra"):SetText("");
 												-- getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Icon"):SetAlpha(0.5);
@@ -1238,7 +1238,7 @@ end;
 											-- end;
 										-- end;
 								-- end;
-							-- end;	
+							-- end;
 						-- elseif (itempos == "wapponmainhand" or itempos == "shildhand" or itempos == "diztans") then
 							-- getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Icon"):SetTexture("Interface\\Icons\\"..itemval[2]);
 							-- --getglobal("GDL_Itemlist_FrameItem"..GDL_Set_Position[itempos].."_Name"):SetText(itemval[GDL_Itemlist_Locale]);
@@ -1263,7 +1263,7 @@ end;
 								-- getglobal("GDL_Itemlist_FrameItem"..GDL_POS.."_Icon"):SetAlpha(0.5);
 								-- getglobal("GDL_Itemlist_FrameItem"..GDL_POS.."_Icon").questitemid = itemval[5];
 							-- end;
-										
+
 						-- end;
 					-- end;
 				-- elseif (GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T4" or GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T5" or GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T6") then
@@ -1311,8 +1311,8 @@ GDL_Itemlist_SetID = GDL_Itemlist_Setname.setid;
 	GDL_Itemlist_SetFrameBackdrop:SetWidth(240);
 end;
 function GDL_ItemList_OnUpdate(this, elapsed, GDL_ItemList_Stop)
-	
-	this.TimeSinceLastUpdate = this.TimeSinceLastUpdate + elapsed; 	
+
+	this.TimeSinceLastUpdate = this.TimeSinceLastUpdate + elapsed;
 	if (this.TimeSinceLastUpdate > GDL_ItemList_UpdateInterval) then
 		GDL_Itemlist_SetFrame:Hide();
 		this.TimeSinceLastUpdate = 0;
@@ -1351,7 +1351,7 @@ end;
 			-- GDL_Itemlist_Setname.setid = GDL_Itemlist_SetID;
 		-- end;
 		-- GDL_Itemlist_Setname2:SetText("T4 Set");
-					
+
 	-- elseif (GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T5") then
 		-- if ( GetLocale() == "deDE" ) then
 			-- GDL_Itemlist_Setname:SetText(GDL_Sets[class][GDL_Setitem_tabelname[GDL_Itemlist_SetID]][id].setname[4]);
@@ -1394,10 +1394,10 @@ end;
 	-- GDL_Itemlist_Tooken_Upate();
 -- end;
 function GDL_ToolTip(this,set,iconid,name,prefix)
-	
+
 	if (prefix) then
 		prefix= prefix..iconid.."ItemName";
-		
+
 		itemid = getglobal(prefix).itemid;
 		itemname = getglobal(prefix).itemname;
 	else
@@ -1405,25 +1405,25 @@ function GDL_ToolTip(this,set,iconid,name,prefix)
 		questitemid = getglobal("GDL_Itemlist_FrameItem"..iconid.."_Icon").questitemid;
 		itemname = getglobal("GDL_Itemlist_FrameItem"..iconid.."_Icon").itemname;
 	end;
-	
+
 	if (set == "sets") then
 		--ItemRefTooltip:SetOwner(this, "ANCHOR_BOTTOMLEFT");
 		--ItemRefTooltip:SetText(name);
 		--ItemRefTooltip:Show();
 		--GetDKP_Tooltip_Update(itemname,"ItemRefTooltip");
-	elseif (itemid) then	
-		
+	elseif (itemid) then
+
 		if(GetItemInfo(itemid))then
 			itemName, itemLink, itemQuality, itemLevel, itemType, itemSubType, itemCount, itemEquipLoc, itemTexture = GetItemInfo(itemid);
 			ItemRefTooltip:SetOwner(this, "ANCHOR_BOTTOMLEFT");
 			ItemRefTooltip:SetHyperlink(itemLink);
 			ItemRefTooltip:Show();
 		elseif (LootLink_SetTooltip) then
-			
+
 			if (ItemLinks[itemname]) then
 				ItemRefTooltip:SetOwner(this, "ANCHOR_BOTTOMRIGHT");
 				LootLink_SetTooltip(ItemRefTooltip,itemname);
-				
+
 			else
 				ItemRefTooltip:SetOwner(this, "ANCHOR_BOTTOMLEFT");
 				ItemRefTooltip:SetText(itemname.."\n"..GDL_NO_ATRIBUDES);
@@ -1443,10 +1443,10 @@ function GDL_Itemlist_ItemLink(button,iconid)
 		if( IsShiftKeyDown() and ChatFrameEditBox) then
 			prefix= getglobal("GDL_Itemlist_FrameItem"..iconid.."_Icon");
 			itemid = prefix.itemid;
-			if (itemid) then	
+			if (itemid) then
 				if(GetItemInfo(itemid))then
 					itemName, itemLink, itemQuality, itemLevel, itemMinLevel, itemType, itemSubType, itemCount, itemEquipLoc, itemTexture = GetItemInfo(itemid);
-					
+
 					if (prefix.itemdkp ~= nil) then
 						if (GetLocale() == "deDE") then
 							ChatFrameEditBox:Insert(GDL_Itemlist_FrameTitleText.name.." hat f\195\188r "..itemLink.." "..prefix.itemdkp.." DKP bezahlt");
@@ -1463,7 +1463,7 @@ function GDL_Itemlist_ItemLink(button,iconid)
 				return;
 			end
 			itemid = getglobal("GDL_Itemlist_FrameItem"..iconid.."_Icon").itemid;
-			if (itemid) then	
+			if (itemid) then
 				if(GetItemInfo(itemid))then
 					GDL_Itemlist_Model:TryOn(itemid);
 				end;
@@ -1473,7 +1473,7 @@ function GDL_Itemlist_ItemLink(button,iconid)
 end;
 
 function GDL_Itemlist_TexturePath()
-	
+
 	local race, fileName = UnitRace("player");
 	if ( strupper(fileName) == "GNOME" ) then
 		fileName = "Dwarf";
@@ -1483,7 +1483,7 @@ function GDL_Itemlist_TexturePath()
 	if ( not fileName ) then
 		fileName = "Orc";
 	end;
-	
+
 
 	return "Interface\\DressUpFrame\\DressUpBackground-"..fileName;
 end;
@@ -1506,7 +1506,7 @@ function GDL_Itemlist_Model_RotateLeft(model, rotationIncrement)
 	end;
 	model.rotation = model.rotation - rotationIncrement;
 	model:SetRotation(model.rotation);
-	PlaySound("igInventoryRotateCharacter");
+	PlaySound(PlaySoundKitID and "igInventoryRotateCharacter" or 861);
 end;
 
 function GDL_Itemlist_Model_RotateRight(model, rotationIncrement)
@@ -1515,14 +1515,14 @@ function GDL_Itemlist_Model_RotateRight(model, rotationIncrement)
 	end;
 	model.rotation = model.rotation + rotationIncrement;
 	model:SetRotation(model.rotation);
-	PlaySound("igInventoryRotateCharacter");
+	PlaySound(PlaySoundKitID and "igInventoryRotateCharacter" or 861);
 end;
 
 function GDL_Itemlist_Model_OnUpdate(this, elapsedTime, model, rotationsPerSecond)
 	if ( not rotationsPerSecond ) then
 		rotationsPerSecond = ROTATIONS_PER_SECOND;
 	end;
-	
+
 	if ( getglobal(model:GetName().."RotateLeftButton"):GetButtonState() == "PUSHED" ) then
 		model.rotation = model.rotation + (elapsedTime * 2 * PI * rotationsPerSecond);
 		if ( model.rotation < 0 ) then
@@ -1548,8 +1548,8 @@ function GDL_NonsetItemlist_Upate()
 	local GDL_NonSetItem_Index;
 	i=1;
 	count = 0;
-	for j=1,table.getn (GDL_NonSetItems),1 do 
-	
+	for j=1,table.getn (GDL_NonSetItems),1 do
+
 		if (string.lower(GDL_NonSetItems[j].name) == string.lower(GDL_NonsetItemlist_FrameTitleText.name)) then
 			if (count >= GDL_NonSetItemlist_Offset) then
 				if (i >= 1 and i <= GDL_NonSet_TO_DISPLAY) then
@@ -1574,8 +1574,8 @@ function GDL_NonsetItemlist_Upate()
 			end;
 			count = count + 1;
 		end;
-	end;	
-	for k = i,GDL_NonSet_TO_DISPLAY,1 do 
+	end;
+	for k = i,GDL_NonSet_TO_DISPLAY,1 do
 		prefix = "GDL_NonsetItemlist_FrameButton"..k;
 		button = getglobal(prefix);
 		button:Hide();
@@ -1594,10 +1594,10 @@ function GDL_NonSet_Sort (value)
 						GDL_NonSetItems[j] = GDL_NonSetItems[i];
 						GDL_NonSetItems[i] = test;
 					end;
-			
+
 				end;
 			end;
-		elseif (GDL_NonSetS1 == "up") then	
+		elseif (GDL_NonSetS1 == "up") then
 			GDL_NonSetS1 = "down";
 			for i = 1, table.getn (GDL_NonSetItems) ,1 do
 				for j = 1, table.getn (GDL_NonSetItems) ,1 do
@@ -1606,10 +1606,10 @@ function GDL_NonSet_Sort (value)
 						GDL_NonSetItems[j] = GDL_NonSetItems[i];
 						GDL_NonSetItems[i] = test;
 					end;
-			
+
 				end;
 			end;
-		end;	
+		end;
 	end;
 	if (value == 2) then
 		if (GDL_NonSetS2 == "down") then
@@ -1621,10 +1621,10 @@ function GDL_NonSet_Sort (value)
 						GDL_NonSetItems[j] = GDL_NonSetItems[i];
 						GDL_NonSetItems[i] = test;
 					end;
-			
+
 				end;
 			end;
-		elseif (GDL_NonSetS2 == "up") then	
+		elseif (GDL_NonSetS2 == "up") then
 			GDL_NonSetS2 = "down";
 			for i = 1, table.getn (GDL_NonSetItems) ,1 do
 				for j = 1, table.getn (GDL_NonSetItems) ,1 do
@@ -1633,10 +1633,10 @@ function GDL_NonSet_Sort (value)
 						GDL_NonSetItems[j] = GDL_NonSetItems[i];
 						GDL_NonSetItems[i] = test;
 					end;
-			
+
 				end;
 			end;
-		end;	
+		end;
 	end;
 	GDL_NonsetItemlist_Upate();
 end;
@@ -1662,28 +1662,28 @@ function GDL_NonSetItem_Link (button)
 		end;
 	end;
 end;
-			
+
 --------------------
 -- TookenItemlist --
---------------------			
+--------------------
 function GDL_Itemlist_Tooken_Upate()
 	if (table.getn(GDL_SetNonSetItems) > 0 and GDL_Itemlist_FrameTitleText.name ~= nil) then
-		for k = 1,GDL_NonSet_TO_DISPLAY,1 do 
+		for k = 1,GDL_NonSet_TO_DISPLAY,1 do
 			prefix = "GDL_Itemlist_Tooken_FrameButton"..k;
 			button = getglobal(prefix);
 			button:Hide();
 		end;
-		
+
 			local GDL_Itemlist_Tooken_Offset = FauxScrollFrame_GetOffset(GDL_Itemlist_Tooken_Frame_ScrollFrame);
 			local GDL_TookenItem_Index;
 			i=1;
 			count = 0;
-			for j=1,table.getn (GDL_SetNonSetItems),1 do 
+			for j=1,table.getn (GDL_SetNonSetItems),1 do
 			local itemid = GDL_SetNonSetItems[j].setnonsetitenid;
 			--debug(j.."-"..GDL_Itemlist_FrameTitleText.name);
 				if (GDKPvar_save.TokenItems == "true") then
 					if (string.lower(GDL_SetNonSetItems[j].name) == string.lower(GDL_Itemlist_FrameTitleText.name) and GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T4" and GDL_T4[itemid] ~= nil) then
-						
+
 						if (count >= GDL_Itemlist_Tooken_Offset) then
 							if (i >= 1 and i <= GDL_NonSet_TO_DISPLAY) then
 								prefix = "GDL_Itemlist_Tooken_FrameButton"..i;
@@ -1759,9 +1759,9 @@ function GDL_Itemlist_Tooken_Upate()
 						count = count + 1;
 					end;
 				end;
-			end;	
-		
-		for k = i,GDL_NonSet_TO_DISPLAY,1 do 
+			end;
+
+		for k = i,GDL_NonSet_TO_DISPLAY,1 do
 			prefix = "GDL_Itemlist_Tooken_FrameButton"..k;
 			button = getglobal(prefix);
 			button:Hide();
@@ -1784,10 +1784,10 @@ function GDL_Itemlist_Tooken_Sort (value)
 						GDL_SetNonSetItems[j] = GDL_SetNonSetItems[i];
 						GDL_SetNonSetItems[i] = test;
 					end;
-			
+
 				end;
 			end;
-		elseif (GDL_NonSetS1 == "up") then	
+		elseif (GDL_NonSetS1 == "up") then
 			GDL_NonSetS1 = "down";
 			for i = 1, table.getn (GDL_SetNonSetItems) ,1 do
 				for j = 1, table.getn (GDL_SetNonSetItems) ,1 do
@@ -1796,10 +1796,10 @@ function GDL_Itemlist_Tooken_Sort (value)
 						GDL_SetNonSetItems[j] = GDL_SetNonSetItems[i];
 						GDL_SetNonSetItems[i] = test;
 					end;
-			
+
 				end;
 			end;
-		end;	
+		end;
 	end;
 	if (value == 2) then
 		if (GDL_NonSetS2 == "down") then
@@ -1811,10 +1811,10 @@ function GDL_Itemlist_Tooken_Sort (value)
 						GDL_SetNonSetItems[j] = GDL_SetNonSetItems[i];
 						GDL_SetNonSetItems[i] = test;
 					end;
-			
+
 				end;
 			end;
-		elseif (GDL_NonSetS2 == "up") then	
+		elseif (GDL_NonSetS2 == "up") then
 			GDL_NonSetS2 = "down";
 			for i = 1, table.getn (GDL_SetNonSetItems) ,1 do
 				for j = 1, table.getn (GDL_SetNonSetItems) ,1 do
@@ -1823,21 +1823,21 @@ function GDL_Itemlist_Tooken_Sort (value)
 						GDL_SetNonSetItems[j] = GDL_SetNonSetItems[i];
 						GDL_SetNonSetItems[i] = test;
 					end;
-			
+
 				end;
 			end;
-		end;	
+		end;
 	end;
 	GDL_Itemlist_Tooken_Upate();
 end;
 function GDL_Itemlist_Tooken_Link (button)
-	
+
 	if (button == "LeftButton" ) then
 		local ChatFrameEditBox = ChatEdit_GetActiveWindow();
 		if( IsShiftKeyDown() and ChatFrameEditBox) then
 			GDL_NonItemID = this:GetID();
 			prefix = getglobal("GDL_Itemlist_Tooken_FrameButton"..GDL_NonItemID.."ItemName");
-			
+
 			if (prefix.itemid ~= 0) then
 				if (GetLocale() == "deDE") then
 					ChatFrameEditBox:Insert(GDL_Itemlist_FrameTitleText.name.." hat f\195\188r "..prefix.itemcolor.."|Hitem:"..prefix.itemid..":0:0:0:0:0:0:0".."|h["..prefix.itemname.."]|h|r "..prefix.itemdkp.." DKP bezahlt");
@@ -1857,14 +1857,14 @@ end;
 ------------------------------------------------------------------------------------------
 function GDL_SetClass (class,lang)
 
-	if (class == "Mage" or class == "Magier") then 
-			if (lang ~= "de") then	
+	if (class == "Mage" or class == "Magier") then
+			if (lang ~= "de") then
 				class = "Mage";
 			else
 				class = "Magier";
 			end;
-	elseif (class == "Warlock" or class == "Hexenmeister") then 
-			if (lang ~= "de") then	
+	elseif (class == "Warlock" or class == "Hexenmeister") then
+			if (lang ~= "de") then
 				class = "Warlock";
 			else
 				class = "Hexenmeister";
@@ -1875,67 +1875,67 @@ function GDL_SetClass (class,lang)
 			else
 				class = "Priester";
 			end;
-	elseif (class == "Rogue" or class == "Schurke") then 
-			if (lang ~= "de") then	
+	elseif (class == "Rogue" or class == "Schurke") then
+			if (lang ~= "de") then
 				class = "Rogue";
 			else
 				class = "Schurke";
-			end;	
-	elseif (class == "Druid" or class == "Druide") then 
-			if (lang ~= "de") then	
+			end;
+	elseif (class == "Druid" or class == "Druide") then
+			if (lang ~= "de") then
 				class = "Druid";
 			else
 				class = "Druide";
 			end;
-	elseif (class == "Hunter" or class == "J\195\164ger") then 
-			if (lang ~= "de") then	
+	elseif (class == "Hunter" or class == "J\195\164ger") then
+			if (lang ~= "de") then
 				class = "Hunter";
 			else
 				class = "J\195\164ger";
 			end;
-	elseif (class == "Shaman" or class == "Schamane") then 
-			if (lang ~= "de") then		
+	elseif (class == "Shaman" or class == "Schamane") then
+			if (lang ~= "de") then
 				class = "Shaman";
 			else
 				class = "Schamane";
 			end;
-	elseif (class == "Warrior" or class == "Krieger") then 
-			if (lang ~= "de") then		
+	elseif (class == "Warrior" or class == "Krieger") then
+			if (lang ~= "de") then
 				class = "Warrior";
 			else
 				class = "Krieger";
 			end;
-	elseif (class == "Paladin" or class == "Paladin") then 
-			if (lang ~= "de") then		
+	elseif (class == "Paladin" or class == "Paladin") then
+			if (lang ~= "de") then
 				class = "Paladin";
 			else
 				class = "Paladin";
 			end;
-	elseif (class == "Death Knight" or class == "Todesritter") then 
-			if (lang ~= "de") then		
+	elseif (class == "Death Knight" or class == "Todesritter") then
+			if (lang ~= "de") then
 				class = "Death Knight";
 			else
 				class = "Todesritter";
 			end;
-	elseif (class == "Monk" or class == "M\195\182nch") then 
-			if (lang ~= "de") then		
+	elseif (class == "Monk" or class == "M\195\182nch") then
+			if (lang ~= "de") then
 				class = "Monk";
 			else
 				class = "M\195\182nch";
 			end;
-	elseif (class == "Demonhunter" or class == "D\195\164monenj\195\164ger") then 
-			if (lang ~= "de") then		
+	elseif (class == "Demonhunter" or class == "D\195\164monenj\195\164ger") then
+			if (lang ~= "de") then
 				class = "Demonhunter";
 			else
 				class = "Demonhunter";
 			end;
 	else
-			if (lang ~= "de") then		
+			if (lang ~= "de") then
 				class = "Unknown";
 			else
 				class = "Unbekannt";
 			end;
 	end;
-	
+
 		return class;
 end;

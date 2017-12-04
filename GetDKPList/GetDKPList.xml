@@ -5,7 +5,6 @@
 
 	<Script file="GetDKPList.lua"/>
 
-
 	<Font name="GDAFontNormal" inherits="MasterFont" font="Fonts\FRIZQT__.TTF" virtual="true">
 		<FontHeight>
 			<AbsValue val="8"/>
@@ -457,7 +456,7 @@
 		</HighlightTexture>
 	</Button>
 	<Button name="GDL_Itemlist_ButtonTemplate" virtual="true" hidden="false">
-        <Size>
+		<Size>
 			<AbsDimension x="35" y="35"/>
 		</Size>
 		<NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-Quickslot2">
@@ -480,7 +479,6 @@
 					<Size>
 						<AbsDimension x="36" y="35"/>
 					</Size>
-
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
 					</Anchors>
@@ -534,7 +532,6 @@
 								<AbsDimension x="-90" y="-14"/>
 							</Offset>
 						</Anchor>
-
 					</Anchors>
 				</FontString>
 			</Layer>
@@ -556,7 +553,7 @@
 		</Scripts>
 	</Button>
 	<Button name="GDL_Itemlist_ButtonTemplate2" virtual="true" hidden="false">
-        <Size>
+		<Size>
 			<AbsDimension x="35" y="35"/>
 		</Size>
 			<NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-Quickslot2">
@@ -579,7 +576,6 @@
 					<Size>
 						<AbsDimension x="36" y="35"/>
 					</Size>
-
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
 					</Anchors>
@@ -653,7 +649,7 @@
 		</Scripts>
 	</Button>
 	<Button name="GDL_Itemlist_ButtonTemplate3" virtual="true" hidden="false">
-        <Size>
+		<Size>
 			<AbsDimension x="35" y="35"/>
 		</Size>
 			<NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-Quickslot2">
@@ -676,13 +672,10 @@
 					<Size>
 						<AbsDimension x="36" y="35"/>
 					</Size>
-
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
 					</Anchors>
 				</Texture>
-
-
 			</Layer>
 		</Layers>
 		<Scripts>
@@ -859,7 +852,6 @@
 				self:StopMovingOrSizing();
 				self.isMoving = false;
 			</OnDragStop>
-
 		</Scripts>
 		<Size>
 			<AbsDimension x="520" y="564"/>
@@ -998,9 +990,9 @@
 		</Layers>
 		<Frames>
 			<Button name="GDLFrameCloseButton" inherits="UIPanelCloseButton">
-			<Size>
-							<AbsDimension x="46" y="40"/>
-						</Size>
+				<Size>
+					<AbsDimension x="46" y="40"/>
+				</Size>
 				<Anchors>
 					<Anchor point="TOPRIGHT">
 						<Offset>
@@ -1038,14 +1030,9 @@
 						<Scripts>
 							<OnLoad>
 								GDL_Playerlist_FrameColumn_SetWidth(160,self);
-
 							</OnLoad>
-							<OnEvent>
-
-							</OnEvent>
-							<OnEnter>
-
-							</OnEnter>
+							<OnEvent></OnEvent>
+							<OnEnter></OnEnter>
 							<OnMouseUp>
 								GDL_Sort(1,button);
 							</OnMouseUp>
@@ -1092,7 +1079,6 @@
 									</OnLoad>
 									<OnShow>
 										UIDropDownMenu_Initialize(GDL_Playerlist_FrameClassDropDown, GDL_Playerlist_FrameClassDropDown_Initialize);
-
 									</OnShow>
 									<OnEvent>
 										GDL_Playerlist_FrameClassDropDown_OnEvent()
@@ -1215,7 +1201,7 @@
 								</Layers>
 								<Scripts>
 									<OnLoad>
-										 GDL_Playerlist_FrameKontoAtribDropDown_OnLoad(self);
+										GDL_Playerlist_FrameKontoAtribDropDown_OnLoad(self);
 									</OnLoad>
 									<OnShow>
 										UIDropDownMenu_Initialize(GDL_Playerlist_FrameKontoAtribDropDown, GDL_Playerlist_FrameKontoAtribDropDown_Initialize);
@@ -1252,7 +1238,6 @@
 						<Scripts>
 							<OnLoad>
 								GDL_Playerlist_FrameColumn_SetWidth(70,self);
-
 							</OnLoad>
 							<OnMouseUp>
 								GDL_Sort(3,button);
@@ -1970,11 +1955,10 @@
 								PlaySound(PlaySoundKitID and "gsTitleOptionOK" or 798);
 							</OnClick>
 							<OnEnter>
-
-							if (GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T4" or GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T5" or GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T6") then
-								GDL_Itemlist_SetFrame:Show();
-								PlaySound(PlaySoundKitID and "gsTitleOptionOK" or 798);
-							end;
+								if (GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T4" or GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T5" or GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T6") then
+									GDL_Itemlist_SetFrame:Show();
+									PlaySound(PlaySoundKitID and "gsTitleOptionOK" or 798);
+								end;
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -2016,7 +2000,6 @@
 									</Anchor>
 								</Anchors>
 							</Frame>
-
 							<Button name="GDL_Itemlist_SetFrameButton1" inherits="GDL_Itemlist_ButtonTemplate4" id="1" hidden="true">
 								<Anchors>
 									<Anchor point="TOP" relativeTo="GDL_Itemlist_SetFrame">
@@ -2169,9 +2152,7 @@
 												</Offset>
 											</Anchor>
 										</Anchors>
-										<Script>
-
-										</Script>
+										<Script></Script>
 									</Button>
 									<ScrollFrame name="GDL_Itemlist_Tooken_Frame_ScrollFrame" inherits="FauxScrollFrameTemplate">
 										<Size>
@@ -2234,7 +2215,6 @@
 										<Scripts>
 											<OnLoad>
 												GDL_Playerlist_FrameColumn_SetWidth(190,self);
-
 											</OnLoad>
 											<OnMouseUp>
 												GDL_Itemlist_Tooken_Sort(1);
@@ -2252,7 +2232,6 @@
 										<Scripts>
 											<OnLoad>
 												GDL_Playerlist_FrameColumn_SetWidth(98,self);
-
 											</OnLoad>
 											<OnMouseUp>
 												GDL_Itemlist_Tooken_Sort(2);
@@ -2351,9 +2330,7 @@
 									</Button>
 								</Frames>
 								<Scripts>
-									<OnEvent>
-
-									</OnEvent>
+									<OnEvent></OnEvent>
 									<OnLoad>
 										self:RegisterForDrag("LeftButton");
 									</OnLoad>
@@ -2618,9 +2595,7 @@
 						SetPortraitTexture(GDL_Itemlist_FramePortrait, "player");
 						GDL_Itemlist_Toggle();
 					</OnShow>
-					<OnHide>
-
-					</OnHide>
+					<OnHide></OnHide>
 					<OnDragStart>
 						self:StartMoving();
 						self.isMoving = true;
@@ -2731,9 +2706,7 @@
 								</Offset>
 							</Anchor>
 						</Anchors>
-						<Script>
-
-						</Script>
+						<Script></Script>
 					</Button>
 					<ScrollFrame name="GDL_NonsetItemlist_Frame_ScrollFrame" inherits="FauxScrollFrameTemplate">
 						<Size>
@@ -2796,7 +2769,6 @@
 						<Scripts>
 							<OnLoad>
 								GDL_Playerlist_FrameColumn_SetWidth(190,self);
-
 							</OnLoad>
 							<OnMouseUp>
 								GDL_NonSet_Sort(1);
@@ -2814,7 +2786,6 @@
 						<Scripts>
 							<OnLoad>
 								GDL_Playerlist_FrameColumn_SetWidth(98,self);
-
 							</OnLoad>
 							<OnMouseUp>
 								GDL_NonSet_Sort(2);
@@ -2913,9 +2884,7 @@
 					</Button>
 				</Frames>
 				<Scripts>
-					<OnEvent>
-
-					</OnEvent>
+					<OnEvent></OnEvent>
 					<OnLoad>
 						self:RegisterForDrag("LeftButton");
 					</OnLoad>
@@ -2931,5 +2900,4 @@
 			</Frame>
 		</Frames>
 	</Frame>
-
 </Ui>

@@ -115,7 +115,6 @@
 			<OnLoad>
 				tinsert(UISpecialFrames,self:GetName());
 				self.TimeSinceLastUpdate = 0;
-
 				GetDKPConfig_OnLoad(self);
 				self:RegisterForDrag("LeftButton");
 			</OnLoad>
@@ -241,7 +240,6 @@
 						</Offset>
 					</Anchor>
 				</Anchors>
-
 			</Button>
 			<Frame name="GDAConfigFrameHelp" setAllPoints="true" hidden="true">
 				<Size>

@@ -1,14 +1,10 @@
---------------------------------------------------------------------
-----					             GetDKP Plus          		            ----
----- GetDKP 2.4 written by Corgan 													    ----
----- GetDKP 3.0++ written by Charla/Antonidas                   ----
----- Additional Authors: Sylna, Corgan, WalleniuM               ----
----- GetDKP Plus Admin ist unter der Creative Common Licence: 	----
----- Namensnennung , Keine kommerzielle Nutzung , Weitergabe    ----
----- unter gleichen Bedingungen 2.0 Deutschland verfügbar       ----
----- http://www.eqdkp-plus.com/page.php?21                      ---
----- $Id: GetDKPListSet.lua 4107 2009-03-04 18:00:46Z sylna $	
---------------------------------------------------------------------
+-------------------------------------------------------------------
+---- GetDKP Plus																----
+---- Copyright (C) 2006-2018 EQdkp-Plus Developer Team			----
+---- You should have received a copy of the GNU Affero			----
+---- General Public License along with this program. If not,	----
+---- see http://www.gnu.org/licenses/.									----
+-------------------------------------------------------------------
 
 GDL_Set_Position = {head = 1,neck = 2,shoulder = 3,cloak = 4,robe = 5,hemd = 6,wappen = 7,wrist = 8,hand = 9,belt = 10,legs = 11,feet = 12,finger1 = 13,finger2 = 14,trinket1 = 15,trinket2 = 16,wapponmainhand = 17,shildhand = 18,diztans = 19};
 GDL_Sets = {	

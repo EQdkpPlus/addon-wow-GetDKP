@@ -1,13 +1,10 @@
---------------------------------------------------------------------
-----                  GetDKP Plus RaidPlaner                    ----
----- GetDKP Plus Admin is written by Charla/Antonidas           ----
----- Additional Authors: Sylna, Corgan, WalleniuM               ----
----- GetDKP Plus Admin ist unter der Creative Common Licence: 	----
----- Namensnennung , Keine kommerzielle Nutzung , Weitergabe    ----
----- unter gleichen Bedingungen 2.0 Deutschland verf�gbar       ----
----- http://www.eqdkp-plus.com/page.php?21                      ---
----- $Id: GetDKPRaidPlaner.lua 14162 2014-04-23 17:48:27Z cnypher $
---------------------------------------------------------------------
+-------------------------------------------------------------------
+---- GetDKP Plus																----
+---- Copyright (C) 2006-2018 EQdkp-Plus Developer Team			----
+---- You should have received a copy of the GNU Affero			----
+---- General Public License along with this program. If not,	----
+---- see http://www.gnu.org/licenses/.									----
+-------------------------------------------------------------------
 
 function GetDKPRaidPlaner_OnLoad(this)
 		SlashCmdList["GETDKPRAIDPLANER"] = GetDKPRaidPlaner_SlashHandler;

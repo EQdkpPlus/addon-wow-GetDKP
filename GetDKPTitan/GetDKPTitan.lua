@@ -1,13 +1,10 @@
---------------------------------------------------------------------
-----					          GetDKP Plus TITAN          		          ----
----- GetDKP Plus Admin is written by Charla/Antonidas           ----
----- Additional Authors: Sylna, Corgan, WalleniuM               ----
----- GetDKP Plus Admin ist unter der Creative Common Licence: 	----
----- Namensnennung , Keine kommerzielle Nutzung , Weitergabe    ----
----- unter gleichen Bedingungen 2.0 Deutschland verfügbar       ----
----- http://www.eqdkp-plus.com/page.php?21                      ---
----- $Id: GetDKPTitan.lua 8882 2010-10-25 21:52:40Z Sylna $	
---------------------------------------------------------------------
+-------------------------------------------------------------------
+---- GetDKP Plus																----
+---- Copyright (C) 2006-2018 EQdkp-Plus Developer Team			----
+---- You should have received a copy of the GNU Affero			----
+---- General Public License along with this program. If not,	----
+---- see http://www.gnu.org/licenses/.									----
+-------------------------------------------------------------------
 
 TITAN_GETDKP_ID = "GETDKP";
 TITAN_GETDKP_FREQUENCY = 1;

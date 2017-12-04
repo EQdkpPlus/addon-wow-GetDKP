@@ -1,13 +1,10 @@
---------------------------------------------------------------------
-----					       GetDKP Plus Config           		          ----
----- GetDKP Plus Admin is written by Charla/Antonidas           ----
----- Additional Authors: Sylna, Corgan, WalleniuM               ----
----- GetDKP Plus Admin ist unter der Creative Common Licence: 	----
----- Namensnennung , Keine kommerzielle Nutzung , Weitergabe    ----
----- unter gleichen Bedingungen 2.0 Deutschland verfügbar       ----
----- http://www.eqdkp-plus.com/page.php?21                      ---
----- $Id: GetDKPConfig.lua 19865 2015-05-01 21:32:00Z Yunalescar $	
---------------------------------------------------------------------
+-------------------------------------------------------------------
+---- GetDKP Plus																----
+---- Copyright (C) 2006-2018 EQdkp-Plus Developer Team			----
+---- You should have received a copy of the GNU Affero			----
+---- General Public License along with this program. If not,	----
+---- see http://www.gnu.org/licenses/.									----
+-------------------------------------------------------------------
 
 ----------------------------------
 -- GetDKP Plus Config Variables --

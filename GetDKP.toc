@@ -1,15 +1,15 @@
-## Interface: 70300
+## Interface: 11302
 ## Title: GetDKP Plus
 ## Title-deDE: GetDKP Plus
 ## Notes: Ingameview of the EQDKP-roster
 ## Notes-deDE: Ingameansicht des EQDKP-Rosters.
 ## Author: Sylna, Charla, Corgan, Whiskey, Yunalescar
-## Version: 7.3.0
+## Version: 7.4.0
 ## URL: http://eqdkp-plus.eu
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
-## OptionalDeps: FuBar, Titan, Ace3, LibStub, CallbackHandler-1.0, AceAddon-3.0, AceEvent-3.0, AceTimer-3.0, AceBucket-3.0, AceHook-3.0, AceDB-3.0, AceDBOptions-3.0, AceLocale-3.0, AceConsole-3.0, AceGUI-3.0, AceConfig-3.0, AceComm-3.0, AceTab-3.0, AceSerializer-3.0, AceLibrary, Dewdrop-2.0, Tablet-2.0
-## SavedVariables: GDKP_Live_saveDKP, GDKP_Live_saveItem ,GDKP_LiveChanged_date,GDKP_LiveChanged_timestamp,GDKP_LiveChanged_status,GDKP_saveItems,GDKPvar_save,GetDKPFuDB,GDKP_Get_Updates
+## OptionalDeps: Titan, Ace3, LibStub, CallbackHandler-1.0, AceAddon-3.0, AceEvent-3.0, AceTimer-3.0, AceBucket-3.0, AceHook-3.0, AceDB-3.0, AceDBOptions-3.0, AceLocale-3.0, AceConsole-3.0, AceGUI-3.0, AceConfig-3.0, AceComm-3.0, AceTab-3.0, AceSerializer-3.0, AceLibrary, Dewdrop-2.0, Tablet-2.0
+## SavedVariables: GDKP_Live_saveDKP, GDKP_Live_saveItem ,GDKP_LiveChanged_date,GDKP_LiveChanged_timestamp,GDKP_LiveChanged_status,GDKP_saveItems,GDKPvar_save,GDKP_Get_Updates
 ## X-Category: Raid
 ## X-Credits: EQDKP-Plus Team, Everyone reporting errors on forum
 
@@ -44,12 +44,5 @@ GetDKPConfig\GetDKPConfig.xml
 GetDKPList\GetDKPList.xml
 GetDKPAdmin\GetDKPAdmin.xml
 
-GetDKPFu\GetDKPFuLocale-deDE.lua
-GetDKPFu\GetDKPFuLocale-enUS.lua
-GetDKPFu\GetDKPFuLocale-esES.lua
-GetDKPFu\GetDKPFuLocale-esMX.lua
-
-
-GetDKPFu\GetDKPFu.lua
 GetDKPCore\GetDKP.xml
 GetDKPCore\GetDKPToolTip.xml

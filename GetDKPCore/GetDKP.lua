@@ -101,7 +101,7 @@ end;
  
 --This Message show after  each Update and first install
 StaticPopupDialogs["Update_Show"] = {
-text = "Welcome to GetDKP v7.3.0\nFixed getDKP for WoW Patch 7.3 and fixed some minor bugs with class colors\n Bugreport @ eqdkp-plus.eu/forum/ ;)",
+text = "Welcome to GetDKP v7.4.0\nFixed getDKP for WoW Patch 7.4 and fixed some minor bugs with class colors\n Bugreport @ eqdkp-plus.eu/forum/ ;)",
 button1 = "Thanks!",
 timeout = 0
 }
@@ -628,7 +628,7 @@ function GetDKP_Tooltip_Update(tooltip, ...)
 	
 	
 	for key, val in pairs(DKP_ITEMS) do
-		-------suche Käufer ------------
+		-------suche Kï¿½ufer ------------
 		itemfound = 0;
 		if (gdkp["players"][key]) then
 			for j= 1, getn(DKP_ITEMS[key]["Items"]),1 do 
@@ -1335,7 +1335,7 @@ function GDKP_Event(event, ...)
 				end
 				if ((string.lower(_args[2])) == "stoff") or ((string.lower(_args[2])) == "cloth") then
 					if _args[3] == nil then
-						-- Stoffklassen über alle Konten
+						-- Stoffklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1346,7 +1346,7 @@ function GDKP_Event(event, ...)
 							end;
 						end;								
 					elseif is_Konto(_args[3]) then
-					-- Stoffklassen über gewähltes Konto _args[3]
+					-- Stoffklassen ï¿½ber gewï¿½hltes Konto _args[3]
 						--GDKP_Konto = _args[3];
 						GDKP_Konto = getKonto(_args[3]);
 						for key, val in pairs(gdkp.players) do
@@ -1359,7 +1359,7 @@ function GDKP_Event(event, ...)
 				end;
 				if ((string.lower(_args[2])) == "platte") or ((string.lower(_args[2])) == "plate") then
 					if _args[3] == nil then
-						-- Platteklassen über alle Konten
+						-- Platteklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1370,7 +1370,7 @@ function GDKP_Event(event, ...)
 							end;
 						end;
 					elseif is_Konto(_args[3]) then
-					-- Platteklassen über gewähltes Konto _args[3]
+					-- Platteklassen ï¿½ber gewï¿½hltes Konto _args[3]
 						GDKP_Konto = getKonto(_args[3]);
 						for key, val in pairs(gdkp.players) do
 							ClassCur = string.lower(val["class"]);
@@ -1382,7 +1382,7 @@ function GDKP_Event(event, ...)
 				end;
 				if ((string.lower(_args[2])) == "schwere") or ((string.lower(_args[2])) == "mail") then
 					if _args[3] == nil then
-						-- SchwereRüstungKlassen über alle Konten
+						-- SchwereRï¿½stungKlassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1393,7 +1393,7 @@ function GDKP_Event(event, ...)
 							end;
 						end;
 					elseif is_Konto(_args[3]) then
-					-- SchwereRüstungKlassen über gewähltes Konto _args[3]
+					-- SchwereRï¿½stungKlassen ï¿½ber gewï¿½hltes Konto _args[3]
 						GDKP_Konto = getKonto(_args[3]);
 						for key, val in pairs(gdkp.players) do
 							ClassCur = string.lower(val["class"]);
@@ -1405,7 +1405,7 @@ function GDKP_Event(event, ...)
 				end;
 				if ((string.lower(_args[2])) == "leder") or ((string.lower(_args[2])) == "leather") then
 					if _args[3] == nil then
-						-- Lederklassen über alle Konten
+						-- Lederklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1416,7 +1416,7 @@ function GDKP_Event(event, ...)
 							end;
 						end;
 					elseif is_Konto(_args[3]) then
-					-- Lederklassen über gewähltes Konto _args[3]
+					-- Lederklassen ï¿½ber gewï¿½hltes Konto _args[3]
 						GDKP_Konto = getKonto(_args[3]);
 						for key, val in pairs(gdkp.players) do
 							ClassCur = string.lower(val["class"]);
@@ -1432,7 +1432,7 @@ function GDKP_Event(event, ...)
 				
 				if ((string.lower(_args[2])) == "warrior") or ((string.lower(_args[2])) == "krieger") then
 					if _args[3] == nil then
-						-- Lederklassen über alle Konten
+						-- Lederklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1443,7 +1443,7 @@ function GDKP_Event(event, ...)
 							end;
 						end;
 					elseif is_Konto(_args[3]) then
-					-- Lederklassen über gewähltes Konto _args[3]
+					-- Lederklassen ï¿½ber gewï¿½hltes Konto _args[3]
 						GDKP_Konto = getKonto(_args[3]);
 						for key, val in pairs(gdkp.players) do
 							ClassCur = string.lower(val["class"]);
@@ -1456,7 +1456,7 @@ function GDKP_Event(event, ...)
 				
 				if ((string.lower(_args[2])) == "paladin") or ((string.lower(_args[2])) == "paladin") then
 					if _args[3] == nil then
-						-- Lederklassen über alle Konten
+						-- Lederklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1467,7 +1467,7 @@ function GDKP_Event(event, ...)
 							end;
 						end;
 					elseif is_Konto(_args[3]) then
-					-- Lederklassen über gewähltes Konto _args[3]
+					-- Lederklassen ï¿½ber gewï¿½hltes Konto _args[3]
 						GDKP_Konto = getKonto(_args[3]);
 						for key, val in pairs(gdkp.players) do
 							ClassCur = string.lower(val["class"]);
@@ -1480,7 +1480,7 @@ function GDKP_Event(event, ...)
 				
 				if ((string.lower(_args[2])) == "hunter") or ((string.lower(_args[2])) == "j\195\164ger") then
 					if _args[3] == nil then
-						-- Lederklassen über alle Konten
+						-- Lederklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1491,7 +1491,7 @@ function GDKP_Event(event, ...)
 							end;
 						end;
 					elseif is_Konto(_args[3]) then
-					-- Lederklassen über gewähltes Konto _args[3]
+					-- Lederklassen ï¿½ber gewï¿½hltes Konto _args[3]
 						GDKP_Konto = getKonto(_args[3]);
 						for key, val in pairs(gdkp.players) do
 							ClassCur = string.lower(val["class"]);
@@ -1504,7 +1504,7 @@ function GDKP_Event(event, ...)
 				
 				if ((string.lower(_args[2])) == "schurke") or ((string.lower(_args[2])) == "rogue") then
 					if _args[3] == nil then
-						-- Lederklassen über alle Konten
+						-- Lederklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1515,7 +1515,7 @@ function GDKP_Event(event, ...)
 							end;
 						end;
 					elseif is_Konto(_args[3]) then
-					-- Lederklassen über gewähltes Konto _args[3]
+					-- Lederklassen ï¿½ber gewï¿½hltes Konto _args[3]
 						GDKP_Konto = getKonto(_args[3]);
 						for key, val in pairs(gdkp.players) do
 							ClassCur = string.lower(val["class"]);
@@ -1528,7 +1528,7 @@ function GDKP_Event(event, ...)
 				
 				if ((string.lower(_args[2])) == "priest") or ((string.lower(_args[2])) == "priester") then
 					if _args[3] == nil then
-						-- Lederklassen über alle Konten
+						-- Lederklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1539,7 +1539,7 @@ function GDKP_Event(event, ...)
 							end;
 						end;
 					elseif is_Konto(_args[3]) then
-					-- Lederklassen über gewähltes Konto _args[3]
+					-- Lederklassen ï¿½ber gewï¿½hltes Konto _args[3]
 						GDKP_Konto = getKonto(_args[3]);
 						for key, val in pairs(gdkp.players) do
 							ClassCur = string.lower(val["class"]);
@@ -1552,7 +1552,7 @@ function GDKP_Event(event, ...)
 				
 				if ((string.lower(_args[2])) == "shaman") or ((string.lower(_args[2])) == "schamane") then
 					if _args[3] == nil then
-						-- Lederklassen über alle Konten
+						-- Lederklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1563,7 +1563,7 @@ function GDKP_Event(event, ...)
 							end;
 						end;
 					elseif is_Konto(_args[3]) then
-					-- Lederklassen über gewähltes Konto _args[3]
+					-- Lederklassen ï¿½ber gewï¿½hltes Konto _args[3]
 						GDKP_Konto = getKonto(_args[3]);
 						for key, val in pairs(gdkp.players) do
 							ClassCur = string.lower(val["class"]);
@@ -1576,7 +1576,7 @@ function GDKP_Event(event, ...)
 				
 				if ((string.lower(_args[2])) == "deathknight") or ((string.lower(_args[2])) == "todesritter") then
 					if _args[3] == nil then
-						-- Lederklassen über alle Konten
+						-- Lederklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1587,7 +1587,7 @@ function GDKP_Event(event, ...)
 							end;
 						end;
 					elseif is_Konto(_args[3]) then
-					-- Lederklassen über gewähltes Konto _args[3]
+					-- Lederklassen ï¿½ber gewï¿½hltes Konto _args[3]
 						GDKP_Konto = getKonto(_args[3]);
 						for key, val in pairs(gdkp.players) do
 							ClassCur = string.lower(val["class"]);
@@ -1600,7 +1600,7 @@ function GDKP_Event(event, ...)
 				
 				if ((string.lower(_args[2])) == "mage") or ((string.lower(_args[2])) == "magier") then
 					if _args[3] == nil then
-						-- Lederklassen über alle Konten
+						-- Lederklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1611,7 +1611,7 @@ function GDKP_Event(event, ...)
 							end;
 						end;
 					elseif is_Konto(_args[3]) then
-					-- Lederklassen über gewähltes Konto _args[3]
+					-- Lederklassen ï¿½ber gewï¿½hltes Konto _args[3]
 						GDKP_Konto = getKonto(_args[3]);
 						for key, val in pairs(gdkp.players) do
 							ClassCur = string.lower(val["class"]);
@@ -1624,7 +1624,7 @@ function GDKP_Event(event, ...)
 				
 				if ((string.lower(_args[2])) == "warlock") or ((string.lower(_args[2])) == "hexenmeister") then
 					if _args[3] == nil then
-						-- Lederklassen über alle Konten
+						-- Lederklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1635,7 +1635,7 @@ function GDKP_Event(event, ...)
 							end;
 						end;
 					elseif is_Konto(_args[3]) then
-					-- Lederklassen über gewähltes Konto _args[3]
+					-- Lederklassen ï¿½ber gewï¿½hltes Konto _args[3]
 						GDKP_Konto = getKonto(_args[3]);
 						for key, val in pairs(gdkp.players) do
 							ClassCur = string.lower(val["class"]);
@@ -1648,7 +1648,7 @@ function GDKP_Event(event, ...)
 				
 				if ((string.lower(_args[2])) == "monk") or ((string.lower(_args[2])) == "m\195\182nch") then
 					if _args[3] == nil then
-						-- Lederklassen über alle Konten
+						-- Lederklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1659,7 +1659,7 @@ function GDKP_Event(event, ...)
 							end;
 						end;
 					elseif is_Konto(_args[3]) then
-					-- Lederklassen über gewähltes Konto _args[3]
+					-- Lederklassen ï¿½ber gewï¿½hltes Konto _args[3]
 						GDKP_Konto = getKonto(_args[3]);
 						for key, val in pairs(gdkp.players) do
 							ClassCur = string.lower(val["class"]);
@@ -1672,7 +1672,7 @@ function GDKP_Event(event, ...)
 				
 				if ((string.lower(_args[2])) == "druid") or ((string.lower(_args[2])) == "druide") then
 					if _args[3] == nil then
-						-- Lederklassen über alle Konten
+						-- Lederklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1683,7 +1683,7 @@ function GDKP_Event(event, ...)
 							end;
 						end;
 					elseif is_Konto(_args[3]) then
-					-- Lederklassen über gewähltes Konto _args[3]
+					-- Lederklassen ï¿½ber gewï¿½hltes Konto _args[3]
 						GDKP_Konto = getKonto(_args[3]);
 						for key, val in pairs(gdkp.players) do
 							ClassCur = string.lower(val["class"]);
@@ -1707,7 +1707,7 @@ function GDKP_Event(event, ...)
 					or ((string.lower(_args[3])) == "mage")
 					or ((string.lower(_args[3])) == "druid")
 					or ((string.lower(_args[3])) == "druide")) then
-						-- Lederklassen über alle Konten
+						-- Lederklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1732,7 +1732,7 @@ function GDKP_Event(event, ...)
 					or ((string.lower(_args[3])) == "priester")
 					or ((string.lower(_args[3])) == "warlock")
 					or ((string.lower(_args[3])) == "hexenmeister")) then
-						-- Lederklassen über alle Konten
+						-- Lederklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -1756,7 +1756,7 @@ function GDKP_Event(event, ...)
 					or ((string.lower(_args[3])) == "m\195\182nch")
 					or ((string.lower(_args[3])) == "shaman")
 					or ((string.lower(_args[3])) == "schamane")) then
-						-- Lederklassen über alle Konten
+						-- Lederklassen ï¿½ber alle Konten
 						for k=1,getn(multiTable),1 do
 							GDKP_Konto = table.foreach(multiTable[k], VarReturn);
 							for key, val in pairs(gdkp.players) do
@@ -2149,7 +2149,8 @@ end;
 
 -- check if Player is promoted in the current raid
 function IsPromoted()
-	return UnitIsGroupAssistant("player") or UnitIsGroupLeader("player");
+	return true;
+	--return UnitIsGroupAssistant("player") or UnitIsGroupLeader("player");
 end;
 
 -- check if Player is in the current Raid
@@ -2494,7 +2495,7 @@ end;
 		end
 end
 
---sucht nach dem Namen in der GDKP und gibt den zurück
+--sucht nach dem Namen in der GDKP und gibt den zurï¿½ck
 function getNameCasesensitiv(msg)
 local areturn = "" ;
 	for key, val in pairs(gdkp.players) do 

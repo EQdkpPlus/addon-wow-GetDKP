@@ -511,7 +511,7 @@ function GetDKP_Config_SlashHandler(msg)
 			GDKP_SetOptionValue("showtooltip",false);
 			return  ;
 		elseif 	string.lower(msg) == "status" then
-			GDKP_show("GetDKP Plus "..GDKP_VERSION..GDKP_VERSION_TEXT.." Status");
+			GDKP_show("GetDKP Plus "..GDKP_VERSION.." Status");
 			GDKP_show("Raidonly:  "..GDKPvar_save.ShowOnlyInRaid) ;				
 			GDKP_show(TEXT_DKP_REQ_ITEMS..": "..GDKPvar_save.requestItems) ;
 			GDKP_show(TEXT_DKP_REQ_DKP..": "..GDKPvar_save.requestRP) ;

@@ -2149,8 +2149,8 @@ end;
 
 -- check if Player is promoted in the current raid
 function IsPromoted()
-	return true;
-	--return UnitIsGroupAssistant("player") or UnitIsGroupLeader("player");
+	--return true;
+	return UnitIsGroupAssistant("player") or UnitIsGroupLeader("player");
 end;
 
 -- check if Player is in the current Raid

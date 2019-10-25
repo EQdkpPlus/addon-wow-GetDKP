@@ -233,7 +233,8 @@
 					<AbsDimension x="80" y="8"/>
 				</Size>
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="GDAFrameColumnHeaderTemplate1">
+					<Anchor point="TOPLEFT">
+					<!--Anchor point="TOPLEFT" relativeTo="GDAFrameColumnHeaderTemplate1"-->
 						<Offset>
 							<AbsDimension x="0" y="-5"/>
 						</Offset>

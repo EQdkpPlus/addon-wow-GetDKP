@@ -1,4 +1,5 @@
 ## Interface: 11302
+## Globe: check-classic
 ## Title: GetDKP Plus
 ## Title-deDE: GetDKP Plus
 ## Notes: Ingameview of the EQDKP-roster

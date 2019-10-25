@@ -5,18 +5,19 @@
 
 	<Script file="GetDKPList.lua"/>
 
-	<Font name="GDAFontNormal" inherits="MasterFont" font="Fonts\FRIZQT__.TTF" virtual="true">
+	<Font name="GDAFontNormal" inherits="GameFontNormal" font="Fonts\FRIZQT__.TTF" virtual="true">
 		<FontHeight>
 			<AbsValue val="8"/>
 		</FontHeight>
 		<Color r="0.9" g="0.9" b="1"/>
 	</Font>
-	<Font name="GDLFontLink" inherits="MasterFont" font="Fonts\FRIZQT__.TTF" virtual="true">
+	<Font name="GDLFontLink" inherits="GameFontNormal" font="Fonts\FRIZQT__.TTF" virtual="true">
 		<FontHeight>
 			<AbsValue val="10"/>
 		</FontHeight>
 		<Color r="1.0" g="1.0" b="1.0"/>
 	</Font>
+
 	<!-- button templets -->
 	<Button name="GDL_Text_Link" virtual="true">
 		<Size>
@@ -1456,7 +1457,7 @@
 							</Layer>
 						</Layers>
 					</ScrollFrame>
-					<EditBox name="GDL_Playerlist_EditBox" autoFocus="false" frameStrata="HIGH" historyLines="32">
+					<EditBox name="GDL_Playerlist_EditBox" autoFocus="false" frameStrata="HIGH" historyLines="32" bytes="256">
 						<Size>
 							<AbsDimension x="296" y="32"/>
 						</Size>
@@ -1481,7 +1482,7 @@
 								GDL_Playerlist_EditBox_OnEnterPressed();
 							</OnEscapePressed>
 						</Scripts>
-						<FontString inherits="ChatFontNormal" bytes="256"/>
+						<FontString inherits="ChatFontNormal"/>
 					</EditBox>
 					<Button name="GDL_Playerlist_RefreshButton" inherits="UIPanelButtonTemplate" text="GDL_REFRESH">
 						<Size>

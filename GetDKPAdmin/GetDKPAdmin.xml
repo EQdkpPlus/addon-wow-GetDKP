@@ -3,13 +3,13 @@
 
 	<Script file="GetDKPAdmin.lua"/>
 
-	<Font name="GDAFontNormal" inherits="MasterFont" font="Fonts\FRIZQT__.TTF" virtual="true">
+	<Font name="GDAFontNormal" inherits="GameFontNormal" font="Fonts\FRIZQT__.TTF" virtual="true">
 		<FontHeight>
 			<AbsValue val="8"/>
 		</FontHeight>
 		<Color r="0.9" g="0.9" b="1"/>
 	</Font>
-	<Font name="GDAFontHigh" inherits="MasterFont" font="Fonts\FRIZQT__.TTF" virtual="true">
+	<Font name="GDAFontHigh" inherits="GameFontNormal" font="Fonts\FRIZQT__.TTF" virtual="true">
 		<FontHeight>
 			<AbsValue val="8"/>
 		</FontHeight>

@@ -1663,7 +1663,7 @@
 										</OnClick>
 									</Scripts>
 								</CheckButton>
-								<EditBox name="GDC_GDA_EditBox1" autoFocus="false" frameStrata="HIGH" historyLines="32">
+								<EditBox name="GDC_GDA_EditBox1" autoFocus="false" frameStrata="HIGH" historyLines="32" bytes="24">
 									<Size>
 										<AbsDimension x="150" y="32"/>
 									</Size>
@@ -1715,7 +1715,7 @@
 											self:ClearFocus();
 										</OnEscapePressed>
 									</Scripts>
-									<FontString inherits="ChatFontNormal" bytes="24"/>
+									<FontString inherits="ChatFontNormal"/>
 								</EditBox>
 							</Frames>
 						</Frame>
@@ -2006,7 +2006,7 @@
 										</OnClick>
 									</Scripts>
 								</CheckButton>
-								<EditBox name="GDC_GDA_EditBoxGWord" autoFocus="false" frameStrata="HIGH" historyLines="32">
+								<EditBox name="GDC_GDA_EditBoxGWord" autoFocus="false" frameStrata="HIGH" historyLines="32"  bytes="24">
 									<Size>
 										<AbsDimension x="150" y="32"/>
 									</Size>
@@ -2063,9 +2063,9 @@
 											GetDKP_Config_GDA_EditBox_OnEnterPressed("GWord");
 										</OnTabPressed>
 									</Scripts>
-									<FontString inherits="ChatFontNormal" bytes="24"/>
+									<FontString inherits="ChatFontNormal"/>
 								</EditBox>
-								<EditBox name="GDC_GDA_EditBoxGDKP" autoFocus="false" frameStrata="HIGH" historyLines="32">
+								<EditBox name="GDC_GDA_EditBoxGDKP" autoFocus="false" frameStrata="HIGH" historyLines="32" bytes="24">
 									<Size>
 										<AbsDimension x="150" y="32"/>
 									</Size>
@@ -2122,9 +2122,9 @@
 											GetDKP_Config_GDA_EditBox_OnEnterPressed("GDKP");
 										</OnTabPressed>
 									</Scripts>
-									<FontString inherits="ChatFontNormal" bytes="24"/>
+									<FontString inherits="ChatFontNormal"/>
 								</EditBox>
-								<EditBox name="GDC_GDA_EditBox2" autoFocus="false" frameStrata="HIGH" historyLines="32">
+								<EditBox name="GDC_GDA_EditBox2" autoFocus="false" frameStrata="HIGH" historyLines="32"  bytes="24">
 									<Size>
 										<AbsDimension x="150" y="32"/>
 									</Size>
@@ -2181,10 +2181,10 @@
 											GetDKP_Config_GDA_EditBox_OnEnterPressed(2);
 										</OnTabPressed>
 									</Scripts>
-									<FontString inherits="ChatFontNormal" bytes="24"/>
+									<FontString inherits="ChatFontNormal"/>
 								</EditBox>
 
-								<EditBox name="GDC_GDA_EditBox3" autoFocus="false" frameStrata="HIGH" historyLines="32">
+								<EditBox name="GDC_GDA_EditBox3" autoFocus="false" frameStrata="HIGH" historyLines="32" bytes="24">
 									<Size>
 										<AbsDimension x="150" y="32"/>
 									</Size>
@@ -2241,7 +2241,7 @@
 											GetDKP_Config_GDA_EditBox_OnEnterPressed(3);
 										</OnTabPressed>
 									</Scripts>
-									<FontString inherits="ChatFontNormal" bytes="24"/>
+									<FontString inherits="ChatFontNormal"/>
 								</EditBox>
 							</Frames>
 						</Frame>
@@ -2531,7 +2531,7 @@
 										</OnClick>
 									</Scripts>
 								</CheckButton>
-								<EditBox name="GDC_GDA_EditBox4" autoFocus="false" frameStrata="HIGH" historyLines="32">
+								<EditBox name="GDC_GDA_EditBox4" autoFocus="false" frameStrata="HIGH" historyLines="32" bytes="24">
 									<Size>
 										<AbsDimension x="150" y="32"/>
 									</Size>
@@ -2583,7 +2583,7 @@
 											self:ClearFocus();
 										</OnEscapePressed>
 									</Scripts>
-									<FontString inherits="ChatFontNormal" bytes="24"/>
+									<FontString inherits="ChatFontNormal"/>
 								</EditBox>
 							</Frames>
 						</Frame>
@@ -2675,7 +2675,7 @@
 								</Layer>
 							</Layers>
 							<Frames>
-								<EditBox name="GDC_GDA_EditBox5" autoFocus="false" frameStrata="HIGH" historyLines="32">
+								<EditBox name="GDC_GDA_EditBox5" autoFocus="false" frameStrata="HIGH" historyLines="32" bytes="24">
 									<Size>
 										<AbsDimension x="150" y="32"/>
 									</Size>
@@ -2727,9 +2727,9 @@
 											self:ClearFocus();
 										</OnEscapePressed>
 									</Scripts>
-									<FontString inherits="ChatFontNormal" bytes="24"/>
+									<FontString inherits="ChatFontNormal"/>
 								</EditBox>
-								<EditBox name="GDC_GDA_EditBox6" autoFocus="false" frameStrata="HIGH" historyLines="32">
+								<EditBox name="GDC_GDA_EditBox6" autoFocus="false" frameStrata="HIGH" historyLines="32" bytes="24">
 									<Size>
 										<AbsDimension x="150" y="32"/>
 									</Size>
@@ -2781,7 +2781,7 @@
 											self:ClearFocus();
 										</OnEscapePressed>
 									</Scripts>
-									<FontString inherits="ChatFontNormal" bytes="24"/>
+									<FontString inherits="ChatFontNormal"/>
 								</EditBox>
 								<CheckButton name="GetDKP_Config_Frame_CheckButton89" inherits="UICheckButtonTemplate" id="89">
 									<Size>

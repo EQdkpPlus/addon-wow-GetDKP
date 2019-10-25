@@ -90,11 +90,15 @@ function checkrealmname(realmname)
 		local nospaces = tableRealms[k]:gsub("%s+", "");
 
 		if (nospaces == realmname) then
-			--print("stage1: "..realmname.."  ||"..nospaces.."||"..tableRealms[k]);
+			if (GDKP_DEBUG) then
+				print("stage1: "..realmname.."  ||"..nospaces.."||"..tableRealms[k]);
+			end;
 			return tableRealms[k];
 		end;
 	end;
-	--print("stage2: "..realmname);
+	if (GDKP_DEBUG) then
+		print("stage2: "..realmname);
+	end;
 	return realmname;
 	
 end;
@@ -328,7 +332,7 @@ function GDKP_cmd_ITEM_Lookup(msg)
   end;
 end;
 
---wird von /item aufgerufen,show item owners
+-- is called by /item,show item owners
 function GDKP_item_lookup(aPlayerName, aItemLookup, aOutput)
 	local PlayerNames = {};		
 	local PlayerArray = {};
@@ -384,7 +388,7 @@ function GDKP_item_lookup(aPlayerName, aItemLookup, aOutput)
 	end	
 end
 
---wird von /item aufgerufen gibt die spieler zurck, die das item nicht haben
+--wird von /item aufgerufen gibt die spieler zurück, die das item nicht haben
 --function GDKP_cmd_HOW_HASNT_ITEM(SETNAME,CLASSNAME_DE,CLASSNAME_ENG,ITEMTOLOOK,aOutput)
 function GDKP_cmd_HOW_HASNT_ITEM(ITEMTOLOOK,aOutput)
 	

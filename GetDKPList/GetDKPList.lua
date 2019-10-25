@@ -86,15 +86,15 @@
 						{"J\195\164ger",	"Hunter",							0.67,	0.83,	0.45},
 						{"Priester",		"Priest",							1.00,	1.00,	1.00},
 						{"Paladin",			"Paladin",							0.96,	0.55,	0.73},
-						{"Schurke",			"Rogue",								1.00,	0.96,	0.41},
+						{"Schurke",			"Rogue",							1.00,	0.96,	0.41},
 						{"Magier", 			"Mage",								0.41,	0.80,	0.94},
 						{"Krieger", 		"Warrior",							0.78,	0.61,	0.43},
-						{"Druide", 			"Druid",								1.00,	0.49,	0.04},
+						{"Druide", 			"Druid",							1.00,	0.49,	0.04},
 						{"Hexenmeister", 	"Warlock",							0.58,	0.51,	0.79},
 						{"Schamane", 		"Shaman", 							0.00,	0.44,	0.87},
-						{"Todesritter", 	"Death Knight",					0.77,	0.12,	0.23},
+						{"Todesritter", 	"Death Knight",						0.77,	0.12,	0.23},
 						{"M\195\182nch", 	"Monk",								0.33,	0.54,	0.52},
-						{"D\195\164monenj\195\164ger", 	"Demonhunter",	0.64,	0.19,	0.79},
+						{"D\195\164monenj\195\164ger", 	"Demonhunter",			0.64,	0.19,	0.79},
 						{"Unbekannt", 		"Unknown", 							0.00,	1.00,	0.00}
 						};
 

@@ -144,6 +144,9 @@ function GetDKPAdmin_OnEvent(self, event, ...)
 					end;
 					for slot = 1,anz,1 do
 						texture, item, quantity, quality = GetLootSlotInfo(slot);
+						if(GDKP_DEBUG) then
+							print("Debug:: Lootlevel - "..GDKPvar_save.LOOTLEVEL.." / quality - "..quality);
+						end;
 						if (LootSlotHasItem(slot) and quality >= GDKPvar_save.LOOTLEVEL) then
 							j = j + 1;
 							if (j == 1) then 

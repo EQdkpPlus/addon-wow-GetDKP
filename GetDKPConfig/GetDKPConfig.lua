@@ -98,6 +98,7 @@ function GetDKP_VarLoad()
 		GDC_GDA_EditBox5:SetText(GDKPvar_save.GDA_Countdown_Time);
 		GDC_GDA_EditBox6:SetText(GDKPvar_save.GDA_Countdown_Alert);
 		GDC_GDA_EditBoxGWord:SetText(GDKPvar_save.GDA_GreedWord);
+		--print("Debug: "..GDKPvar_save.GDA_GreedWord);
 		GDC_GDA_EditBoxGDKP:SetText(GDKPvar_save.GDA_GreedDKP);
 		for i=1,3,1 do 
 			getglobal("GetDKP_Config_Frame_CheckButton"..(i+70)):SetChecked(nil);
@@ -767,14 +768,14 @@ dkpcharlen = {};
 			GDL_send_Show:Show();
 			GDL_send_Show2:Show();
 			getdkpcharlen = 0;
-			SendAddonMessage("getdkp_list_load","time,"..DKPInfo["timestamp"],"RAID");
-			SendAddonMessage("getdkp_list_load","multiTable,start","RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","time,"..DKPInfo["timestamp"],"RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","multiTable,start","RAID");
 			for i=1,getn(multiTable),1 do 
 				konto = table.foreach(multiTable[i], VarReturn);
 				dkpchars = "multiTable,"..i..","..konto..","..multiTable[i][konto].name..","..multiTable[i][konto].disc..","..multiTable[i][konto].events;
 				
 				if ( strlen(dkpchars) < 244 ) then
-					SendAddonMessage("getdkp_list_load",dkpchars,"RAID");
+					C_ChatInfo.SendAddonMessage("getdkp_list_load",dkpchars,"RAID");
 					getdkp_list_load_statusbar_values = getdkp_list_load_statusbar_values + 1
 					
 				else
@@ -782,25 +783,25 @@ dkpcharlen = {};
 					return
 				end;
 			end;
-			SendAddonMessage("getdkp_list_load","multiTable,end","RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","multiTable,end","RAID");
 			
 		end;
 		if (getdkp_list_load_multitable == true and getdkp_list_load_dkpinfo == true and getdkp_list_load_gdkp == false and getdkp_list_load_dkpitems == false) then
 		
-			SendAddonMessage("getdkp_list_load","DKPInfo,start","RAID");
-			SendAddonMessage("getdkp_list_load","DKPInfo,".."date,"..DKPInfo["date"],"RAID");
-			SendAddonMessage("getdkp_list_load","DKPInfo,".."timestamp,"..DKPInfo["timestamp"],"RAID");
-			SendAddonMessage("getdkp_list_load","DKPInfo,".."process_dkp_ver,"..DKPInfo["process_dkp_ver"],"RAID");
-			SendAddonMessage("getdkp_list_load","DKPInfo,".."total_players,"..DKPInfo["total_players"],"RAID");
-			SendAddonMessage("getdkp_list_load","DKPInfo,".."total_items,"..DKPInfo["total_items"],"RAID");
-			SendAddonMessage("getdkp_list_load","DKPInfo,".."total_points,"..DKPInfo["total_points"],"RAID");
-			SendAddonMessage("getdkp_list_load","DKPInfo,end","RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","DKPInfo,start","RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","DKPInfo,".."date,"..DKPInfo["date"],"RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","DKPInfo,".."timestamp,"..DKPInfo["timestamp"],"RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","DKPInfo,".."process_dkp_ver,"..DKPInfo["process_dkp_ver"],"RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","DKPInfo,".."total_players,"..DKPInfo["total_players"],"RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","DKPInfo,".."total_items,"..DKPInfo["total_items"],"RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","DKPInfo,".."total_points,"..DKPInfo["total_points"],"RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","DKPInfo,end","RAID");
 			getdkp_list_load_statusbar_values = getdkp_list_load_statusbar_values + 7
 			
 		end;
 		if (getdkp_list_load_multitable == true and getdkp_list_load_dkpinfo == true and getdkp_list_load_gdkp == true and getdkp_list_load_dkpitems == false) then
 			getdkpcharlen = 0;
-			SendAddonMessage("getdkp_list_load","gdkp,start","RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","gdkp,start","RAID");
 			for key, val in pairs(gdkp.players) do
 				for i=1,getn(multiTable),1 do 
 					konto = table.foreach(multiTable[i], VarReturn);
@@ -813,7 +814,7 @@ dkpcharlen = {};
 						getdkpcharlen = 0;
 					end;
 					if ( strlen(dkpchars) < 244 ) then
-						SendAddonMessage("getdkp_list_load",dkpchars,"RAID");	
+						C_ChatInfo.SendAddonMessage("getdkp_list_load",dkpchars,"RAID");	
 						getdkp_list_load_statusbar_values = getdkp_list_load_statusbar_values + 1;
 					else
 						--debug (dkpchars);
@@ -821,11 +822,11 @@ dkpcharlen = {};
 					end;
 				end;
 			end;
-			SendAddonMessage("getdkp_list_load","gdkp,end","RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","gdkp,end","RAID");
 		end;
 		
 		if (getdkp_list_load_multitable == true and getdkp_list_load_dkpinfo == true and getdkp_list_load_gdkp == true and getdkp_list_load_dkpitems == true) then
-			SendAddonMessage("getdkp_list_load","DKP_ITEMS,start","RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","DKP_ITEMS,start","RAID");
 			for key, val in pairs(DKP_ITEMS) do
 				if (getdkp_list_load_char_overvlow == "" or getdkp_list_load_char_overvlow == key) then
 					if (getdkp_list_load_char_overvlow == key) then
@@ -842,7 +843,7 @@ dkpcharlen = {};
 							return;
 						end;
 						if ( strlen(dkpchars) < 244 and getdkp_list_load_char_overvlow == "") then
-							SendAddonMessage("getdkp_list_load",dkpchars,"RAID");
+							C_ChatInfo.SendAddonMessage("getdkp_list_load",dkpchars,"RAID");
 							getdkp_list_load_statusbar_values = getdkp_list_load_statusbar_values + 1;
 						else
 							--debug (dkpchars);
@@ -853,7 +854,7 @@ dkpcharlen = {};
 				end;
 			end;
 		
-			SendAddonMessage("getdkp_list_load","DKP_ITEMS,end","RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","DKP_ITEMS,end","RAID");
 			
 			getdkp_list_load_issend = 0;
 			getdkp_list_load_multitable = false;
@@ -867,12 +868,12 @@ dkpcharlen = {};
 			GDC_GDL_ASK_SEND:Hide();
 			GetDKP_Config_Frame_Send_StatusBar:SetMinMaxValues(0,0);
 			GetDKP_Config_Frame_Send_StatusBar:SetValue(0);
-			SendAddonMessage("getdkp_list_load","StartUI","RAID");
+			C_ChatInfo.SendAddonMessage("getdkp_list_load","StartUI","RAID");
 		end;
 	end;
 end;
 function GetDKP_List_Load_Ask()
-	SendAddonMessage("getdkp_list_load","ASK","RAID");
+	C_ChatInfo.SendAddonMessage("getdkp_list_load","ASK","RAID");
 end;
 --------------------
 -- UpDate Handler --

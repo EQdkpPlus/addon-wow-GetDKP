@@ -147,19 +147,16 @@ function GetDKPAdmin_OnEvent(self, event, ...)
 						if (LootSlotHasItem(slot) and quality >= GDKPvar_save.LOOTLEVEL) then
 							j = j + 1;
 							if (j == 1) then 
-								SendAddonMessage("GDALootlist","start","RAID");
+								C_ChatInfo.SendAddonMessage("GDALootlist","start","RAID");
 							end
 							if (GDKPvar_save.GDA_Loot) and (quality >= GDKPvar_save.LOOTLEVEL)then
 								SendChatMessage(j..". "..GetLootSlotLink(slot), GDA_Msg[GDKPvar_save.GDA_Chatoutput]);
 							end;
-							SendAddonMessage("GDALootlist",GetLootSlotLink(slot)..";"..j..";"..texture,"RAID");
+							C_ChatInfo.SendAddonMessage("GDALootlist",GetLootSlotLink(slot)..";"..j..";"..texture,"RAID");
 						end;
 					end;
 					if (j ~= 0) then
-						
-						
-						SendAddonMessage("GDALootlist","end","RAID");
-						
+						C_ChatInfo.SendAddonMessage("GDALootlist","end","RAID");
 					end;
 				end;
 			end;

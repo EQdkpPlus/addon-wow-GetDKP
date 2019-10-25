@@ -2780,13 +2780,13 @@ end;
 			end;
 			if _type == "add" then
 				if (_update == "true") then
-					SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,add,"..GDKP_LiveChanged_timestamp,"RAID");
-					--SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,add,"..GDKP_LiveChanged_timestamp,"RAID",_item); wrong syntax
+					C_ChatInfo.SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,add,"..GDKP_LiveChanged_timestamp,"RAID");
+					--C_ChatInfo.SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,add,"..GDKP_LiveChanged_timestamp,"RAID",_item); wrong syntax
 				end;
 			elseif _type == "sub" then
 				if (_update == "true") then
-					SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,sub,"..GDKP_LiveChanged_timestamp,"RAID");
-					--SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,sub,"..GDKP_LiveChanged_timestamp,"RAID",_item); wrong syntax
+					C_ChatInfo.SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,sub,"..GDKP_LiveChanged_timestamp,"RAID");
+					--C_ChatInfo.SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,sub,"..GDKP_LiveChanged_timestamp,"RAID",_item); wrong syntax
 				end;
 			end;
 			if (_live == "true") then -- set by CT Raidtracker Hook
@@ -2808,7 +2808,7 @@ end;
 						end;	
 						if (_update == "true") then
 						--if (_update == "true" and _item ~= "") then
-							SendAddonMessage("GETDKP",amount..",".._dkptable..","..key..",add"..",".._item..","..GDKP_LiveChanged_timestamp,"RAID");
+						C_ChatInfo.SendAddonMessage("GETDKP",amount..",".._dkptable..","..key..",add"..",".._item..","..GDKP_LiveChanged_timestamp,"RAID");
 						end;
 					elseif _type == "sub" then
 						gdkp.players[key][_dkptable.."_current"] = gdkp.players[key][_dkptable.."_current"] - amount ;
@@ -2827,7 +2827,7 @@ end;
 						end;
 						if (_update == "true") then
 						--if (_update == "true" and _item ~= "") then -- promote to raid even if no item is given
-							SendAddonMessage("GETDKP",amount..",".._dkptable..","..key..",sub"..",".._item..","..GDKP_LiveChanged_timestamp,"RAID");
+						C_ChatInfo.SendAddonMessage("GETDKP",amount..",".._dkptable..","..key..",sub"..",".._item..","..GDKP_LiveChanged_timestamp,"RAID");
 						end;
 					end;	
 					if GDKPvar_save.epgp == true then
@@ -2941,13 +2941,13 @@ end;
 			end;
 			if _type == "add" then
 				if (_update == "true") then
-					--SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,add,"..GDKP_LiveChanged_timestamp,"RAID");
-					--SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,add,"..GDKP_LiveChanged_timestamp,"RAID",_item); wrong syntax
+					--C_ChatInfo.SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,add,"..GDKP_LiveChanged_timestamp,"RAID");
+					--C_ChatInfo.SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,add,"..GDKP_LiveChanged_timestamp,"RAID",_item); wrong syntax
 				end;
 			elseif _type == "sub" then
 				if (_update == "true") then
-					--SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,sub,"..GDKP_LiveChanged_timestamp,"RAID");
-					--SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,sub,"..GDKP_LiveChanged_timestamp,"RAID",_item); wrong syntax
+					--C_ChatInfo.SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,sub,"..GDKP_LiveChanged_timestamp,"RAID");
+					--C_ChatInfo.SendAddonMessage("GETDKP",amount..",".._dkptable..",raid,sub,"..GDKP_LiveChanged_timestamp,"RAID",_item); wrong syntax
 				end;
 			end;
 			if (_live == "true") then -- set by CT Raidtracker Hook
@@ -2969,7 +2969,7 @@ end;
 						end;	
 						if (_update == "true") then
 						--if (_update == "true" and _item ~= "") then
-							--SendAddonMessage("GETDKP",amount..",".._dkptable..","..key..",add"..",".._item..","..GDKP_LiveChanged_timestamp,"RAID");
+							--C_ChatInfo.SendAddonMessage("GETDKP",amount..",".._dkptable..","..key..",add"..",".._item..","..GDKP_LiveChanged_timestamp,"RAID");
 						end;
 					elseif _type == "sub" then
 						gdkp.players[key][_dkptable.."_current"] = gdkp.players[key][_dkptable.."_current"] - amount ;
@@ -2988,7 +2988,7 @@ end;
 						end;
 						if (_update == "true") then
 						--if (_update == "true" and _item ~= "") then -- promote to raid even if no item is given
-							--SendAddonMessage("GETDKP",amount..",".._dkptable..","..key..",sub"..",".._item..","..GDKP_LiveChanged_timestamp,"RAID");
+							--C_ChatInfo.SendAddonMessage("GETDKP",amount..",".._dkptable..","..key..",sub"..",".._item..","..GDKP_LiveChanged_timestamp,"RAID");
 						end;
 					end;	
 					if GDKPvar_save.epgp == true then

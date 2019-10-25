@@ -668,19 +668,19 @@ function GetDKPAdmin_BuildList()
 	
 	while (i <= 17) do
 		local prefix = "GDAPlayer"..i;
-		local button = getglobal(prefix);
-		getglobal(prefix.."Name"):SetText("");
-		getglobal(prefix.."Name"):SetTextColor(1, 1, 1);
-		getglobal(prefix.."Order"):SetText("");
-		getglobal(prefix.."Order"):SetTextColor(1, 1, 1);
-		getglobal(prefix.."Set"):SetText("");
-		getglobal(prefix.."Set"):SetTextColor(1, 1, 1);
-		getglobal(prefix.."NonSet"):SetText("");
-		getglobal(prefix.."NonSet"):SetTextColor(1, 1, 1);
-		getglobal(prefix.."Mix"):SetText("");
-		getglobal(prefix.."Mix"):SetTextColor(1, 1, 1);
-		button:SetHighlightTexture("Interface\\PaperDollInfoFrame\\UI-Character-Tab-Highlight");
-		button:Show();
+		local itemButton = _G[prefix];
+		_G[prefix.."Name"]:SetText("");
+		_G[prefix.."Name"]:SetTextColor(1, 1, 1);
+		_G[prefix.."Order"]:SetText("");
+		_G[prefix.."Order"]:SetTextColor(1, 1, 1);
+		_G[prefix.."Set"]:SetText("");
+		_G[prefix.."Set"]:SetTextColor(1, 1, 1);
+		_G[prefix.."NonSet"]:SetText("");
+		_G[prefix.."NonSet"]:SetTextColor(1, 1, 1);
+		_G[prefix.."Mix"]:SetText("");
+		_G[prefix.."Mix"]:SetTextColor(1, 1, 1);
+		itemButton:SetHighlightTexture("Interface\\PaperDollInfoFrame\\UI-Character-Tab-Highlight");
+		itemButton:Show();
 		i = i + 1;
 	end;
 	local line; 
@@ -688,7 +688,7 @@ function GetDKPAdmin_BuildList()
 	FauxScrollFrame_Update(GDA_ListScrollFrame,table.getn(GetDKPAdmin_List),17,8);
 	for line = 1, 17 do
 		local prefix = "GDAPlayer"..line;
-		local button = getglobal(prefix);
+		local button = _G[prefix];
 		lineplusoffset = line + FauxScrollFrame_GetOffset(GDA_ListScrollFrame);
 		if lineplusoffset <= table.getn(GetDKPAdmin_List) then
 			local prefix = "GDAPlayer"..line;

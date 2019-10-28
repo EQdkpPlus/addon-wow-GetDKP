@@ -40,7 +40,7 @@ function GetDKPAdmin_OnLoad(this)
 		this:RegisterEvent("CHAT_MSG_RAID_LEADER");
 		this:RegisterEvent("CHAT_MSG_GUILD");
 		this:RegisterEvent("CHAT_MSG_SYSTEM");
-		this:RegisterEvent("LOOT_OPENED");
+		this:RegisterEvent("LOOT_READY");
 		this:RegisterEvent("CHAT_MSG_ADDON");
 		-- Slash Commands --
 		SlashCmdList["GETDKPADMIN"] = GetDKPAdmin_SlashHandler;
@@ -131,7 +131,7 @@ function GetDKPAdmin_OnEvent(self, event, ...)
 	end;
 	--------------------------------------------------------------------------------------
 	----------------------------------- Loot Find-----------------------------------------
-	if (event == "LOOT_OPENED") then
+	if (event == "LOOT_READY") then
 		if (GetNumGroupMembers() > 0 )then
 			j = 0;
 			lootmethod, masterlooterPartyID, masterlooterRaidID = GetLootMethod()

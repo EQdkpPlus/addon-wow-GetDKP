@@ -143,7 +143,8 @@ function GetDKPAdmin_OnEvent(self, event, ...)
 						anz = 6;
 					end;
 					for slot = 1,anz,1 do
-						texture, item, quantity, quality = GetLootSlotInfo(slot);
+						texture, item, quantity, currencyID, quality, locked, isQuestItem, questID, isActive = GetLootSlotInfo(slot);
+						--texture, item, quantity, quality = GetLootSlotInfo(slot);
 						if(GDKP_DEBUG) then
 							print("Debug:: Lootlevel - "..GDKPvar_save.LOOTLEVEL.." / quality - "..quality);
 						end;

@@ -299,9 +299,7 @@ function GetDKPAdmin_OnEvent(self, event, ...)
 						for i = 1 , table.getn(GetDKPAdmin_List) do
 							if (GetDKPAdmin_List[i].name == Username) then
 							
-								if ( GDKPvar_save.GDA_MinDKP_Rule3 <= tonumber(arg1)) then
-								
-								
+								if ( GDKPvar_save.GDA_MinDKP_Rule3 < tonumber(arg1)) then
 									if ( GetDKPAdmin_List[i].points > tonumber(arg1)) then
 											if (( GDKPvar_save.GDA_Rule == 1 and GDKPvar_save.GDA_announce_highest_bid1 )) or (( GDKPvar_save.GDA_Rule == 3 and  GDKPvar_save.GDA_announce_highest_bid2 )) then
 											SendChatMessage(GDA_bid_lowering, "WHISPER", "Common", arg2);
@@ -329,7 +327,6 @@ function GetDKPAdmin_OnEvent(self, event, ...)
 													GetDKPAdmin_List[i].points = tonumber(arg1);
 											end;
 									end;
-									
 								else
 									SendChatMessage(GDA_bid_too_low, "WHISPER", "Common", arg2);								
 								end;

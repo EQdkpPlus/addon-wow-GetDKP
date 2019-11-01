@@ -4,7 +4,7 @@ For Support, please use our [Support Board](https://eqdkp-plus.eu/forum/).
 
 License
 ------------------
-Copyright (C) 2006-2017 EQdkp-Plus Developer Team
+Copyright (C) 2006-2019 EQdkp-Plus Developer Team
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published
@@ -31,6 +31,10 @@ There is an auction-module called "Bet and Win" to distribute your drops to your
 With LiveDKP your can modify the players DKP ingame during the raid to alway have an up to date list.
 
 There is a config menu to make all your settings.
+
+Compatibility
+------------------
+Works with current 8.2.x+ and classic 1.13.x +
 
 Features
 ------------------

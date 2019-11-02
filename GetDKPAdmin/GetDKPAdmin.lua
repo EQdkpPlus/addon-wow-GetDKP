@@ -294,7 +294,12 @@ function GetDKPAdmin_OnEvent(self, event, ...)
 					end;
 						for i = 1 , table.getn(GetDKPAdmin_List) do
 							if (GetDKPAdmin_List[i].name == Username) then
-								if ( GDKPvar_save.GDA_MinDKP_Rule3 <= tonumber(arg1)) then
+								if(GDKPvar_save.GDA_Rule == 1) then
+									tmp_minDKP_setting = GDKPvar_save.GDA_MinDKP;
+								else
+									tmp_minDKP_setting = GDKPvar_save.GDA_MinDKP_Rule3;
+								end;
+								if (tmp_minDKP_setting <= tonumber(arg1)) then
 									if ( GetDKPAdmin_List[i].points > tonumber(arg1)) then
 											if (( GDKPvar_save.GDA_Rule == 1 and GDKPvar_save.GDA_announce_highest_bid1 )) or (( GDKPvar_save.GDA_Rule == 3 and  GDKPvar_save.GDA_announce_highest_bid2 )) then
 											SendChatMessage(GDA_bid_lowering, "WHISPER", "Common", arg2);
@@ -330,7 +335,19 @@ function GetDKPAdmin_OnEvent(self, event, ...)
 						end;
 						
 						if (find ~= 1) then
-							if ( GDKPvar_save.GDA_MinDKP_Rule3 <= tonumber(arg1)) then										
+							if(GDKP_DEBUG == true) then
+								print("DEBUG - Rule: "..GDKPvar_save.GDA_Rule);
+							end;
+							tmp_minDKP_setting = 0;
+							if(GDKPvar_save.GDA_Rule == 1) then
+								tmp_minDKP_setting = GDKPvar_save.GDA_MinDKP;
+							else
+								tmp_minDKP_setting = GDKPvar_save.GDA_MinDKP_Rule3;
+							end;
+							if(GDKP_DEBUG == true) then
+								print("DEBUG: "..tmp_minDKP_setting .."<=".. tonumber(arg1));
+							end;
+							if (tmp_minDKP_setting <= tonumber(arg1)) then							
 									if ( current_highest_bid < tonumber(arg1)) then
 											if (( GDKPvar_save.GDA_Rule == 1 and GDKPvar_save.GDA_announce_highest_bid1 )) or (( GDKPvar_save.GDA_Rule == 3 and  GDKPvar_save.GDA_announce_highest_bid2 )) then
 											SendChatMessage(GDA_new_highest_bid..tonumber(arg1).."DKP", "RAID", "Common");

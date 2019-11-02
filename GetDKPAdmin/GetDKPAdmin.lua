@@ -215,8 +215,6 @@ function GetDKPAdmin_OnEvent(self, event, ...)
 	-----------------------------------------------------------------------------------
 	-------------------------------- Rules 1+3-----------------------------------------
 	if (arg1 ~= nil and arg2 ~= nil) and ((GDKPvar_save.GDA_Rule == 1 and ((event == "CHAT_MSG_WHISPER" and GDKPvar_save.GDA_Chatlook == 1 ) or (event == "CHAT_MSG_GUILD" and GDKPvar_save.GDA_Chatlook == 3 ) or (event =="CHAT_MSG_RAID" and GDKPvar_save.GDA_Chatlook == 2 ) or ( event =="CHAT_MSG_RAID_LEADER" and GDKPvar_save.GDA_Chatlook == 2))) or (GDKPvar_save.GDA_Rule == 3 and ((event == "CHAT_MSG_WHISPER" and GDKPvar_save.GDA_Chatlook_Rule3 == 1 ) or (event == "CHAT_MSG_GUILD" and GDKPvar_save.GDA_Chatlook_Rule3 == 3 ) or (event =="CHAT_MSG_RAID" and GDKPvar_save.GDA_Chatlook_Rule3 == 2 ) or ( event =="CHAT_MSG_RAID_LEADER" and GDKPvar_save.GDA_Chatlook_Rule3 == 2)))) then
-		
-		
 		local Username, Userrealm = strsplit("-", arg2, 2);		
 		if (gdkp == nil) or (tonumber(arg1) == nil) then
 				return;
@@ -229,8 +227,6 @@ function GetDKPAdmin_OnEvent(self, event, ...)
 				end;
 				
 				if (Username == UnitName("player")) then
-				--debug (arg2);
-				
 					if (string.find(arg1,GDA_CD_MSG_TEXT_1) ~= nil or string.find(arg1,GDA_CD_MSG_TEXT_4)~= nil or string.find(arg1,GDA_CD_MSG_TEXT_5)~= nil or string.find(arg1,GDA_CD_MSG_TEXT_6)~= nil or string.find(arg1,GDA_CD_MSG_TEXT_7)~= nil) then
 						arg1 = "";
 					elseif (string.find(arg1,GDA_ROLL)~= nil or string.find(arg1,GDA_PAAR_A)~= nil) then

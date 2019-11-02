@@ -629,6 +629,10 @@ end;
 function GetDKP_List_Load_Resiv(arg1,arg2,arg3,arg4)
 	_args = GDKP_GetArgs(arg2, ",");
 	
+	if(not IsPromoted()) then
+		print("You are not promoted");
+	end;
+
 	if (_args[1] == "ASK" and GetDKP_CheckifPlayerIsInRaid(UnitName("player")) and IsPromoted() and GDKPvar_save.GetDKPASK) then
 		GDC_GDL_ASK_SEND:Show();
 	end;
@@ -742,9 +746,7 @@ dkpcharlen = {};
 	end;
 	
 	if (DKPInfo and multiTable and GetDKP_CheckifPlayerIsInRaid(UnitName("player")) and IsPromoted() and not getdkp_list_load_empfang) then
-		
 		getdkp_list_load_issend = 1;
-		
 		
 		if (getdkp_list_load_multitable == true and getdkp_list_load_dkpinfo == false and getdkp_list_load_gdkp == false and getdkp_list_load_dkpitems == false) then
 			a = 0;
@@ -870,6 +872,8 @@ dkpcharlen = {};
 			GetDKP_Config_Frame_Send_StatusBar:SetValue(0);
 			C_ChatInfo.SendAddonMessage("getdkp_list_load","StartUI","RAID");
 		end;
+	else
+		print("Sending of data failed");
 	end;
 end;
 function GetDKP_List_Load_Ask()

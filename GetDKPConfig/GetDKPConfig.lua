@@ -981,20 +981,25 @@ end;
 -- GetDKP Plus Config Dropdown Konto --
 ---------------------------------------
 function GDC_FrameKontoDropDown_Initialize()
-	local info;
+	local info, tmpvarname;
 	if (multiTable) then
 		if (table.getn(multiTable) == 1) then
+			tmpvarname = table.foreach(multiTable[1], VarReturn);
 			info = {
-					text = table.foreach(multiTable[1], VarReturn);
-					func = GDC_FrameKontoDropDown_OnClick;
-					};
-				UIDropDownMenu_AddButton(info);
+				value	= tmpvarname;
+				text	= multiTable[1][tmpvarname]["name"];
+				func = GDC_FrameKontoDropDown_OnClick;
+			};
+			UIDropDownMenu_AddButton(info);
 		else
 			for i=1,table.getn(multiTable),1 do
-			info = {
-					text = table.foreach(multiTable[i], VarReturn);
-					func = GDC_FrameKontoDropDown_OnClick;
-					};
+				tmpvarname = table.foreach(multiTable[i], VarReturn);
+				--print("DEBUG: "..tmpvarname.." / "..multiTable[i][tmpvarname]["name"]);
+				info = {
+					value	= tmpvarname;
+					text	= multiTable[i][tmpvarname]["name"];
+					func	= GDC_FrameKontoDropDown_OnClick;
+				};
 				UIDropDownMenu_AddButton(info);
 			end;
 		end;

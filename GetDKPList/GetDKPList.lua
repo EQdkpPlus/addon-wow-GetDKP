@@ -674,12 +674,14 @@ end;
 -- GetDKP Plus List Playerlist Dropdown Konto --
 ------------------------------------------------
 function GDL_Playerlist_FrameKontoDropDown_Initialize()
-	local info;
+	local info, tmpvarname;
 	if (multiTable) then
 		for i=1,table.getn(multiTable),1 do
+			tmpvarname = table.foreach(multiTable[i], VarReturn);
 			info = {
-				text = table.foreach(multiTable[i], VarReturn);
-				func = GDL_Playerlist_FrameKontoDropDown_OnClick;
+				value	= tmpvarname;
+				text	= multiTable[i][tmpvarname]["name"];
+				func	= GDL_Playerlist_FrameKontoDropDown_OnClick;
 				};
 			UIDropDownMenu_AddButton(info);
 		end;

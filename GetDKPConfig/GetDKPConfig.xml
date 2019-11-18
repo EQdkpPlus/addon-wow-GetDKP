@@ -106,9 +106,6 @@
 
 	<Frame name="GetDKP_Config_Frame" toplevel="true" parent="UIParent" movable="true" enableMouse="true" hidden="true">
 		<Scripts>
-			<OnEvent>
-				GetDKP_Config_OnEvent(event);
-			</OnEvent>
 			<OnUpdate>
 				GetDKP_Config_OnUpdate(self, elapsed);
 			</OnUpdate>

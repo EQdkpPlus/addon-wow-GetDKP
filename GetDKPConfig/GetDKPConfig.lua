@@ -31,6 +31,7 @@ local Scaling_GDA						= 60;	-- default Addon scaling
 local GDC_Scale							= 1.0;	-- default scaling faktor
 GDAConfigFrameHelpSide					= 1;
 GDLConfigFrame_send_Show_alpha			= 0;
+
 ---------------------------
 -- GetDKP Plus Variables --
 ---------------------------
@@ -46,6 +47,8 @@ end;
 -- GetDKP Plus OnLoad --
 ------------------------
 function GetDKPConfig_OnLoad(this)
+		-- load the onevent thing, as parameters are not passed in the XML file any longer
+		this:SetScript("OnEvent", GetDKP_Config_OnEvent);
 		PanelTemplates_SetNumTabs(this, 4);
 		GetDKP_Config_Frame.selectedTab = 1;
 		PanelTemplates_UpdateTabs(this);

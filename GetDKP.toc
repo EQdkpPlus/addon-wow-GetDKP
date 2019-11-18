@@ -5,7 +5,7 @@
 ## Notes: Ingameview of the EQDKP-roster
 ## Notes-deDE: Ingameansicht des EQDKP-Rosters.
 ## Author: Sylna, Charla, Corgan, Whiskey, Yunalescar
-## Version: 7.4.0
+## Version: 7.4.1
 ## URL: http://eqdkp-plus.eu
 ## DefaultState: Enabled
 ## LoadOnDemand: 0

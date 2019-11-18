@@ -1,10 +1,10 @@
--------------------------------------------------------------------
----- GetDKP Plus																----
----- Copyright (C) 2006-2018 EQdkp-Plus Developer Team			----
+--------------------------------------------------------------------
+---- GetDKP Plus												----
+---- Copyright (c) 2006-2019 EQdkp-Plus Developer Team			----
 ---- You should have received a copy of the GNU Affero			----
 ---- General Public License along with this program. If not,	----
----- see http://www.gnu.org/licenses/.									----
--------------------------------------------------------------------
+---- see http://www.gnu.org/licenses/.							----
+--------------------------------------------------------------------
 
 GDL_Set_Position = {head = 1,neck = 2,shoulder = 3,cloak = 4,robe = 5,hemd = 6,wappen = 7,wrist = 8,hand = 9,belt = 10,legs = 11,feet = 12,finger1 = 13,finger2 = 14,trinket1 = 15,trinket2 = 16,wapponmainhand = 17,shildhand = 18,diztans = 19};
 GDL_Sets = {	

@@ -1,10 +1,10 @@
--------------------------------------------------------------------
----- GetDKP Plus																----
----- Copyright (C) 2006-2018 EQdkp-Plus Developer Team			----
+--------------------------------------------------------------------
+---- GetDKP Plus												----
+---- Copyright (c) 2006-2019 EQdkp-Plus Developer Team			----
 ---- You should have received a copy of the GNU Affero			----
 ---- General Public License along with this program. If not,	----
----- see http://www.gnu.org/licenses/.									----
--------------------------------------------------------------------
+---- see http://www.gnu.org/licenses/.							----
+--------------------------------------------------------------------
 
 local full  = {};
 local Original_ChatFrame_OnHyperlinkShow;
@@ -19,9 +19,6 @@ local Original_CT_RaidTracker_SaveCost;
 GDKP_Player_NoItems = {};
 GDKP_SET_TEST = GDKP;
 nodata_shown = true;
-
-
-
 
 function checkrealmname(realmname)
 	local tableRealms = {}
@@ -2717,7 +2714,6 @@ end;
 		end;
 	end;
 	
-	
 	if (IsPromoted()) then
 		Chan = "RAID"
 	else 
@@ -2842,7 +2838,6 @@ end;
 	GDKP_Live_saveItem = GetDKP_TableCopy(DKP_ITEMS) ;
 	GDL_Playerlist_EditBox_OnEnterPressed()
 end;
-
 
 --MANUAL ADD/SUB
 function GDKP_MATH_DKP_MAN(msg,_type,_update,_live,_item,_time)

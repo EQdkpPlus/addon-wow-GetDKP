@@ -1,10 +1,10 @@
--------------------------------------------------------------------
----- GetDKP Plus																----
----- Copyright (C) 2006-2018 EQdkp-Plus Developer Team			----
+--------------------------------------------------------------------
+---- GetDKP Plus												----
+---- Copyright (c) 2006-2019 EQdkp-Plus Developer Team			----
 ---- You should have received a copy of the GNU Affero			----
 ---- General Public License along with this program. If not,	----
----- see http://www.gnu.org/licenses/.									----
--------------------------------------------------------------------
+---- see http://www.gnu.org/licenses/.							----
+--------------------------------------------------------------------
 
 	GDL_UpdateInterval = 0.01;
 	GDL_ItemList_UpdateInterval = 6;
@@ -98,9 +98,6 @@
 						{"Unbekannt", 		"Unknown", 							0.00,	1.00,	0.00}
 						};
 
-
-
-
 -----------------------------
 -- GetDKP Plus List OnLoad --
 -----------------------------
@@ -114,12 +111,14 @@ function GetDKP_List_OnLoad(this)
 		GETDKP_LISTLOAD = true;
 
 end;
+
 ------------------------------------
 -- GetDKP Plus List Slash Handler --
 ------------------------------------
 function GetDKP_List_SlashHandler(msg)
 	GetDKP_List_Toggle();
 end;
+
 ------------------------------------
 -- GetDKP Plus List Event Handler --
 ------------------------------------
@@ -131,6 +130,7 @@ function GetDKP_List_OnEvent(event)
 		return;
 	end;
 end;
+
 ------------------------------
 -- GetDKP Plus List VarLoad --
 ------------------------------
@@ -318,6 +318,7 @@ function GetDKP_List_VarLoad()
 		GetDKP_List_VarUpdate();
 	end;
 end;
+
 -----------------------------
 -- GetDKP Plus List Update --
 -----------------------------
@@ -485,6 +486,7 @@ function GetDKP_List_InRaidButtonToggle()
 		GDL_Playerlist_Update();
 	end;
 end;
+
 ------------------------------
 -- GetDKP Plus List Refresh --
 ------------------------------
@@ -504,6 +506,7 @@ function GDL_Playerlist_Refresh()
 	GDL_Playerlist_Update();
 
 end;
+
 -----------------------------
 -- GetDKP Plus List Column --
 -----------------------------
@@ -606,7 +609,6 @@ function GDL_Playerlist_FrameClassDropDown_Initialize()
 	end;
 end;
 
-
 function GDL_Playerlist_FrameClassDropDown_OnLoad(this)
 	UIDropDownMenu_Initialize(this, GDL_Playerlist_FrameClassDropDown_Initialize);
 	if ( GetLocale() == "deDE" ) then
@@ -666,9 +668,6 @@ function GDL_Playerlist_FrameClassDropDown_SetSelectedID(frame, id, names)
 	end;
 	UIDropDownMenu_SetText(frame, names);
 end;
-
-
-
 
 ------------------------------------------------
 -- GetDKP Plus List Playerlist Dropdown Konto --
@@ -747,6 +746,7 @@ function GDL_Playerlist_FrameKontoDropDown_SetSelectedID(frame, id, names)
 	end;
 	UIDropDownMenu_SetText(frame, names);
 end;
+
 -----------------------------------------------------
 -- GetDKP Plus List Playerlist Dropdown KontoAtrib --
 -----------------------------------------------------
@@ -787,7 +787,6 @@ function GDL_Playerlist_FrameKontoAtribDropDown_SetSelectedID(frame, id, names)
 	end;
 	UIDropDownMenu_SetText(frame, names);
 end;
-
 
 -----------------------------------------
 -- GetDKP Plus List Playerlist EditBox --
@@ -841,6 +840,7 @@ function GDL_Playerlist_Update(spclassid)
 	end;
 	FauxScrollFrame_Update(GDL_Playerlist_ScrollFrame,GDL_Count,GDL_TO_DISPLAY,8);
 end;
+
 --------------------------------------
 -- GetDKP Plus List Playerlist SORT --
 --------------------------------------
@@ -967,6 +967,7 @@ function GDL_Sort (value,button)
 	end;
 	GDL_Playerlist_Update();
 end;
+
 ----------------------
 -- GDL_Setitem_List --
 ----------------------
@@ -1006,6 +1007,7 @@ function GDL_Model_Scale ()
 		GDL_Itemlist_Frame:Show();
 	end;
 end;
+
 -- function GDL_Itemlist_Toggle(button,var,class,item)
 	-- if (button == "RightButton" or GDKPvar_save["ShowItems"] == "false") then
 		-- class = GDL_SetClass (GDL_Players[var+FauxScrollFrame_GetOffset(GDL_Playerlist_ScrollFrame)].class);
@@ -1310,6 +1312,7 @@ GDL_Itemlist_SetID = GDL_Itemlist_Setname.setid;
 	GDL_Itemlist_SetFrameBackdrop:SetHeight(high);
 	GDL_Itemlist_SetFrameBackdrop:SetWidth(240);
 end;
+
 function GDL_ItemList_OnUpdate(this, elapsed, GDL_ItemList_Stop)
 
 	this.TimeSinceLastUpdate = this.TimeSinceLastUpdate + elapsed;
@@ -1318,7 +1321,6 @@ function GDL_ItemList_OnUpdate(this, elapsed, GDL_ItemList_Stop)
 		this.TimeSinceLastUpdate = 0;
 	end
 end;
-
 
 function GDL_ItemList_SetFrameSetLink()
 	for i = 1,4,1 do
@@ -1336,6 +1338,7 @@ function GDL_ItemList_SetFrameSetLink()
 		end;
 	end;
 end;
+
 -- function GDL_Itemlist_SetFrame_SetShow(id)
 	-- class = GDL_Itemlist_FrameTitleText.class;
 	-- if (GDL_Setitem_tabelname[GDL_Itemlist_SetID] == "T4") then
@@ -1393,6 +1396,7 @@ end;
 		-- end;
 	-- GDL_Itemlist_Tooken_Upate();
 -- end;
+
 function GDL_ToolTip(this,set,iconid,name,prefix)
 
 	if (prefix) then
@@ -1542,7 +1546,6 @@ end;
 --------------------
 -- NonsetItemlist --
 --------------------
-
 function GDL_NonsetItemlist_Upate()
 	local GDL_NonSetItemlist_Offset = FauxScrollFrame_GetOffset(GDL_NonsetItemlist_Frame_ScrollFrame);
 	local GDL_NonSetItem_Index;
@@ -1773,6 +1776,7 @@ function GDL_Itemlist_Tooken_Upate()
 		getglobal("GDL_Itemlist_Tooken_Frame"):Hide();
 	end;
 end;
+
 function GDL_Itemlist_Tooken_Sort (value)
 	if (value == 1) then
 		if (GDL_NonSetS1 == "down") then
@@ -1830,6 +1834,7 @@ function GDL_Itemlist_Tooken_Sort (value)
 	end;
 	GDL_Itemlist_Tooken_Upate();
 end;
+
 function GDL_Itemlist_Tooken_Link (button)
 
 	if (button == "LeftButton" ) then

@@ -1,10 +1,10 @@
--------------------------------------------------------------------
----- GetDKP Plus																----
----- Copyright (C) 2006-2018 EQdkp-Plus Developer Team			----
+--------------------------------------------------------------------
+---- GetDKP Plus												----
+---- Copyright (c) 2006-2019 EQdkp-Plus Developer Team			----
 ---- You should have received a copy of the GNU Affero			----
 ---- General Public License along with this program. If not,	----
----- see http://www.gnu.org/licenses/.									----
--------------------------------------------------------------------
+---- see http://www.gnu.org/licenses/.							----
+--------------------------------------------------------------------
 
 ----------------------------------
 -- GetDKP Plus Config Variables --
@@ -47,7 +47,7 @@ end;
 -- GetDKP Plus OnLoad --
 ------------------------
 function GetDKPConfig_OnLoad(this)
-		-- load the onevent thing, as parameters are not passed in the XML file any longer
+		-- Set the script as workaround for newer UI versions problem with onEvent function
 		this:SetScript("OnEvent", GetDKP_Config_OnEvent);
 		-- Registers an addon message prefix, allowing messages sent over addon channels with that prefix to be received by the client.
 		C_ChatInfo.RegisterAddonMessagePrefix("getdkp_list_load");
@@ -65,6 +65,7 @@ function GetDKPConfig_OnLoad(this)
 		this:RegisterEvent("PLAYER_REGEN_ENABLED");
 		this:RegisterEvent("ZONE_CHANGED");
 		this:RegisterEvent("ZONE_CHANGED_NEW_AREA");
+
 		-- Slash Commands
 		SlashCmdList["GETDKPCONFIG"] = GetDKP_Config_SlashHandler;
 		SLASH_GETDKPCONFIG1 = "/gdc";
@@ -83,9 +84,6 @@ function GetDKP_VarLoad()
 		GetDKP_Config_Frame_CheckButton50:SetChecked(GDKPvar_save.ShowMiniMapButton);
 		GetDKP_Config_Frame_CheckButtonepgp:SetChecked(GDKPvar_save.epgp);
 		GetDKP_Config_Set_MiniMap_Button(GDKPvar_save.ShowMiniMapButton);
-		--GetDKP_Config_Frame_Slider3:SetValue(GDKPvar_save.MiniMapButtonPosx);
-		--GetDKP_Config_Frame_Slider4:SetValue(GDKPvar_save.MiniMapButtonPosy);
-		--GetDKP_Config_Frame_Slider5:SetValue(GDKPvar_save.Scaling_GDC);
 		GetDKP_Config_Frame_Slider6:SetValue(GDKPvar_save.Scaling_GDL);
 		GetDKP_Config_Frame_Slider7:SetValue(GDKPvar_save.Scaling_GDA);
 		GetDKP_Config_Frame_CheckButton51:SetChecked(GDKPvar_save.GDA_OnOff);
@@ -1662,7 +1660,6 @@ function SCALEConfig()
 	GDAConfigFrameHelp:Hide();
 	GDAConfigCountdownFrame:Hide();
 end;
-
 
 -- **************************************** OLD GetDKP Config Function ***************************** --
 -- sets GETDKP Options --

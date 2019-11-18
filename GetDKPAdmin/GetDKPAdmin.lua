@@ -1,10 +1,10 @@
--------------------------------------------------------------------
----- GetDKP Plus																----
----- Copyright (C) 2006-2018 EQdkp-Plus Developer Team			----
+--------------------------------------------------------------------
+---- GetDKP Plus												----
+---- Copyright (c) 2006-2019 EQdkp-Plus Developer Team			----
 ---- You should have received a copy of the GNU Affero			----
 ---- General Public License along with this program. If not,	----
----- see http://www.gnu.org/licenses/.									----
--------------------------------------------------------------------
+---- see http://www.gnu.org/licenses/.							----
+--------------------------------------------------------------------
 
 GDA_Sort_Rule2 = 3;
 GDA_PAAR = 0;

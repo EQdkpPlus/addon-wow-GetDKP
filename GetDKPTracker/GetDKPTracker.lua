@@ -1,17 +1,12 @@
--------------------------------------------------------------------
----- GetDKP Plus																----
----- Copyright (C) 2006-2018 EQdkp-Plus Developer Team			----
+--------------------------------------------------------------------
+---- GetDKP Plus												----
+---- Copyright (c) 2006-2019 EQdkp-Plus Developer Team			----
 ---- You should have received a copy of the GNU Affero			----
 ---- General Public License along with this program. If not,	----
----- see http://www.gnu.org/licenses/.									----
--------------------------------------------------------------------
+---- see http://www.gnu.org/licenses/.							----
+--------------------------------------------------------------------
 
 UIPanelWindows["GetDKPTracker_Frame"] = { area = "left", pushable = 1, whileDead = 1 };
-
-
-
-
-
 
 -----------------------------
 -- GetDKP Tracker OnLoad --
@@ -36,10 +31,7 @@ function GetDKP_Tracker_OnLoad(self)
 		
 		-- ALLREADY LOAD 
 		GETDKP_TrackerLOAD = true;
-	
 end;
-
-
 
 -------------------------------------
 -- GetDKP Tracker Variables_Loaded --
@@ -69,6 +61,7 @@ function GetDKPTracker_SlashHandler(msg)
 		GetDKPTracker_Frame:Show();
 	end;
 end;
+
 ------------------------------------
 -- GetDKP Tracker Event Handler --
 ------------------------------------
@@ -77,7 +70,6 @@ function GetDKP_Tracker_OnEvent(event)
 		GetDKP_Tracker_Variables_Loaded();
 		return;
 	elseif (event == "CHAT_MSG_LOOT" or event == "CHAT_MSG_SYSTEM" or event == "CHAT_MSG_WHISPER") then
-	
 		return;
 	elseif (event == "CHAT_MSG_ADDON") then
 	
@@ -113,26 +105,17 @@ function GetDKP_Tracker_Raid_Update (event)
 		--GetDKP_Tracker_Raids[GetDKP_Tacker_Raid_Time].Boss={};
 		--GetDKP_Tracker_Raids[GetDKP_Tacker_Raid_Time].Items={};
 		--debug(time());
-	elseif (event == "PLAYER_ENTERING_WORLD") then
-	
 	end;
-	
---UnitName("player");
-
 end;
 function GetDKP_Tracker_NewRaid(misc)
 	if (GetDKP_Tracker_NewRaid_Frame:IsVisible()) then
 		GetDKP_Tracker_NewRaid_Frame:Hide();
 		if misc == "Yes" then
 			GetDKP_Tracker_Raids[GetDKP_Tacker_Raid_Time]={};
-		else
-	
 		end;
 	else
 		GetDKP_Tracker_NewRaid_Frame:Show();
 	end;
-	
-
 end;
 
 

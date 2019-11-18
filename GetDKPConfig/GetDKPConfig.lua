@@ -49,6 +49,8 @@ end;
 function GetDKPConfig_OnLoad(this)
 		-- load the onevent thing, as parameters are not passed in the XML file any longer
 		this:SetScript("OnEvent", GetDKP_Config_OnEvent);
+		-- Registers an addon message prefix, allowing messages sent over addon channels with that prefix to be received by the client.
+		C_ChatInfo.RegisterAddonMessagePrefix("getdkp_list_load");
 		PanelTemplates_SetNumTabs(this, 4);
 		GetDKP_Config_Frame.selectedTab = 1;
 		PanelTemplates_UpdateTabs(this);
@@ -610,7 +612,8 @@ end
 -------------------
 -- Event Handler --
 -------------------
-function GetDKP_Config_OnEvent(event)
+function GetDKP_Config_OnEvent(self, event, ... )
+	local arg1, arg2, arg3, arg4 = ...;
 	if (event == "VARIABLES_LOADED") then
 		GetDKP_VarLoad();
 		return;

@@ -9,29 +9,28 @@
 ----------------------------------
 -- GetDKP Plus Config Variables --
 ----------------------------------
-GetDKPfont = "Interface\\AddOns\\GetDKP\\MORPHEUS.TTF";
-getdkp_list_load_statusbar_values = 1;
-GDLConfigFrame_send_Show_alpha = 0;
-GDLConfigFrame_send_Show_alpha2 = 0;
-getdkp_list_load_char_overvlow = "";
-GDKPvar_save = {};
+GetDKPfont								= "Interface\\AddOns\\GetDKP\\MORPHEUS.TTF";
+getdkp_list_load_statusbar_values		= 1;
+GDLConfigFrame_send_Show_alpha			= 0;
+GDLConfigFrame_send_Show_alpha2			= 0;
+getdkp_list_load_char_overvlow			= "";
+GDKPvar_save							= {};
 
 
-local getdkp_list_load_multitable = false;
-local getdkp_list_load_dkpinfo = false;
-local getdkp_list_load_gdkp = false;
-local getdkp_list_load_dkpitems = false;
-local getdkp_list_load_issend = 0;
-local getdkp_list_load_updateinterval = 5;
---local showminimapbutton = true;		-- minimap button is on by default
-local minimapbuttonposy = 0;		-- default minimap button position
-local minimapbuttonposx = 0;		-- default minimap button position
-local Scaling_GDC = 70;			-- default Addon scaling
-local Scaling_GDL = 80;			-- default Addon scaling
-local Scaling_GDA = 60;			-- default Addon scaling
-local GDC_Scale = 1.0;			-- default scaling faktor
-GDAConfigFrameHelpSide = 1;
-GDLConfigFrame_send_Show_alpha = 0;
+local getdkp_list_load_multitable		= false;
+local getdkp_list_load_dkpinfo			= false;
+local getdkp_list_load_gdkp				= false;
+local getdkp_list_load_dkpitems			= false;
+local getdkp_list_load_issend			= 0;
+local getdkp_list_load_updateinterval	= 5;
+local minimapbuttonposy					= 0;	-- default minimap button position
+local minimapbuttonposx					= 0;	-- default minimap button position
+local Scaling_GDC						= 70;	-- default Addon scaling
+local Scaling_GDL						= 80;	-- default Addon scaling
+local Scaling_GDA						= 60;	-- default Addon scaling
+local GDC_Scale							= 1.0;	-- default scaling faktor
+GDAConfigFrameHelpSide					= 1;
+GDLConfigFrame_send_Show_alpha			= 0;
 ---------------------------
 -- GetDKP Plus Variables --
 ---------------------------
